@@ -15,9 +15,10 @@ We use a Pupil Labs Neon wearable eye tracker, which estimates gaze at 200\,Hz f
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_driving_example_eyetracker.jpg}\\[2pt]
-\includegraphics[width=\columnwidth]{figures/fig_driving_example_vehicle.jpg}
-\caption{Example scene from the real-world driving dataset. Top: eye-tracker scene camera; windshield (cyan), side window (orange) and side-mirror glass (magenta) are segmented, everything outside is dimmed. The driver (P2) fixates the licence plate of a parked car (green box, manually validated) at 13.7\,m while driving at 26\,km/h; the measured gaze (red ring) deviates by 1.4\dg{} from the plate centre (inset: 2.8$\times$ zoom; median error over the 0.75\,s fixation 1.41\dg). Bottom: time-synchronised vehicle camera with projected roof-LiDAR points, coloured by depth (log scale, 3\,m red to 60\,m blue).}
+% panels share one height: 1600x1200 and 1760x1200 px, i.e. 0.476 and 0.524 of the joint width
+\includegraphics[width=0.473\columnwidth]{figures/fig_driving_example_eyetracker.jpg}\hfill
+\includegraphics[width=0.520\columnwidth]{figures/fig_driving_example_vehicle.jpg}
+\caption{Example scene from the real-world driving dataset. Left: eye-tracker scene camera; windshield (cyan), side window (orange) and side-mirror glass (magenta) are segmented, everything outside is dimmed. The driver (P2) fixates the licence plate of a parked car (green box, manually validated) at 13.7\,m while driving at 26\,km/h; the measured gaze (red ring) deviates by 1.4\dg{} from the plate centre (inset: 2.8$\times$ zoom; median error over the 0.75\,s fixation 1.41\dg). Right: time-synchronised vehicle camera with projected roof-LiDAR points, coloured by depth (log scale, 3\,m red to 60\,m blue).}
 \label{fig:driving_example}
 \end{figure}
 
