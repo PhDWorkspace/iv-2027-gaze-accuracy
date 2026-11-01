@@ -13,12 +13,13 @@ We use a Pupil Labs Neon wearable eye tracker, which estimates gaze at 200\,Hz f
 
 \textbf{Scene metadata.} Each scene carries the target class and motion, ego motion, relative motion between ego vehicle and target, road type and the viewing region (150 of 152 scenes through the windshield, the others through a side window). Target distance comes from camera--LiDAR fusion for 93 scenes and from a camera-based estimate otherwise (median 23.5\,m for P1 and 35.3\,m for P2, range 6.7--106.5\,m); ego speed comes from GNSS for 98 scenes and from annotation otherwise. Each sample additionally carries eye-image exposure statistics, IMU signals, pupil and eyelid measures and gaze velocity, which serve as quality descriptors. Fig.~\ref{fig:driving_example} shows an example scene with the eye-tracker view, the segmented viewing regions and the time-synchronised vehicle camera with projected LiDAR points.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig_driving_example.png}
-\caption{Example scene from the real-world driving dataset. Left: eye-tracker scene camera; windshield (cyan), side window (orange) and side-mirror glass (magenta) are segmented, everything outside is dimmed. The driver (P2) fixates the licence plate of a parked car (green box, manually validated) at 13.7\,m while driving at 26\,km/h; the measured gaze (red ring) deviates by 1.4\dg{} from the plate centre (inset: 2.8$\times$ zoom; median error over the 0.75\,s fixation 1.41\dg). Right: time-synchronised vehicle camera with projected roof-LiDAR points, coloured by depth (log scale, 3\,m red to 60\,m blue).}
+\includegraphics[width=\columnwidth]{figures/fig_driving_example_eyetracker.jpg}\\[2pt]
+\includegraphics[width=\columnwidth]{figures/fig_driving_example_vehicle.jpg}
+\caption{Example scene from the real-world driving dataset. Top: eye-tracker scene camera; windshield (cyan), side window (orange) and side-mirror glass (magenta) are segmented, everything outside is dimmed. The driver (P2) fixates the licence plate of a parked car (green box, manually validated) at 13.7\,m while driving at 26\,km/h; the measured gaze (red ring) deviates by 1.4\dg{} from the plate centre (inset: 2.8$\times$ zoom; median error over the 0.75\,s fixation 1.41\dg). Bottom: time-synchronised vehicle camera with projected roof-LiDAR points, coloured by depth (log scale, 3\,m red to 60\,m blue).}
 \label{fig:driving_example}
-\end{figure*}
+\end{figure}
 
 \subsection{Controlled Dataset}
 The controlled dataset contains 216 recordings (2.9\,h) from six participants. Static targets are the 15 inner corners of 5$\times$3 chessboards shown on a screen with bright or dark background or printed, fixated sequentially in forward or reverse order at 1, 2 and 4\,m, indoors and outdoors. A smooth-pursuit protocol shows a target moving along a fixed route on the screen. P1 completed all protocols over several days (170 recordings), P2 the static and distance protocols (23 recordings); P3--P6 contributed 3--7 static screen recordings each, in bright and, except P4, dark conditions. For each target, the central 60\% of the fixation interval is analysed.
