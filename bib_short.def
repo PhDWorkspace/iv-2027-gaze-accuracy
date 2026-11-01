@@ -1,0 +1,192 @@
+% Abbreviated venue names.
+
+%% A
+\newcommand{\aaai}{Proc. AAAI}
+\newcommand{\aamas}{Proc. AAMAS}
+\newcommand{\accv}{Proc. ACCV}
+\newcommand{\acl}{Proc. ACL}
+\newcommand{\acmhri}{Proc. ACM/IEEE HRI}
+\newcommand{\acmicmi}{Proc. ACM ICMI-MMMP}
+\newcommand{\acmmm}{Proc. ACM Multimedia}
+\newcommand{\acmtog}{ACM Trans. Graph.}
+\newcommand{\aes}{IEEE Trans. Aerosp. Electron. Syst.}
+\newcommand{\ajcai}{Proc. AJCAI}
+\newcommand{\aos}{Ann. Stat.}
+\newcommand{\applsci}{Appl. Sci.}
+\newcommand{\automotiveui}{Proc. ACM AutomotiveUI}
+\newcommand{\avss}{Proc. IEEE AVSS}
+
+%% B
+\newcommand{\bmvc}{Proc. BMVC}
+\newcommand{\brm}{Behav. Res. Methods}
+
+%% C
+\newcommand{\cg}{Comput. Graph.}
+\newcommand{\cga}{IEEE Comput. Graph. Appl.}
+\newcommand{\clear}{Proc. CLEAR Workshop}
+\newcommand{\cogneu}{J. Cogn. Neurosci.}
+\newcommand{\cogsci}{Cogn. Sci.}
+\newcommand{\collabrapsych}{Collabra Psychol.}
+\newcommand{\corl}{Proc. CoRL}
+\newcommand{\cvgip}{Comput. Vis. Graph. Image Process.}
+\newcommand{\cviu}{Comput. Vis. Image Underst.}
+\newcommand{\cvpr}{Proc. IEEE/CVF CVPR}
+\newcommand{\cvprw}{Proc. IEEE/CVF CVPR Workshops}
+
+%% D
+\newcommand{\dagm}{Proc. DAGM}
+
+%% E
+\newcommand{\eccv}{Proc. ECCV}
+\newcommand{\ecml}{Proc. ECML}
+\newcommand{\eiavm}{Proc. IS\&T EI-AVM}
+\newcommand{\electronics}{Electronics}
+\newcommand{\emnlp}{Proc. EMNLP}
+\newcommand{\engproc}{Engineering Proceedings}
+\newcommand{\esann}{Proc. ESANN}
+\newcommand{\etra}{Proc. ACM ETRA}
+\newcommand{\eurasip}{EURASIP J. Adv. Signal Process.}
+\newcommand{\eurogr}{Proc. Eurographics}
+\newcommand{\eurolearn}{Proc. EuroCOLT}
+\newcommand{\evocomp}{Proc. IEEE ICEC}
+
+%% F
+\newcommand{\fcn}{Front. Comput. Neurosci.}
+\newcommand{\fg}{Proc. IEEE FG}
+\newcommand{\fhd}{Front. Hum. Dyn.}
+
+%% G
+\newcommand{\gcpr}{Proc. GCPR}
+
+%% H
+\newcommand{\hci}{Proc. HCII}
+\newcommand{\hf}{Hum. Factors}
+
+%% I
+\newcommand{\icasi}{Proc. ICASI}
+\newcommand{\icassp}{Proc. IEEE ICASSP}
+\newcommand{\iccv}{Proc. IEEE/CVF ICCV}
+\newcommand{\iccvw}{Proc. IEEE/CVF ICCV Workshops}
+\newcommand{\icip}{Proc. IEEE ICIP}
+\newcommand{\iclr}{Proc. ICLR}
+\newcommand{\icme}{Proc. IEEE ICME}
+\newcommand{\icml}{Proc. ICML}
+\newcommand{\icpr}{Proc. ICPR}
+\newcommand{\icra}{Proc. IEEE ICRA}
+\newcommand{\icvs}{Proc. ICVS}
+\newcommand{\iit}{IEEE Trans. Inf. Theory}
+\newcommand{\ijcai}{Proc. IJCAI}
+\newcommand{\ijcv}{Int. J. Comput. Vis.}
+\newcommand{\ijrr}{Int. J. Robot. Res.}
+\newcommand{\ines}{Proc. IEEE INES}
+\newcommand{\inn}{IEEE Trans. Neural Netw.}
+\newcommand{\intsys}{IEEE Intell. Syst.}
+\newcommand{\iral}{IEEE Robot. Autom. Lett.}
+\newcommand{\iros}{Proc. IEEE/RSJ IROS}
+\newcommand{\isj}{IEEE Sens. J.}
+\newcommand{\isp}{IEEE Trans. Signal Process.}
+\newcommand{\itc}{IEEE Trans. Comput.}
+\newcommand{\ithms}{IEEE Trans. Hum.-Mach. Syst.}
+\newcommand{\itip}{IEEE Trans. Image Process.}
+\newcommand{\itsc}{Proc. IEEE ITSC}
+\newcommand{\itsmc}{IEEE Trans. Syst. Man Cybern.}
+\newcommand{\iv}{Proc. IEEE IV}
+\newcommand{\ivc}{Image Vis. Comput.}
+\newcommand{\ivcnz}{Proc. IVCNZ}
+\newcommand{\ivmsp}{Proc. IEEE IVMSP}
+\newcommand{\ivw}{Proc. IEEE IV Workshops}
+
+%% J
+\newcommand{\jacm}{J. ACM}
+\newcommand{\jair}{J. Artif. Intell. Res.}
+\newcommand{\jasa}{J. Am. Stat. Assoc.}
+\newcommand{\je}{J. Electron. (China)}
+\newcommand{\jemr}{J. Eye Mov. Res.}
+\newcommand{\jfr}{J. Field Robot.}
+\newcommand{\jicce}{J. Inf. Commun. Converg. Eng.}
+\newcommand{\jira}{Int. J. Intell. Robot. Appl.}
+\newcommand{\jmlr}{J. Mach. Learn. Res.}
+\newcommand{\jneurosci}{J. Neurosci.}
+\newcommand{\jopta}{J. Opt. Soc. Am. A}
+\newcommand{\jov}{J. Vis.}
+\newcommand{\jrssb}{J. R. Stat. Soc. B}
+\newcommand{\jsc}{Stat. Comput.}
+
+%% M
+\newcommand{\mlearn}{Mach. Learn.}
+\newcommand{\mmsp}{Proc. IEEE MMSP}
+\newcommand{\mva}{Mach. Vis. Appl.}
+
+%% N
+\newcommand{\natcom}{Nat. Commun.}
+\newcommand{\ncomp}{Neurocomputing}
+\newcommand{\neucomp}{Neural Comput.}
+\newcommand{\neuralnet}{Neural Netw.}
+\newcommand{\nips}{Adv. Neural Inf. Process. Syst.}
+\newcommand{\nnsp}{Proc. IEEE NNSP}
+\newcommand{\nonRigidMotionWorkshop}{Proc. IEEE Non-Rigid Motion Workshop}
+\newcommand{\npl}{Neural Process. Lett.}
+
+%% O
+\newcommand{\otj}{Open Transp. J.}
+
+%% P
+\newcommand{\pacmhci}{Proc. ACM Hum.-Comput. Interact.}
+\newcommand{\pami}{IEEE Trans. Pattern Anal. Mach. Intell.}
+\newcommand{\patrec}{Pattern Recognit.}
+\newcommand{\peerj}{PeerJ}
+\newcommand{\plosone}{PLOS ONE}
+\newcommand{\prl}{Pattern Recognit. Lett.}
+\newcommand{\psychrev}{Psychol. Rev.}
+
+%% R
+\newcommand{\rose}{Proc. IEEE ROSE}
+\newcommand{\rpcs}{Recent Pat. Comput. Sci.}
+
+%% S
+\newcommand{\science}{Science}
+\newcommand{\scidata}{Sci. Data}
+\newcommand{\sensors}{Sensors}
+\newcommand{\siggraph}{Proc. ACM SIGGRAPH}
+\newcommand{\sigproc}{Proc. IEEE Int. Symp. Intell. Signal Process.}
+\newcommand{\smc}{Proc. IEEE SMC}
+\newcommand{\snas}{SN Appl. Sci.}
+\newcommand{\sncs}{SN Comput. Sci.}
+\newcommand{\spie}{Proc. SPIE}
+\newcommand{\spiemi}{Proc. SPIE Medical Imaging}
+
+%% T
+\newcommand{\tgrs}{IEEE Trans. Geosci. Remote Sens.}
+\newcommand{\threedv}{Proc. 3DV}
+\newcommand{\tie}{IEEE Trans. Ind. Electron.}
+\newcommand{\tim}{IEEE Trans. Instrum. Meas.}
+\newcommand{\tits}{IEEE Trans. Intell. Transp. Syst.}
+\newcommand{\tiv}{IEEE Trans. Intell. Veh.}
+\newcommand{\tmi}{IEEE Trans. Med. Imaging}
+\newcommand{\tmm}{IEEE Trans. Multimedia}
+\newcommand{\tmrb}{IEEE Trans. Med. Robot. Bionics}
+\newcommand{\tnnls}{IEEE Trans. Neural Netw. Learn. Syst.}
+\newcommand{\trpf}{Transp. Res. Part F}
+\newcommand{\tst}{Tsinghua Sci. Technol.}
+
+%% U
+\newcommand{\uai}{Proc. UAI}
+
+%% V
+\newcommand{\visComIr}{J. Vis. Commun. Image Represent.}
+\newcommand{\vision}{Vision}
+\newcommand{\visres}{Vis. Res.}
+
+%% W
+\newcommand{\wacv}{Proc. IEEE/CVF WACV}
+\newcommand{\wais}{Proc. Workshop Artif. Intell. Stat.}
+
+
+% Venues added for papers-inbox, verified 2026-10-27.
+\newcommand{\biorxiv}{bioRxiv}
+\newcommand{\cbs}{Proc. IEEE CBS}
+\newcommand{\hfes}{Proc. Hum. Factors Ergon. Soc. Annu. Meet.}
+\newcommand{\icann}{Proc. ICANN}
+\newcommand{\iui}{Proc. ACM IUI}
+\newcommand{\npjai}{npj Artif. Intell.}
+\newcommand{\wacvw}{Proc. IEEE/CVF WACV Workshops}

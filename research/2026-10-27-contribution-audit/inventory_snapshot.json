@@ -1,0 +1,66 @@
+{
+  "audit_date": "2026-10-27",
+  "remote_root": "william-ivl:/home/william/data",
+  "horuspy_commit": "7a7a8decdcdcd00a341d7cac95889e802844ff6f",
+  "catalog_logical_ids": 277,
+  "external_dreyeve_ids": 74,
+  "neon_logical_ids": 203,
+  "controlled_recordings": 169,
+  "controlled_hours": 2.4577052777777775,
+  "controlled_tests": {
+    "static_accuracy": 136,
+    "smooth_pursuit": 8,
+    "brightness_sweep": 18,
+    "distance_sweep": 6,
+    "head_motion": 1
+  },
+  "controlled_participant_name_labels": {
+    "William": 143,
+    "Kanak Mazumder": 7,
+    "Mohan Ramesh": 6,
+    "Stefan Englmeier": 7,
+    "Katharina Winter": 3,
+    "Max Buettner": 3
+  },
+  "controlled_wearer_uuid_count": 7,
+  "free_driving_recordings": 23,
+  "free_driving_hours": 2.0304408333333335,
+  "free_driving_name_labels": {
+    "Katharina Winter": 13,
+    "William Engel": 1,
+    "William": 9
+  },
+  "free_driving_dates": {
+    "2026-10-14": 6,
+    "2026-10-15": 8,
+    "2026-07-15": 9
+  },
+  "legacy_dataset_files_inspected": 185,
+  "legacy_dataset_files_without_calibration_status": 185,
+  "legacy_dataset_bytes": 4962342786,
+  "controlled_evaluation_files": 119,
+  "summaries_screened": 125,
+  "screening_counts": {
+    "other_project_or_background": 81,
+    "closest_or_direct": 22,
+    "supporting_context": 22
+  },
+  "primary_pdfs_in_evidence_table": 32,
+  "assumptions": [
+    "Voice-event detection works, per user instruction.",
+    "Model training is future work; no performance results produced."
+  ],
+  "limitations": [
+    "Catalog durations are not usable reference durations.",
+    "Name/UUID conflict in one driving recording remains unresolved.",
+    "Re-wearing-session identities are not inferred from recording breaks.",
+    "This is a metadata/source audit, not a completed numerical validation."
+  ],
+  "source_snapshots_sha256": {
+    "william-ivl:/home/william/data/recordings.csv": "2e7c46d1604a3a3ecc6c2167d7e0ab91842292e28931490ea0d354c5287ed1ae",
+    "william-ivl:/home/william/data/README.md": "fb791e000a69ce590ba0daea9a0342f3f8b5edbacf8ac24d21a928532f5fb377",
+    "/Users/william/Downloads/contributions.md": "92c2807376675ae3872c5f3c7f5884483a968d04f090c329e1213e8b8586deb7",
+    "/Users/william/Projects/PhDWorkspace/phd-literature/skills/academic_paper_skill.md": "bf57adf249a1b7d73b27f21ebb113b093a6b20e5461f89fe5254b84aed14335f",
+    "/Users/william/Projects/PhDWorkspace/phd-literature/bib/references.bib": "d54b2870e8332cddb3676fb1744812c68a7e0bd07f51894f6758c6dca66b864d"
+  }
+}

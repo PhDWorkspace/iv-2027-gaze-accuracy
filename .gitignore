@@ -1,0 +1,13 @@
+.DS_Store
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+main.pdf
+__pycache__/
+IEEE_Conference_Template.zip

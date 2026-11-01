@@ -1,0 +1,44 @@
+\documentclass[conference]{IEEEtran}
+% IEEE IV 2027: 6 pages expected (max. 8 with page charges), double-blind, US Letter.
+% Compile with pdfLaTeX + BibTeX (Overleaf default).
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\input{bib_short.def}
+
+% Visible drafting notes. Remove all \todo before submission.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\dg}{\ensuremath{^\circ}}
+
+\begin{document}
+
+\title{Towards Reliable Gaze Supervision for Autonomous Driving:\\
+A Real-World and Controlled Evaluation}
+
+% Double-blind review: keep anonymous until camera-ready.
+\author{\IEEEauthorblockN{Anonymous Authors}
+\IEEEauthorblockA{Affiliation withheld for review}}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_methodology}
+\input{sections/04_real_world}
+\input{sections/05_controlled}
+\input{sections/06_transfer}
+\input{sections/07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

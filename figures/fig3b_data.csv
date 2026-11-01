@@ -1,0 +1,19 @@
+comparison,participant,difference_deg,significant
+4 m − 1 m,P1,0.5753075038951815,True
+4 m − 1 m,P2,1.3152865907267342,True
+lower − upper,P3,1.0106158895578023,True
+lower − upper,P2,0.135810228939465,False
+lower − upper,P5,-0.3692580415524351,False
+lower − upper,P6,-0.8438396309989757,False
+lower − upper,P1,1.7521527099264598,True
+ecc. 20–30° − 0–10°,P3,0.0701905776559489,False
+ecc. 20–30° − 0–10°,P2,-0.1828333919018436,False
+ecc. 20–30° − 0–10°,P5,0.0675612636296679,False
+ecc. 20–30° − 0–10°,P6,-1.9957136631997183,False
+ecc. 20–30° − 0–10°,P1,-1.079039000782534,True
+dark − bright,P3,-0.1423670921150053,False
+dark − bright,P5,-0.13391287164575938,False
+dark − bright,P6,-0.40256871771692815,False
+dark − bright,P1,-0.3012813932409548,False
+outdoor − indoor,P1,-0.23807735813599162,False
+pass 2 − pass 1,P1,0.1246314803173442,False
