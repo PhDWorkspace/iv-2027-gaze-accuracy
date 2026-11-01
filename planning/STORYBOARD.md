@@ -117,7 +117,7 @@ Validity items:
     filtering or uncertainty evaluation on the rebuilt data exists. The Oct 30 dispersion-prediction results
     (`horuspy/results/driving_dispersion_baseline`) pre-date the rebuild; rerun before citing.
 14. Neon hardware specs in §III (200 Hz gaze; scene camera 1600×1200 px, 30 Hz, 103°×77°) — 200 Hz verified
-    from timestamps; confirm the camera numbers.
+    from timestamps. Resolved 2026-11-01: recording 89171fda gives 30.0 Hz scene timestamps and 103.6°×77.2° from calibration.bin intrinsics.
 15. Missing references (identified in the Oct 27 audit, not in `references.bib`): ADAS gaze profiling with
     Neon on real roads (MDPI Vehicles 7(4):145), PyNeon (BRM 2026, doi 10.3758/s13428-026-03089-8). Add via
     the literature workflow; the draft does not cite them yet.
