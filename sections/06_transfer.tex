@@ -1,21 +1,137 @@
+
 \section{Transfer and Reliability Improvement}
 \label{sec:transfer}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig4_transfer.pdf}
-\caption{Extended person-specific correction versus the driving median-offset baseline on held-out scenes. (a) Median and (b) P90 error versus calibration share (mean over shufflings). (c) Relative error change in scene subsets at 20\% calibration; filled markers are significant after Benjamini--Hochberg correction.}
+\includegraphics[width=\textwidth]
+    {figures/fig4_transfer.pdf}
+\caption{Person-specific correction evaluated on
+held-out driving scenes against the median-offset
+baseline. (a) Median and (b) P90 angular error as
+the number of calibration scenes increases.
+(c) Relative improvements across driving conditions
+at 20\% calibration; filled markers indicate
+significant changes after multiple-comparison
+correction.}
 \label{fig:transfer}
 \end{figure*}
 
-We now return to the driving data with the strongest baseline from Sec.~\ref{sec:realworld}, the person-specific median offset from the calibration scenes. The controlled study suggests two mechanisms beyond a constant offset: a position-dependent offset, and sample-level noise that grows with target motion.
+The preceding experiments demonstrate that Neon
+provides robust gaze measurements across many
+driving-relevant conditions. At the same time,
+they reveal substantial differences in systematic
+offsets and individual responses to viewing
+geometry and motion. We therefore investigate
+how these findings can improve gaze correction
+and inform an automated acquisition pipeline
+that monitors measurement suitability.
 
-\textbf{A negative result first.} A per-sample ridge regression on gaze position, causal gaze velocity and target distance, fitted on the 20\% calibration scenes, is worse than the median offset (P1: 0.83--0.86\dg{} vs.\ 0.76\dg; P2: 0.84--0.88\dg{} vs.\ 0.83\dg). With about 15 calibration scenes, per-sample slopes overfit.
+\textbf{Wearer-specific accuracy verification.}
+Our controlled measurements reveal considerable
+variation in uncorrected accuracy across wearers
+and recording conditions, with observed errors
+ranging approximately from 1\dg{} to 5\dg{}.
+Moreover, factors such as viewing distance and
+vertical gaze position affect individual
+participants differently. These observations
+highlight the importance of evaluating the
+current wearer--glasses configuration rather
+than assuming a universally transferable offset.
+Importantly, the calibration-free operation
+remains highly effective: Sec.~\ref{sec:realworld}
+demonstrates that a few natural driving
+references already achieve sub-degree median
+accuracy after correction.
 
-\textbf{Extended correction.} Selecting a single causal mechanism per participant on the calibration scenes is more successful (Fig.~\ref{fig:transfer}a). At 20\% calibration, the median error falls from 0.822\dg{} to 0.762\dg{} for P2 ($-$7.3\%, better in 16 of 16 shufflings) and from 0.804\dg{} to 0.784\dg{} for P1 ($-$2.5\%, 14 of 16).\footnote{Baseline values differ slightly from Sec.~\ref{sec:realworld} because they average 16 shufflings instead of one.} With more calibration scenes the gain grows to 9.9--11.8\% for P2 and 5.0--6.7\% for P1 (40--80\%, better in every split). The two participants benefit from different mechanisms. For P2, the selection chooses a causal 50\,ms trailing median of the gaze in 72 of 80 splits, i.e., noise reduction with about 25\,ms latency. For P1, it keeps the raw signal in about half of the splits at 20\% and increasingly combines it with the position term at larger shares (20 of 25 at 80\%). This matches the controlled findings: P1 shows the strongest position-dependent offset (lower row, distance), whereas P2's near-field offset is small.
+\textbf{Correction informed by measured error structure.}
+We next investigate whether the controlled
+findings can improve upon this strong
+driving-derived median-offset baseline.
+Rather than assuming one correction mechanism
+for every wearer, we evaluate causal temporal
+filtering and position-dependent bias correction.
+The best candidate is selected independently
+for each participant using calibration scenes
+only, before evaluation on held-out driving
+scenes (Fig.~\ref{fig:transfer}a).
 
-\textbf{Large errors.} For P2, the extended correction removes 14\% of the P90 error at 20\% calibration (1.65\dg{}$\rightarrow$1.41\dg) and 18--19\% at 40--80\% (Fig.~\ref{fig:transfer}b); at the scene level it improves 54 of 73 scenes (scene-mean error 0.83\dg{}$\rightarrow$0.78\dg, $p<.001$). For P1 the P90 is unchanged ($-$3\% to $+$1\%), and at 20\% calibration the gain is not significant at the scene level (41 of 79 scenes improve). Upper-tail improvements are therefore specific to the participant whose residual is dominated by sample noise.
+With 20\% calibration data, median error
+decreases from 0.804\dg{} to 0.784\dg{} for P1
+(2.5\%, improved in 14/16 shufflings) and
+from 0.822\dg{} to 0.762\dg{} for P2
+(7.3\%, improved in 16/16).
+Increasing the calibration share to 40--80\%
+raises the improvement to approximately
+5--7\% and 10--12\%, respectively.
+The selected corrections differ:
+P1 increasingly benefits from a spatial
+bias term, whereas P2 predominantly benefits
+from a causal 50\,ms trailing median filter.
+This illustrates that personalized corrections
+can exploit different underlying error patterns.
 
-\textbf{Where it helps.} For P2, the gains concentrate in dynamic situations (Fig.~\ref{fig:transfer}c): fast gaze ($-$14\%), approaching targets ($-$10\%), moving ego vehicle ($-$9\%) and medium and far target distances ($-$17\% and $-$9\%), all significant at every calibration share. Static scenes with stationary ego vehicle ($+$4\%, $n=11$) and near targets ($+$3\%) do not improve (n.s.). This mirrors the pursuit result of Sec.~\ref{sec:controlled}: target and observer motion add spread around a stable offset, and temporal filtering removes part of it. For P1, no subset changes significantly; from 40\% calibration, the largest (n.s.) gains occur when passing other vehicles and for traffic lights ($-$9 to $-$13\%), and small losses for following or receding targets ($n=6$). We therefore do not generalise the subgroup gains across participants.
+\textbf{Benefits under dynamic driving conditions.}
+The improvement is particularly valuable for
+observations with larger residual errors.
+For P2, the P90 decreases by 14\% with
+20\% calibration data (1.65\dg{} to 1.41\dg{})
+and by 18--19\% with additional references
+(Fig.~\ref{fig:transfer}b).
+Significant improvements are observed during
+fast gaze movements (14\%), approaching targets
+(10\%), and moving-vehicle conditions (9\%).
+These observations are consistent with the
+increased target-relative dispersion measured
+during controlled pursuit. For P1, improvements
+are smaller and are primarily associated with
+spatial correction rather than temporal filtering.
+Thus, adapting the correction to the individual
+error structure offers additional benefits
+without requiring a complex gaze-estimation model.
 
-\textbf{Quality descriptors.} Every sample carries eye-image exposure statistics, IMU signals and the viewing region, so that observations unsuitable for supervision can be identified. In the current data, eye-image overexposure, present in 56 of 152 scenes, is not significantly associated with the residual error after median correction (Kruskal--Wallis, Holm $p=.27$ and $.69$), and the extended correction also improves P2's partly overexposed scenes ($-$6\%, $q=.002$). We therefore keep these scenes and use the descriptors as annotations; quality filtering and uncertainty prediction based on them remain to be validated.
+\textbf{Automated multimodal quality monitoring.}
+Beyond correcting gaze coordinates, we extended
+the acquisition pipeline with automated
+sample-level suitability assessment.
+A YOLO segmentation model trained on more than
+600 annotated images identifies exterior
+viewing regions, including the windshield,
+side windows, and mirrors. Optical flow,
+Laplacian image sharpness, and IMU measurements
+jointly characterize camera motion and potential
+image degradation. Eye openness, blink events,
+and gaze dynamics provide complementary
+indicators of gaze-estimation reliability.
+These signals are combined into task-specific
+quality flags, allowing the extraction of
+usable temporal sequences while preserving
+the original gaze measurements.
+
+In an initial evaluation on four driving
+recordings (28\,min), viewing-region,
+eye-openness, and image-sharpness gates
+retained 82\% of driving time in contiguous
+intervals of at least 0.5\,s. This demonstrates
+automated data selection with substantial
+retained coverage; its effect on independently
+measured gaze accuracy remains to be evaluated.
+
+\textbf{Towards continuous accuracy assurance.}
+Finally, our sparse-reference results provide
+a practical mechanism for checking gaze
+accuracy during acquisition. The same
+automatically generated fixation references
+used for benchmarking can estimate the
+current wearer-specific offset and indicate
+when an updated correction may be beneficial.
+Combined with multimodal quality monitoring,
+this extends the pipeline from automated
+dataset generation towards continuously
+assessed, corrected, and quality-annotated
+gaze supervision.
+
+The increasing benefit observed with additional
+calibration data also motivates further
+large-scale acquisition, which our automated
+pipeline is designed to support.

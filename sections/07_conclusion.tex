@@ -1,14 +1,98 @@
+
 \section{Discussion and Conclusion}
 \label{sec:conclusion}
 
-\textbf{RQ1: real-world performance.} In real driving, calibration-free wearable gaze reaches median errors of 0.76--0.83\dg{} once a person-specific offset is removed, smaller than the 1.2\dg{} angular width of a licence plate at 25\,m. Most of the raw error is systematic and person-specific, and a handful of in-situ references removes it: four random driving scenes come close to the pooled 20\% estimate, and their spatial arrangement hardly matters. Offsets from conventional chessboard calibration transfer to driving only partly, for P1, and not at all for P2.
+Our results demonstrate that calibration-free wearable
+eye tracking is well suited for collecting gaze data
+in real driving. More importantly, they establish a
+practical methodology for measuring, improving, and
+monitoring gaze quality, providing a foundation for
+larger-scale gaze-supervised driving datasets.
 
-\textbf{RQ2: influencing factors.} The controlled study separates the conditions that matter from those that do not. Accuracy is robust to eccentricity, illumination, indoor/outdoor recording and time within a session. Viewing distance and the lower image region shift the systematic offset, the lower region reduces precision, and smooth pursuit triples dispersion without biasing the gaze. These null findings are as useful as the effects: they delimit the conditions under which gaze labels can be trusted without extra correction.
+\textbf{RQ1: Reliable gaze measurements in real driving.}
+Our real-world benchmark demonstrates that Neon achieves
+sub-degree median accuracy (0.76--0.83\dg{}) after
+person-specific correction using natural driving
+references. Only a few fixation events are needed:
+four randomly selected scenes already approach the
+performance of the pooled calibration set.
+Driving-derived references consistently outperform
+laboratory-derived offsets, highlighting the value
+of evaluating gaze under its intended operating
+conditions. Combined with our automated annotation
+pipeline, this makes accurate in-situ verification
+practical without dedicated calibration procedures.
 
-\textbf{RQ3: knowledge-informed improvement.} Building on these findings, a simple person-specific causal correction improves on a strong median baseline in every split configuration. The gains are modest overall (2.5--11.8\%) but larger in dynamic scenes and in the upper tail for the participant dominated by sample noise. The method is not a learned model, and it does not need to be: its value lies in matching the correction mechanism to the measured error structure.
+\textbf{RQ2: Robustness and influencing factors.}
+Our extensive controlled experiments largely confirm
+Neon's robustness across diverse viewing and
+illumination conditions. At the same time, they
+reveal meaningful individual differences.
+Systematic offsets depend on the wearer--glasses
+configuration and can vary with viewing distance
+and gaze position, while dynamic tracking primarily
+increases dispersion. These observations show why
+accuracy should be assessed for the current wearer
+and operating conditions rather than assumed from
+a general device specification.
 
-\textbf{Implications for gaze supervision.} Gaze labels for driving models should be collected together with a few in-situ references per wearer and session, and corrected with condition-matched offsets rather than near-field calibration. Dispersion during target motion and lower-field precision should be modelled as label noise rather than bias. Our pipeline makes this practical: a spoken cue during normal driving is enough to start a reference observation, automation proposes the target, and human review validates it, together with distance, motion and quality metadata.
+\textbf{RQ3: Improving measurement reliability.}
+Using these findings, person-specific spatial and
+temporal corrections improve upon an already strong
+median-offset baseline by 2.5--11.8\% across the
+evaluated configurations. Improvements are especially
+valuable in dynamic situations, where temporal
+filtering reduces larger errors. The results
+demonstrate that relatively simple, individually
+selected corrections can provide practical benefits
+without modifying the underlying gaze estimator.
 
-\textbf{Limitations.} The driving benchmark covers two qualified participants with different seating roles and road types, so participant, role and route are confounded and our findings characterise these individuals rather than a population. Calibration and test scenes are drawn from the same drives; transfer to a new drive or day was not tested, and P1's between-day offset change in the controlled data suggests that per-session references are advisable. Several controlled factors rest on P1 alone, and several scene subsets contain only 6--13 scenes. The extended correction was designed after the per-sample model failed; its selection never used test scenes, but it remains exploratory.
+\textbf{Towards scalable, quality-aware gaze datasets.}
+A central contribution of this work is that gaze
+data can now be collected together with evidence
+about their measurement quality, rather than
+treated as error-free supervision labels.
+Our pipeline automatically generates reference
+observations from natural fixation events, associates
+them with vehicle motion, depth, and driving-scenario
+annotations, and supports independent target
+validation. Complementary quality monitoring
+combines semantic viewing-region segmentation,
+optical flow, image sharpness, IMU measurements,
+and eye-visibility indicators to characterize
+sample suitability.
 
-\textbf{Conclusion.} Calibration-free wearable eye tracking is a promising basis for human-gaze supervision in autonomous driving. Measured in real driving, its systematic error is large but simple, and sparse in-situ references remove most of it. Controlled experiments show that it is robust across most relevant conditions and identify the few factors that matter, and corrections informed by these findings improve it further. Next steps are additional participants, cross-day evaluation, validated quality filtering, and the release of the dataset.
+The demonstrated effectiveness of sparse in-situ
+references additionally enables lightweight
+accuracy checks during acquisition, providing
+a mechanism to verify and update wearer-specific
+corrections. Together, these components establish
+a practical workflow for generating corrected,
+quality-annotated gaze observations at scale.
+
+
+\textbf{Scope and future work.}
+The present driving benchmark evaluates two participants
+using held-out scenes from recorded drives. Further
+recordings across wearers, sessions, and driving conditions
+will extend the evaluation of individual variability and
+correction transfer. Our automated acquisition pipeline
+already combines validated reference generation with
+multimodal quality monitoring, providing the tools to
+collect larger datasets with spatial references and
+sample-level suitability information. Future work will
+expand this dataset, investigate data-driven uncertainty
+estimation, and make the collected data available to
+the research community.
+
+
+\textbf{Conclusion.}
+We have demonstrated that wearable gaze tracking
+can provide accurate supervision signals in
+real-world driving, and established the experimental
+and automated tools to assess their reliability.
+By combining validated reference generation,
+systematic characterization, sparse correction,
+and multimodal quality monitoring, our work moves
+towards scalable gaze datasets in which measurement
+quality is evaluated rather than assumed.

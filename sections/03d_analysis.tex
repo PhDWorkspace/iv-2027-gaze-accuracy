@@ -74,3 +74,21 @@ condition-specific analyses use Benjamini--Hochberg
 correction. Calibration and test scenes remain disjoint,
 although scenes from the same recording may occur in
 both sets.
+
+
+\textbf{Multimodal gaze usability assessment.}
+To support reliable downstream gaze supervision,
+we additionally developed an automated quality assessment
+pipeline combining semantic, visual, and eye-tracking
+signals. A YOLO segmentation model, trained on over
+600 annotated images, identifies valid viewing regions
+including the windshield, side windows, and mirrors.
+Scene-image sharpness (Laplacian variance), optical flow,
+and IMU-derived angular velocity and acceleration are
+combined to characterize motion-induced image degradation.
+Eye openness, blink events, and gaze dynamics further
+identify potentially unreliable measurements, including
+periods of partial eyelid occlusion. These complementary
+indicators provide sample-level quality flags and enable
+the automatic extraction of usable gaze sequences for
+downstream driving applications.
