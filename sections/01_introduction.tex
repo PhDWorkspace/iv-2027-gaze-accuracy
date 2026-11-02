@@ -1,57 +1,144 @@
 \section{Introduction}
 \label{sec:intro}
 
-Where a human looks reveals what the human considers relevant. This makes gaze an attractive supervision signal for learned driving systems: gaze has been used to guide end-to-end driving policies~\cite{liu2019gazeModel,biswas2024gazeSupervision}, to train driver-attention models on large driving datasets~\cite{palazzi2019dreyeve,xia2018bdda,fang2022dada}, and as a reference for the visual focus of reasoning-based driving models~\cite{liu2026focusDrive}. Similar needs arise in robotics, where gaze guides imitation learning and human--robot collaboration~\cite{saran2021gazeImitation,lee2026edith,lai2026glanceSay}. All these uses treat a measured gaze point as a spatial label. Whether a model learns from the object the human looked at, or from a neighbouring object, depends on the angular accuracy of that label in the setting where it was recorded.
+A driver's gaze reveals, moment by moment, which parts of a traffic scene
+matter. This makes human gaze an attractive supervision signal for learned
+driving systems. It has guided end-to-end driving
+policies~\cite{liu2019gazeModel,biswas2024gazeSupervision}, trained
+driver-attention models on large
+datasets~\cite{palazzi2019dreyeve,xia2018bdda,fang2022dada}, and served as
+a reference for the visual focus of reasoning-based driving
+models~\cite{liu2026focusDrive}. Robotics uses it in the same way for
+imitation learning and human--robot
+collaboration~\cite{saran2021gazeImitation,lee2026edith,lai2026glanceSay}.
+All of these uses treat a measured gaze point as a spatial label, and
+driving makes that label demanding. At 50\,m, an error of one degree moves
+the gaze point by almost 0.9\,m, enough to shift it from a pedestrian
+onto the kerb beside them. Whether a model learns from the object the
+driver looked at or from its neighbour depends on how accurate the gaze is
+\emph{in the situation where it was recorded}.
 
-Calibration-free wearable eye trackers such as Pupil Labs Neon make naturalistic data collection practical: they need no per-session calibration, tolerate re-wearing and record scene video, eye video and inertial data together. Their accuracy has been characterised in laboratory and everyday settings~\cite{baumann2026neonAccuracy,foucher2026neon,alecka2026neon}, but not with independent target references during real driving, where targets are distant, moving and seen through a windshield under changing illumination. Gaze-supervision datasets, in turn, often come from simulators or derive attention maps from existing recordings~\cite{contreras2026laia,kotseruba2024dataLimitations}, and rarely quantify the sensor error of the underlying gaze. Our goal is therefore not to show that wearable gaze is unreliable, but to establish \emph{how well} it performs in driving, \emph{which conditions} affect its quality, and \emph{how} practical methods can improve it further.
+Calibration-free wearable eye trackers such as Pupil Labs Neon make gaze
+collection in natural driving practical. They need no calibration routine
+that would interrupt the drive, and they record scene video, eye video and
+head motion together. Large laboratory and everyday-environment studies
+report encouraging
+accuracy~\cite{baumann2026neonAccuracy,foucher2026neon,alecka2026neon},
+but with screens or predefined targets at a few metres. Driving-gaze
+datasets, in turn, come from drivers on real
+roads~\cite{palazzi2019dreyeve,kasahara2022lookBothWays}, observers of
+driving video~\cite{xia2018bdda,gopinath2021maad} or
+simulators~\cite{contreras2026laia}, and audits have exposed concrete
+processing errors in
+them~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}. Yet in
+the datasets we examined, the tracker output itself is the label, and its
+angular error against independently identified targets during driving is
+not reported. How well wearable gaze performs where supervision is
+actually collected is therefore still open. Our aim is not to show that it
+is unreliable, but to measure how reliable it is, understand what limits
+it, and improve it where it matters.
 
-We follow a three-stage experimental progression (Fig.~\ref{fig:framework}). We first measure gaze accuracy in real driving and observe how much of the error is systematic. The scene-to-scene variability that remains motivates a controlled study of candidate influencing factors. Its findings then inform person-specific correction strategies that we transfer back to the driving data. Three research questions structure the paper:
-\begin{itemize}[\IEEEsetlabelwidth{RQ3}]
-\item[\textbf{RQ1}] How accurately does calibration-free wearable eye tracking perform in naturalistic driving, and how effectively do sparse in-situ references correct systematic errors?
-\item[\textbf{RQ2}] Which environmental, geometric and dynamic factors influence gaze accuracy, precision and dispersion?
-\item[\textbf{RQ3}] How can insights from real-world and controlled evaluations improve gaze measurements and characterise their suitability for downstream supervision?
-\end{itemize}
+This requires what real driving does not readily provide: knowing exactly
+what the driver looked at. We obtain this reference from the drivers
+themselves. During normal drives, they briefly announce fixations such as
+``fixating stop sign''. Speech recognition yields the time and object
+class, gaze-guided detection and tracking propose the target, and a human
+verifies every assignment. Road objects have corrected the gaze offset of
+passengers before~\cite{jia2018gaze}. We use announced, verified targets
+to measure driver gaze in angular units on held-out scenes, linked to
+LiDAR-guided range, vehicle motion and scenario labels. This benchmark
+opens a real-world $\rightarrow$ controlled $\rightarrow$ real-world
+progression (Fig.~\ref{fig:framework}), in which each stage answers a
+question raised by the previous one.
+
+\textbf{RQ1: How accurate is wearable gaze in real driving, and how
+effectively do sparse in-situ references correct it?} Most of the
+uncorrected error is a wearer-specific offset. An offset estimated from a
+fifth of the driving scenes yields sub-degree median accuracy for both
+drivers, and about four references come close to this. Offsets from
+conventional chessboard calibration transfer less well to the same driving
+targets. This raises the question of what differs between the two
+settings.
+
+\textbf{RQ2: Which environmental, geometric and dynamic factors influence
+gaze accuracy, precision and dispersion?} Because driving conditions
+co-occur, we isolate driving-relevant factors in a controlled study. We
+detect no accuracy degradation with eccentricity, illumination and pupil
+size, indoor versus outdoor recording, or repetition. Three effects stand
+out: viewing distance shifts the gaze estimate, the lower field of view
+loses precision, and smooth pursuit more than triples target-relative
+dispersion.
+
+\textbf{RQ3: Can these insights improve driving measurements and
+characterise their suitability for supervision?} Back in driving,
+corrections selected per wearer improve on the strong median-offset
+baseline in every evaluated split configuration, most clearly in dynamic
+scenes. The pipeline that generates the references also annotates samples
+with task-aware suitability flags, so acquisition yields corrected,
+quality-annotated gaze instead of gaze assumed to be error-free.
 
 Our contributions are:
 \begin{itemize}[\IEEEsetlabelwidth{C3}]
-\item[\textbf{C1}] \textbf{Real-world dataset and benchmark.} A gaze-guided, human-in-the-loop pipeline that turns natural driving recordings into validated gaze-evaluation data: voice-annotated fixations, targeted object detection around the measured gaze, automatic target assignment with ambiguity flagging, and an integrated validation interface. It yields richly annotated scenes with precise 2D fixation-target references, camera--LiDAR target distance, GNSS vehicle motion and scenario descriptions, on which we benchmark sparse in-situ offset correction against chessboard-derived correction.
-\item[\textbf{C2}] \textbf{Comprehensive controlled validation.} A complementary dataset and systematic characterisation of accuracy, spatial bias, dispersion and precision across distance, image position, illumination, environment, target motion and time.
-\item[\textbf{C3}] \textbf{Practical measurement improvement.} An evaluation of extended person-specific corrections that improve on a strong median-offset baseline, with a characterisation of where they help.
+\item[\textbf{C1}] \textbf{Real-driving gaze-accuracy benchmark.} A
+voice-triggered, human-verified pipeline for acquiring references, and 152
+validated scenes with 2D target references, LiDAR-guided distance
+(7--107\,m), GNSS ego motion and scenario annotations. The scenes
+purposefully cover static and moving targets, approaches, passes and
+standstill.
+\item[\textbf{C2}] \textbf{Driving-motivated controlled
+characterisation.} A repeated-measures dataset of 216 recordings from six
+participants that separates accuracy, bias, dispersion and precision
+across distance, field position, illumination, environment, target motion
+and time.
+\item[\textbf{C3}] \textbf{Sparse in-situ correction and quality-aware
+acquisition.} A comparison of laboratory-derived and driving-derived
+offsets on identical held-out driving targets, an analysis of how many
+references are needed, per-wearer extensions evaluated against a strong
+median-offset baseline, and multimodal suitability flags for downstream
+selection.
 \end{itemize}
-The dataset is planned for publication; a landing page with approved pilot examples will accompany the camera-ready version while legal and release requirements are resolved.
+We plan to publish the dataset. A landing page with approved pilot
+examples will accompany the camera-ready version while legal and release
+requirements are resolved.
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
-  stage/.style={draw=black!70, rounded corners=2pt, align=left, inner sep=3pt, text width=3.75cm, fill=black!3},
+  stage/.style={draw=black!70, rounded corners=2pt, align=left, inner sep=3pt, text width=3.6cm, fill=black!3},
   wide/.style={stage, text width=8.0cm},
-  step/.style={draw=black!70, rounded corners=2pt, align=center, inner sep=2pt, text width=1.3cm,
+  pstep/.style={draw=black!70, rounded corners=2pt, align=center, inner sep=2pt, text width=1.3cm,
     minimum height=0.75cm, font=\tiny},
-  human/.style={step, fill=black!12, thick},
+  human/.style={pstep, fill=black!12, thick},
   flow/.style={-{Latex[length=1.6mm]}, thick, black!70},
   thin/.style={-{Latex[length=1.2mm]}, black!70}]
-\node[step] (p1) {voice event\\time + category};
-\node[step, right=0.22cm of p1] (p2) {gaze-guided\\detection};
-\node[step, right=0.22cm of p2] (p3) {target assign-\\ment + tracking};
-\node[step, right=0.22cm of p3] (p4) {ambiguity\\flagging};
-\node[human, right=0.22cm of p4] (p5) {review in\\Player plugin};
+\node[pstep] (p1) {announced\\fixation};
+\node[pstep, right=0.22cm of p1] (p2) {gaze-guided\\detection};
+\node[pstep, right=0.22cm of p2] (p3) {target\\assignment};
+\node[pstep, right=0.22cm of p3] (p4) {ambiguity\\flagging};
+\node[human, right=0.22cm of p4] (p5) {human\\verification};
 \foreach \a/\b in {p1/p2, p2/p3, p3/p4, p4/p5} \draw[thin] (\a) -- (\b);
-\node[stage, below=0.55cm of p1.south west, anchor=north west] (s1) {\textbf{1 Real-world benchmark} (RQ1)\\
-152 validated scenes, P1--P2\\
-2D target reference per sample\\
-LiDAR distance, GNSS speed, tags};
-\node[stage, right=0.35cm of s1] (s2) {\textbf{2 Controlled study} (RQ2)\\
-216 recordings, P1--P6\\
-chessboard and pursuit targets\\
-distance, position, light, motion};
-\node[wide, below=0.55cm of s1.south west, anchor=north west] (s3) {\textbf{3 Transfer to driving} (RQ3)\quad
-median-offset baseline $\rightarrow$ person-specific causal correction\\
-held-out driving scenes; upper-tail errors; dynamic scene subsets; quality descriptors};
-\draw[flow] (p5.south) |- node[above, pos=0.75, font=\tiny, inner sep=1pt] {validated references} ([yshift=0.25cm]s1.north) -- (s1.north);
-\draw[flow] (s1.east) -- node[above, font=\tiny, align=center] {residual\\[-2pt]variability} (s2.west);
-\draw[flow] (s2.south) -- node[right, font=\tiny] {factors} (s2.south |- s3.north);
+\node[stage, below=0.55cm of p1.south west, anchor=north west] (s1) {\textbf{1 Driving benchmark} (RQ1)\\
+152 verified scenes, 2 drivers\\
+targets 7--107\,m; LiDAR, GNSS\\
+in-situ vs.\ lab offsets};
+\node[stage, right=0.5cm of s1] (s2) {\textbf{2 Controlled study} (RQ2)\\
+216 recordings, 6 participants\\
+distance, position, light\\
+static vs.\ pursuit, repeats};
+\node[wide, below=0.55cm of s1.south west, anchor=north west] (s3) {\textbf{3 Back to driving} (RQ3)\quad median offset $\rightarrow$ per-wearer correction\\
+held-out scenes; dynamic subsets; suitability flags};
+\draw[flow] (p5.south) |- node[above, pos=0.75, font=\tiny, inner sep=1pt] {verified references} ([yshift=0.25cm]s1.north) -- (s1.north);
+\draw[flow] (s1.east) -- (s2.west);
+\draw[flow] (s2.south) -- node[right, font=\tiny] {error structure} (s2.south |- s3.north);
 \draw[flow] (s1.south) -- node[left, font=\tiny] {references} (s1.south |- s3.north);
 \end{tikzpicture}
-\caption{Top: gaze-guided, human-in-the-loop annotation pipeline; automation proposes targets, and every assignment is manually validated (shaded). Bottom: three-stage design. Real-world measurements (1) reveal systematic error and residual variability, which the controlled study (2) attributes to specific factors; both inform person-specific corrections evaluated on held-out driving scenes (3).}
+\caption{Study overview. Top: reference acquisition. Announced fixations
+trigger gaze-guided detection and target assignment; automation proposes
+targets, and a human verifies every reference (shaded). Bottom: the
+real-world $\rightarrow$ controlled $\rightarrow$ real-world progression.
+The driving benchmark (1) reveals a dominant wearer-specific offset and a
+lab-to-road transfer gap. The controlled study (2) isolates
+driving-relevant factors. Both inform per-wearer corrections and
+suitability annotation, evaluated on held-out driving scenes (3).}
 \label{fig:framework}
 \end{figure}
