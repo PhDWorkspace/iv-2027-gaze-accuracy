@@ -1,44 +1,156 @@
+
 \section{Controlled Investigation of Influencing Factors}
 \label{sec:controlled}
 
+We next investigate whether Neon's reported robustness
+extends to conditions relevant to driving, and which
+factors contribute to the variability observed in the
+real-world benchmark. Our systematically designed
+controlled dataset comprises 216 recordings (2.9\,h)
+from six participants, including repeated measurements
+across varying viewing geometries, illumination,
+motion, and sessions. This allows us to distinguish
+conditions under which gaze accuracy remains stable
+from systematic changes that may benefit from correction.
+Table~\ref{tab:factors} summarizes the findings, while
+Fig.~\ref{fig:controlled} presents the principal effects.
+
 \begin{table}[t]
 \centering
-\caption{Controlled factors: effect on accuracy and on dispersion or precision. $\uparrow$ worse, -- no detectable effect (Holm-corrected, within participant).}
+\caption{Controlled evaluation across driving-relevant
+factors. Participant counts indicate the available
+experimental coverage. Reported effects are significant
+after Holm correction unless stated otherwise.}
 \label{tab:factors}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}p{0.25\columnwidth}
+                    cp{0.55\columnwidth}@{}}
 \toprule
-Factor & Data & Accuracy & Dispersion / precision \\
+Factor & Participants & Main observation \\
 \midrule
-Distance 1/2/4\,m & P1, P2 & $\uparrow$ both (downward shift) & -- \\
-Eccentricity 0--30\dg & P1--P3, P5, P6 & -- (no increase) & -- \\
-Lower image row & P1--P6 & $\uparrow$ P1, P3 & RMS-S2S higher in 6/6 \\
-Sequence order & P1 & -- & -- \\
-Dark vs.\ bright & P1, P3, P5, P6 & -- & -- \\
-Outdoor vs.\ indoor & P1 & -- & $P_\mathrm{STD}$ slightly $\uparrow$ \\
-Smooth pursuit & P1 & -- & residual $P_\mathrm{STD}$ $\approx$3$\times$ \\
-Within-day time & P1 & -- (no drift) & -- \\
-Between days & P1, P2 & P2 stable; P1 offset shift & -- \\
+Viewing distance
+  & 2 & Systematic accuracy change; stable dispersion \\
+Eccentricity
+  & 5 & No detectable peripheral degradation \\
+Vertical gaze position
+  & 6 & Lower-row bias in two; higher jitter in all six \\
+Bright / dark
+  & 4 & No detectable accuracy or dispersion change \\
+Indoor / outdoor
+  & 1 & Similar accuracy; slightly higher dispersion \\
+Smooth pursuit
+  & 1 & Stable accuracy; $\approx$3$\times$ residual dispersion \\
+Repetition / order
+  & 1 & No detectable within-day drift or order effect \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig3_controlled_factors.pdf}
-\caption{Controlled characterisation. (a) Accuracy (solid) and dispersion $P_\mathrm{STD}$ (dotted) versus viewing distance. (b) Accuracy differences between conditions; markers are participants, filled markers are significant after Holm correction. (c) Precision (RMS-S2S) in the upper and lower target rows. (d) Residual dispersion of static fixations and smooth pursuit (P1, per recording).}
+\includegraphics[width=\textwidth]
+    {figures/fig3_controlled_factors.pdf}
+\caption{Controlled evaluation of driving-relevant
+influencing factors.
+(a) Accuracy and dispersion versus viewing distance.
+(b) Accuracy differences across experimental conditions;
+filled markers indicate significant effects.
+(c) Sample-to-sample precision in upper and lower
+target rows.
+(d) Residual dispersion during static fixation and
+smooth pursuit.}
 \label{fig:controlled}
 \end{figure*}
 
-The controlled study asks which conditions behind the driving variability actually affect gaze quality. Table~\ref{tab:factors} and Fig.~\ref{fig:controlled} summarise the eight tested factors.
+\textbf{Robust accuracy across diverse conditions.}
+A central finding is that Neon maintains largely stable
+accuracy across several factors commonly encountered
+during driving (Fig.~\ref{fig:controlled}b).
+Despite changes in pupil diameter of 0.6--1.2\,mm
+between bright and dark screen conditions, no
+significant accuracy or dispersion differences were
+detected. Similarly, matched indoor and outdoor
+recordings yielded comparable accuracy (4.08\dg{}
+and 3.85\dg{}, respectively), even as pupil diameter
+decreased from 4.1 to 2.4\,mm outdoors. Only a small
+increase in outdoor dispersion was observed
+(0.23\dg{} to 0.27\dg{}, $p=.013$).
 
-\textbf{Broad robustness.} For most factors, accuracy did not degrade measurably (Fig.~\ref{fig:controlled}b). No participant shows an accuracy loss towards the image periphery: between 0--10\dg{} and 20--30\dg{} eccentricity, errors change by at most $\pm$0.2\dg{} for three participants and decrease for P1 and P6, consistent with a screen-based Neon study~\cite{alecka2026neon}. Dark screens dilate the pupil by 0.6--1.2\,mm but change accuracy by only $-$0.1 to $-$0.4\dg{} (all n.s.), in line with~\cite{salari2026pupilSize}. On the one day with matched indoor and outdoor recordings, outdoor accuracy (3.85\dg) and bias equal the indoor values (4.08\dg) although the pupil shrinks from 4.1 to 2.4\,mm; across all days, outdoor dispersion is slightly higher (0.27\dg{} vs.\ 0.23\dg, Holm $p=.013$). Within a day, the offset shows no trend over up to eight repetitions, and a second pass over the same board differs from the first by 0.12\dg{} (n.s.). Between days, P2's accuracy is unchanged (1.03\dg{} vs.\ 0.96\dg), whereas P1's vertical offset differs between the August and the later sessions ($-$2.8\dg{} vs.\ $-$4.4\dg)\todo{verify P1 session shift against preprocessing change}.
+Accuracy also remained stable across gaze eccentricities
+up to 30\dg{}, with no systematic deterioration towards
+the image periphery among the five evaluated participants.
+Repeated measurements showed no detectable within-day
+drift over up to eight repetitions, and reversing the
+fixation sequence did not significantly alter accuracy.
+Together, these observations support the robustness
+reported for Neon under varying illumination and gaze
+conditions~\cite{baumann2026neonreport,salari2026pupilSize}.
 
-\textbf{Viewing distance.} Distance is the clearest accuracy factor (Fig.~\ref{fig:controlled}a). For P1, the median error rises from 3.00\dg{} at 1\,m to 3.34\dg{} and 3.49\dg{} at 2 and 4\,m (4\,m$-$1\,m: $+$0.58\dg, CI [0.42, 0.75], Holm $p<.001$, 18 paired repetitions); for P2 it rises from 0.96\dg{} to 1.23\dg{} and 2.27\dg{} ($p=.002$). In both cases the gaze moves downward with distance (P2: elevation bias $+$0.2\dg{} at 1\,m, $-$2.2\dg{} at 4\,m), while dispersion does not increase. A distance-dependent vertical offset is consistent with a parallax-like geometric effect, but we did not test the mechanism. It explains why near-field chessboard offsets transfer poorly to road targets at 7--107\,m (Sec.~\ref{sec:realworld}), most visibly for P2, whose small near-field offset changes most with distance.
+\textbf{Viewing distance reveals systematic bias.}
+Among the investigated factors, viewing distance
+produced the clearest change in accuracy
+(Fig.~\ref{fig:controlled}a). Across the evaluated
+1, 2, and 4\,m conditions, median error increased
+from 3.00\dg{} to 3.49\dg{} for P1 and from
+0.96\dg{} to 2.27\dg{} for P2.
+Both effects were significant (Holm $p<.001$ and
+$p=.002$, respectively). The paired 1-to-4\,m
+difference for P1 was 0.58\dg{}
+(95\% CI [0.42, 0.75]).
+Importantly, the change was primarily systematic:
+gaze estimates shifted downwards with increasing
+distance, while dispersion remained largely stable.
+This suggests that the viewing geometry influences
+the estimated gaze offset rather than introducing
+additional measurement noise. The finding is
+particularly relevant to driving, where targets
+are often substantially farther away than
+conventional calibration patterns, and offers
+a possible explanation for the improved transfer
+of driving-derived offsets in Sec.~\ref{sec:realworld}.
 
-\textbf{Lower image region.} At equal eccentricity, fixations in the lower target row are less accurate for P1 ($+$1.75\dg, $p<.001$, a stronger downward bias) and P3 ($+$1.01\dg, $p=.015$), but not for P2, P5 and P6. Precision is affected more consistently: RMS-S2S is higher in the lower row for all six participants (Fig.~\ref{fig:controlled}c). Reversing the fixation order leaves P1's lower-row effect unchanged, so it is spatial and not an effect of fatigue or sequence.
+\textbf{Vertical gaze position affects measurement quality.}
+Although radial eccentricity showed no general loss
+of accuracy, the vertical position of the target
+revealed a more specific spatial pattern.
+At comparable eccentricities, lower-row targets
+exhibited greater systematic error in two participants
+(1.75\dg{} and 1.01\dg{} increases, both significant).
+More consistently, sample-to-sample precision was
+lower in the bottom row for all six participants
+(Fig.~\ref{fig:controlled}c).
+This distinction suggests that the spatial
+distribution of gaze can influence both bias and
+measurement stability, even when overall
+peripheral accuracy remains robust.
 
-\textbf{Smooth pursuit.} Following a moving target does not change P1's accuracy or bias relative to static fixation (both n.s.), but the residual dispersion of gaze around the target triples from 0.27\dg{} to 0.93\dg{} (Holm $p=.001$; Fig.~\ref{fig:controlled}d) and tends to increase further near direction changes (n.s.). For gaze supervision, target motion therefore mainly adds spread rather than bias.
+\textbf{Smooth pursuit increases dispersion rather
+than systematic error.}
+Tracking moving targets is particularly relevant
+to driving, where gaze frequently follows other
+vehicles or traffic participants. In the evaluated
+pursuit experiments, median accuracy and bias
+remained comparable to static fixation.
+However, target-relative dispersion increased
+from 0.27\dg{} to 0.93\dg{}
+(Holm $p=.001$; Fig.~\ref{fig:controlled}d).
+Thus, dynamic gaze tracking primarily increased
+the spread of measurements without introducing
+a detectable systematic shift in this experiment.
+This distinction is important when assessing
+whether gaze observations provide reliable
+supervision for moving targets.
 
-In summary, Neon is robust in accuracy across most conditions relevant to driving. Distance and image region shift the systematic offset, and target motion increases dispersion. Both kinds of effect motivate corrections that are estimated in the operating condition and that treat bias and noise separately.
+\textbf{Implications for real-world gaze supervision.}
+Overall, the controlled results reinforce Neon's
+robustness across a broad range of tested conditions.
+At the same time, they identify specific,
+driving-relevant effects: viewing distance can
+alter systematic gaze bias, lower visual-field
+positions can affect measurement stability, and
+dynamic tracking can increase dispersion.
+These findings motivate separating systematic
+correction from temporal noise reduction and
+evaluating both directly on held-out driving
+scenes in the following section.

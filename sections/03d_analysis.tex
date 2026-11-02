@@ -1,11 +1,76 @@
-\subsection{Metrics, Correction and Statistics}
+
+\subsection{Evaluation and Correction Methodology}
 \label{sec:method_analysis}
-\todo{intro: how we quantify these effects and evaluate correction}
 
-\textbf{Metrics.} Following~\cite{niehorster2026fundamentals7}, we separate four quantities: \emph{accuracy}, the median angular error of a fixation or scene; \emph{bias}, the median signed azimuth and elevation offset; \emph{dispersion}, $P_\mathrm{STD}=\sqrt{\sigma^2_\mathrm{az}+\sigma^2_\mathrm{el}}$ of the gaze samples (for pursuit, of gaze minus target, so that target motion is not counted as noise); and \emph{precision}, the RMS of sample-to-sample angular steps (RMS-S2S). Driving scores are weighted so that each test recording, each scene within a recording and each sample within a scene contribute equally; we report the weighted median and 90th percentile (P90) of held-out errors, averaged over splits.
+Our evaluation follows three stages: we first quantify gaze
+measurement quality and investigate how effectively
+systematic errors can be corrected, then isolate potential
+influencing factors in controlled experiments, and finally
+test whether these insights enable further improvements
+under real driving conditions.
 
-\textbf{Constant offsets.} A correction subtracts the componentwise median of the selected reference biases from all gaze samples. \emph{Chessboard} offsets are estimated from one board (15 corners) or from all training boards pooled within a five-fold split of the controlled recordings, and are applied unchanged to the driving scenes. \emph{Driving} offsets are estimated from driving scenes: per participant, scenes are shuffled into five blocks, and each block in turn serves as calibration set ($\approx$20\% of scenes) while the remaining blocks are test scenes. Within each split we compare the pooled calibration scenes, single scenes, random subsets of $k\in\{1,\dots,8\}$ scenes (20 draws) and geometric layouts (lines, triangles, rectangles) selected from the calibration-side gaze positions. No scene is used for calibration and test in the same split, but scenes of the same drive can appear on both sides.
+\textbf{Measurement quality.}
+We distinguish systematic errors from measurement
+variability using four complementary metrics, following
+\cite{niehorster2026fundamentals7}. Accuracy describes the
+angular deviation between measured gaze and the reference
+target, while bias captures the signed horizontal and
+vertical offset. Dispersion ($P_\mathrm{STD}$) measures the
+spread of gaze around a target, and precision (RMS-S2S)
+quantifies sample-to-sample fluctuations. For smooth
+pursuit, dispersion is computed relative to the moving
+target to exclude its intended motion. We report median
+and 90th-percentile (P90) angular errors, using
+hierarchical weighting to prevent longer recordings
+or scenes from dominating the driving benchmark.
+All evaluations are performed separately per participant.
 
-\textbf{Extended person-specific correction.} The extended correction replaces the raw gaze signal $\mathbf{g}(t)$ by a causal signal $\tilde{\mathbf{g}}(t)$ (raw, delayed by 10--40\,ms, or a trailing median over 50 or 100\,ms) and optionally adds a position term, a linear function of gaze position fitted with ridge regularisation ($\alpha\in\{1,10\}$) to the calibration-scene residuals: $\hat{\mathbf{g}}(t)=\tilde{\mathbf{g}}(t)-\mathbf{b}-\mathbf{B}\,\tilde{\mathbf{g}}(t)$, with $\mathbf{b}$ the median offset. For each participant and split, one of the 21 candidates is selected by leave-one-scene-out evaluation on the calibration scenes only and then scored once on the test scenes. We vary the calibration share between 20\% and 80\% (16 random shufflings at 20\%, five otherwise). The method is exploratory: it was designed after a per-sample ridge regression on gaze position, velocity and target distance failed to beat the baseline (Sec.~\ref{sec:transfer}).
+\textbf{Sparse offset correction.}
+To determine how much systematic error can be removed
+with minimal calibration effort, we first evaluate a
+simple person-specific correction: subtracting the median
+horizontal and vertical gaze bias estimated from reference
+fixations. We compare offsets obtained from controlled
+chessboard recordings against those estimated directly
+during driving. For the latter, we use five-fold
+scene-level evaluation, with approximately 20\% of
+scenes for calibration and the remainder for testing.
+We additionally investigate how correction performance
+depends on the number of reference scenes
+($k \in \{1,\ldots,8\}$), comparing random sampling
+(20 draws) against geometrically distributed references
+(lines, triangles, and rectangles). This establishes
+both the effectiveness and practical reference
+requirements of in-situ correction.
 
-\textbf{Statistics.} Controlled factors are tested within participant with Wilcoxon signed-rank tests for paired units, Kruskal--Wallis tests across levels and Spearman correlation for drift, with Holm correction per participant and factor and bootstrap 95\% confidence intervals. Driving comparisons use paired Wilcoxon tests on per-scene errors averaged over all test appearances (Holm-corrected); scene subsets with at least six scenes are tested with Benjamini--Hochberg correction per participant and calibration share.
+\textbf{Influencing-factor analysis.}
+To explain the variability that remains after correcting
+systematic offsets, we analyze the controlled dataset
+across viewing distances, gaze positions, illumination
+conditions, target motion, and recording sessions.
+By evaluating accuracy, bias, and dispersion separately,
+we distinguish conditions that shift gaze estimates
+from those that primarily increase measurement noise.
+
+\textbf{Extended correction and validation.}
+Finally, we investigate whether additional spatial or
+temporal corrections can improve upon the driving-derived
+median offset. Candidate methods include position-dependent
+bias correction and causal temporal filtering. For each
+participant, the correction is selected exclusively from
+calibration scenes using leave-one-scene-out validation
+and subsequently evaluated on held-out driving scenes.
+We vary the calibration share from 20\% to 80\% and
+compare both overall accuracy and challenging driving
+conditions, including large-error cases.
+
+\textbf{Statistical evaluation.}
+Controlled comparisons use paired Wilcoxon tests,
+Kruskal--Wallis tests across conditions, and Spearman
+correlations for temporal trends, with Holm correction
+and bootstrap confidence intervals. Driving comparisons
+use paired scene-level tests with Holm correction;
+condition-specific analyses use Benjamini--Hochberg
+correction. Calibration and test scenes remain disjoint,
+although scenes from the same recording may occur in
+both sets.
