@@ -1,5 +1,20 @@
-\subsection{Angular Accuracy at Driving Distances}
-\label{sec:method_accuracy}
-\todo{motivate why angular accuracy matters especially at driving distances}
+\subsection{Wearable Eye-Tracking System}
+\label{sec:method_eyetracker}
 
-We use a Pupil Labs Neon wearable eye tracker, which estimates gaze at 200\,Hz from two eye cameras without user calibration and records a front-facing scene camera (1600$\times$1200\,px, 30\,Hz, 103\dg$\times$77\dg{} field of view), eye-image streams and an IMU. All analyses use the uncorrected device gaze: wearer-specific offsets stored in the vendor app were removed before processing. Gaze samples are synchronised to scene frames and converted, like the target reference points, to azimuth/elevation directions using the camera intrinsics (positive right/up). The \emph{angular error} of a sample is the spherical angle between gaze and target direction; the \emph{bias} is the componentwise gaze-minus-target difference. Each participant is analysed separately and no samples are pooled across people. Participants are pseudonymised as P1--P6.
+We employ the Pupil Labs Neon, a calibration-free wearable
+eye tracker that enables naturalistic gaze recording without
+requiring user-specific calibration. Its learning-based
+NeonNet model estimates gaze at 200\,Hz using two infrared
+eye cameras with active illumination. A forward-facing
+scene camera (1600$\times$1200\,px, 30\,Hz) records the
+visual environment, while an integrated IMU captures head
+motion.
+
+The calibration-free design makes Neon particularly
+attractive for driving studies, where conventional calibration
+procedures would interrupt natural behavior. Its
+infrared-based gaze estimation and wearable design also
+motivate investigating measurement robustness under
+varying illumination, viewing geometries, and dynamic
+conditions. We therefore evaluate Neon using complementary
+real-world driving and controlled experimental datasets.

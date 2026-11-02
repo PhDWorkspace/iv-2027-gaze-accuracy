@@ -1,17 +1,134 @@
+
 \section{Real-World Performance and Offset Benchmark}
 \label{sec:realworld}
 
+We first investigate how accurately Neon measures gaze
+during real driving and whether sparse, naturally acquired
+reference fixations can correct systematic errors.
+We then use the detailed scene annotations to examine
+gaze quality across different driving conditions.
+Figure~\ref{fig:driving} compares uncorrected gaze with
+laboratory- and driving-derived corrections, evaluated
+on held-out driving scenes.
+
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig2_driving_correction.pdf}
-\caption{Driving accuracy on held-out scenes. (a) Median angular error without correction, with chessboard-derived offsets (one board or all boards pooled) and with driving-derived offsets (one scene or the pooled 20\% calibration scenes); points are calibration estimates per split. (b) Error versus the number $k$ of random calibration scenes (line) and geometrically selected layouts (crosses), with the pooled driving and pooled chessboard references (dashed).}
+\includegraphics[width=\columnwidth]
+    {figures/fig2_driving_correction.pdf}
+\caption{Accuracy on held-out driving scenes.
+(a) Median angular error before correction and after
+applying offsets derived from controlled chessboard
+recordings or driving reference scenes.
+(b) Correction performance versus the number of
+driving reference scenes, comparing random sampling
+with geometrically distributed selections.
+Markers show individual evaluation splits;
+dashed lines indicate pooled-reference baselines.}
 \label{fig:driving}
 \end{figure}
 
-\textbf{Uncorrected accuracy.} Without any correction, the median angular error on the driving scenes is 3.96\dg{} for P1 and 1.48\dg{} for P2 (Fig.~\ref{fig:driving}a). The error is largely systematic: P1's gaze lies a median 3.8\dg{} below the target, with a scene-to-scene standard deviation of 0.9\dg, and P2's gaze lies 1.1\dg{} left and 0.6\dg{} below it (standard deviations 0.5\dg). A constant, person-specific offset is therefore the first candidate correction.
+\textbf{Systematic errors in real driving.}
+Before applying person-specific correction, the median
+angular error is 3.96\dg{} for P1 and 1.48\dg{} for
+P2 (Fig.~\ref{fig:driving}a). Much of this error is
+systematic rather than random: P1 exhibits a predominantly
+vertical offset of 3.8\dg{}, while P2 shows horizontal
+and vertical offsets of 1.1\dg{} and 0.6\dg{},
+respectively. These relatively consistent biases
+suggest that even a simple person-specific correction
+could substantially improve driving accuracy.
 
-\textbf{In-situ versus chessboard correction.} Offsets estimated from 20\% of the driving scenes reduce the median error to 0.76\dg{} (P1) and 0.83\dg{} (P2), a reduction of 81\% and 44\%; the P90 drops from 4.63\dg{} to 1.61\dg{} and from 2.20\dg{} to 1.63\dg. A single driving scene already yields 1.17\dg{} and 1.03\dg. Chessboard offsets transfer only partially. For P1, whose large offset any calibration removes, the pooled boards reach 0.88\dg{}, and the driving offset is still better by 0.07\dg{} per scene (95\% CI [0.02, 0.11], Holm $p=.003$). For P2, chessboard offsets do not transfer: the pooled boards give 1.40\dg, no better than the raw error per scene ($+0.04$\dg, n.s.), and a single board makes the error worse (1.74\dg); the driving offset is 0.58\dg{} better per scene (CI [0.47, 0.68], $p<.001$). In the controlled recordings themselves, the same chessboard corrections work for both participants (P1: 3.71\dg{}$\rightarrow$1.00\dg; P2: 1.47\dg{}$\rightarrow$1.30\dg{} on held-out recordings). The failure is one of transfer between conditions, not of the correction itself. Sec.~\ref{sec:controlled} identifies viewing distance as one plausible cause.
+\textbf{Driving references enable accurate correction.}
+Using only 20\% of the driving scenes to estimate a
+constant gaze offset, the median error on held-out
+scenes decreases to 0.76\dg{} for P1 and 0.83\dg{}
+for P2, corresponding to reductions of 81\% and 44\%.
+The P90 error also decreases substantially, from
+4.63\dg{} to 1.61\dg{} for P1 and from 2.20\dg{}
+to 1.63\dg{} for P2. Thus, a simple offset estimated
+from natural driving observations already yields
+sub-degree median accuracy for both participants.
 
-\textbf{How many references are needed?} The error decreases steadily with the number of random calibration scenes (Fig.~\ref{fig:driving}b). With four scenes, both participants are within 0.04--0.12\dg{} of the pooled 20\% reference and P1 already matches the pooled chessboard offset; P2 is below it from a single scene on. Selecting scenes for spatial coverage gives no consistent advantage: geometric layouts differ from random subsets of the same size by at most 0.05\dg{} per scene, with mixed signs. Collecting references in the operating environment is therefore more important than placing them optimally, which matters in practice, because the semi-automatic pipeline makes such references inexpensive to collect.
+\textbf{The operating environment matters.}
+We next investigate whether conventional chessboard
+references provide equally effective corrections.
+Offsets estimated from pooled controlled recordings
+reduce driving error to 0.88\dg{} for P1 and
+1.40\dg{} for P2. In both cases, driving-derived
+references achieve significantly lower scene-wise
+errors (P1: 0.07\dg{} improvement,
+95\% CI [0.02, 0.11], $p=.003$;
+P2: 0.58\dg{} improvement,
+CI [0.47, 0.68], $p<.001$).
+Notably, chessboard correction improves accuracy
+within the controlled environment itself
+(P1: 3.71\dg{} to 1.00\dg{};
+P2: 1.47\dg{} to 1.30\dg{}).
+These findings highlight the value of reference
+observations acquired under the intended operating
+conditions. The controlled investigation in
+Sec.~\ref{sec:controlled} examines viewing distance
+and other potential contributors to this difference.
 
-\textbf{Residual variability.} After correction, the remaining error is no longer dominated by a single constant: scene medians still vary, the P90 exceeds 1.6\dg{} for both participants, and the two participants differ in where the residual comes from. Because each scene is annotated with distance, motion and view, this variability can be examined systematically. In the driving data alone, however, these conditions are correlated and unevenly sampled. This motivates the controlled study.
+\textbf{How little calibration is sufficient?}
+A key practical advantage of our annotation pipeline
+is that driving references can be obtained from
+brief, deliberately announced fixation events.
+Remarkably, a single driving scene already reduces
+median error to 1.17\dg{} for P1 and 1.03\dg{}
+for P2. With just four randomly selected scenes,
+performance approaches the pooled driving reference,
+remaining within 0.04--0.12\dg{} of its median error
+(Fig.~\ref{fig:driving}b). Geometrically distributed
+reference selections offer no consistent additional
+benefit over random selection, with differences
+of at most 0.05\dg{} per scene. This suggests that
+obtaining a few representative references in the
+driving environment is more valuable than requiring
+an elaborate spatial calibration procedure.
+
+\textbf{Gaze quality across driving scenarios.}
+Beyond overall accuracy, our structured scene
+annotations allow us to investigate the remaining
+errors across target positions, relative-motion
+patterns, viewing distances, vehicle speeds,
+illumination conditions, and road environments.
+
+After applying the driving-derived offset, several
+driving-relevant trends emerge. Targets to the side
+of the vehicle show larger residual errors
+(1.42--1.55\dg{}) than targets directly ahead
+(0.87\dg{}). Although this spatial tendency does
+not remain significant after multiple-comparison
+correction, it suggests that gaze direction may
+contribute to the residual error beyond a constant
+person-specific offset.
+
+More consistently, gaze velocity is positively
+associated with target-relative dispersion for both
+participants (Spearman $\rho=0.37$ and $0.63$,
+Holm-adjusted $p\leq0.02$). This indicates greater
+variability during faster gaze movements, although
+target-relative dispersion also reflects how closely
+gaze follows a moving target. Other investigated
+factors, including target distance, ego speed,
+relative motion, target category, and illumination,
+show no robust association with corrected accuracy
+after multiple-comparison correction.
+
+\textbf{From real-world observations to controlled
+investigation.}
+Together, these findings demonstrate that sparse
+in-situ references can effectively remove dominant
+systematic errors while enabling meaningful
+scenario-specific analysis. The observed tendencies
+in gaze position and motion suggest that additional
+factors may influence the remaining measurement
+quality. However, real driving conditions frequently
+occur together and cannot always be distinguished
+independently from observational data alone.
+We therefore complement the driving benchmark with
+systematically controlled experiments to investigate
+viewing geometry, illumination, and target motion,
+and to identify opportunities for further improving
+gaze reliability.
