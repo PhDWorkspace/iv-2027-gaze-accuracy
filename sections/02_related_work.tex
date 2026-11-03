@@ -3,155 +3,96 @@
 
 Our study connects three bodies of work that have largely developed
 separately: driving-gaze datasets, validation studies of wearable
-accuracy, and methods that correct or qualify gaze. We review each in
-turn and state what it establishes for gaze supervision in real driving.
+accuracy, and methods that correct or qualify gaze.
 
 \textbf{Gaze supervision and driving datasets.}
-Human gaze is an attractive supervisory signal for driving. It has been
-used as an input or auxiliary target for driving models~\cite{liu2019gazeModel,makrigiorgos2019attentionDriving,abdelkarim2021ggnet,xia2020periphery}
-and to reduce causal confusion in learned agents~\cite{biswas2024gazeSupervision}.
-The underlying recordings come from three kinds of sources: wearable
-trackers in real vehicles, as in DR(eye)VE and Look Both
-Ways~\cite{palazzi2019dreyeve,kasahara2022lookBothWays}; observers
-watching recorded driving video in the laboratory, as in BDD-A, MAAD and
-DADA~\cite{xia2018bdda,gopinath2021maad,fang2022dada}; and driving
-simulators~\cite{contreras2026laia,govil2026drivergaze360}. Together
-they have driven substantial progress in attention modelling.
-
-The field is also aware that these labels are imperfect. Gaze has been
-described as a noisy approximation of the causally relevant image
-regions~\cite{biswas2024gazeSupervision}, and existing gaze maps as noisy
-and partly irrelevant~\cite{liang2023cueing}. Systematic audits make the
-sources of this noise concrete~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}.
-In DR(eye)VE, videos lacked timestamps and were typically misaligned by
-several frames; homography projection of wearable gaze into the roof
-camera produced outliers in more than 13\% of frames; and blinks and
-saccades make up over a quarter of the samples. The raw tracker output of
-Look Both Ways is not available for independent re-analysis.
+Human gaze has served as an input or auxiliary target for driving
+models~\cite{liu2019gazeModel,xia2020periphery} and has reduced causal
+confusion in learned agents~\cite{biswas2024gazeSupervision}. The
+recordings come from wearable trackers in real vehicles, as in DR(eye)VE
+and Look Both Ways~\cite{palazzi2019dreyeve,kasahara2022lookBothWays};
+from observers watching driving video, as in BDD-A, MAAD and
+DADA~\cite{xia2018bdda,gopinath2021maad,fang2022dada}; and from driving
+simulators~\cite{contreras2026laia}. Together they have driven substantial
+progress in attention modelling. The field also knows that these labels
+are imperfect: gaze has been called a noisy approximation of the causally
+relevant regions~\cite{biswas2024gazeSupervision}, and audits found
+misaligned videos, homography outliers in more than 13\% of DR(eye)VE
+frames, and blinks and saccades in over a quarter of the
+samples~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}.
 What these audits could not assess is the angular error of the gaze
 itself. In the datasets we examined, the tracker output, once mapped into
-the scene, \emph{is} the label, and its error against independently
-identified physical targets during driving is not reported. DR(eye)VE
-measured tracker error on calibration patterns at 5--15\,m to set the
-width of its fixation maps, but the resulting value is not given in the
-dataset paper~\cite{palazzi2019dreyeve}; simulator datasets assume a small
-device error~\cite{contreras2026laia}; and on-road accuracy figures that do
-exist are calibration-time values for remote trackers~\cite{stapel2022driverPerception}.
-A downstream gain from gaze supervision therefore does not by itself
-show that the labels are accurate.
-
-This motivates our first contribution. Drivers announce fixations on
-traffic objects; the targets are localised and manually verified in the
-eye-tracker scene view, and each reference is synchronised with vehicle
-motion, LiDAR-guided range and scenario labels. Where earlier datasets
-provide gaze, our benchmark provides gaze together with a reference
-against which it can be measured.
+the scene, \emph{is} the label. DR(eye)VE measured tracker error on
+calibration patterns, but the value is not given in the dataset
+paper~\cite{palazzi2019dreyeve}; simulator datasets assume a small device
+error~\cite{contreras2026laia}; and existing on-road accuracy figures are
+calibration-time values of remote trackers~\cite{stapel2022driverPerception}.
+A downstream gain from gaze supervision therefore does not by itself show
+that the labels are accurate. Our benchmark adds what these datasets lack:
+verified physical targets during driving, against which gaze can be
+measured.
 
 \textbf{Wearable eye-tracking accuracy and robustness.}
 Measuring wearable accuracy against known targets is well established,
-with validated protocols and tools~\cite{niehorster2024glassesvalidator,niehorster2026fundamentals7}
-and studies of viewing distance and gaze angle~\cite{macinnes2018wearable},
-body motion~\cite{hooge2023robust} and walking~\cite{onkhar2024evaluating}
-on earlier devices. For Pupil Labs Neon, whose calibration-free gaze
-estimation makes natural driving recordings practical, the evidence is
-growing quickly. The manufacturer's report covers 206 laboratory and 402
-everyday-environment participants, with median accuracy of about
-1.8\textdegree{} without and 1.3\textdegree{} with a person-specific
-offset at 1.3\,m~\cite{baumann2026neonAccuracy}. Independent studies have
-probed individual influences: head pose, temporal stability and external
-infrared sources~\cite{foucher2026neon}, gaze position and background
-luminance~\cite{alecka2026neon}, pupil size~\cite{salari2026pupilSize,maquiling2026vergencePupil}
-and glasses slippage~\cite{pettenella2026slippage}.
-
-Taken together, these studies paint an encouraging picture: offset-corrected
-accuracy of roughly 1.3--1.5\textdegree{} in the laboratory and mostly
-modest condition effects. They also reveal specific sensitivities, and
-not all findings agree. A black background reduced accuracy in one
-study~\cite{alecka2026neon}, whereas another found no accuracy change between bright and dark
-screens but did report an apparent gaze shift of almost one
-degree~\cite{salari2026pupilSize}. The manufacturer reports lower accuracy in the lower visual field and
-outdoors~\cite{baumann2026neonAccuracy}, and infrared light from a second tracker degraded Neon in a
-between-group comparison~\cite{foucher2026neon}.
-
-Nearly all of these evaluations, however, use screens, posters or
-predefined targets at no more than a few metres, with the participant
-seated, standing or walking. Extrapolation to larger depths is motivated
-by the small change of vergence beyond 1.3\,m~\cite{baumann2026neonAccuracy}, which is an argument
-rather than a measurement. In real vehicles, Neon has so far been
-reported for signal availability in flight~\cite{xu2026signalConstruct},
-and wearable tracking in urban driving for behavioural measures rather
-than accuracy~\cite{calvi2023comparing}. Yet in driving the relevant objects are tens of metres away, where even a
-small angular error becomes a substantial lateral displacement.
-We therefore complement existing validations in two ways: a real-driving
-benchmark that measures accuracy where gaze supervision is actually
-collected, and a controlled repeated-measures study whose factors
-(viewing distance, position in the field of view, pupil size, indoor and
-outdoor illumination, static and pursuit fixation) are chosen because they
-occur in driving. Rather than questioning the device, our experiments ask
-under which conditions its output can serve as supervision directly and
-under which it should be verified.
+with validated protocols and
+tools~\cite{niehorster2024glassesvalidator,niehorster2026fundamentals7}
+and studies of distance and gaze angle~\cite{macinnes2018wearable} and
+body motion~\cite{hooge2023robust,onkhar2024evaluating}. For Neon, the
+evidence is growing quickly. The manufacturer reports median accuracy of
+about 1.8\dg{} without and 1.3\dg{} with a person-specific offset at
+1.3\,m across more than 600 participants~\cite{baumann2026neonAccuracy}.
+Independent studies have probed head pose, temporal stability and
+external infrared light~\cite{foucher2026neon}, gaze position and
+background luminance~\cite{alecka2026neon}, pupil
+size~\cite{salari2026pupilSize,maquiling2026vergencePupil} and
+slippage~\cite{pettenella2026slippage}. Together they paint an
+encouraging picture of modest condition effects, with specific
+sensitivities that do not always agree: a dark background reduced
+accuracy in one study~\cite{alecka2026neon} but only shifted gaze in
+another~\cite{salari2026pupilSize}, and accuracy is lower in the lower
+visual field and outdoors~\cite{baumann2026neonAccuracy}. Nearly all of
+these evaluations use targets at no more than a few metres. Extrapolation
+to larger depths rests on the small change of vergence beyond
+1.3\,m~\cite{baumann2026neonAccuracy}, an argument rather than a
+measurement. In real vehicles, Neon has been reported for signal
+availability in flight~\cite{xu2026signalConstruct}, and wearable tracking
+in urban driving for behavioural measures~\cite{calvi2023comparing}, not
+for accuracy. We complement these validations with a benchmark in real
+driving and a controlled study whose factors are chosen because they occur
+in driving.
 
 \textbf{In-situ correction and quality assessment.}
-A recurring observation in these studies is that a large share of the
-error is a wearer-specific offset. Correcting it is established practice:
-Neon provides a one-point person-specific offset whose benefit has been
-reported at scale~\cite{baumann2026neonAccuracy} and
-independently~\cite{foucher2026neon}, and several methods infer
-corrections from natural viewing instead of dedicated targets.
-Implicit calibration derives probable fixation targets from saliency or
-expert labels and stabilises after a few dozen fixations on
-screens~\cite{kasprowski2019implicitCalibration,chang2019salgaze}, and a
-handful of in-vehicle samples personalises remote driver-facing gaze
-models~\cite{nagpure2025learningToAdapt}.
-Closest to our work, Jia et al.~\cite{jia2018gaze} corrected the offset of
-wearable glasses using detected stop signs. In a moving car, three
-passengers were instructed to follow the signs, targets were assigned by gaze proximity, and errors
-were reported in pixels. This establishes the feasibility of
-road-object-based correction. In the studies we reviewed, however, two questions that matter for
-supervision data remain open. First, does a correction transfer
-across conditions? A mismatch between calibration and use distance
-measurably raises error for head-mounted trackers~\cite{barz2016prediction},
-and Neon offsets in laboratory studies are set on near-field screen targets
-under a single lighting condition~\cite{baumann2026neonAccuracy,alecka2026neon}. We found no comparison
-of laboratory-derived and in-situ offsets on identical held-out driving
-targets, nor an analysis of how many references are needed and how they
-should be arranged. Second, does added modelling help beyond a simple offset?
-Simple regressions are often hard to beat for gaze-error
-modelling~\cite{kar2020mlgaze}, while pupil size~\cite{choe2016pupilSize},
-auxiliary motion signals~\cite{park2026motionCorrected} and slippage
-robustness~\cite{santini2019grip} suggest where targeted extensions could help.
-
-Beyond correction, supervision data need to be annotated for the
-tasks they will serve. Building blocks exist: quality gates on fixation
-stability, head motion and blinks~\cite{baumann2026neonAccuracy}, eyelid
-and eye-opening estimation~\cite{fuhl2024pistol,zhang2026pupeyes},
-image-quality factors that rank angular error for appearance-based
-estimators~\cite{jamalifard2026fiud}, and a recalibration threshold in
-an on-road study~\cite{stapel2022driverPerception}. Whether data are
-good enough depends on the research question~\cite{niehorster2026fundamentals7};
-in-cabin fixations and blinks, for example, are noise for scene-saliency
-learning but not invalid gaze in general~\cite{kotseruba2024dataLimitations}.
-
-We build on these precedents rather than claim in-situ correction as a new
-concept. Our contribution is a systematic transfer comparison: laboratory-derived
-and driving-derived offsets evaluated on the same held-out driving targets
-in angular units, the number and arrangement of references required, and
-targeted individual spatial and temporal extensions evaluated against a
-strong median-offset baseline. We also connect correction to acquisition.
-The system that generates verified references annotates samples with
-task-aware suitability flags that combine viewing region, scene sharpness
-and motion, eye visibility and gaze dynamics. Unlike error predictors, these
-flags are transparent annotations for selection by downstream tasks, not
-estimates of instantaneous accuracy, and sparse verified fixations provide
-an in-situ offset check.
+A large share of wearable error is a wearer-specific offset. Neon provides
+a one-point offset correction whose benefit is
+established~\cite{baumann2026neonAccuracy,foucher2026neon}, and implicit
+calibration infers corrections from natural viewing on
+screens~\cite{kasprowski2019implicitCalibration,chang2019salgaze} or from a
+few in-vehicle samples for remote
+trackers~\cite{nagpure2025learningToAdapt}. Closest to our work, Jia et
+al.~\cite{jia2018gaze} corrected the offset of three passengers' wearable
+glasses using detected stop signs and reported errors in pixels. This
+establishes the feasibility of road-object-based correction. Two questions
+that matter for supervision data remain open. First, does a correction
+transfer across conditions? A mismatch between calibration and viewing
+distance raises error for head-mounted trackers~\cite{barz2016prediction},
+yet we found no comparison of laboratory-derived and in-situ offsets on
+identical held-out driving targets, nor an analysis of how many references
+are needed. Second, does added modelling help beyond an offset? Simple
+regressions are often hard to beat~\cite{kar2020mlgaze}, while pupil
+size~\cite{choe2016pupilSize} and motion signals~\cite{park2026motionCorrected}
+suggest where targeted extensions could help. Beyond correction,
+supervision data must be qualified for their task: quality gates on
+fixation stability and blinks exist~\cite{baumann2026neonAccuracy}, and
+whether data are good enough depends on the research
+question~\cite{niehorster2026fundamentals7}. In-cabin fixations, for
+example, are noise for scene-saliency learning but not invalid
+gaze~\cite{kotseruba2024dataLimitations}.
 
 \textbf{Summary.}
-The reviewed work shows why gaze supervision is valuable, how accurate
-wearable trackers are under controlled conditions, and which corrections
-and quality indicators are available. It does not connect these threads in
-real driving. We link them: verified in-situ references make gaze accuracy
-measurable in actual driving; a driving-motivated controlled study
-characterises where Neon is robust; and sparse condition-matched
-correction with quality-annotated acquisition turns these findings into
-practice. The goal is gaze-supervision data whose measurement quality is
-evaluated rather than assumed.
+Prior work shows why gaze supervision is valuable, how accurate wearable
+trackers are in the laboratory, and which corrections exist. It does not
+connect these threads in real driving. We link them: verified in-situ
+references make accuracy measurable in driving, a driving-motivated
+controlled study characterises where Neon is robust, and sparse
+condition-matched correction with quality-annotated acquisition turns these
+findings into practice.

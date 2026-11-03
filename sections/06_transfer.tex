@@ -1,137 +1,62 @@
-
-\section{Transfer and Reliability Improvement}
+\section{Transfer Back to Driving}
 \label{sec:transfer}
+
+Can the measured error structure improve driving gaze beyond the
+median offset, and can acquisition qualify what it records (RQ3, C3)?
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]
     {figures/fig4_transfer.pdf}
-\caption{Person-specific correction evaluated on
-held-out driving scenes against the median-offset
-baseline. (a) Median and (b) P90 angular error as
-the number of calibration scenes increases.
-(c) Relative improvements across driving conditions
-at 20\% calibration; filled markers indicate
-significant changes after multiple-comparison
-correction.}
+\caption{Per-wearer correction versus the median-offset baseline on
+held-out driving scenes. (a) Median and (b) P90 error as the calibration
+share grows, averaged over repeated random splits. (c) Change in error
+per scene subset at 20\% calibration; filled markers are significant
+after Benjamini--Hochberg correction.}
 \label{fig:transfer}
 \end{figure*}
 
-The preceding experiments demonstrate that Neon
-provides robust gaze measurements across many
-driving-relevant conditions. At the same time,
-they reveal substantial differences in systematic
-offsets and individual responses to viewing
-geometry and motion. We therefore investigate
-how these findings can improve gaze correction
-and inform an automated acquisition pipeline
-that monitors measurement suitability.
+\textbf{Corrections matched to the error structure.}
+The controlled study suggests two mechanisms: a position-dependent bias
+term for the spatial effects and causal temporal filtering for
+pursuit-like dispersion. The median offset is a strong baseline, so we
+select one candidate per participant on calibration scenes only. At 20\%
+calibration, the median error falls from 0.80\dg{} to 0.78\dg{} for P1
+(2.5\%, better in 14 of 16 splits) and from 0.82\dg{} to 0.76\dg{} for
+P2 (7.3\%, 16 of 16; Fig.~\ref{fig:transfer}a). With 40--80\%
+calibration scenes, the gains grow to 5--7\% and 10--12\%. The
+participants benefit from different mechanisms: P1 increasingly from the
+spatial bias term, P2 from a causal 50\,ms trailing median filter. This
+supports selecting corrections per wearer rather than assuming one
+mechanism for everyone.
 
-\textbf{Wearer-specific accuracy verification.}
-Our controlled measurements reveal considerable
-variation in uncorrected accuracy across wearers
-and recording conditions, with observed errors
-ranging approximately from 1\dg{} to 5\dg{}.
-Moreover, factors such as viewing distance and
-vertical gaze position affect individual
-participants differently. These observations
-highlight the importance of evaluating the
-current wearer--glasses configuration rather
-than assuming a universally transferable offset.
-Importantly, the calibration-free operation
-remains highly effective: Sec.~\ref{sec:realworld}
-demonstrates that a few natural driving
-references already achieve sub-degree median
-accuracy after correction.
+\textbf{Largest gains in dynamic scenes.}
+For P2, the correction also trims the tail: P90 falls by 14\% at 20\%
+calibration (1.65\dg{} to 1.41\dg{}) and by 18--19\% with more
+references (Fig.~\ref{fig:transfer}b). The gains concentrate in fast gaze
+movements, approaching targets and a moving ego vehicle
+(Fig.~\ref{fig:transfer}c), consistent with the pursuit dispersion
+measured in the controlled study. For P1, gains are smaller and come from
+the spatial term. Simple corrections matched to the measured errors thus
+add value without a new gaze estimator.
 
-\textbf{Correction informed by measured error structure.}
-We next investigate whether the controlled
-findings can improve upon this strong
-driving-derived median-offset baseline.
-Rather than assuming one correction mechanism
-for every wearer, we evaluate causal temporal
-filtering and position-dependent bias correction.
-The best candidate is selected independently
-for each participant using calibration scenes
-only, before evaluation on held-out driving
-scenes (Fig.~\ref{fig:transfer}a).
+\textbf{Quality-aware acquisition.}
+Correction alone does not tell whether a sample suits a downstream task.
+The acquisition pipeline therefore annotates each sample with
+transparent suitability flags. A segmentation model separates windshield,
+side windows and mirrors from the vehicle interior; scene sharpness
+(Laplacian variance), optical flow and IMU motion characterise image
+degradation; and eye openness, blinks and gaze dynamics mark periods in
+which the eye may be poorly visible. The original measurements are kept,
+so each task selects what it needs. In an initial test on four recordings
+of one participant (28\,min), viewing-region, eye-openness and sharpness
+gates retained 82\% of the time in intervals of at least 0.5\,s. This
+shows the coverage the gates leave; their effect on angular accuracy
+remains to be measured.
 
-With 20\% calibration data, median error
-decreases from 0.804\dg{} to 0.784\dg{} for P1
-(2.5\%, improved in 14/16 shufflings) and
-from 0.822\dg{} to 0.762\dg{} for P2
-(7.3\%, improved in 16/16).
-Increasing the calibration share to 40--80\%
-raises the improvement to approximately
-5--7\% and 10--12\%, respectively.
-The selected corrections differ:
-P1 increasingly benefits from a spatial
-bias term, whereas P2 predominantly benefits
-from a causal 50\,ms trailing median filter.
-This illustrates that personalized corrections
-can exploit different underlying error patterns.
-
-\textbf{Benefits under dynamic driving conditions.}
-The improvement is particularly valuable for
-observations with larger residual errors.
-For P2, the P90 decreases by 14\% with
-20\% calibration data (1.65\dg{} to 1.41\dg{})
-and by 18--19\% with additional references
-(Fig.~\ref{fig:transfer}b).
-Significant improvements are observed during
-fast gaze movements (14\%), approaching targets
-(10\%), and moving-vehicle conditions (9\%).
-These observations are consistent with the
-increased target-relative dispersion measured
-during controlled pursuit. For P1, improvements
-are smaller and are primarily associated with
-spatial correction rather than temporal filtering.
-Thus, adapting the correction to the individual
-error structure offers additional benefits
-without requiring a complex gaze-estimation model.
-
-\textbf{Automated multimodal quality monitoring.}
-Beyond correcting gaze coordinates, we extended
-the acquisition pipeline with automated
-sample-level suitability assessment.
-A YOLO segmentation model trained on more than
-600 annotated images identifies exterior
-viewing regions, including the windshield,
-side windows, and mirrors. Optical flow,
-Laplacian image sharpness, and IMU measurements
-jointly characterize camera motion and potential
-image degradation. Eye openness, blink events,
-and gaze dynamics provide complementary
-indicators of gaze-estimation reliability.
-These signals are combined into task-specific
-quality flags, allowing the extraction of
-usable temporal sequences while preserving
-the original gaze measurements.
-
-In an initial evaluation on four driving
-recordings (28\,min), viewing-region,
-eye-openness, and image-sharpness gates
-retained 82\% of driving time in contiguous
-intervals of at least 0.5\,s. This demonstrates
-automated data selection with substantial
-retained coverage; its effect on independently
-measured gaze accuracy remains to be evaluated.
-
-\textbf{Towards continuous accuracy assurance.}
-Finally, our sparse-reference results provide
-a practical mechanism for checking gaze
-accuracy during acquisition. The same
-automatically generated fixation references
-used for benchmarking can estimate the
-current wearer-specific offset and indicate
-when an updated correction may be beneficial.
-Combined with multimodal quality monitoring,
-this extends the pipeline from automated
-dataset generation towards continuously
-assessed, corrected, and quality-annotated
-gaze supervision.
-
-The increasing benefit observed with additional
-calibration data also motivates further
-large-scale acquisition, which our automated
-pipeline is designed to support.
+\textbf{Lightweight in-situ accuracy checks.}
+Because a few verified fixations already estimate the offset well
+(Sec.~\ref{sec:realworld}), the same automatically generated references
+can check accuracy during acquisition, for example after the glasses are
+put on again, and indicate when the correction should be updated. This
+is a practical check, not a guarantee of continuous accuracy.

@@ -6,8 +6,10 @@ deadline 2026-11-15 23:59 AWST).
 - `main.tex`: entry point (pdfLaTeX + BibTeX; Overleaf default). Red `\todo{}` notes mark open items.
 - `sections/`: one file per section.
 - `figures/`: generated figure PDFs plus the plotted values (`*_data.csv`).
-- `scripts/make_figures.py`: regenerates the figures from the saved evaluation outputs:
+- `scripts/make_figures.py`: regenerates Figs. 3 and 4 from the saved evaluation outputs:
   `python scripts/make_figures.py /home/william/data` (needs pandas, matplotlib).
+- `scripts/make_tables.py`: regenerates Tables I and II (`figures/tab_*.tex`) from the same outputs:
+  `python scripts/make_tables.py /home/william/data` (standard library only).
 - `references.bib`, `bib_short.def`: copies from `phd-literature/bib` (do not edit the originals there).
 - `planning/STORYBOARD.md`: storyboard, outline, RQ-to-evidence map, figure plan and open items.
 

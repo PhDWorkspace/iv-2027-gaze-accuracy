@@ -1,80 +1,48 @@
-
-\subsection{Real-World Driving Dataset}
+\subsection{Real-World Driving Benchmark}
 \label{sec:method_driving}
 
-To evaluate gaze accuracy under naturalistic driving
-conditions, we combine wearable eye tracking with
-synchronized vehicle sensing and automated fixation-target
-annotation. The resulting dataset provides precise 2D
-gaze references enriched with spatial measurements,
-vehicle dynamics, and detailed driving-scenario descriptions.
+The benchmark pairs gaze with a verified reference for what the person
+looked at, together with the vehicle context needed to describe each
+scene.
 
-\textbf{Acquisition and vehicle platform.}
-We collected 28 driving recordings (2.9\,h) across six days
-with two qualified participants, covering urban, suburban,
-and highway environments. Our research vehicle is equipped
-with eight cameras, seven Ouster LiDAR sensors, a
-dual-antenna NovAtel GNSS/INS, and CAN bus interfaces.
-For this study, we use the front-left camera
-(2200$\times$1200\,px, 20\,Hz) and two roof-mounted
-128-beam LiDARs (10\,Hz). LiDAR scans are motion-compensated
-using NovAtel odometry and projected into the calibrated
-camera view. Sparse metric LiDAR measurements are combined
-with dense relative depth predictions from Depth Anything
-through metric scale alignment, following the principle of
-\cite{marsal2025depth}. This produces dense metric depth
-maps without retraining the depth model, providing distance
-information for annotated targets. GNSS/INS additionally
-provides ego-vehicle velocity and motion.
+\textbf{Vehicle and synchronisation.}
+Our research vehicle carries cameras, roof-mounted LiDARs, a dual-antenna
+GNSS/INS and CAN interfaces. Here we use the front-left camera, two
+128-beam LiDARs and the GNSS/INS. Vehicle sensors share a GNSS-disciplined
+clock via the Precision Time Protocol, and the clock offset of the Neon
+companion device is estimated with the round-trip-based Pupil Labs Time
+Echo protocol~\cite{pupil_time_echo}. Gaze, images, LiDAR scans and
+vehicle motion can therefore be associated in time, also in dynamic
+scenes.
 
-\textbf{Sensor synchronization.}
-Vehicle sensors are synchronized to a common
-GNSS-disciplined time reference via Precision Time
-Protocol (PTP). The Neon Companion device is connected
-through USB-C Ethernet, with its clock offset estimated
-using the round-trip-time-based Pupil Labs Time Echo
-protocol~\cite{pupil_time_echo}. This enables temporal
-association of gaze, camera images, LiDAR measurements,
-and vehicle motion, including dynamic driving scenes.
+\textbf{Reference generation.}
+During normal drives, participants announce deliberate fixations on
+identifiable targets, such as ``fixating licence plate''. Whisper
+transcribes the speech, and an intent parser (Hassil) matches it to a
+dictionary of fixation events and object categories. Each event triggers
+category-specific object detection in an extended search region around
+the measured gaze. A single candidate is assigned and tracked through the
+fixation; several candidates are flagged. Annotators then inspect,
+correct and verify every assignment in a Neon Player plugin. The centre
+of the verified target is the 2D fixation reference in the scene image.
+It is localised independently of the gaze coordinates, although the
+candidate search starts near the measured gaze.
 
-\textbf{Automated reference generation.}
-During natural driving, participants verbally announce
-deliberate fixations on identifiable targets, such as
-``fixating license plate'' or ``fixating stop sign''.
-Whisper transcribes the speech, while the Hassil intent
-parser matches utterances against a predefined dictionary
-of supported fixation events and object categories.
-Each recognized event triggers category-specific object
-detection within an extended search region around the
-measured gaze. Unambiguous detections are automatically
-assigned and tracked throughout the fixation interval,
-while multiple candidates are flagged for review.
-A dedicated Neon Player plugin allows annotators to
-inspect, correct, and validate the generated assignments.
-All references in the evaluated benchmark were manually
-verified. The center of each validated target provides
-a precise 2D fixation-target reference in the eye-tracker
-scene image, independently localized from the measured
-gaze coordinates.
-
-\textbf{Dataset and scene characterization.}
-The evaluated benchmark comprises 152 validated fixation
-scenes containing 53{,}345 gaze samples. Beyond the 2D
-reference coordinates, each scene is characterized by
-target category, road type, viewing region, ego motion,
-target motion, and their relative motion. Metric target
-distance is obtained from camera--LiDAR depth fusion,
-while GNSS/INS provides ego speed. Sample-level
-descriptors additionally include eye-image exposure,
-IMU measurements, pupil and eyelid information, and
-gaze velocity. This rich characterization enables
-condition-specific accuracy and dispersion analysis
-and motivates the controlled experiments in Sec.~V.
-
-Figure~\ref{fig:driving_example} illustrates a
-representative scene with synchronized gaze observations,
-validated target annotations, and LiDAR-based spatial
-information.
+\textbf{Benchmark scope.}
+The benchmark comprises 152 verified fixation scenes with 53{,}345 gaze
+samples from 16 drives on three days and two participants: P2 drove and
+P1 sat in the front passenger seat. During acquisition, we deliberately
+sought diverse targets and situations: road signs (50 scenes), traffic
+lights (35) and licence plates of parked (35) or moving (32) vehicles,
+fixated while approaching, passing, following or at standstill. Target
+distances range from 7 to 107\,m (median 28\,m). They come from LiDAR
+points on the target (93 scenes) or, for drives without LiDAR, from Depth
+Anything~\cite{yang2024depthAnythingV2} rescaled to metric depth with a
+scale and shift fitted on LiDAR-measured
+targets~\cite{marsal2025depth} and fused with the target's apparent size
+(59 scenes). Each scene is further annotated with target class, side and
+motion, relative motion, ego motion and GNSS/INS speed where available,
+road type and eye-image exposure (Fig.~\ref{fig:driving_example}).
 
 \begin{figure}[t]
 \centering
@@ -82,49 +50,12 @@ information.
     {figures/fig_driving_example_eyetracker.jpg}\hfill
 \includegraphics[width=0.520\columnwidth]
     {figures/fig_driving_example_vehicle.jpg}
-\caption{Example from the real-world driving dataset.
-A participant traveling at 26\,km/h on a suburban road
-fixates the license plate of a parked vehicle at 13.7\,m
-while passing it.
-\emph{Left:} Eye-tracker scene view with segmented
-windshield (cyan), side window (orange), and mirror
-(magenta), the validated fixation target (green),
-and measured gaze (red; magnified inset).
-\emph{Right:} Synchronized vehicle-camera view with
-projected LiDAR points colored by distance.
-The scene additionally includes target and relative-motion
-annotations, vehicle speed, and spatial context.}
+\caption{Example driving scene: a participant fixates the licence plate of
+a parked vehicle while passing it\todo{verify speed and distance: no
+benchmark scene matches 26\,km/h at 13.7\,m}. \emph{Left:} scene view with
+segmented windshield (cyan), side window (orange) and mirror (magenta),
+the verified target (green) and the measured gaze (red, inset).
+\emph{Right:} synchronised vehicle-camera view with projected LiDAR points
+coloured by distance.}
 \label{fig:driving_example}
 \end{figure}
-
-
-\textbf{Dataset and scenario coverage.}
-The evaluated benchmark contains 152 manually validated
-fixation scenes with 53{,}345 gaze samples. During
-acquisition, we deliberately sought diverse traffic
-elements and driving situations to evaluate gaze beyond
-stationary laboratory targets. The dataset covers traffic
-signals (35 scenes), road signs (50), parked or stopped
-vehicles (35), and moving road users (32). These include
-approaching traffic lights and signs, passing parked
-vehicles, following or encountering moving traffic, and
-fixations while stationary.
-
-To characterize these scenarios systematically, each
-scene is annotated with target position and motion,
-ego-vehicle state, relative motion, road context,
-viewing distance, and illumination. The dataset spans
-both driving (114 scenes) and standstill (38), static
-(120) and moving targets (32), and diverse relative-motion
-patterns, including approaching, lateral passing,
-and oncoming traffic. Target distances range from
-7 to 107\,m, with 132 scenes beyond 15\,m and 64
-beyond 30\,m. Gaze dynamics and image exposure are
-additionally characterized, enabling analysis across
-different movement and lighting conditions.
-
-Together with GNSS-derived ego speed, dense target
-depth, and sample-level eye and IMU measurements,
-these structured annotations support systematic
-evaluation of gaze accuracy and dispersion across
-driving-relevant conditions.

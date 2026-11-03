@@ -1,94 +1,50 @@
-
-\subsection{Evaluation and Correction Methodology}
+\subsection{Measures, Correction and Evaluation}
 \label{sec:method_analysis}
 
-Our evaluation follows three stages: we first quantify gaze
-measurement quality and investigate how effectively
-systematic errors can be corrected, then isolate potential
-influencing factors in controlled experiments, and finally
-test whether these insights enable further improvements
-under real driving conditions.
+\textbf{Measures.}
+The angular error is the angle between the measured gaze direction and
+the direction to the reference target. Following
+\cite{niehorster2026fundamentals7}, we separate four properties.
+\emph{Accuracy} is the median angular error: how far gaze typically lands
+from the target. \emph{Bias} is the signed horizontal and vertical median
+offset, the systematic part of the error. \emph{Dispersion} ($P_\mathrm{STD}$)
+is the spread of gaze samples around their centre; for pursuit it is
+computed relative to the moving target. \emph{Precision} (RMS-S2S) is the
+jitter between consecutive samples. We also report P90, the error that
+90\% of gaze samples stay below. In the driving benchmark, recordings and
+scenes are weighted equally so that long scenes do not dominate. All
+analyses are per participant. Any wearer offset stored in the Neon app was
+removed, so \emph{uncorrected} denotes NeonNet output without
+person-specific correction.
 
-\textbf{Measurement quality.}
-We distinguish systematic errors from measurement
-variability using four complementary metrics, following
-\cite{niehorster2026fundamentals7}. Accuracy describes the
-angular deviation between measured gaze and the reference
-target, while bias captures the signed horizontal and
-vertical offset. Dispersion ($P_\mathrm{STD}$) measures the
-spread of gaze around a target, and precision (RMS-S2S)
-quantifies sample-to-sample fluctuations. For smooth
-pursuit, dispersion is computed relative to the moving
-target to exclude its intended motion. We report median
-and 90th-percentile (P90) angular errors, using
-hierarchical weighting to prevent longer recordings
-or scenes from dominating the driving benchmark.
-All evaluations are performed separately per participant.
+\textbf{Offset correction.}
+The \emph{median offset} subtracts the median horizontal and vertical bias
+of a set of reference fixations. Laboratory offsets come from the
+chessboard recordings, either from a single board (15 points) or from all
+boards pooled. In-situ offsets come from driving scenes. We split each
+participant's scenes into five folds; in each, about 20\% of scenes (the
+\emph{calibration share}) estimate the offset and the remaining
+\emph{held-out scenes} test it. All corrections are scored on the same
+held-out scenes, and values are averaged over the five folds. Scenes,
+never samples, are split, but scenes from the same drive can fall on both
+sides. Results therefore describe transfer to new targets within the
+observed drives, not to new drives, days or wearers. To find how many
+references are needed, we draw $k\in\{1,\ldots,8\}$ calibration scenes at
+random (20 draws) or in geometric layouts (lines, triangles, rectangles).
 
-\textbf{Sparse offset correction.}
-To determine how much systematic error can be removed
-with minimal calibration effort, we first evaluate a
-simple person-specific correction: subtracting the median
-horizontal and vertical gaze bias estimated from reference
-fixations. We compare offsets obtained from controlled
-chessboard recordings against those estimated directly
-during driving. For the latter, we use five-fold
-scene-level evaluation, with approximately 20\% of
-scenes for calibration and the remainder for testing.
-We additionally investigate how correction performance
-depends on the number of reference scenes
-($k \in \{1,\ldots,8\}$), comparing random sampling
-(20 draws) against geometrically distributed references
-(lines, triangles, and rectangles). This establishes
-both the effectiveness and practical reference
-requirements of in-situ correction.
+\textbf{Extended correction.}
+We then test whether corrections matched to the measured error structure
+improve on the median offset: causal temporal filters (trailing medians
+and delays) and a position-dependent bias term. For each participant, one
+candidate is selected on calibration scenes only, by leave-one-scene-out
+validation, and evaluated on held-out scenes. We vary the calibration
+share from 20\% to 80\% and repeat the random split 16 times at 20\% and
+five times otherwise, so the baseline differs slightly from the single
+five-fold split above.
 
-\textbf{Influencing-factor analysis.}
-To explain the variability that remains after correcting
-systematic offsets, we analyze the controlled dataset
-across viewing distances, gaze positions, illumination
-conditions, target motion, and recording sessions.
-By evaluating accuracy, bias, and dispersion separately,
-we distinguish conditions that shift gaze estimates
-from those that primarily increase measurement noise.
-
-\textbf{Extended correction and validation.}
-Finally, we investigate whether additional spatial or
-temporal corrections can improve upon the driving-derived
-median offset. Candidate methods include position-dependent
-bias correction and causal temporal filtering. For each
-participant, the correction is selected exclusively from
-calibration scenes using leave-one-scene-out validation
-and subsequently evaluated on held-out driving scenes.
-We vary the calibration share from 20\% to 80\% and
-compare both overall accuracy and challenging driving
-conditions, including large-error cases.
-
-\textbf{Statistical evaluation.}
-Controlled comparisons use paired Wilcoxon tests,
-Kruskal--Wallis tests across conditions, and Spearman
-correlations for temporal trends, with Holm correction
-and bootstrap confidence intervals. Driving comparisons
-use paired scene-level tests with Holm correction;
-condition-specific analyses use Benjamini--Hochberg
-correction. Calibration and test scenes remain disjoint,
-although scenes from the same recording may occur in
-both sets.
-
-
-\textbf{Multimodal gaze usability assessment.}
-To support reliable downstream gaze supervision,
-we additionally developed an automated quality assessment
-pipeline combining semantic, visual, and eye-tracking
-signals. A YOLO segmentation model, trained on over
-600 annotated images, identifies valid viewing regions
-including the windshield, side windows, and mirrors.
-Scene-image sharpness (Laplacian variance), optical flow,
-and IMU-derived angular velocity and acceleration are
-combined to characterize motion-induced image degradation.
-Eye openness, blink events, and gaze dynamics further
-identify potentially unreliable measurements, including
-periods of partial eyelid occlusion. These complementary
-indicators provide sample-level quality flags and enable
-the automatic extraction of usable gaze sequences for
-downstream driving applications.
+\textbf{Statistics.}
+Controlled comparisons use paired Wilcoxon tests, Kruskal--Wallis tests
+across levels and Spearman correlations for drift, with Holm correction
+per participant and bootstrap 95\% confidence intervals. Driving
+comparisons use paired scene-level tests with Holm correction;
+subgroup analyses use Benjamini--Hochberg correction.

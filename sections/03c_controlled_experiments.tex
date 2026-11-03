@@ -1,65 +1,18 @@
-
 \subsection{Controlled Experiments}
 \label{sec:method_controlled}
 
-To investigate the factors underlying gaze variability
-observed during driving, we designed a complementary
-controlled study that systematically varies environmental,
-geometric, and dynamic conditions. The experiments address
-challenges encountered in real driving, including distant
-targets, changing illumination, peripheral gaze, and
-tracking moving objects.
-
-\begin{table}[t]
-\centering
-\caption{Controlled experiments and their relevance
-to real-world driving.}
-\label{tab:controlled_experiments}
-\small
-\begin{tabular}{@{}p{0.23\columnwidth}
-                    p{0.29\columnwidth}
-                    p{0.38\columnwidth}@{}}
-\toprule
-Factor & Conditions & Driving relevance \\
-\midrule
-Distance
-  & 1, 2, 4, 5, 8, 12\,m
-  & Near and distant targets \\
-Gaze position
-  & 5$\times$3 target grid
-  & Spatial gaze variation \\
-Illumination
-  & Bright / dark
-  & Sunlight and tunnels \\
-Environment
-  & Indoor / outdoor
-  & Ambient and infrared light \\
-Target motion
-  & Static / pursuit
-  & Moving traffic objects \\
-Temporal
-  & Repeated sessions
-  & Measurement stability \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The current dataset comprises 216 recordings (2.9\,h)
-from six participants, including repeated measurements
-from participants of the driving study. Static fixation
-experiments use the 15 inner corners of chessboard
-patterns presented on screens or printed targets.
-QR-coded protocol identification enables automated
-recognition of the experimental configuration and
-target references, followed by manual verification.
-A separate smooth-pursuit protocol evaluates dynamic
-gaze tracking along a predefined target trajectory.
-
-Repeated recordings and forward/reverse fixation
-sequences support the investigation of temporal and
-spatial effects. For each fixation, we evaluate the
-central 60\% of the interval to reduce contamination
-from gaze transitions. The resulting dataset provides
-systematically characterized reference measurements
-for distinguishing systematic gaze errors from
-measurement dispersion.
+Driving conditions co-occur, so the benchmark alone cannot tell which of
+them affects gaze. We therefore designed a controlled study around
+factors that occur in driving: viewing distance (near and distant
+objects), position in the field of view (signs, mirrors, road ahead),
+screen brightness and thus pupil size (sunlight and tunnels), indoor
+versus outdoor recording (ambient infrared light), static fixation versus
+smooth pursuit (moving traffic), and repetition over time
+(Table~\ref{tab:factors}). The dataset comprises 216 recordings (2.9\,h)
+from six participants, including both benchmark participants; not every
+participant completed every protocol. Static targets are the 15 inner
+corners of chessboard patterns on screens or printed boards. A QR code
+identifies the protocol and target layout automatically, followed by
+manual checks. In the pursuit protocol, a target moves along a predefined
+trajectory. We evaluate the central 60\% of each fixation interval to
+exclude gaze transitions.

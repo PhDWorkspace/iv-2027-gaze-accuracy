@@ -1,20 +1,8 @@
-\subsection{Wearable Eye-Tracking System}
+\subsection{Wearable Eye Tracker}
 \label{sec:method_eyetracker}
 
-We employ the Pupil Labs Neon, a calibration-free wearable
-eye tracker that enables naturalistic gaze recording without
-requiring user-specific calibration. Its learning-based
-NeonNet model estimates gaze at 200\,Hz using two infrared
-eye cameras with active illumination. A forward-facing
-scene camera (1600$\times$1200\,px, 30\,Hz) records the
-visual environment, while an integrated IMU captures head
-motion.
-
-The calibration-free design makes Neon particularly
-attractive for driving studies, where conventional calibration
-procedures would interrupt natural behavior. Its
-infrared-based gaze estimation and wearable design also
-motivate investigating measurement robustness under
-varying illumination, viewing geometries, and dynamic
-conditions. We therefore evaluate Neon using complementary
-real-world driving and controlled experimental datasets.
+We use Pupil Labs Neon. Its learning-based NeonNet estimates gaze at
+200\,Hz from two infrared eye cameras without a calibration routine,
+which makes natural driving recordings practical. A forward-facing scene
+camera (1600$\times$1200\,px, 30\,Hz) records the visual scene, and an
+integrated IMU records head motion.
