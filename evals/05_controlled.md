@@ -8,7 +8,7 @@ the full tables in [data/](data/), so you can re-plot, rewrite or present them d
 
 ```bash
 # from the paper repo; pandas + matplotlib, e.g. the horuspy-dev image; data mounted read-only
-python scripts/make_section5.py /home/william/data evals/data/regression_snapshot_2026-11-05_1248
+python scripts/make_section5.py /home/william/data evals/data/05_regression_snapshot_2026-11-05_1248
 ```
 
 [scripts/make_section5.py](../scripts/make_section5.py) only reads `/home/william/data/gaze_accuracy/` and writes:
@@ -28,13 +28,13 @@ are no longer used by Section V. They were left untouched.
 | Source (`/home/william/data/gaze_accuracy/`) | Generated | Used for |
 |---|---|---|
 | `factors/controlled/` (`1_distance/fixations.csv`, `*/levels.csv`, `tests.csv`, `6_pursuit/recordings.csv`) | 2026-11-05 16:06 (after relabel) | V-A, V-B |
-| `offset/runs/regression_chessboard/` | 2026-11-05 12:48 (**before** relabel; copy in `data/regression_snapshot_2026-11-05_1248/`) | V-C |
+| `offset/runs/regression_chessboard/` | 2026-11-05 12:48 (**before** relabel; copy in `data/05_regression_snapshot_2026-11-05_1248/`) | V-C |
 
 - Definitions follow `horuspy/docs/factor_analysis.md`: `central_60` fixations, status `ok`; accuracy is the median
   angular error, offset = gaze − target (+right/+up), dispersion = PSTD (`p_std_deg`), precision = RMS-S2S. Holm
   correction is applied per participant and test. "Significant" means Holm p < .05.
 - **V-A unit = recording.** For each recording, take the median over its fixations of each metric
-  (`data/va_recordings.csv`). Per wearer, report the median and IQR across recordings, equal weight per recording.
+  (`data/05_static_accuracy_per_recording.csv`). Per wearer, report the median and IQR across recordings, equal weight per recording.
   Factor-analysis levels use recording × pass instances instead, so P1 differs slightly (1 m: 3.19° here vs 3.13°
   in `levels.csv`).
 - Checks done:
@@ -130,11 +130,11 @@ Stefan's distance effect is now significant (elevation Holm p = .015, PSTD p = .
 - PSTD 0.24–0.59°; S2S 0.07–0.13°.
 
 **All distances (sensitivity check):** range 1.08–5.81°, median across wearers 1.65°. The ordering of the least
-accurate wearers (P6, P10, P1) is unchanged. Per-wearer values are in `data/va_participants.csv` (scope = all distances).
+accurate wearers (P6, P10, P1) is unchanged. Per-wearer values are in `data/05_static_accuracy_per_participant.csv` (scope = all distances).
 
 ## 5. V-B: driving-relevant factors
 
-### Distance (level medians; `data/vb_distance_levels.csv`)
+### Distance (level medians; `data/05_distance_levels.csv`)
 
 | Code | Rec. 1/2/4 m | Error 1 → 2 → 4 m | Elevation 1 → 2 → 4 m | PSTD 1 → 4 m | Holm (err / el / PSTD) |
 |---|---|---|---|---|---|
@@ -160,7 +160,7 @@ accurate wearers (P6, P10, P1) is unchanged. Per-wearer values are in `data/va_p
 - **Distance correlates with target angle:** farther boards span smaller angles. The factor run also has
   distance × eccentricity-bin levels (`1_distance/levels.csv`, view `experiment_distance_m+eccentricity_bin`).
 
-### Field position (1 m; Lower − Upper row; `data/vb_tests.csv`, rq = 2_position)
+### Field position (1 m; Lower − Upper row; `data/05_factor_tests_holm.csv`, rq = 2_position)
 
 | Code | Δ elevation row / same ecc. bin | Δ error row / same ecc. bin | Other |
 |---|---|---|---|
@@ -178,7 +178,7 @@ accurate wearers (P6, P10, P1) is unchanged. Per-wearer values are in `data/va_p
   ΔS2S +0.01, and its Holm-significant p reflects the median, not the mean difference.
 - Eccentricity is confounded with row in the 5 × 3 layout. Do not report it as "stable" or as "worse in the periphery".
 
-### Secondary factors (`data/vb_secondary_levels.csv`)
+### Secondary factors (`data/05_illumination_environment_session_levels.csv`)
 
 | Factor | Coverage | Values | Tests |
 |---|---|---|---|
@@ -205,7 +205,7 @@ accurate wearers (P6, P10, P1) is unchanged. Per-wearer values are in `data/va_p
 - **P6 values use the pre-relabel data**, which still include Marilu's three recordings, as you asked.
   P1, P2 and P7 are unaffected (their data did not change). The rerun is in progress.
 
-Median error (°), mean of 5 folds (`data/vc_regression.csv`):
+Median error (°), mean of 5 folds (`data/05_regression_benchmark_summary.csv`):
 
 | Code | Raw | Median | Pos. | Pos.+pupil | Pos.+dist. | Pos.+dist.+pupil | Ridge pos.+dist. |
 |---|---|---|---|---|---|---|---|
@@ -227,15 +227,15 @@ Median error (°), mean of 5 folds (`data/vc_regression.csv`):
 
 | File | Rows | Columns |
 |---|---|---|
-| `va_recordings.csv` | 161 static screen recordings | code, participant, recording_name, date, distance_m, board_config, error, azimuth, elevation, pstd, s2s, pupil, fixations, offset_norm |
-| `va_participants.csv` | 11 × {1 m, all distances} | recordings, days, distances, `<metric>_median/_q25/_q75`, offset_share |
-| `fig5ab_data.csv` | 11 | plotted values of Fig. 3a/b (1 m): n, med, lo, hi, q25, q75, az, el, IQRs |
-| `vb_distance_levels.csv` | 30 participant × distance | factor-analysis level medians/IQRs |
-| `vb_tests.csv` | 332 | every factor test with p, p_holm, mean difference, CI, rho, `significant` |
-| `vb_secondary_levels.csv` | 24 | illumination, environment, session levels |
-| `vc_regression.csv` | 40 participant × model | summary error, P90, fold min/max, Δ vs median, folds better |
-| `vc_split_recordings.csv` | 4 | train/test recordings per fold |
-| `regression_snapshot_2026-11-05_1248/` | – | `summary.csv`, `scores.csv`, `splits.csv`, `protocol.json` of the run used for V-C |
+| `05_static_accuracy_per_recording.csv` | 161 static screen recordings | code, participant, recording_name, date, distance_m, board_config, error, azimuth, elevation, pstd, s2s, pupil, fixations, offset_norm |
+| `05_static_accuracy_per_participant.csv` | 11 × {1 m, all distances} | recordings, days, distances, `<metric>_median/_q25/_q75`, offset_share |
+| `05_fig_accuracy_offset_per_wearer.csv` | 11 | plotted values of Fig. 3a/b (1 m): n, med, lo, hi, q25, q75, az, el, IQRs |
+| `05_distance_levels.csv` | 30 participant × distance | factor-analysis level medians/IQRs |
+| `05_factor_tests_holm.csv` | 332 | every factor test with p, p_holm, mean difference, CI, rho, `significant` |
+| `05_illumination_environment_session_levels.csv` | 24 | illumination, environment, session levels |
+| `05_regression_benchmark_summary.csv` | 40 participant × model | summary error, P90, fold min/max, Δ vs median, folds better |
+| `05_regression_split_recordings.csv` | 4 | train/test recordings per fold |
+| `05_regression_snapshot_2026-11-05_1248/` | – | `summary.csv`, `scores.csv`, `splits.csv`, `protocol.json` of the run used for V-C |
 
 ## 8. Open issues and inconsistencies (not changed: outside Section V)
 
