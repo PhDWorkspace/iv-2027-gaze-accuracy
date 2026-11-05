@@ -1,0 +1,4 @@
+code,scenes,samples,scene_median_error,scene_error_q25,scene_error_q75,scene_p90_median,bias_azimuth,bias_elevation,dispersion_median,offset_norm,offset_share
+P1,79,42678,3.8581,3.0950,4.1187,4.2780,-0.4883,-3.7704,0.4842,3.8019,0.9854
+P2,73,10667,1.3691,1.1010,1.6359,1.9698,-1.0899,-0.5939,0.8021,1.2412,0.9066
+P6,93,20393,6.2084,5.5106,6.9954,6.9896,0.8543,-6.0919,1.6855,6.1515,0.9908

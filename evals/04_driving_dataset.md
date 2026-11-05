@@ -181,3 +181,60 @@ reviewed which scenes before citing it.
 6. **P6's scene descriptions are not owner-reviewed** (target identities are validated).
 7. **Table I (`figures/tab_driving_offsets.tex`) is no longer used.** Its results are in Section VI and
    `06_transfer_to_driving.md`.
+
+
+## G. Refinement of 2026-11-05 (evening): real-world accuracy, figure, owner statements
+
+**Reproduce:**
+
+```bash
+python scripts/make_section4.py /home/william/data --figure \
+  2bc261876dff5c83baca7b2368ba8bb5 059abc99f815526aa887e650b736d6f5 b329c0dcb73c57c7b37f2f7cfbc35f4d
+```
+
+The full event IDs are in `data/04_fig_dataset_scenes.csv`. The script needs pandas and OpenCV (horuspy-dev image),
+reads the data read-only, and writes:
+- `data/04_scene_raw_errors.csv`: one row per scene, metric-valid samples inside the validated event (median and P90
+  angular error, signed offset az/el, target-relative dispersion √(var az + var el), median target distance).
+- `data/04_driver_raw_summary.csv`
+- `figures/fig4_dataset.pdf` and `data/04_fig_dataset_scenes.csv`
+
+**Raw (uncorrected) accuracy per participant** (scene level; median over scenes, with IQR):
+
+| Code | Scenes | Samples | Median error [IQR] | P90 (median over scenes) | Offset az / el | \|offset\| | \|offset\| / error | Dispersion |
+|---|---|---|---|---|---|---|---|---|
+| P1 | 79 | 42678 | 3.86 [3.10, 4.12] | 4.28 | -0.49 / -3.77 | 3.80 | 0.99 | 0.48 |
+| P2 | 73 | 10667 | 1.37 [1.10, 1.64] | 1.97 | -1.09 / -0.59 | 1.24 | 0.91 | 0.80 |
+| P6 | 93 | 20393 | 6.21 [5.51, 7.00] | 6.99 | +0.85 / -6.09 | 6.15 | 0.99 | 1.69 |
+
+**Values used in the text:**
+- **Held-out benchmark (Section VI):** raw median error 3.96 / 1.48 / 6.00°, P90 4.63 / 2.20 / 7.80°, from
+  `06_driving_offset_by_category.csv`, "Raw driving". This is the mean over 5 folds of the median over held-out
+  scenes, so it differs slightly from the scene-level medians above (3.86 / 1.37 / 6.21°).
+- **"Offset makes up 91–99%"** is the `offset_share` column. **"Dispersion 0.5–1.7°"** is the `dispersion_median`
+  column.
+- **Foreshadowed corrections:** 3.96 → 0.76° (P1) and 6.00 → 1.41° (P6) are the 20% driving offsets of Section VI.
+
+**Figure (Fig. 3, `fig4_dataset.pdf`):** the middle frame of each fixation, cropped around the target and gaze.
+The green cross is the median verified target centre in that frame; the red circle is the median gaze. Distance and
+speed come from `scene_metadata.json` (LiDAR / GNSS).
+1. P2 pedestrian-crossing sign, approaching, 22 m, 24 km/h, error 1.2°.
+2. P1 red traffic light, both standing, 17 m, error 3.9°.
+3. P6 licence plate of a followed car, 28 m, 41 km/h, error 6.1°.
+
+Fig. 2 (III-B, the P2 parked-car example) is unchanged.
+
+**Owner statements used in the text without a local file record:**
+1. A subset of references was reviewed by a second annotator (coverage and agreement not documented).
+2. The segmentation model was trained on images from three vehicles.
+3. Motion-blur checks were informed by experiments on exposure time, rotation and marker detection.
+
+Section E above still lists what *is* verifiable locally. Add the source records for these three statements to
+complete the provenance.
+
+**Wording corrections against the task:**
+- "Three drivers" is written as "three participants (two drivers, one front passenger)", because P1 was the
+  passenger.
+- The relative motions named in the text are those present in the data: approaching 129, none 45, oncoming 22,
+  following 16, passing 16.
+- **Word count:** 501 → 550 (`wc -w`, including the new figure caption, +9.8%).
