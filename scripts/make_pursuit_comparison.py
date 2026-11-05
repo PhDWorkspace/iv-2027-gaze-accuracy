@@ -1,4 +1,4 @@
-"""Older hand-moved pursuit recordings (2026-07-16) vs the 8 scored screen pursuits, with the factor-analysis metrics.
+"""Older screen pursuit recordings without QR timing (2026-07-16) vs the 8 scored screen pursuits, with the factor-analysis metrics.
 
 Usage: python scripts/make_pursuit_comparison.py /path/to/data
 Reads only: controlled/results/<rec>/dataset.csv (per-stroke fixations crosshair_<direction>.NN, added 2026-11-05),
@@ -49,7 +49,7 @@ for rec, speed in OLD.items():
     w = summarize(d.groupby("window"))
     span = d.groupby("window").gaze_timestamp_ns.agg(lambda t: (t.max() - t.min()) / 1e9)
     w = w[(w.samples >= 20) & (span >= 0.5)]
-    rec_rows.append(dict(recording_name=rec, group=f"old hand-moved ({speed})", speed=speed, windows=len(w),
+    rec_rows.append(dict(recording_name=rec, group=f"old screen, no QR ({speed})", speed=speed, windows=len(w),
                          samples=int(len(d)), **w[METRICS].median().to_dict()))
     d["phase"] = np.where(d.near_turn, "Near turn", "Straight")
     phase_rows.append(summarize(d.groupby("phase")).reset_index().assign(recording_name=rec, group="old", speed=speed))

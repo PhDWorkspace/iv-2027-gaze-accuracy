@@ -258,8 +258,8 @@ Median error (°), mean of 5 folds (`data/05_regression_benchmark_summary.csv`):
 
 ## 9. Older pursuit recordings added (2026-11-05, evening)
 
-**Data change (owner-approved).** The three hand-moved pursuit recordings of 2026-07-16 (P1; printed ArUco board
-with crosshair at ≈ 2 m; slow / medium / fast, median target speed 7.8 / 17.1 / 22.6 °/s) now have per-stroke
+**Data change (owner-approved).** The three older screen pursuit recordings of 2026-07-16 (P1; screen target without QR code,
+so no stimulus timeline; per owner, the pattern config's "printed ArUco board moved by hand" description is wrong; slow / medium / fast, median target speed 7.8 / 17.1 / 22.6 °/s) now have per-stroke
 fixation intervals:
 - **Source:** `controlled/patterns/pursuit_<speed>/observed_motion.csv`, reconstructed from the target's scene-camera
   motion.
@@ -284,14 +284,14 @@ fixation intervals:
 |---|---|---|---|---|
 | Static 1 m, P1 (50 rec.) | – | 3.90 | −0.18 / −3.81 | 0.27 |
 | Screen pursuit (8 rec.) | – | 4.06 | −0.10 / −3.88 | 0.93 |
-| Old slow | 41 | 3.79 | +0.14 / −3.75 | 0.47 |
-| Old medium | 32 | 3.33 | −0.57 / −3.21 | 0.63 |
-| Old fast | 16 | 3.22 | −0.76 / −2.74 | 2.29 |
+| Old (no QR) slow | 41 | 3.79 | +0.14 / −3.75 | 0.47 |
+| Old (no QR) medium | 32 | 3.33 | −0.57 / −3.21 | 0.63 |
+| Old (no QR) fast | 16 | 3.22 | −0.76 / −2.74 | 2.29 |
 
 **Near turn − straight** (median per recording):
 - Old: error −0.29°, dispersion −0.70°.
 - Screen: +0.30° and +0.86°.
-- The opposite sign is plausibly due to pauses at the turns of the hand-moved board (`turns.csv` pause columns).
+- The opposite sign is plausibly due to pauses at the turns of these older patterns (`turns.csv` pause columns).
 
 **Direction (straight samples):**
 - Down: largest error and most negative elevation offset in both sets (old 4.46° / −4.42°; screen 4.48° / −4.14°).
