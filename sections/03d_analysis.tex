@@ -1,50 +1,60 @@
+
 \subsection{Measures, Correction and Evaluation}
 \label{sec:method_analysis}
 
 \textbf{Measures.}
-The angular error is the angle between the measured gaze direction and
-the direction to the reference target. Following
-\cite{niehorster2026fundamentals7}, we separate four properties.
-\emph{Accuracy} is the median angular error: how far gaze typically lands
-from the target. \emph{Bias} is the signed horizontal and vertical median
-offset, the systematic part of the error. \emph{Dispersion} ($P_\mathrm{STD}$)
-is the spread of gaze samples around their centre; for pursuit it is
-computed relative to the moving target. \emph{Precision} (RMS-S2S) is the
-jitter between consecutive samples. We also report P90, the error that
-90\% of gaze samples stay below. In the driving benchmark, recordings and
-scenes are weighted equally so that long scenes do not dominate. All
-analyses are per participant. Any wearer offset stored in the Neon app was
-removed, so \emph{uncorrected} denotes NeonNet output without
-person-specific correction.
+Angular error is the angle between the measured gaze direction
+and the reference target. Following
+\cite{niehorster2026fundamentals7}, we distinguish four properties:
+\emph{accuracy}, the median angular error;
+\emph{bias}, the median signed azimuth and elevation offsets;
+\emph{dispersion} ($P_\mathrm{STD}$), the spread around the
+mean gaze direction; and \emph{precision} (RMS-S2S),
+the sample-to-sample jitter. For pursuit, dispersion is
+computed from gaze--target residuals. We additionally report
+P90, the 90th percentile of angular error. Evaluations are
+performed per participant, with recording- and scene-level
+aggregation to avoid domination by long sequences.
+Stored wearer offsets were removed, so \emph{uncorrected}
+denotes NeonNet estimates without person-specific correction.
 
 \textbf{Offset correction.}
-The \emph{median offset} subtracts the median horizontal and vertical bias
-of a set of reference fixations. Laboratory offsets come from the
-chessboard recordings, either from a single board (15 points) or from all
-boards pooled. In-situ offsets come from driving scenes. We split each
-participant's scenes into five folds; in each, about 20\% of scenes (the
-\emph{calibration share}) estimate the offset and the remaining
-\emph{held-out scenes} test it. All corrections are scored on the same
-held-out scenes, and values are averaged over the five folds. Scenes,
-never samples, are split, but scenes from the same drive can fall on both
-sides. Results therefore describe transfer to new targets within the
-observed drives, not to new drives, days or wearers. To find how many
-references are needed, we draw $k\in\{1,\ldots,8\}$ calibration scenes at
-random (20 draws) or in geometric layouts (lines, triangles, rectangles).
+A constant offset is estimated from the median signed
+azimuth and elevation errors of reference fixations.
+Laboratory offsets are estimated from individual chessboards
+(15 targets) or pooled recordings; in-situ offsets use
+verified driving scenes. For each driving participant,
+five folds reserve approximately 20\% of scenes for
+calibration and evaluate corrections on the remaining
+80\%. All methods use the same held-out scenes.
+We additionally evaluate sparse calibration using
+$k\in\{1,\ldots,8\}$ randomly or geometrically selected
+references. Scenes, rather than individual gaze samples,
+are split; calibration and test scenes may originate
+from the same drive.
 
-\textbf{Extended correction.}
-We then test whether corrections matched to the measured error structure
-improve on the median offset: causal temporal filters (trailing medians
-and delays) and a position-dependent bias term. For each participant, one
-candidate is selected on calibration scenes only, by leave-one-scene-out
-validation, and evaluated on held-out scenes. We vary the calibration
-share from 20\% to 80\% and repeat the random split 16 times at 20\% and
-five times otherwise, so the baseline differs slightly from the single
-five-fold split above.
+\textbf{Learned correction.}
+To investigate whether systematic error dependencies can
+be exploited, we compare the constant median offset with
+linear and ridge regression models predicting signed
+azimuth and elevation errors. Controlled models use
+gaze position, pupil diameter and viewing distance,
+individually or in combination. They are trained on
+approximately 20\% of recordings and evaluated on
+recording-disjoint data across five folds.
+
+We then transfer corrections learned on chessboards to
+held-out driving scenes using features available at
+inference time. Finally, we compare median offsets with
+regression models fitted directly on the driving calibration
+scenes. Reference-target coordinates are used for training
+and evaluation, not as prediction inputs.
 
 \textbf{Statistics.}
-Controlled comparisons use paired Wilcoxon tests, Kruskal--Wallis tests
-across levels and Spearman correlations for drift, with Holm correction
-per participant and bootstrap 95\% confidence intervals. Driving
-comparisons use paired scene-level tests with Holm correction;
-subgroup analyses use Benjamini--Hochberg correction.
+Controlled comparisons use paired Wilcoxon tests,
+Kruskal--Wallis tests across factor levels and Spearman
+correlations for temporal trends, with Holm correction
+for multiple comparisons. Driving corrections are
+compared using paired scene-level tests with Holm
+correction. We report uncertainty and fold-level
+variability where appropriate.

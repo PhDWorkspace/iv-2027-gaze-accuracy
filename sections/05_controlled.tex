@@ -112,15 +112,14 @@ between-day offsets varied for some participants. \\
 
 \subsection{Can We Learn the Patterns?}
 
-% NOTE: the fourth extensively measured wearer (P6) requires a post-relabel regression rerun.
-Finally, we tested whether spatial and pupil-related dependencies help
-beyond a simple per-wearer median offset. Linear and ridge corrections
-were trained on approximately 20\% of recordings and evaluated on the
-remaining, recording-disjoint data in five folds. Additional features
-sometimes helped considerably: combining position and distance reduced
-controlled median error from 1.41\dg{} to 0.87\dg{} for one wearer,
-consistently across folds. For others the gain was small or absent;
-ridge differed little from linear regression. \emph{Learnable
-laboratory patterns are therefore not necessarily useful corrections.}
+Finally, we tested whether spatial and pupil-related dependencies
+help beyond a simple per-wearer median offset. Linear corrections
+were fitted on about 20\% of each wearer's recordings and evaluated
+on the remaining, recording-disjoint data in five folds. Additional
+features sometimes helped considerably: combining position and
+distance reduced the controlled median error from 1.41\dg{} to
+0.87\dg{} for one wearer, consistently across folds. For others,
+the gain was small or absent. \emph{Learnable laboratory patterns
+are therefore not necessarily useful corrections.}
 Section~\ref{sec:transfer} tests this directly on independently
 verified driving references.

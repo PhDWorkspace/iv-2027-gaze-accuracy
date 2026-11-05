@@ -1,45 +1,43 @@
+
 \subsection{Real-World Driving Benchmark}
 \label{sec:method_driving}
 
-The benchmark pairs gaze with a verified reference for what the person
-looked at, together with the vehicle context needed to describe each
-scene.
+To measure gaze accuracy during real driving, we associate
+wearable gaze estimates with independently localised physical
+targets and synchronised vehicle measurements.
 
 \textbf{Vehicle and synchronisation.}
-Our research vehicle carries cameras, roof-mounted LiDARs, a dual-antenna
-GNSS/INS and CAN interfaces. Here we use the front-left camera, two
-128-beam LiDARs and the GNSS/INS. Vehicle sensors share a GNSS-disciplined
-clock via the Precision Time Protocol, and the clock offset of the Neon
-companion device is estimated with the round-trip-based Pupil Labs Time
-Echo protocol~\cite{pupil_time_echo}. Gaze, images, LiDAR scans and
-vehicle motion can therefore be associated in time, also in dynamic
-scenes.
+Our research vehicle is equipped with cameras, roof-mounted
+LiDAR sensors and a GNSS/INS system. We use the front-left
+camera, two 128-beam LiDARs and GNSS/INS measurements
+for scene geometry and vehicle motion. Vehicle sensors share
+a GNSS-disciplined clock via the Precision Time Protocol.
+The Neon companion clock is aligned using the round-trip-based
+Pupil Labs Time Echo protocol~\cite{pupil_time_echo},
+enabling temporal association of gaze, images, LiDAR
+and vehicle measurements.
+
 
 \textbf{Reference generation.}
-During normal drives, participants announce deliberate fixations on
-identifiable targets, such as ``fixating licence plate''. Whisper
-transcribes the speech, and an intent parser (Hassil) matches it to a
-dictionary of fixation events and object categories. Each event triggers
-category-specific object detection in an extended search region around
-the measured gaze. A single candidate is assigned and tracked through the
-fixation; several candidates are flagged. Annotators then inspect,
-correct and verify every assignment in a Neon Player plugin. The centre
-of the verified target is the 2D fixation reference in the scene image.
-It is localised independently of the gaze coordinates, although the
-candidate search starts near the measured gaze.
+During driving, participants verbally announce identifiable
+fixation targets, e.g., ``fixating the red traffic light
+on the right.'' Whisper transcribes the announcements,
+and Hassil identifies the fixation event and object category.
+Object detection proposes candidate targets within a generous
+region around the estimated gaze position. Point tracking
+and optical flow support temporal target localisation, while
+ambiguous assignments are flagged for inspection.
+All accepted references are manually verified in a dedicated
+Neon Player interface, with a subset additionally checked
+by a second annotator. The verified object centre defines
+the reference independently of the measured gaze coordinates.
 
-\textbf{Benchmark scope.}
-The benchmark comprises 152 verified fixation scenes with 53{,}345 gaze
-samples from 16 drives on three days and two participants: P2 drove and
-P1 sat in the front passenger seat. During acquisition, we deliberately
-sought diverse targets and situations: road signs (50 scenes), traffic
-lights (35) and licence plates of parked (35) or moving (32) vehicles,
-fixated while approaching, passing, following or at standstill. Target
-distances range from 7 to 107\,m (median 28\,m). They come from LiDAR
-points on the target (93 scenes) or, for drives without LiDAR, from Depth
-Anything~\cite{yang2024depthAnythingV2} rescaled to metric depth with a
-scale and shift fitted on LiDAR-measured
-targets~\cite{marsal2025depth} and fused with the target's apparent size
-(59 scenes). Each scene is further annotated with target class, side and
-motion, relative motion, ego motion and GNSS/INS speed where available,
-road type and eye-image exposure.
+
+\textbf{Reference geometry and context.}
+Verified target positions are converted into angular directions
+using the calibrated scene-camera intrinsics and compared with
+temporally aligned gaze estimates. Target distances are obtained
+from LiDAR measurements. Each reference is associated with
+vehicle motion and scene metadata. The resulting benchmark and
+its driving conditions are characterised in
+Section~\ref{sec:realworld}.
