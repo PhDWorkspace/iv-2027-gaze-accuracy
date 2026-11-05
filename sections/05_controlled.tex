@@ -1,94 +1,98 @@
 \section{Controlled Investigation of Gaze Error}
 \label{sec:controlled}
 
-Studies differ on how illumination, pupil size and gaze position affect
-Neon~\cite{baumann2026neonAccuracy,alecka2026neon,salari2026pupilSize},
-and richer error models need not beat simple
-corrections~\cite{kar2020mlgaze}. We vary driving-relevant factors and ask
-which effects are reproducible, whether they differ between wearers and
-whether they support a correction. We use 247 recordings from 11
-participants: seven mainly recorded static baselines (3--12 recordings),
-four recorded extensively (23--139). Errors are uncorrected; recordings
-are the unit.
+Previous Neon studies report differing effects of illumination and field
+position~\cite{baumann2026neonAccuracy,alecka2026neon,salari2026pupilSize}.
+To determine which effects matter for driving, we investigated gaze
+direction, viewing distance, illumination, target motion, and temporal
+stability. The controlled study includes 11 wearers. Seven contributed
+shorter static-target series under selected distances (1, 2, and 4\,m)
+and bright/dark conditions. Four, including the three participants in our
+driving benchmark, underwent more extensive repeated measurements of distance and illumination,
+including additional pursuit experiments. The coverage is deliberately unequal;
+comparisons below use the recordings available for each condition.
 
 \begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig5_controlled.pdf}
-\caption{Individual gaze error (uncorrected, static screen targets).
-(a) Median error at 1\,m with interquartile range across recordings;
-open circles: one recording. (b) Median signed offset at 1\,m with
-interquartile ranges. (c) Median vertical offset versus viewing distance.}
-\label{fig:controlled}
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig5_story.pdf}
+  \caption{Individual variability and distance response. (a) Uncorrected
+  median angular error from static, bright-screen fixations at 1\,m
+  (11 wearers); bars show recording-level IQR, and open points indicate
+  a single recording. Blue markers denote the three driving-benchmark
+  wearers. (b,c) Changes from 1 to 4\,m for five wearers with repeated
+  distance measurements. A downward bias shift (negative in b) does not
+  imply that angular accuracy must worsen (positive in c). P5's distances
+  were partly recorded on different days, so that comparison is
+  descriptive.}
+  \label{fig:controlled}
 \end{figure*}
 
-\subsection{Inter-Individual Variability}
+\subsection{Different Wearers, Different Errors}
 
-Under one baseline condition (bright screen, 1\,m), the median error
-ranges from 1.03\dg{} to 5.37\dg{} across wearers, while recordings of a
-wearer mostly vary by less than 0.5\dg{} (Fig.~\ref{fig:controlled}a);
-pooling all distances gives 1.08--5.81\dg{}. The differences are mainly
-vertical, with elevation offsets from $-5.1$\dg{} to $+1.9$\dg{}
-(Fig.~\ref{fig:controlled}b). For the six least accurate wearers, the
-constant offset makes up 86--95\% of the error, and dispersion
-(0.24--0.59\dg{}) is small. A pooled average would hide offsets of
-different size and sign.
+We first compare all 11 wearers under the same nominal condition:
+static fixation on a bright target at 1\,m. Median angular error ranges
+from 1.03\dg{} to 5.37\dg{} (Fig.~\ref{fig:controlled}a). This is not
+simply a difference in gaze scatter. Within-fixation dispersion spans
+0.24--0.59\dg{}, whereas vertical offsets range from $-5.11$\dg{} to
+$+1.87$\dg{}. For the six least accurate wearers, the magnitude of the
+median offset accounts for 86--95\% of median error. Thus, the largest
+accuracy differences are dominated by \emph{systematic, wearer-specific
+bias}. We aggregate by recording and wearer rather than pooling all
+fixations; four wearers have only one recording at this matched baseline.
 
-\subsection{Driving-Relevant Influencing Factors}
+\subsection{What Changes the Error?}
 
-\begin{table*}[t]
-\centering
-\caption{Controlled factors (uncorrected). $^*$Holm-corrected $p<.05$ for
-the participants named; undetected changes are not proof of equivalence.
-$^\dagger$Board configuration also changed.}
-\label{tab:factors}
-\footnotesize
-\input{figures/tab_section5_factors}
-\end{table*}
-
-\textbf{Distance shifts the offset downward.}
-From 1 to 4\,m, gaze moved downward for eight of nine wearers
-(Fig.~\ref{fig:controlled}c; significant for P2, P6, P7). Its effect on
-accuracy depends on the initial offset: P2's error rose from 1.03\dg{} to
-2.27\dg{}, whereas P7, whose gaze lies above the targets, improved from
-2.15\dg{} to 1.21\dg{}. Only P5 moved upward, with 1\,m recorded on
-another day.
-
-\textbf{Field position matters for some wearers.}
-In the lower row, gaze lay 0.31--1.92\dg{} lower for five of six wearers
-(significant for P1, P7); error rose for P1 and P3 but fell for P7. P6
-instead shifted horizontally and lost precision.
-
-\textbf{Other factors change the spread, not the offset.}
-Darker screens enlarged pupils by 0.5--1.2\,mm without detected changes;
-vertical shifts below 0.8\dg{} resemble the pupil effect
-in~\cite{salari2026pupilSize} but were not significant. Outdoor recording
-slightly raised dispersion, and pursuit tripled target-relative
-dispersion with a similar offset. No within-day drift was detected; P1's
-offset differed by 1.5\dg{} between days, confounded with the board.
-
-\subsection{Learning the Observed Error Structure}
+\textbf{Viewing geometry has the clearest influence.} Increasing
+viewing distance from 1 to 4\,m shifts vertical bias downward in eight
+of nine wearers with measurements at multiple distances. Yet the
+consequence for angular error is not consistent (Fig.~\ref{fig:controlled}b,c):
+for one wearer error increases from 1.03\dg{} to 2.27\dg{}, whereas for
+another it decreases from 2.15\dg{} to 1.21\dg{}. Both changes are
+significant after Holm correction. The same bias shift can therefore
+improve or worsen accuracy depending on the initial offset. Similarly,
+lower image rows tend to shift estimated gaze downward, but do not
+consistently increase angular error. Distance and gaze eccentricity are
+partly coupled by the board geometry; we therefore avoid attributing
+these effects to either factor in isolation.
 
 \begin{table}[t]
 \centering
-\caption{Median error (\dg{}) on held-out recordings, mean of five folds
-(one fold trains). Bold: better than the median offset in all folds.}
-\label{tab:regression}
+\caption{Additional controlled observations. ``Not detected'' refers
+only to the evaluated data, not evidence of equivalence.}
+\label{tab:controlled_other}
 \footnotesize
-% P6 values from the benchmark run of 2026-11-05 12:48 (see evals/README.md).
-\input{figures/tab_regression}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.28\columnwidth}p{0.63\columnwidth}@{}}
+\hline
+Factor & Main observation \\
+\hline
+Bright vs. dark & Pupil dilation of 0.5--1.2\,mm; no consistent accuracy or signed-offset change detected. \\
+Pursuit & 118 sequences recorded; 63 screen-target sequences scored, with target-relative dispersion 0.27\dg{} to 0.93\dg{}. \\
+Indoor/outdoor & No detected matched-day accuracy difference; outdoor dispersion was slightly higher across sessions. \\
+Repeated sessions & No systematic within-day drift detected; between-day offsets could change, partly confounded by setup. \\
+\hline
+\end{tabular}
 \end{table}
 
-For the four extensively recorded wearers, we compare the median offset
-with linear corrections on gaze position, pupil diameter and inverse
-distance (Table~\ref{tab:regression}); training and test recordings never
-overlap. Position and pupil are available at run time; distance must be
-estimated. Position and distance cut P2's error from 1.41\dg{} to
-0.87\dg{} in every fold, matching the distance-dependent offset. P6 gains
-0.2--0.3\dg{} and P7 0.08\dg{}, whereas P1, with the most training data,
-gains nothing. Pupil terms help one wearer, and ridge regression stays
-within 0.03\dg{} of linear. Simple regressions capture some individual
-dependencies, but their benefit over a constant offset varies between
-wearers.
+Other tests provide context rather than a single general correction
+rule (Table~\ref{tab:controlled_other}). Illumination changed pupil size
+without a consistent measured accuracy shift. Pursuit increased
+\emph{target-relative} dispersion substantially, although this includes
+natural eye--target tracking variability and should not be interpreted
+as tracker noise alone. The outdoor and temporal comparisons have
+narrower scored coverage and are not generalized to all participants.
 
-Controlled gains do not show that a correction helps on the road;
-Section~\ref{sec:transfer} tests this on verified driving references.
+\subsection{Can We Learn the Patterns?}
+
+% NOTE: the fourth extensively measured wearer (P6) requires a post-relabel regression rerun.
+Finally, we tested whether spatial and pupil-related dependencies help
+beyond a simple per-wearer median offset. Linear and ridge corrections
+were trained on approximately 20\% of recordings and evaluated on the
+remaining, recording-disjoint data in five folds. Additional features
+sometimes helped considerably: combining position and distance reduced
+controlled median error from 1.41\dg{} to 0.87\dg{} for one wearer,
+consistently across folds. For others the gain was small or absent;
+ridge differed little from linear regression. \emph{Learnable
+laboratory patterns are therefore not necessarily useful corrections.}
+Section~\ref{sec:transfer} tests this directly on independently
+verified driving references.
