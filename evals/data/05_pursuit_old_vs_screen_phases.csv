@@ -1,0 +1,23 @@
+phase,angular_error_median_deg,bias_azimuth_deg,bias_elevation_deg,samples,residual_p_std_deg,recording_name,group,speed,participant,date
+Near turn,3.6107,0.2281,-3.6031,166,0.8678,smooth_pursuit_William_2026-07-16-17-19-27_947b51e5,old,slow,,
+Straight,3.8054,0.0963,-3.7650,6694,2.4907,smooth_pursuit_William_2026-07-16-17-19-27_947b51e5,old,slow,,
+Near turn,3.0605,-0.6136,-2.8909,670,3.7711,smooth_pursuit_William_2026-07-16-17-27-07_98d3d73b,old,medium,,
+Straight,3.3553,-0.5808,-3.2314,3847,1.8755,smooth_pursuit_William_2026-07-16-17-27-07_98d3d73b,old,medium,,
+Near turn,3.2723,-0.6481,-2.7005,930,6.8304,smooth_pursuit_William_2026-07-16-17-28-33_e223599c,old,fast,,
+Straight,4.4492,-0.8914,-3.1086,564,7.5263,smooth_pursuit_William_2026-07-16-17-28-33_e223599c,old,fast,,
+Near turn,4.3760,-0.2244,-4.1803,1289,2.1126,smooth-pursuit_William_2026-09-28-16-18-47_e2c30cc8,screen,,William,2026-09-28
+Straight,3.7682,-0.3277,-3.6943,5204,1.4122,smooth-pursuit_William_2026-09-28-16-18-47_e2c30cc8,screen,,William,2026-09-28
+Near turn,4.3607,0.8641,-3.8314,1265,2.2034,smooth-pursuit_William_2026-09-28-16-39-34_e98c9346,screen,,William,2026-09-28
+Straight,4.0369,0.4536,-3.9355,5205,1.4349,smooth-pursuit_William_2026-09-28-16-39-34_e98c9346,screen,,William,2026-09-28
+Near turn,3.8577,-0.3572,-3.3864,1237,3.3587,smooth-pursuit_William_2026-09-28-16-52-45_4af108fb,screen,,William,2026-09-28
+Straight,3.9294,-0.0028,-3.8210,5341,2.3268,smooth-pursuit_William_2026-09-28-16-52-45_4af108fb,screen,,William,2026-09-28
+Near turn,4.1813,-0.1387,-3.7096,1194,2.6725,smooth-pursuit_William_2026-09-28-17-01-48_2af3b4ca,screen,,William,2026-09-28
+Straight,3.7496,-0.1167,-3.6361,5107,1.3422,smooth-pursuit_William_2026-09-28-17-01-48_2af3b4ca,screen,,William,2026-09-28
+Near turn,4.7574,-0.4969,-4.4336,1246,2.9654,smooth-pursuit_William_2026-09-28-17-12-16_cb33a69b,screen,,William,2026-09-28
+Straight,4.4741,-0.2837,-4.3676,5309,1.7775,smooth-pursuit_William_2026-09-28-17-12-16_cb33a69b,screen,,William,2026-09-28
+Near turn,4.7601,-0.0079,-4.3985,1186,2.3042,smooth-pursuit_William-Engel_2026-10-23-12-04-32_63f1e4c0,screen,,William,2026-10-23
+Straight,4.1681,0.0742,-4.0790,5212,1.3625,smooth-pursuit_William-Engel_2026-10-23-12-04-32_63f1e4c0,screen,,William,2026-10-23
+Near turn,4.1621,0.0847,-3.8512,1098,2.5867,smooth-pursuit_William-Engel_2026-10-23-12-10-22_2ca31f9c,screen,,William,2026-10-23
+Straight,4.0265,-0.0355,-3.9035,4622,1.9329,smooth-pursuit_William-Engel_2026-10-23-12-10-22_2ca31f9c,screen,,William,2026-10-23
+Near turn,3.4984,1.0782,-2.9761,810,2.4487,smooth-pursuit_William-Engel_2026-10-23-12-14-14_e58edea7,screen,,William,2026-10-23
+Straight,4.0078,0.3645,-3.8488,3936,2.1934,smooth-pursuit_William-Engel_2026-10-23-12-14-14_e58edea7,screen,,William,2026-10-23

@@ -255,3 +255,51 @@ Median error (°), mean of 5 folds (`data/05_regression_benchmark_summary.csv`):
 6. P9's 2 m and P10's 4 m recordings have unusually high PSTD (0.96°, 1.29°), so single-recording levels are fragile.
 7. Compile check (TeX Live 2026, scratch copy): the paper is 7 pages, as before. Section V runs from page 4 to page 6,
    with no overfull boxes from Section V.
+
+## 9. Older pursuit recordings added (2026-11-05, evening)
+
+**Data change (owner-approved).** The three hand-moved pursuit recordings of 2026-07-16 (P1; printed ArUco board
+with crosshair at ≈ 2 m; slow / medium / fast, median target speed 7.8 / 17.1 / 22.6 °/s) now have per-stroke
+fixation intervals:
+- **Source:** `controlled/patterns/pursuit_<speed>/observed_motion.csv`, reconstructed from the target's scene-camera
+  motion.
+- **Labels:** `crosshair_<direction>.NN` in `annotations.csv`.
+- **Applied with horuspy** (no code change): `read_annotations` → `apply_annotations` → `save_json(detections.json)`
+  → `create_dataset` (module 272097 calibration) → `create_evaluation`.
+- **Unchanged:** gaze, target and calibration values are identical to before; only the fixation intervals changed.
+- **Result:** 22 / 17 / 16 strokes become fixations; evaluation rows 88 / 68 / 64. The fast recording has 7
+  `empty_selection` rows because the target was detected in only 59% of its frames.
+- **Environment note:** the horuspy-dev image ships OpenCV 5.0, but horuspy requires `opencv<5`
+  (`cv2.undistortPointsIter`), so OpenCV 4.14 was supplied for this run.
+
+**Counts:**
+- 118 pursuit sequences in total: 55 old strokes + 63 screen segments (`data/05_pursuit_counts.csv`).
+- The official factor analysis (`6_pursuit`) still covers only the 8 screen recordings, because its loader needs
+  the screen timelines.
+
+**Comparison** (`scripts/make_pursuit_comparison.py`, same definitions as factor test 6; outputs in
+`data/05_pursuit_old_vs_screen_{recordings,phases,directions}.csv`):
+
+| Group | Windows | Error | Az / El offset | Target-relative dispersion |
+|---|---|---|---|---|
+| Static 1 m, P1 (50 rec.) | – | 3.90 | −0.18 / −3.81 | 0.27 |
+| Screen pursuit (8 rec.) | – | 4.06 | −0.10 / −3.88 | 0.93 |
+| Old slow | 41 | 3.79 | +0.14 / −3.75 | 0.47 |
+| Old medium | 32 | 3.33 | −0.57 / −3.21 | 0.63 |
+| Old fast | 16 | 3.22 | −0.76 / −2.74 | 2.29 |
+
+**Near turn − straight** (median per recording):
+- Old: error −0.29°, dispersion −0.70°.
+- Screen: +0.30° and +0.86°.
+- The opposite sign is plausibly due to pauses at the turns of the hand-moved board (`turns.csv` pause columns).
+
+**Direction (straight samples):**
+- Down: largest error and most negative elevation offset in both sets (old 4.46° / −4.42°; screen 4.48° / −4.14°).
+- Up: smaller error (old 3.38°; screen 2.89°).
+- Old Right and Up dispersion (5.35° / 3.82°) are inflated by fast-recording gaps.
+
+**Interpretation:**
+- The P1 systematic offset is reproduced in the July recordings.
+- Target-relative dispersion grows with target speed (0.47 → 0.63 → 2.29°). The fast value is partly
+  detection-limited.
+- Directions and turns are head-relative and reconstructed, not scheduled.

@@ -1,0 +1,62 @@
+recording_name,group,speed,windows,samples,angular_error_median_deg,bias_azimuth_deg,bias_elevation_deg,residual_p_std_deg,participant,date,task
+smooth_pursuit_William_2026-07-16-17-19-27_947b51e5,old hand-moved (slow),slow,41.0000,6860.0000,3.7887,0.1364,-3.7520,0.4731,,,
+smooth_pursuit_William_2026-07-16-17-27-07_98d3d73b,old hand-moved (medium),medium,32.0000,4517.0000,3.3262,-0.5695,-3.2121,0.6327,,,
+smooth_pursuit_William_2026-07-16-17-28-33_e223599c,old hand-moved (fast),fast,16.0000,1494.0000,3.2167,-0.7552,-2.7363,2.2901,,,
+static_accuracy_william_2026-08-25_1_distance-1.0-d27ef1b9,static 1 m (P1),,,,2.9958,0.7787,-2.9958,0.3222,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_2_distance-1.0-c621fbc1,static 1 m (P1),,,,3.1950,0.1235,-3.0096,0.3627,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_3_distance-1.0-345dd37b,static 1 m (P1),,,,3.2196,0.6394,-3.1451,0.3663,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_4_distance-1.0-10cb972a,static 1 m (P1),,,,2.7578,0.1130,-2.7322,0.3223,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_5_distance-1.0-cb972398,static 1 m (P1),,,,2.9924,-0.1501,-2.9010,0.5002,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_6_distance-1.0-539b646e,static 1 m (P1),,,,2.6483,0.0031,-2.6177,0.5136,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_7_distance-1.0-d9a68328,static 1 m (P1),,,,2.7291,0.2619,-2.4586,0.7094,William,2026-08-25,Static
+static_accuracy_william_2026-08-25_8_distance-1.0-a319acff,static 1 m (P1),,,,3.1043,0.3659,-2.7562,0.8447,William,2026-08-25,Static
+static_accuracy_william_2026-08-26_10_distance-1.0-38484824,static 1 m (P1),,,,3.2659,0.6343,-3.0137,0.3674,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_11_distance-1.0-922ec7d6,static 1 m (P1),,,,3.4879,0.4525,-3.3868,0.5160,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_12_distance-1.0-e11387bf,static 1 m (P1),,,,3.2523,0.2415,-3.1622,0.4471,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_13_distance-1.0-a7ed76f4,static 1 m (P1),,,,3.0765,0.0576,-2.9498,1.8566,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_14_distance-1.0-bb1c24a1,static 1 m (P1),,,,2.8361,0.4557,-2.6610,2.3441,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_15_distance-1.0-eb4baf4e,static 1 m (P1),,,,2.5773,-0.2263,-2.5146,2.5931,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_16_distance-1.0-4e93a6db,static 1 m (P1),,,,3.1881,0.3357,-2.8233,0.5177,William,2026-08-26,Static
+static_accuracy_william_2026-08-26_9_distance-1.0-5ad5fce1,static 1 m (P1),,,,2.7926,0.5777,-2.5663,0.5677,William,2026-08-26,Static
+static_accuracy_william_2026-08-28_17_distance-1.0-a49ca806,static 1 m (P1),,,,3.0766,0.0906,-3.0003,0.4882,William,2026-08-28,Static
+static_accuracy_william_2026-08-28_18_distance-1.0-0be8179e,static 1 m (P1),,,,2.6239,-0.5760,-2.4760,0.4203,William,2026-08-28,Static
+fixation-bright-forward_William_2026-09-28-15-23-53_de747f91,static 1 m (P1),,,,4.7257,0.0951,-4.7204,0.3246,William,2026-09-28,Static
+fixation-bright-forward_William_2026-09-28-15-42-34_c3eb249a,static 1 m (P1),,,,4.6937,-0.2845,-4.5795,0.3162,William,2026-09-28,Static
+fixation-bright-forward_William_2026-09-28-16-00-42_980a2d59,static 1 m (P1),,,,4.4639,-1.0877,-4.3762,0.2855,William,2026-09-28,Static
+fixation-bright-reverse_William_2026-09-28-16-21-25_b5d5fb35,static 1 m (P1),,,,3.8221,-0.2945,-3.8174,0.2526,William,2026-09-28,Static
+fixation-bright-reverse_William_2026-09-28-16-37-22_63465610,static 1 m (P1),,,,4.4883,-0.1409,-4.3936,0.2133,William,2026-09-28,Static
+fixation-bright-reverse_William_2026-09-28-16-51-52_3e23b43a,static 1 m (P1),,,,3.9897,0.0654,-3.8023,0.1969,William,2026-09-28,Static
+fixation-bright-reverse_William_2026-09-28-16-59-46_b312ec24,static 1 m (P1),,,,4.1210,-0.1144,-4.0335,0.1869,William,2026-09-28,Static
+fixation-bright-reverse_William_2026-09-28-17-11-10_bcf5bf42,static 1 m (P1),,,,4.1459,-0.5588,-4.1197,0.1671,William,2026-09-28,Static
+fixation-dark-forward_William_2026-09-28-15-25-19_716bddc7,static 1 m (P1),,,,4.6598,0.3252,-4.6429,0.3470,William,2026-09-28,Static
+fixation-dark-forward_William_2026-09-28-15-41-38_277ef8a0,static 1 m (P1),,,,4.2181,-0.5118,-3.9899,0.3705,William,2026-09-28,Static
+fixation-dark-forward_William_2026-09-28-16-01-49_88c7895d,static 1 m (P1),,,,5.2373,-0.7556,-5.1244,0.3344,William,2026-09-28,Static
+fixation-dark-reverse_William_2026-09-28-16-20-24_773f17bb,static 1 m (P1),,,,3.6129,-0.2045,-3.6074,0.1975,William,2026-09-28,Static
+fixation-dark-reverse_William_2026-09-28-16-38-40_5ae82eec,static 1 m (P1),,,,4.0887,0.1103,-3.8795,0.2177,William,2026-09-28,Static
+fixation-dark-reverse_William_2026-09-28-16-50-38_face6f80,static 1 m (P1),,,,4.3263,-0.4385,-4.2980,0.2198,William,2026-09-28,Static
+fixation-dark-reverse_William_2026-09-28-17-00-49_082a3362,static 1 m (P1),,,,4.0825,-0.5920,-4.0677,0.2238,William,2026-09-28,Static
+fixation-dark-reverse_William_2026-09-28-17-09-58_58a6c357,static 1 m (P1),,,,3.7359,-0.2665,-3.6716,0.1983,William,2026-09-28,Static
+fixation-bright-forward_William_2026-10-01-16-49-14_5e399c22,static 1 m (P1),,,,4.1291,0.0011,-4.0156,0.2168,William,2026-10-01,Static
+fixation-bright-forward_William_2026-10-01-17-20-26_6ab0b35f,static 1 m (P1),,,,4.7152,-0.6649,-4.6631,0.1858,William,2026-10-01,Static
+fixation-bright-forward_William_2026-10-01-17-41-15_ce2b6a3b,static 1 m (P1),,,,3.7930,-0.6689,-3.6951,0.2023,William,2026-10-01,Static
+fixation-bright-forward_William_2026-10-01-17-51-05_771379d2,static 1 m (P1),,,,4.5563,-0.2807,-4.5112,0.2265,William,2026-10-01,Static
+fixation-bright-reverse_William_2026-10-01-18-07-32_f6b99bb5,static 1 m (P1),,,,4.4002,-0.3756,-4.3941,0.1630,William,2026-10-01,Static
+fixation-bright-reverse_William_2026-10-01-18-38-38_4c5d71e8,static 1 m (P1),,,,4.2308,-0.5568,-4.1786,0.2036,William,2026-10-01,Static
+fixation-bright-reverse_William_2026-10-01-18-59-01_3be854b0,static 1 m (P1),,,,4.5225,-0.4776,-4.3141,0.2483,William,2026-10-01,Static
+fixation-bright-reverse_William_2026-10-01-19-22-40_c3c1cdc5,static 1 m (P1),,,,4.2580,-0.6629,-4.2429,0.2719,William,2026-10-01,Static
+fixation-dark-forward_William_2026-10-01-16-48-12_67c6de28,static 1 m (P1),,,,4.0096,-0.0795,-3.8547,0.2670,William,2026-10-01,Static
+fixation-dark-forward_William_2026-10-01-17-21-29_1326cf74,static 1 m (P1),,,,4.8597,-0.3210,-4.7420,0.1860,William,2026-10-01,Static
+fixation-dark-forward_William_2026-10-01-17-40-14_bf60a6aa,static 1 m (P1),,,,3.3925,-0.5219,-3.2809,0.2750,William,2026-10-01,Static
+fixation-dark-forward_William_2026-10-01-17-53-38_ecf3474b,static 1 m (P1),,,,4.0303,-0.6014,-3.9847,0.1948,William,2026-10-01,Static
+fixation-dark-reverse_William_2026-10-01-18-04-58_0f79757b,static 1 m (P1),,,,4.0253,-0.4337,-4.0250,0.2285,William,2026-10-01,Static
+fixation-dark-reverse_William_2026-10-01-18-40-52_337c76e8,static 1 m (P1),,,,3.9779,-0.7196,-3.8559,0.2072,William,2026-10-01,Static
+fixation-dark-reverse_William_2026-10-01-18-56-34_bf8bff6e,static 1 m (P1),,,,3.6941,-0.3924,-3.6236,0.1981,William,2026-10-01,Static
+fixation-dark-reverse_William_2026-10-01-19-25-18_c39ee33c,static 1 m (P1),,,,3.5990,0.0122,-3.4429,0.2542,William,2026-10-01,Static
+smooth-pursuit_William_2026-09-28-16-18-47_e2c30cc8,screen pursuit (8),,,,3.8580,-0.5361,-3.7776,0.8588,William,2026-09-28,Pursuit
+smooth-pursuit_William_2026-09-28-16-39-34_e98c9346,screen pursuit (8),,,,4.0334,0.3816,-3.9047,0.9003,William,2026-09-28,Pursuit
+smooth-pursuit_William_2026-09-28-16-52-45_4af108fb,screen pursuit (8),,,,3.9691,-0.0773,-3.7234,1.1896,William,2026-09-28,Pursuit
+smooth-pursuit_William_2026-09-28-17-01-48_2af3b4ca,screen pursuit (8),,,,3.8214,-0.1277,-3.6349,0.8399,William,2026-09-28,Pursuit
+smooth-pursuit_William_2026-09-28-17-12-16_cb33a69b,screen pursuit (8),,,,4.3960,-0.3905,-4.3216,0.8818,William,2026-09-28,Pursuit
+smooth-pursuit_William-Engel_2026-10-23-12-04-32_63f1e4c0,screen pursuit (8),,,,4.1236,0.1630,-4.0920,0.9656,William,2026-10-23,Pursuit
+smooth-pursuit_William-Engel_2026-10-23-12-10-22_2ca31f9c,screen pursuit (8),,,,4.1757,-0.2395,-4.0211,1.0414,William,2026-10-23,Pursuit
+smooth-pursuit_William-Engel_2026-10-23-12-14-14_e58edea7,screen pursuit (8),,,,4.0925,0.5984,-3.8527,0.9649,William,2026-10-23,Pursuit
