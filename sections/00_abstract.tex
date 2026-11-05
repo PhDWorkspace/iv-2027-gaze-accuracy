@@ -1,18 +1,25 @@
-Human gaze is a promising supervision signal for autonomous driving, but
-only if the measured gaze point is spatially reliable where it is recorded.
-We evaluate a calibration-free wearable eye tracker in three stages, from
-real driving to controlled experiments and back. First, a voice-triggered,
-human-verified pipeline turns natural drives into a benchmark of 152
-scenes with verified fixation targets, target distance, vehicle motion and
-scenario labels. Uncorrected median errors of 3.96\dg{} and 1.48\dg{} for
-two participants fall to 0.76\dg{} and 0.83\dg{} with an offset estimated
-from a fifth of the driving scenes, and such in-situ offsets transfer
-better than chessboard calibration. Second, a controlled study with 216
-recordings from six participants shows that accuracy is robust to
-eccentricity, illumination, environment and repetition, whereas viewing
-distance shifts the gaze estimate, the lower field loses precision and
-smooth pursuit more than triples dispersion. Third, per-wearer corrections improve
-on the median-offset baseline in every evaluated configuration, most in
-dynamic scenes, and acquisition annotates each sample's suitability. The
-result is gaze-supervision data whose measurement quality is evaluated
-rather than assumed.
+Human gaze is a promising supervision signal for autonomous driving,
+but its spatial reliability remains largely unverified under real
+driving conditions. Even small angular errors can associate gaze
+with the wrong road object. We present a framework for systematically
+measuring, characterising and improving wearable gaze accuracy
+during natural driving. Speech-assisted fixation declarations,
+automated target localisation and tracking, manual verification,
+and synchronised vehicle sensing enable a benchmark of 245
+verified fixation scenes from 17 public-road recordings of three
+participants, enriched with target distance, vehicle motion and
+scene context. These references reveal substantial wearer-dependent
+errors, with uncorrected median angular errors of 3.96\dg{},
+1.48\dg{} and 6.00\dg{}. To investigate these differences, we
+conduct 247 controlled recordings with 11 participants, examining
+viewing geometry, illumination, pursuit and temporal stability.
+Although individual error dependencies can be learned, their
+additional benefits do not consistently transfer to driving.
+We therefore systematically compare laboratory- and driving-derived
+corrections on identical held-out road scenes, including sparse
+calibration settings. Using verified in-situ references from only
+20\% of the driving scenes reduces median errors to 0.76\dg{},
+0.83\dg{} and 1.41\dg{}, outperforming chessboard-derived offsets.
+Together, our benchmark, controlled investigation and calibration
+evaluation establish an empirical foundation for assessing and
+improving gaze supervision where it is actually collected.

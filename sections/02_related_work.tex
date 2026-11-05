@@ -1,45 +1,34 @@
 \section{Related Work}
 \label{sec:related}
 
+
 \subsection{Gaze Supervision and Driving Datasets}
 
-Human gaze is increasingly used to supervise driving models. It has served
-as an input or auxiliary target for end-to-end
-driving~\cite{liu2019gazeModel,xia2020periphery,abdelkarim2021ggnet},
-reduced causal confusion in imitation learning~\cite{biswas2024gazeSupervision},
-and guides recent vision-language attention
-models~\cite{liu2026focusDrive,hamid2025fsdam}. Modern stacks reason over
-objects in bird's-eye-view and vectorised scene
-representations~\cite{li2022bevformer,liu2023bevfusion,hu2023planning,jiang2023vad},
-also inside multimodal language models~\cite{ding2024bevinmllm}. These
-encode what is in a scene but not which objects a driver attends to.
-Structured, relational supervision is increasingly effective: graph-based
-road supervision raised a small VLM's reasoning accuracy from 44\% to
-71\%~\cite{wild2026crs}, compact actor-only scene graphs improved
-language-based driving with fewer tokens~\cite{schmidt2025graphpilot},
-and scene-graph supervision halved the collision rate of a latent world
-model~\cite{schmidt2026relationalWorld}. Gaze could indicate which actors
-and relations such representations should contain.
-Object-level gaze could supply this signal, but once projected into such
-representations, a small angular error can assign attention to the wrong
-object. Gaze is moreover an observation of where a person looked, not
-ground truth of object importance, which has been annotated
-separately~\cite{ohnbar2017areall,tawari2018learning}.
-Gaze data come from wearable trackers in real vehicles, as in DR(eye)VE and
-Look Both Ways~\cite{palazzi2019dreyeve,kasahara2022lookBothWays}; from
-observers watching driving video, as in BDD-A, MAAD and
-DADA~\cite{xia2018bdda,gopinath2021maad,fang2022dada}; and from
-simulators~\cite{contreras2026laia}. Audits found misaligned videos,
-homography outliers in more than 13\% of DR(eye)VE frames, and blinks and
-saccades among the
-labels~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}. The
-angular error of the gaze itself is rarely verified: DR(eye)VE measured
-tracker error on calibration patterns without reporting
-it~\cite{palazzi2019dreyeve}, Look Both Ways treats the tracker output as
-ground truth~\cite{kasahara2022lookBothWays}, and on-road accuracy figures
-are calibration-time values of remote
-trackers~\cite{stapel2022driverPerception}. Our benchmark adds verified
-physical references during real driving (RQ1).
+Human gaze has been used to supervise end-to-end driving
+policies~\cite{liu2019gazeModel,xia2020periphery,abdelkarim2021ggnet},
+reduce causal confusion in imitation
+learning~\cite{biswas2024gazeSupervision}, and train driver-attention
+models~\cite{palazzi2019dreyeve,xia2018bdda,gopinath2021maad}.
+Existing datasets include wearable gaze recordings from real
+driving, such as DR(eye)VE and Look Both
+Ways~\cite{palazzi2019dreyeve,kasahara2022lookBothWays},
+observations of driving videos~\cite{xia2018bdda,gopinath2021maad,fang2022dada},
+and simulator data~\cite{contreras2026laia}.
+
+These datasets have enabled important advances, but measured gaze
+is generally used as a supervision label without independently
+establishing its angular accuracy during driving. Previous audits
+identified video misalignment, homography outliers and unsuitable
+gaze intervals~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}.
+However, these primarily concern data processing and projection,
+not the underlying wearable gaze accuracy. DR(eye)VE included
+calibration-pattern measurements~\cite{palazzi2019dreyeve},
+while Look Both Ways used the tracker output as a reference
+~\cite{kasahara2022lookBothWays}. Our work complements these
+datasets with manually verified physical fixation targets,
+enabling angular accuracy to be measured directly under
+real driving conditions.
+
 
 \subsection{Wearable Eye-Tracking Accuracy and Influencing Factors}
 
@@ -86,16 +75,26 @@ regression and showed that a mismatch between calibration and viewing
 distance raises error from 1.68\dg{} to 2.44\dg{}. Implicit calibration
 infers the mapping from probable fixation targets and stabilises after
 about 50 fixations on
-screens~\cite{kasprowski2019implicitCalibration,chang2019salgaze}, and
-in-vehicle remote estimators can be personalised from few
-samples~\cite{nagpure2025learningToAdapt}. Closest to our setting, Jia et
-al.~\cite{jia2018gaze} corrected the wearable gaze of three front-seat
-passengers with detected stop signs, assigning targets by gaze proximity
-and reporting errors in pixels; road-object-based correction is therefore
-not new. Two questions remain for supervision data. Can experimentally
-observed dependencies be learned reliably beyond a wearer-specific offset?
-And do corrections fitted on controlled targets transfer to real driving,
-or are references from the operating condition more effective? We address
-both by comparing laboratory- and driving-derived corrections, including
-reference count and model complexity, on the same manually verified
-held-out driving references (RQ3).
+screens~\cite{kasprowski2019implicitCalibration,chang2019salgaze}. 
+Appearance-based in-vehicle gaze estimators have also been
+personalised using sparse reference samples
+~\cite{nagpure2025learningToAdapt}, although these employ
+driver-facing cameras rather than wearable gaze measurements.
+
+
+Closest to our setting, Jia et al.~\cite{jia2018gaze}
+proposed automatic gaze-offset correction using detected
+traffic signs. Their method assumes fixation when measured
+gaze lies near a detected sign and demonstrated reduced
+pixel errors with three passengers in a moving vehicle.
+However, target assignments were not independently verified,
+and the study did not establish angular accuracy on held-out
+real-driving scenes.
+
+Our work builds on this idea through explicit fixation
+descriptions, automated target proposals and comprehensive
+manual verification. The resulting context-rich benchmark
+enables independent angular-error evaluation, systematic
+comparison of laboratory and in-situ calibration, and
+analysis of how few driving references are needed.
+
