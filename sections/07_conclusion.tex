@@ -1,41 +1,54 @@
+
 \section{Discussion and Conclusion}
 \label{sec:conclusion}
 
-\textbf{RQ1: Wearable gaze in real driving.}
-Calibration-free Neon gaze becomes highly accurate in real driving once
-its wearer-specific offset is removed, and a handful of announced
-fixations suffices. Where references come from matters more than how they
-are arranged: condition-matched driving references transfer better than
-chessboard offsets. Our pipeline makes such references cheap to collect,
-so in-situ verification becomes practical rather than a burden.
+\textbf{Real-world measurement and reference acquisition (RQ1).}
+We introduced an integrated pipeline for acquiring, verifying, and
+enriching gaze references during real driving. The resulting benchmark
+contains 245 manually verified fixation scenes from 17 recordings
+with three participants, including synchronized depth, vehicle motion,
+and semantic scene descriptions. Unlike driving-gaze datasets that
+treat tracker estimates as reference labels, our methodology enables
+direct measurement of angular gaze accuracy against identified
+physical targets. The initial errors were substantial, ranging
+from 1.48\dg{} to 6.00\dg{}, but predominantly systematic.
 
-\textbf{RQ2: Robustness and its limits.}
-The controlled study independently confirms broad robustness. The
-exceptions are few and interpretable: distance and lower-field position
-change the systematic offset or precision, and pursuit widens dispersion.
-Offsets also differ between wearers and, for one participant, between
-days. Accuracy should therefore be verified for the current wearer and
-conditions rather than taken from a general specification.
+\textbf{Understanding gaze error (RQ2).}
+Controlled measurements with 11 participants revealed considerable
+wearer-dependent differences. Viewing distance and gaze position
+affected systematic offsets, while pursuit increased target-relative
+dispersion. Importantly, similar changes in bias did not always
+produce the same changes in accuracy. Simple regressions captured
+some individual dependencies, but their benefits over a constant
+offset varied across wearers.
 
-\textbf{RQ3: From measurement to better data.}
-Simple corrections, selected per wearer, improve on an already strong
-baseline, most in dynamic scenes where supervision is hardest. Together
-with suitability flags and sparse in-situ checks, they turn the
-measurement study into an acquisition workflow that delivers corrected,
-quality-annotated gaze.
+\textbf{From controlled calibration to real driving (RQ3).}
+Although chessboard-derived offsets reduced driving errors,
+additional learned correction terms did not consistently improve
+their transfer. In contrast, sparse in-situ references reduced
+median angular error from 3.96\dg{} to 0.76\dg{},
+1.48\dg{} to 0.83\dg{}, and 6.00\dg{} to 1.41\dg{}.
+A simple driving-derived median offset achieved the lowest median
+error among the evaluated methods for all three participants.
+Thus, representative calibration data proved more valuable than
+increasing correction-model complexity.
 
-\textbf{Scope.}
-The driving benchmark covers two participants, one driver and one front
-passenger, and tests on held-out scenes from the same drives, not on new
-drives, days or wearers. Target candidates are searched near the measured
-gaze, and the suitability flags are not yet validated against angular
-error. More wearers, sessions and held-out drives will test how far the
-corrections generalise; our pipeline is built to collect them.
+\textbf{Implications and outlook.}
+The principal contribution is not a new offset estimator, but
+the capability to obtain reliable references where gaze is used.
+Speech-assisted acquisition, automatic target proposals, manual
+verification, synchronized sensor context, and task-aware
+suitability flags form a practical workflow for generating
+quality-annotated gaze data. Repeated reference acquisition also
+provides a basis for in-situ accuracy monitoring and recalibration.
 
-\textbf{Conclusion.}
-Wearable gaze can provide accurate supervision in real driving, and we
-have built the tools to show where and how well. By combining verified
-in-situ references, a driving-motivated controlled characterisation,
-sparse correction and multimodal suitability annotation, this work moves
-towards scalable gaze-supervision datasets whose measurement quality is
-evaluated rather than assumed.
+While our driving evaluation uses held-out scenes from recorded
+daytime drives, the pipeline provides a foundation for expanding
+the dataset across participants and conditions. Future work will
+investigate gaze-derived relevance supervision for BEV
+representations, graph-based reasoning, end-to-end driving, and
+world models.
+
+Overall, this work moves wearable gaze supervision from
+assuming measurement accuracy toward systematically measuring,
+improving, and monitoring it in its intended environment.
