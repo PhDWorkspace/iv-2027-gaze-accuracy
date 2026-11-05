@@ -1,80 +1,94 @@
-\section{Controlled Investigation of Influencing Factors}
+\section{Controlled Investigation of Gaze Error}
 \label{sec:controlled}
 
-Which conditions change Neon's error, and which do not (RQ2, C2)? The
-controlled study varies one driving-relevant factor at a time.
-Table~\ref{tab:factors} summarises all factors, and
-Fig.~\ref{fig:controlled} shows the principal effects. Errors here are
-uncorrected, because we ask how conditions change the error, not how
-small it can be made.
-
-\begin{table*}[t]
-\centering
-\caption{Controlled factors and findings. Rec.: recordings per factor
-(counts overlap). \textit{Stable}: no detectable change after Holm
-correction, which is not proof of equivalence. $^*$Significant (Holm
-$p<.05$) for the participants named. $^\ddagger$Poorer in every
-participant's median; significant for one participant.
-$^\dagger$Recording setups were not fully matched across days.}
-\label{tab:factors}
-\footnotesize
-\input{figures/tab_controlled_factors}
-\end{table*}
+Studies differ on how illumination, pupil size and gaze position affect
+Neon~\cite{baumann2026neonAccuracy,alecka2026neon,salari2026pupilSize},
+and richer error models need not beat simple
+corrections~\cite{kar2020mlgaze}. We vary driving-relevant factors and ask
+which effects are reproducible, whether they differ between wearers and
+whether they support a correction. We use 247 recordings from 11
+participants: seven mainly recorded static baselines (3--12 recordings),
+four recorded extensively (23--139). Errors are uncorrected; recordings
+are the unit.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]
-    {figures/fig3_controlled_factors.pdf}
-\caption{Principal controlled effects (uncorrected). (a) Accuracy (solid)
-and dispersion (dotted) versus viewing distance. (b) Change in accuracy
-per condition and participant; filled markers are significant after Holm
-correction. (c) Precision in the upper and lower target rows. (d)
-Target-relative dispersion during static fixation and smooth pursuit.}
+\includegraphics[width=\textwidth]{figures/fig5_controlled.pdf}
+\caption{Individual gaze error (uncorrected, static screen targets).
+(a) Median error at 1\,m with interquartile range across recordings;
+open circles: one recording. (b) Median signed offset at 1\,m with
+interquartile ranges. (c) Median vertical offset versus viewing distance.}
 \label{fig:controlled}
 \end{figure*}
 
-\textbf{Robust accuracy across many conditions.}
-For most factors, we detect no change in accuracy
-(Fig.~\ref{fig:controlled}b). Darkening the screen enlarged the pupils by
-0.6--1.2\,mm without a detectable change in accuracy or dispersion.
-Outdoors, pupils shrank from 4.1 to 2.4\,mm, yet accuracy on the same day
-was comparable indoors and outdoors (4.08\dg{} and 3.85\dg{}); only
-dispersion rose slightly. Accuracy did not degrade with eccentricity up
-to 30\dg{}, did not drift over up to eight repetitions within a day, and
-did not change when the fixation order was reversed. These observations
-independently support the robustness reported for
-Neon~\cite{baumann2026neonAccuracy,salari2026pupilSize}, now for
-conditions chosen from driving.
+\subsection{Inter-Individual Variability}
 
-\textbf{Viewing distance shifts the offset.}
-Distance produced the clearest change. From 1 to 4\,m, the median error
-rose from 3.00\dg{} to 3.49\dg{} for P1 and from 0.96\dg{} to 2.27\dg{}
-for P2 (Fig.~\ref{fig:controlled}a). The change is systematic: the gaze
-estimate moves downward with distance, while dispersion stays stable. An
-offset calibrated at 1\,m may therefore not hold for objects tens of
-metres away, which is consistent with the better transfer of
-driving-derived offsets in Sec.~\ref{sec:realworld}, although our data do
-not isolate this mechanism.
+Under one baseline condition (bright screen, 1\,m), the median error
+ranges from 1.03\dg{} to 5.37\dg{} across wearers, while recordings of a
+wearer mostly vary by less than 0.5\dg{} (Fig.~\ref{fig:controlled}a);
+pooling all distances gives 1.08--5.81\dg{}. The differences are mainly
+vertical, with elevation offsets from $-5.1$\dg{} to $+1.9$\dg{}
+(Fig.~\ref{fig:controlled}b). For the six least accurate wearers, the
+constant offset makes up 86--95\% of the error, and dispersion
+(0.24--0.59\dg{}) is small. A pooled average would hide offsets of
+different size and sign.
 
-\textbf{The lower field loses precision.}
-Radial eccentricity did not matter, but vertical position did. Targets in
-the lower row carried a larger bias in two participants, and
-sample-to-sample precision was consistently poorer in the lower row
-(Fig.~\ref{fig:controlled}c). Position in the field of view can thus
-affect both bias and stability even when peripheral accuracy is robust.
+\subsection{Driving-Relevant Influencing Factors}
 
-\textbf{Pursuit widens dispersion, not bias.}
-Following a moving target is common in traffic. During pursuit, accuracy
-and bias stayed comparable to static fixation, but target-relative
-dispersion more than tripled, from 0.27\dg{} to 0.93\dg{}
-(Fig.~\ref{fig:controlled}d). This spread reflects both measurement noise
-and how closely the eye follows the target.
+\begin{table*}[t]
+\centering
+\caption{Controlled factors (uncorrected). $^*$Holm-corrected $p<.05$ for
+the participants named; undetected changes are not proof of equivalence.
+$^\dagger$Board configuration also changed.}
+\label{tab:factors}
+\footnotesize
+\input{figures/tab_section5_factors}
+\end{table*}
 
-\textbf{Implications.}
-Neon is robust across a broad range of driving-relevant conditions. The
-few effects we found are specific and explainable: distance and position
-alter the systematic offset, and dynamics widen the spread. For one
-participant, the offset also differed between recording days. Offsets
-should therefore be verified for the current wearer and session, and
-systematic correction should be separated from temporal noise reduction.
-Section~\ref{sec:transfer} tests both on held-out driving scenes.
+\textbf{Distance shifts the offset downward.}
+From 1 to 4\,m, gaze moved downward for eight of nine wearers
+(Fig.~\ref{fig:controlled}c; significant for P2, P6, P7). Its effect on
+accuracy depends on the initial offset: P2's error rose from 1.03\dg{} to
+2.27\dg{}, whereas P7, whose gaze lies above the targets, improved from
+2.15\dg{} to 1.21\dg{}. Only P5 moved upward, with 1\,m recorded on
+another day.
+
+\textbf{Field position matters for some wearers.}
+In the lower row, gaze lay 0.31--1.92\dg{} lower for five of six wearers
+(significant for P1, P7); error rose for P1 and P3 but fell for P7. P6
+instead shifted horizontally and lost precision.
+
+\textbf{Other factors change the spread, not the offset.}
+Darker screens enlarged pupils by 0.5--1.2\,mm without detected changes;
+vertical shifts below 0.8\dg{} resemble the pupil effect
+in~\cite{salari2026pupilSize} but were not significant. Outdoor recording
+slightly raised dispersion, and pursuit tripled target-relative
+dispersion with a similar offset. No within-day drift was detected; P1's
+offset differed by 1.5\dg{} between days, confounded with the board.
+
+\subsection{Learning the Observed Error Structure}
+
+\begin{table}[t]
+\centering
+\caption{Median error (\dg{}) on held-out recordings, mean of five folds
+(one fold trains). Bold: better than the median offset in all folds.}
+\label{tab:regression}
+\footnotesize
+% P6 values from the benchmark run of 2026-11-05 12:48 (see evals/README.md).
+\input{figures/tab_regression}
+\end{table}
+
+For the four extensively recorded wearers, we compare the median offset
+with linear corrections on gaze position, pupil diameter and inverse
+distance (Table~\ref{tab:regression}); training and test recordings never
+overlap. Position and pupil are available at run time; distance must be
+estimated. Position and distance cut P2's error from 1.41\dg{} to
+0.87\dg{} in every fold, matching the distance-dependent offset. P6 gains
+0.2--0.3\dg{} and P7 0.08\dg{}, whereas P1, with the most training data,
+gains nothing. Pupil terms help one wearer, and ridge regression stays
+within 0.03\dg{} of linear. Simple regressions capture some individual
+dependencies, but their benefit over a constant offset varies between
+wearers.
+
+Controlled gains do not show that a correction helps on the road;
+Section~\ref{sec:transfer} tests this on verified driving references.
