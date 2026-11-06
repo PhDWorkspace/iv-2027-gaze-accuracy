@@ -238,3 +238,19 @@ complete the provenance.
 - The relative motions named in the text are those present in the data: approaching 129, none 45, oncoming 22,
   following 16, passing 16.
 - **Word count:** 501 → 550 (`wc -w`, including the new figure caption, +9.8%).
+
+## H. Owner decisions of 2026-11-06 (override the metadata-derived counts above)
+
+The owner confirmed the following as fixed facts (see `tasks/gaze_accuracy_dataset_rules.md`). The scene metadata
+and the derived tables in this file and in `04_dataset_composition.md` do not yet reflect them:
+
+1. **Distance:** every verified scene has a camera–LiDAR-fused target distance. `scene_metadata.json` still marks
+   62 scenes as `distance_source = camera` (all 50 July scenes, 4 Oct 14, 6 Oct 15, 2 Nov 4), and the July drives
+   have no vehicle run in `driving/associations.csv`.
+2. **GNSS/INS:** synchronised GNSS/INS data are associated with every verified scene. The metadata still has
+   `speed_source = annotated` for 54 scenes (all 50 July scenes and 4 from the first Oct 14 drive).
+3. **Task-suitability flags:** these were applied to the benchmark and validated manually. Their outputs are not
+   stored in the data repository.
+
+**To do:** add the underlying LiDAR and GNSS associations and the suitability outputs for these scenes to the data
+repository, so that the metadata and these records agree with the paper.

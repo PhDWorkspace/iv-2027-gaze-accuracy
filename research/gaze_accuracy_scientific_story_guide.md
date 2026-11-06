@@ -116,7 +116,7 @@ Use the **same held-out on-road scenes** and compare corrections by source and m
 | Correction source | Participant 1 | Participant 2 | Participant 3 |
 |---|---:|---:|---:|
 | No person-specific correction | 3.96° | 1.48° | 6.00° |
-| Pooled chessboard median offset | 0.89° | 1.40° | 1.71° |
+| Pooled chessboard median offset | 0.88° | 1.40° | 1.60° |
 | Median offset from the driving calibration partition (20%) | **0.76°** | **0.83°** | **1.41°** |
 
 **Crucial interpretation:** The greatest payoff came from the **verified in-situ reference source**, not from inventing a new estimator. Do not assert an independently tested causal explanation for the transfer gap. Do not say all three errors are below one degree: two are; the third is near 1.4°.
