@@ -104,7 +104,7 @@ def same_test_scenes():
 
 
 def figure(cs, ref, tr):
-    fig, axes = plt.subplots(1, 2, figsize=(COLUMN, 1.9), layout="constrained", gridspec_kw=dict(width_ratios=[0.85, 1.15]))
+    fig, axes = plt.subplots(1, 2, figsize=(COLUMN, 2.1), layout="constrained", gridspec_kw=dict(width_ratios=[0.85, 1.15]))
     ax = axes[0]
     conditions = [("Raw driving", "none"), ("Chessboard E5 · pooled", "chess-\nboard"),
                   ("Driving · pooled 20%", "driving\n(20%)")]
@@ -135,11 +135,11 @@ def figure(cs, ref, tr):
         pooled = cs[(cs.code == code) & (cs.category == "Driving · pooled 20%")].median_error_deg.iloc[0]
         chess = cs[(cs.code == code) & (cs.category == "Chessboard E5 · pooled")].median_error_deg.iloc[0]
         ax.scatter(10, pooled, marker=MARKERS[code], s=10, color=color, zorder=3)
-        ax.axhline(chess, color=color, linestyle=(0, (3, 2)), linewidth=0.8)
+        ax.axhline(chess, color=color, linestyle=(0, (3, 2)), linewidth=0.8)  # chessboard offset
     ax.set_xticks(ks + [10], [str(k) for k in ks] + ["20%"])
     ax.set_xlabel("driving reference scenes $k$")
     ax.set_ylabel("median error (°)")
-    ax.set_ylim(0, None)
+    ax.set_ylim(0.5, None)
     ax.set_title("(b) in-situ references", loc="left")
     fig.savefig(FIG / "fig6_transfer.pdf")
 
