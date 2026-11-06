@@ -26,9 +26,14 @@ We evaluate corrections on controlled chessboards and real
 driving scenes. Calibration references are obtained from
 individual chessboards (15 targets), pooled chessboard
 recordings, or verified driving fixations.
-On controlled data, we use approximately 20\% of recordings
+For controlled-to-controlled evaluation, we use approximately 20\% of recordings
 for calibration and the remainder for testing across five
 recording-disjoint folds.
+For chessboard-to-driving transfer, we instead pool references
+from approximately 80\% of the available chessboard recordings
+(125 for P1, 23 for P2 and 25 for P6), across five calibration
+folds. We call this \emph{pooled chessboard calibration}, and
+calibration from verified driving fixations \emph{in-situ calibration}.
 
 For all three drivers, the random-scene benchmark uses
 20\% of scenes for calibration and 80\% for testing across
@@ -41,7 +46,7 @@ in both directions. P6 has two recordings on one day;
 P1 underwent factory recalibration between days.
 Held-out recordings receive equal weight, as do scenes within
 each recording and samples within each scene.
-We compare chessboard- and driving-derived corrections
+We compare pooled chessboard and in-situ calibration
 on identical held-out driving scenes in the random-scene
 benchmark. We further vary the number of driving references
 ($k\in\{1,\ldots,8\}$), selected randomly or geometrically

@@ -146,10 +146,10 @@ def figure(cs, ref, tr):
 
 def table(tr, linear):
     """Compact model table, linear models only (ridge results are kept in the md and data exports)."""
-    rows = [("Chessboard", "median offset", tr[(tr.model == "median") & (tr.source == "chessboard")]),
-            ("", "linear, position", tr[(tr.model == "linear_position") & (tr.source == "chessboard")]),
+    rows = [("Pooled", "median offset", tr[(tr.model == "median") & (tr.source == "chessboard")]),
+            ("chessboards", "linear, position", tr[(tr.model == "linear_position") & (tr.source == "chessboard")]),
             ("", "linear, pos.\\,+\\,pupil", tr[(tr.model == "linear_position_pupil") & (tr.source == "chessboard")]),
-            ("Driving", "median offset", tr[(tr.model == "median") & (tr.source == "driving")]),
+            ("In-situ", "median offset", tr[(tr.model == "median") & (tr.source == "driving")]),
             ("(20\\%)", "linear, position", tr[(tr.model == "linear_position") & (tr.source == "driving")]),
             ("", "linear, pos.\\,+\\,pupil", tr[(tr.model == "linear_position_pupil") & (tr.source == "driving")]),
             ("", "linear, pos.\\,+\\,velocity", linear[linear.model == "runtime"])]

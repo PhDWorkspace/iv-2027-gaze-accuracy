@@ -4,30 +4,34 @@
 
 We now investigate whether corrections learned under controlled
 conditions retain their benefits in real driving, and whether
-calibration using driving references is more effective.
+in-situ calibration is more effective.
 The main model comparison uses the original 245-scene,
 17-recording subset, with all corrections scored on the same
 held-out driving scenes of the three driving participants
 (P1, P2, P6). They are fitted either on a participant's
-chessboard recordings or on about 20\% of the driving scenes
-(14--19 per fold), and results are averaged over five folds.
+pooled chessboard references or on about 20\% of the driving
+scenes (14--19 per fold). Results are averaged over five
+driving test folds; pooled chessboard calibration also
+averages over five calibration folds.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig6_transfer.pdf}
 \caption{Correction on held-out driving scenes. (a) Median (marker)
 and P90 (tick) error without correction and with a median offset
-from chessboard recordings or 20\% of driving scenes.
+from pooled chessboard calibration or in-situ calibration
+using 20\% of driving scenes.
 (b) Median error using $k$ random driving references (line:
 mean of five folds; band: fold range) compared with the
-chessboard offset (dashed).}
+pooled chessboard offset (dashed).}
 \label{fig:transfer}
 \end{figure}
 
 \begin{table}[t]
 \centering
 \caption{Median and P90 error (\dg{}) on the same held-out driving
-scenes, mean of five folds.}
+scenes, averaged over five driving test folds and, for pooled
+chessboard calibration, five calibration folds.}
 \label{tab:transfer}
 \footnotesize
 \input{figures/tab_transfer_models}
@@ -35,7 +39,7 @@ scenes, mean of five folds.}
 
 \subsection{Do Controlled Corrections Transfer to Driving?}
 
-A chessboard offset removes most of the systematic driving error,
+A pooled chessboard offset removes most of the systematic driving error,
 from 3.96\dg{} to 0.88\dg{} for P1 and from 6.00\dg{} to
 1.60\dg{} for P6 (Fig.~\ref{fig:transfer}a); for P2,
 whose offset is small, it barely helps.
@@ -46,23 +50,23 @@ and only P2 gains slightly (0.09\dg{}).
 Controlled improvements therefore do not necessarily transfer
 to the road.
 
-\subsection{Sparse In-Situ Correction}
+\subsection{Sparse In-Situ Calibration}
 
 Our verified driving fixations allow the same median offset
 to be estimated in the operating condition itself.
 An offset from 20\% of the driving scenes reduces the median
 error to 0.76\dg{}, 0.83\dg{} and 1.41\dg{}, 44--81\%
-below uncorrected gaze, outperforming the chessboard offset
+below uncorrected gaze, outperforming the pooled chessboard offset
 for all three participants.
 Few references suffice (Fig.~\ref{fig:transfer}b):
-one random scene already beats the chessboard offset for P2,
+one random scene already beats the pooled chessboard offset for P2,
 and about four scenes match or beat it for everyone;
 more scenes mainly stabilise the estimate.
 Geometric layouts differ from random selections by at most
 0.05\dg{}.
 
 \noindent\textbf{Transfer across recordings and days.}
-We further evaluated whether driving-derived median offsets
+We further evaluated whether in-situ median offsets
 transfer to separate recordings, using random 20\% scene
 pooling as the benchmark (Table~\ref{tab:recording_transfer}).
 This additional evaluation includes a second P6 recording
