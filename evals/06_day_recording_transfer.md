@@ -1,5 +1,7 @@
 # Driving median offset: transfer across recordings and days
 
+> **Updated comparison:** [Fair recording and day transfer](06_fair_recording_transfer.md) uses the current measurements, including Stefan’s two actual recordings, a common one-recording → other-recordings protocol, and a minimum calibration-reference count. The historical results below remain unchanged.
+
 **Generated:** 2026-11-06 with `scripts/make_day_recording_transfer.py` (horuspy-dev image, horuspy `src` read-only).
 The dataset is read-only; the outputs are only `evals/data/06_day_recording_transfer_{splits,summary}.csv`.
 
