@@ -54,6 +54,7 @@ benchmark. We further vary the number of driving references
 
 \textbf{Statistics.}
 Controlled comparisons use paired Wilcoxon, Kruskal--Wallis,
-and Spearman tests with Holm correction. Driving corrections
-use paired scene-level tests with Holm correction. We report
-fold-level variability where appropriate.
+and Spearman tests with Holm correction. Driving comparisons average each scene's error over its test folds
+before paired tests, with Holm correction per participant and
+research question. We report 95\% scene-bootstrap confidence
+intervals and fold ranges; these describe the observed benchmark.

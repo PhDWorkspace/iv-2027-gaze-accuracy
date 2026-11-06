@@ -58,7 +58,11 @@ to be estimated in the operating condition itself.
 An offset from 20\% of the driving scenes reduces the median
 error to 0.76\dg{}, 0.83\dg{} and 1.43\dg{}, 44--81\%
 below uncorrected gaze, outperforming the pooled chessboard offset
-for all three participants.
+for all three participants. Paired mean scene-error reductions
+are 0.07\dg{} [0.02, 0.11], 0.58\dg{} [0.47, 0.68] and
+0.20\dg{} [0.13, 0.27] for P1, P2 and P6 (95\% bootstrap
+intervals). These compare fold-averaged scene errors rather than
+the recording-weighted medians in Table~\ref{tab:transfer}.
 Few references suffice (Fig.~\ref{fig:transfer}b):
 one random scene already beats the pooled chessboard offset for P2,
 and about five scenes match or beat it for everyone;
@@ -77,7 +81,7 @@ for P1 and P2, although P1's comparison includes factory
 recalibration. P6's two recordings were acquired on one day,
 so day transfer cannot be assessed for P6.
 
-\begin{table}[!h]
+\begin{table}[t]
 \centering
 \caption{Corrected median angular error ($^\circ$)
 on held-out driving scenes, averaged over splits.
@@ -105,7 +109,10 @@ do not consistently improve the median error
 For P6, position and gaze velocity lower median error from
 1.43\dg{} to 1.35\dg{} and P90 from 4.29\dg{} to
 3.58\dg{}, improving both measures in four of five folds.
-P1's and P2's mean P90 errors do not improve.
+P1's and P2's mean P90 errors do not improve. The in-situ
+offset also leaves P6's P90 above the chessboard result
+(4.29\dg{} versus 3.97\dg{}): lower median error does not
+imply a uniformly better error distribution.
 In the evaluated conditions, the main gain thus comes
 from representative in-situ references rather than model
 complexity. Recording transfer supports reuse for these

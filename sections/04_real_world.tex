@@ -2,12 +2,9 @@
 \section{Real-World Driving Benchmark}
 \label{sec:realworld}
 
-The reference-acquisition methodology described in
-Section~III enables gaze accuracy to be measured against
-verified physical targets during natural driving. We use
-these references to establish a context-rich driving
-benchmark and examine the uncorrected gaze errors
-observed in real traffic.
+The acquisition workflow makes gaze accuracy measurable against
+physical road targets. We first characterise the resulting benchmark
+and the uncorrected errors it reveals.
 
 \subsection{Dataset Composition and Coverage}
 
@@ -15,7 +12,8 @@ The benchmark comprises 266 manually verified fixation
 scenes from 18 public-road recordings (1.69\,h), collected
 across four days with three participants. Each scene
 contains a verified physical target observed for a
-median duration of 1.35\,s.
+median duration of 1.35\,s. P1, P2 and P6 contribute
+79, 73 and 114 scenes from 10, 6 and 2 recordings, respectively.
 
 Unlike conventional driving-attention datasets, each
 scene pairs measured gaze with a verified physical target
@@ -41,13 +39,6 @@ environment and visibility conditions.
     \label{fig:driving_dataset}
 \end{figure}
 
-Figure~\ref{fig:driving_dataset} illustrates three
-representative scenes: approaching a road sign,
-observing a traffic light while stationary, and
-following a moving vehicle. Each example shows the
-independently verified target alongside measured gaze,
-target distance and vehicle motion.
-
 \subsection{Uncorrected Gaze Accuracy}
 
 The verified references reveal substantial differences
@@ -58,25 +49,15 @@ P1, P2 and P6, respectively, on the held-out scenes
 of the evaluation protocol used in Sec.~\ref{sec:transfer}.
 
 These differences are predominantly systematic rather
-than the result of gaze scatter alone. Per scene, the
-magnitude of the median signed offset accounts for
-more than 90\% of the median error. Vertical
+than the result of gaze scatter alone. For each participant, the norm of the median scene offset
+divided by the median scene error exceeds 90\%. Vertical
 bias is particularly pronounced, reaching
 $-3.77^\circ$ for P1 and $-6.03^\circ$ for P6.
 In contrast, median target-relative dispersion is
 0.48$^\circ$, 0.80$^\circ$ and 1.59$^\circ$,
 respectively.
 
-Thus, even when gaze measurements are comparatively
-concentrated, their estimated location can deviate
-substantially from the intended physical target.
-The benchmark makes these discrepancies observable
-under actual driving conditions rather than inferring
-them from laboratory measurements.
-
-The strong wearer-dependent differences motivate
-a closer investigation of the factors influencing
-gaze bias and variability. Section~V examines these
-effects under controlled conditions before
-Section~VI evaluates which corrections transfer
-back to real driving.
+Concentrated gaze measurements can therefore remain displaced
+from the intended target. These wearer-dependent offsets motivate
+the controlled investigation in Section~V, before Section~VI tests
+which corrections help during driving.

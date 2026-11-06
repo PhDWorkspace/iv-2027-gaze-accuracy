@@ -1,55 +1,34 @@
-
 \section{Discussion and Conclusion}
 \label{sec:conclusion}
 
-\textbf{Real-world measurement and reference acquisition (RQ1).}
-We introduced an integrated pipeline for acquiring, verifying, and
-enriching gaze references during real driving. The resulting benchmark
-contains 266 manually verified fixation scenes from 18 recordings
-with three participants, including synchronized depth, vehicle motion,
-and semantic scene descriptions. Unlike driving-gaze datasets that
-treat tracker estimates as reference labels, our methodology enables
-direct measurement of angular gaze accuracy against identified
-physical targets. The initial errors were substantial, ranging
-from 1.48\dg{} to 5.97\dg{}, but predominantly systematic.
+We developed an integrated workflow that makes gaze accuracy
+measurable against verified physical targets during public-road
+driving. The resulting benchmark connects target references with
+synchronised depth, vehicle motion and scene context. It reveals
+substantial wearer-dependent errors that are predominantly
+systematic, motivating correction rather than treating tracker
+output as an accurate spatial label.
 
-\textbf{Understanding gaze error (RQ2).}
-Controlled measurements with 11 participants revealed considerable
-wearer-dependent differences. Viewing distance and gaze position
-affected systematic offsets, while pursuit increased target-relative
-dispersion. Importantly, similar changes in bias did not always
-produce the same changes in accuracy. Simple regressions captured
-some individual dependencies, but their benefits over a constant
-offset varied across wearers.
+The controlled study with 11 participants helps explain why a
+single correction rule is insufficient. Viewing geometry shifts
+signed bias, but the same shift can improve one wearer's accuracy
+and worsen another's. Some dependencies can be learned; their
+controlled benefits do not consistently transfer to driving.
+Sparse in-situ references instead provide effective median-offset
+correction for all three driving participants. A velocity model
+further improves P6's median and P90, showing that model complexity
+can help once representative references are available.
 
-\textbf{From controlled calibration to real driving (RQ3).}
-Although pooled chessboard calibration reduced driving errors,
-additional learned correction terms did not consistently improve
-their transfer. In contrast, sparse in-situ references reduced
-median angular error from 3.96\dg{} to 0.76\dg{},
-1.48\dg{} to 0.83\dg{}, and 5.97\dg{} to 1.43\dg{}.
-A simple in-situ median offset provides substantial gains
-for all three participants; adding gaze velocity further
-improves median and P90 error for P6.
-Sparse in-situ references outperformed pooled chessboard
-calibration, supporting calibration in the intended operating conditions.
+These findings concern three participants and explicitly declared
+fixations in daytime driving. They establish neither spontaneous
+attention behaviour nor population-wide accuracy. Object centres
+remain approximations to the exact fixation location, and day-transfer
+evidence is limited. Repeated verified references nevertheless offer
+a practical basis for checking and updating correction where gaze
+is collected.
 
-\textbf{Implications and outlook.}
-The principal contribution is not a new offset estimator, but
-the capability to obtain reliable references where gaze is used.
-Speech-assisted acquisition, automatic target proposals, manual
-verification, synchronized sensor context, and task-aware
-suitability flags form a practical workflow for generating
-quality-annotated gaze data. Repeated reference acquisition also
-provides a basis for in-situ accuracy monitoring and recalibration.
-
-While our driving evaluation uses held-out scenes from recorded
-daytime drives, the pipeline provides a foundation for expanding
-the dataset across participants and conditions. Future work will
-investigate gaze-derived relevance supervision for BEV
-representations, graph-based reasoning, end-to-end driving, and
-world models.
-
-Overall, this work moves wearable gaze supervision from
-assuming measurement accuracy toward systematically measuring,
-improving, and monitoring it in its intended environment.
+The principal contribution is the capability to obtain the
+references needed to measure, understand and reduce gaze error
+in the intended environment. This provides a foundation for future
+gaze-informed BEV, graph-based and world-model supervision, whose
+downstream benefits remain to be tested.

@@ -1,114 +1,80 @@
-
 \section{Introduction}
 \label{sec:intro}
 
-Not everything in a driving scene matters equally---and human gaze offers a way to identify what does. It has been used to supervise end-to-end driving
-policies~\cite{liu2019gazeModel,biswas2024gazeSupervision}, train
-attention-prediction models~\cite{palazzi2019dreyeve,xia2018bdda}, and
-guide vision-language driving systems~\cite{liu2026focusDrive}.
-Recent work on structured road reasoning, compact actor-centric scene
-graphs and relational world models also highlights the value of
-selecting relevant objects and interactions
+Not everything in a driving scene matters equally---and human gaze
+provides an observed attention signal. It has been used to supervise
+end-to-end driving policies~\cite{liu2019gazeModel,biswas2024gazeSupervision},
+train attention-prediction models~\cite{palazzi2019dreyeve,xia2018bdda},
+and guide vision-language driving systems~\cite{liu2026focusDrive}.
+Structured road reasoning, actor-centric scene graphs and relational
+world models similarly emphasise relevant objects and interactions
 ~\cite{wild2026crs,schmidt2025graphpilot,schmidt2026relationalWorld}.
-Human gaze could provide a complementary, observed attention signal for
-such representations, although fixation does not itself establish an
-object's importance or safety relevance. To use gaze as spatial
-supervision, however, we must know how accurately it identifies the
-attended object. At 50\,m, even a one-degree angular error corresponds to
-almost 0.9\,m, potentially associating gaze with a neighbouring road
-object instead.
+Gaze could complement these representations, although fixation does
+not itself establish an object's importance or safety relevance.
+Its use as spatial supervision first requires knowing how accurately
+it identifies the attended object. At 50\,m, a one-degree error
+corresponds to almost 0.9\,m and can associate gaze with a neighbouring
+road object.
 
 Calibration-free wearable trackers such as Pupil Labs Neon make
-naturalistic collection practical without interrupting a drive for
-individual calibration. Laboratory and everyday-environment studies
-report encouraging performance
-~\cite{baumann2026neonAccuracy,foucher2026neon,alecka2026neon},
+collection practical without interrupting a drive for individual
+calibration. Laboratory and everyday-environment studies report
+encouraging performance~\cite{baumann2026neonAccuracy,foucher2026neon,alecka2026neon},
 but typically assess predefined targets at limited distances.
-Driving-gaze datasets provide valuable attention labels from real roads,
+Driving-gaze datasets provide attention labels from real roads,
 video observation and simulation
 ~\cite{palazzi2019dreyeve,kasahara2022lookBothWays,xia2018bdda},
-yet usually treat the measured gaze estimate as the label. Audits have
-identified processing and mapping problems
+yet usually treat measured gaze as the label. Audits have identified
+processing and mapping problems
 ~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext},
-while angular error against the physical object actually fixated during
-real driving remains largely unmeasured. Without such references, neither
-measurement reliability nor the transfer of laboratory corrections can
-be established in the intended environment.
+but angular error against the physical target fixated during driving
+remains largely unmeasured. Without these references, measurement
+reliability and calibration transfer cannot be assessed where gaze
+will be used.
 
-\begin{figure}[!h]
+\begin{figure}[t]
     \centering
     \includegraphics[width=\columnwidth]{figures/fig1_study_overview.png}
-    \caption{Overview of the evaluation framework.
-    (a) Real-world driving with verified fixation targets,
-    LiDAR-derived distance, GNSS/INS measurements and semantic
-    scene segmentation.
-    (b) Controlled experiments investigating viewing distance,
-    illumination and smooth pursuit.
-    (c) Speech-assisted reference acquisition combines target
-    proposals, tracking, ambiguity checks and manual verification
-    to enable angular-error evaluation.}
+    \caption{Evaluation framework: (a) driving with verified physical
+    targets and synchronised vehicle context; (b) controlled viewing
+    geometry, illumination and pursuit experiments; (c) speech-assisted
+    target proposals, tracking and manual verification.}
     \label{fig:framework}
 \end{figure}
 
-We address this missing reference through an assisted acquisition and
-verification workflow during ordinary public-road driving
-(Fig.~\ref{fig:framework}c). Participants verbally identify a physical
-fixation target, for example, ``focusing truck on the right''. Speech recognition identifies the event and target category;
-detection and visual tracking propose and follow candidate objects.
-The measured gaze only guides candidate search, whereas the reference
-position comes from the identified physical target. Every accepted
-assignment is manually verified, with a subset additionally checked
-by a second annotator. Synchronized camera, LiDAR and vehicle-motion
-measurements enrich each reference with distance and driving context.
-This makes it practical to acquire independently localised fixation
-references where gaze is actually used, rather than relying on
-unverified gaze estimates or a laboratory board.
+We address this gap through speech-assisted reference acquisition
+and manual verification during public-road driving
+(Fig.~\ref{fig:framework}). Participants identify a physical target;
+detection and tracking localise it independently of the measured
+gaze coordinate. Synchronised camera, LiDAR and vehicle-motion data
+provide distance and scene context. The same verified references
+allow us to measure error and test correction in the operating
+conditions.
 
-We use these references in a \emph{real-world $\rightarrow$ controlled
-$\rightarrow$ real-world} investigation, structured around three
-research questions:
+Our investigation follows a \emph{real-world $\rightarrow$ controlled
+$\rightarrow$ real-world} progression:
 
 \textbf{RQ1: Can we obtain verified fixation references during real
-driving, and what accuracy do they reveal?}
-Our benchmark characterises uncorrected angular error against physical
-road targets across different viewing distances and traffic situations.
+ driving, and what accuracy do they reveal?}
 
 \textbf{RQ2: Which driving-relevant factors influence error, and are
-their effects consistent and learnable across wearers?}
-Complementary controlled experiments examine individual bias, viewing
-geometry, illumination, pursuit and temporal variability, and test
-whether these dependencies support correction.
+ their effects consistent and learnable across wearers?}
 
 \textbf{RQ3: Do laboratory-derived corrections transfer to driving,
-and what can sparse in-situ references achieve?}
-We compare simple offsets and learned corrections on the same held-out
-driving scenes, varying the source and number of calibration references.
+ and what can sparse in-situ references achieve?}
 
 Our contributions are:
 \begin{itemize}[\IEEEsetlabelwidth{C3}]
-\item[\textbf{C1}] \textbf{A verified, context-rich driving benchmark.}
-We develop a speech-assisted, visually grounded and manually verified
-reference-acquisition workflow, yielding 266 fixation scenes from 18
-public-road recordings of three drivers. Physical targets are
-associated with distance, vehicle motion and scene descriptions. This
-makes wearer-dependent gaze errors measurable under natural driving
-conditions rather than assumed from tracker specifications.
-
-\item[\textbf{C2}] \textbf{A driving-motivated controlled investigation.}
-Across 247 recordings from 11 participants, including the three
-driving participants, we characterise differences in accuracy, signed
-bias, dispersion and precision, and examine condition-dependent changes.
-The study reveals substantial individual variation and tests whether
-learned spatial and pupil-related effects improve on a simple offset.
-
-\item[\textbf{C3}] \textbf{Identifying effective calibration
-strategies for real driving.} We systematically examine
-whether corrections learned under controlled conditions
-transfer to real driving and how calibration source,
-reference selection, and model complexity affect accuracy.
-We identify sparse in-situ calibration as an effective
-strategy, reducing median angular errors from
-3.96\dg{} to 0.76\dg{}, 1.48\dg{} to 0.83\dg{}, and
-5.97\dg{} to 1.43\dg{} with just 20\% of driving scenes.
-These findings establish the value of verified driving
-references beyond increasingly complex correction models.
+\item[\textbf{C1}] \textbf{A verified driving benchmark:}
+an acquisition and verification workflow yielding 266 fixation
+scenes from 18 public-road recordings of three drivers, enriched
+with target distance, vehicle motion and scene descriptions.
+\item[\textbf{C2}] \textbf{A controlled investigation:}
+247 recordings from 11 participants, including the three drivers,
+characterising individual bias and testing whether condition-dependent
+patterns support correction.
+\item[\textbf{C3}] \textbf{A calibration-source comparison:}
+matched held-out driving evaluations showing that sparse in-situ
+references outperform pooled chessboard calibration on median error
+for the three evaluated participants.
+\end{itemize}

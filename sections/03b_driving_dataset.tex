@@ -21,7 +21,7 @@ and vehicle measurements.
 
 \textbf{Reference generation.}
 During driving, participants verbally announce identifiable
-fixation targets, e.g., ``focusing truck on the right''
+fixation targets, e.g., ``fixating the licence plate ahead''
 (Fig.~\ref{fig:framework}c). Whisper transcribes the announcements,
 and Hassil identifies the fixation event and object category.
 An Ultralytics YOLO26 detector, trained on 3,827 annotated
@@ -36,17 +36,16 @@ are automated, with detection or tracking failures labelled
 manually. The verified object centre defines the reference
 independently of the measured gaze coordinates.
 
-Spoken announcements identify candidate fixation targets.
-Knowing the target provides a target-relative reference for
+Knowing the announced target provides a reference for
 identifying intervals with a stable gaze-to-target offset,
 including smooth pursuit. Changes in this offset and eye
 movement speed help distinguish target fixation from looking
 away during driving. All intervals and target assignments
 are manually verified in Pupil Player using gaze overlays
-and infrared eye videos, with a subset of target assignments
-additionally checked by a second annotator. All valid gaze
-samples within the verified intervals are included in the
-evaluation.
+and infrared eye videos; 200 target assignments received a second
+review. Inter-annotator agreement was not quantified. All finite,
+metric-valid gaze and target samples within the verified intervals
+are evaluated.
 
 To minimise reference uncertainty, we select compact,
 well-defined targets such as traffic lights, licence plates
@@ -55,9 +54,10 @@ discrepancy between an on-target fixation and the annotated
 centre. This choice is supported by evidence of accurate
 saccadic targeting and preferred fixation locations near
 object centres~\cite{kowler1995accuracy,nuthmann2010object}.
-The centre provides a geometrically defined reference,
-with residual uncertainty in the observer's exact fixation
-location.
+Across the 266 scenes, annotated boxes have a median angular
+diagonal of 1.28\dg{} (P90: 2.60\dg{}), computed from calibrated
+scene-camera rays. This describes target extent, not measured
+centre-fixation error; the exact fixation location remains uncertain.
 
 
 \textbf{Reference geometry and context.}

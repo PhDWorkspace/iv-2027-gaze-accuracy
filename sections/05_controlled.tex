@@ -2,33 +2,16 @@
 \label{sec:controlled}
 
 
-Previous Neon studies report partly contradictory findings
-regarding the effects of illumination, pupil size, and gaze
-position on measurement accuracy
-~\cite{baumann2026neonAccuracy,alecka2026neon,salari2026pupilSize}.
-To examine these inconsistencies and systematically investigate
-driving-relevant influences, we conducted 247 controlled recordings
-with 11 participants.
-
-All participants contributed static fixation measurements
-to characterize individual accuracy and spatial error patterns.
-Seven completed shorter measurement series at selected
-distances (1, 2, and 4\,m) and illumination conditions.
-Four participants, including the three from our driving
-benchmark, underwent more extensive repeated measurements
-to characterize individual responses to these factors.
-One participant was additionally studied across numerous
-recordings, sessions, and days. Targeted experiments further
-examined smooth pursuit, indoor/outdoor conditions, and
-temporal stability.
-
-This design combines broad inter-individual comparisons
-with detailed repeated measurements, allowing us to assess
-which previously reported effects are reproducible, how
-consistently they occur across wearers, and whether they
-can support useful gaze-error correction.
-
-
+To investigate the wearer-dependent driving errors and differing
+factor effects reported in prior Neon studies
+~\cite{baumann2026neonAccuracy,alecka2026neon,salari2026pupilSize},
+we conducted 247 controlled recordings with 11 participants.
+Seven contributed shorter static series at selected distances
+(1, 2 and 4\,m) and illumination conditions. Four, including the
+three drivers, received more extensive repeated characterisation.
+Targeted tests examined pursuit, outdoor conditions and temporal
+stability. This combines broad wearer comparisons with detailed
+within-wearer measurements; specialised tests have narrower coverage.
 
 \subsection{Different Wearers, Different Errors}
 
@@ -114,13 +97,10 @@ between-day offsets varied for some participants. \\
 
 Finally, we tested whether spatial and pupil-related dependencies
 improve accuracy beyond a per-wearer median offset.
-Regression models were trained on approximately 20\% of each
-wearer's recordings and tested on the remaining recordings,
-repeated across five folds. Additional
-features sometimes helped considerably: combining position and
+With the recording-disjoint protocol of Section~\ref{sec:method_analysis},
+additional features sometimes helped considerably: combining position and
 distance reduced the controlled median error from 1.41\dg{} to
-0.87\dg{} for one wearer, consistently across folds. For others,
-the gain was small or absent. \emph{Learnable laboratory patterns
-are therefore not necessarily useful corrections.}
-Section~\ref{sec:transfer} tests this directly on independently
-verified driving references.
+0.87\dg{} for P2, consistently across folds. For others, the gain was small or absent. Thus, conditions can
+shift bias without a universal effect on accuracy, and fitting
+those shifts does not guarantee a useful correction. We next test
+whether the controlled benefits survive driving.
