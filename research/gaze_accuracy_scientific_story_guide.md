@@ -31,7 +31,7 @@ This paper is **not** primarily a new regression, object detection, or segmentat
 - **Old:** A list of experiments and mostly nonsignificant factor tests.  
   **Now:** An intuitive discovery: **wearers have different offsets; conditions can shift them; identical shifts do not imply identical accuracy consequences**.
 - **Old:** Chessboard corrections are ineffective.  
-  **Now:** **Simple chessboard median offsets can help considerably**, but additional learned features do not consistently carry their controlled advantages into driving, and driving-derived offsets perform best on median error in the evaluated benchmark.
+  **Now:** **Simple chessboard median offsets can help considerably**, but additional learned features do not consistently carry their controlled advantages into driving, and sparse in-situ offsets outperform pooled chessboard calibration; a velocity model further improves P6’s median and P90 error.
 - **Old:** More advanced correction models are the improvement.  
   **Now:** **Representative in-situ reference acquisition is the improvement**; regression is an informative test of whether controlled error patterns transfer.
 - **Old:** Quality filtering and vehicle integration are separate contributions.  
@@ -63,7 +63,7 @@ Use prior graph/VLM/BEV/world-model work only as *motivation*. Do not turn this 
 |---|---|---|
 | **RQ1 — Real-world measurement** | Can we acquire trustworthy gaze references during real driving, and what is uncorrected accuracy? | Speech-assisted target declarations, independent physical-target localization, automatic consistency checks and comprehensive manual review enable a richly annotated driving benchmark. It exposes substantial person-dependent baseline errors. |
 | **RQ2 — Controlled characterization and learnability** | Which driving-relevant factors influence gaze error, are their effects consistent between wearers, and can simple models learn them? | A complementary 11-participant controlled study shows broad differences in systematic bias, important distance/position dependencies, increased target-relative pursuit dispersion, and inconsistent additional gains from regression. |
-| **RQ3 — Transfer and practical correction** | Do laboratory-learned corrections improve gaze in real driving, and can sparse in-situ references do better? | On the *same held-out driving scenes*, pooled chessboard offsets help, but extra regression terms do not consistently transfer; sparse driving-derived median offsets attain the lowest median error among tested approaches for all three benchmark participants. |
+| **RQ3 — Transfer and practical correction** | Do laboratory-learned corrections improve gaze in real driving, and can sparse in-situ references do better? | On the *same held-out driving scenes*, pooled chessboard offsets help, but extra regression terms do not consistently transfer; sparse driving-derived median offsets outperform pooled chessboard calibration for all three benchmark participants; a velocity model further improves median and P90 error for P6. |
 
 **Do not pre-answer RQ3 in the controlled section.** Section V creates the question, Section VI answers it. State accuracy-monitoring as a capability enabled by repeated verified references, not a fourth RQ claiming validated continuous operation.
 
@@ -81,7 +81,7 @@ What makes the data distinct: independently verified fixation reference coordina
 
 **Then deliver an empirical result.** The verified benchmark reveals large, predominantly systematic raw error, with considerable differences across participants. This is the reason to ask which variables influence bias and whether correction can be learned. Do **not** use Section IV only to describe CoTracker/optical-flow implementation details.
 
-**Current acquisition totals (2026-11-06):** 266 manually verified scenes, 18 evaluated road recordings, three participants, and 76,645 gaze samples across four dates. Stefan contributes two recordings on one day. The main model comparison retains the original 245-scene, 17-recording subset (raw median errors **3.96°, 1.48°, and 6.00°**); the recording-transfer evaluation includes his additional 21-scene recording. See `evals/06_fair_recording_transfer.md` and `evals/data/04_current_dataset_totals.json`. Keep the full dataset and evaluated subsets distinct, and keep exact recording roles accurate without making them the principal Results story.
+**Current acquisition and evaluation totals (2026-11-06):** 266 manually verified scenes, 18 evaluated road recordings, three participants, and 76,645 gaze samples across four dates. Stefan contributes two recordings on one day. The main model comparison, reference-count analysis, and recording-transfer evaluation all include both recordings (114 scenes for Stefan). Raw held-out medians are **3.96°, 1.48°, and 5.97°**; 20% in-situ median-offset results are **0.76°, 0.83°, and 1.43°**. A position-plus-velocity model improves Stefan's median to **1.35°** and P90 to **3.58°**. See `evals/06_transfer_to_driving.md`, `evals/06_fair_recording_transfer.md`, and `evals/data/04_current_dataset_totals.json`. Keep exact recording roles accurate without making them the principal Results story.
 
 **End-of-act question:** Why are these wearer-dependent offsets so different, and do known viewing factors explain them?
 
@@ -109,15 +109,15 @@ Use the **same held-out on-road scenes** and compare corrections by source and m
 
 1. **Transfer from controlled measurements.** Pooled chessboard median offsets reduce driving error appreciably. Additional chessboard-trained position/pupil regressions do **not consistently improve** that transfer. Do not claim chessboard calibration fails, or that every learned model is worse.
 2. **Sparse in-situ calibration.** A few verified driving references provide strong improvements, and results improve/stabilize with more reference scenes. Random reference selection is competitive with the tested geometric strategies. The 20% calibration subset and the 80% held-out evaluation subset must remain disjoint.
-3. **Model complexity versus reference quality.** Driving-trained linear/Ridge corrections do not beat the simple driving-derived median in **median angular error** across the three benchmark participants, though certain models may improve tail (P90) error for an individual. Keep that nuance in a sentence or small table, not a full model-ranking narrative.
+3. **Model complexity versus reference quality.** Driving-trained linear/Ridge corrections do not consistently beat the simple driving-derived median across participants. For P6, position plus velocity improves both median and P90 error; retain this benefit explicitly. Keep that nuance in a sentence or small table, not a full model-ranking narrative.
 
 **Representative snapshot to verify against the current final evaluations:**
 
 | Correction source | Participant 1 | Participant 2 | Participant 3 |
 |---|---:|---:|---:|
-| No person-specific correction | 3.96° | 1.48° | 6.00° |
-| Pooled chessboard median offset | 0.88° | 1.40° | 1.60° |
-| Median offset from the driving calibration partition (20%) | **0.76°** | **0.83°** | **1.41°** |
+| No person-specific correction | 3.96° | 1.48° | 5.97° |
+| Pooled chessboard median offset | 0.88° | 1.40° | 1.51° |
+| Median offset from the driving calibration partition (20%) | **0.76°** | **0.83°** | **1.43°** |
 
 **Crucial interpretation:** The greatest payoff came from the **verified in-situ reference source**, not from inventing a new estimator. Do not assert an independently tested causal explanation for the transfer gap. Do not say all three errors are below one degree: two are; the third is near 1.4°.
 
@@ -278,6 +278,6 @@ The paper gives the **selected evidence**, not all numerical tables. The `evals/
 
 ## 13. Reusable master instruction for Codex / Claude
 
-> Use this guide as the editorial contract for the IEEE IV 2027 gaze-accuracy paper. Preserve the three-stage argument: **(IV) verified, context-rich real-driving reference acquisition reveals a substantial accuracy problem; (V) the controlled study characterizes wearer-specific bias and investigates whether its dependencies can be learned; (VI) a direct real-driving transfer benchmark shows that sparse in-situ references and a simple median offset outperform the evaluated more elaborate alternatives on median error.** Keep the dataset-acquisition and manual-verification capability prominent as the enabling contribution, not just a list of software components. Use a handful of meaningful numbers and memorable figures, not participant-by-participant narration. Show that chessboard median correction can help but added learned terms do not consistently transfer; acknowledge that some models improve selected controlled or upper-tail metrics. Describe quality flags and monitoring as capabilities with explicit evidence boundaries. Ground every specific result in the latest evaluation data, preserve complete numbers in `evals/`, and keep conclusions positive, proportional and reproducible. Modern graph/VLM/BEV/world-model motivation belongs in the Introduction and outlook, not as an untested downstream performance claim.
+> Use this guide as the editorial contract for the IEEE IV 2027 gaze-accuracy paper. Preserve the three-stage argument: **(IV) verified, context-rich real-driving reference acquisition reveals a substantial accuracy problem; (V) the controlled study characterizes wearer-specific bias and investigates whether its dependencies can be learned; (VI) a direct real-driving transfer benchmark shows that sparse in-situ references and a simple median offset outperform pooled chessboard calibration, with a further median/P90 benefit from a velocity model for P6.** Keep the dataset-acquisition and manual-verification capability prominent as the enabling contribution, not just a list of software components. Use a handful of meaningful numbers and memorable figures, not participant-by-participant narration. Show that chessboard median correction can help but added learned terms do not consistently transfer; acknowledge that some models improve controlled metrics and that a velocity model improves both median and P90 error for P6. Describe quality flags and monitoring as capabilities with explicit evidence boundaries. Ground every specific result in the latest evaluation data, preserve complete numbers in `evals/`, and keep conclusions positive, proportional and reproducible. Modern graph/VLM/BEV/world-model motivation belongs in the Introduction and outlook, not as an untested downstream performance claim.
 
 **Final take-home message:** *A carefully verified in-situ data-acquisition pipeline enables us to measure real-driving gaze error, understand the important wearer-dependent influences, and reduce substantial systematic errors through sparse, representative references—creating a practical foundation for future quality-aware human-attention supervision.*

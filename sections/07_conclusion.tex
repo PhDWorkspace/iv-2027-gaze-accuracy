@@ -11,7 +11,7 @@ and semantic scene descriptions. Unlike driving-gaze datasets that
 treat tracker estimates as reference labels, our methodology enables
 direct measurement of angular gaze accuracy against identified
 physical targets. The initial errors were substantial, ranging
-from 1.48\dg{} to 6.00\dg{}, but predominantly systematic.
+from 1.48\dg{} to 5.97\dg{}, but predominantly systematic.
 
 \textbf{Understanding gaze error (RQ2).}
 Controlled measurements with 11 participants revealed considerable
@@ -27,9 +27,10 @@ Although pooled chessboard calibration reduced driving errors,
 additional learned correction terms did not consistently improve
 their transfer. In contrast, sparse in-situ references reduced
 median angular error from 3.96\dg{} to 0.76\dg{},
-1.48\dg{} to 0.83\dg{}, and 6.00\dg{} to 1.41\dg{}.
-A simple in-situ median offset achieved the lowest or
-near-lowest median error (within 0.05\dg{}) for all three participants.
+1.48\dg{} to 0.83\dg{}, and 5.97\dg{} to 1.43\dg{}.
+A simple in-situ median offset provides substantial gains
+for all three participants; adding gaze velocity further
+improves median and P90 error for P6.
 Sparse in-situ references outperformed pooled chessboard
 calibration, supporting calibration in the intended operating conditions.
 

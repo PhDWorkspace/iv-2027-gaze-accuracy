@@ -1,0 +1,5 @@
+{"participants": ["william", "katharina", "stefan"], "seed": 42, "repeats": 20,
+ "models": [{"name": "median"}],
+ "protocols": [
+  {"name": "scene_blocks", "train": {"domain": "driving", "split": "blocks", "folds": 5, "train_blocks": 1}, "select": ["all", "single", "random", "pattern"],
+   "test": {"domain": "driving", "exclude_same": "unit"}, "unit_errors": ["E0", "E1", "E2", "E3", "E5"]}]}

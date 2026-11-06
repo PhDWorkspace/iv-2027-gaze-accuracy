@@ -1,6 +1,6 @@
 """Generate Section VI (transfer to driving) figure, table and data exports.
 
-Usage: python scripts/make_section6.py /path/to/data evals/data/06_transfer_regression_run
+Usage: python scripts/make_section6.py /path/to/data transfer_run [offset_root] [linear_runtime_run]
 
 Reads only existing evaluation outputs (nothing in the dataset is written):
   <data>/gaze_accuracy/offset/analysis/category_summary.csv  fold-matched driving comparison (raw, chessboard, driving)
@@ -20,9 +20,11 @@ import numpy as np
 import pandas as pd
 from matplotlib import font_manager
 
-DATA = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/william/data") / "gaze_accuracy/offset"
-TRANSFER_REGRESSION = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("evals/data/06_transfer_regression_run")
 ROOT = Path(__file__).resolve().parents[1]
+CURRENT = ROOT / "evals/data/06_current_driving/offset"
+DATA = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(sys.argv[1]) / "gaze_accuracy/offset" if len(sys.argv) > 1 else CURRENT
+TRANSFER_REGRESSION = Path(sys.argv[2]) if len(sys.argv) > 2 else CURRENT / "runs/transfer_regression"
+LINEAR_RUNTIME = Path(sys.argv[4]) if len(sys.argv) > 4 else CURRENT / "runs/linear_runtime"
 FIG, EXPORT = ROOT / "figures", ROOT / "evals/data"
 DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6"}
 COLORS = {"P1": "#2f6aa3", "P2": "#eb6834", "P6": "#1baf7a"}
@@ -184,7 +186,7 @@ if __name__ == "__main__":
     tests[tests.participant.isin(DRIVERS)].assign(code=lambda t: t.participant.map(DRIVERS)).to_csv(
         EXPORT / "06_driving_scene_tests.csv", index=False)
     figure(cs, ref, tr)
-    linear = pd.read_csv(ROOT / "evals/data/06_linear_runtime_run/share_20/summary.csv")
+    linear = pd.read_csv(LINEAR_RUNTIME / "summary.csv")
     linear["code"] = linear.participant.map(DRIVERS)
     linear.to_csv(EXPORT / "06_driving_linear_runtime_features.csv", index=False, float_format="%.4f")
     table(tr, linear)

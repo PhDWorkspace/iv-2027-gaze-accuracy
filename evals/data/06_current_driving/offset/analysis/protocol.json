@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "runs": "/home/william/data/gaze_accuracy/offset/runs",
+    "units": "/home/william/data/gaze_accuracy/offset/units"
+  },
+  "unit": {
+    "RQ1": "calibration board",
+    "RQ2/RQ3/RQ5": "held-out driving scene (mean over its 4 test folds)",
+    "RQ4a": "calibration board",
+    "RQ4b": "calibration scene x fold"
+  },
+  "tests": "Wilcoxon signed-rank (paired), Kruskal-Wallis (groups), Holm per participant and RQ; levels need >= 3 units",
+  "ci": "95% percentile bootstrap of the mean over units, 2000 resamples, seed 42",
+  "sign": "difference = a - b; negative = a better"
+}

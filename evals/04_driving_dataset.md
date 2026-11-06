@@ -1,5 +1,8 @@
 # Section IV data basis: real-world driving dataset and reference acquisition
 
+> **Current evaluation update (2026-11-06):** all driving model comparisons now include 266 scenes from 18 recordings. P6 contributes 114 scenes and 23,300 samples from two recordings on one day. Updated held-out raw / chessboard / in-situ medians for P6 are 5.97° / 1.51° / 1.43°; his median elevation bias is −6.03° and median target-relative dispersion is 1.59°. The current raw tables are `data/04_scene_raw_errors.csv` and `data/04_driver_raw_summary.csv`. The detailed narrative below is a historical 245-scene snapshot; current correction results are documented in [Section VI evaluation](06_transfer_to_driving.md).
+
+
 **Extracted:** 2026-11-05 (Claude Code, for William Engel). **Purpose:** the evidence behind Section IV
 ([sections/04_real_world.tex](../sections/04_real_world.tex)). This file keeps three kinds of statement apart:
 facts read from data, statistics derived from them, and interpretation. **Unverified** items are flagged explicitly.

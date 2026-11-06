@@ -1,0 +1,1114 @@
+{
+  "spec": {
+    "participants": [
+      "william",
+      "katharina",
+      "stefan"
+    ],
+    "seed": 42,
+    "repeats": 20,
+    "keep_fraction": 0.6,
+    "models": [
+      {
+        "name": "median"
+      }
+    ],
+    "protocols": [
+      {
+        "name": "board_to_all_scenes",
+        "train": {
+          "domain": "chessboard",
+          "split": "each_board"
+        },
+        "select": [
+          "single",
+          "all",
+          "pattern",
+          "random"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "all"
+        }
+      },
+      {
+        "name": "folds_to_all_scenes",
+        "train": {
+          "domain": "chessboard",
+          "split": "recording_folds",
+          "folds": 5
+        },
+        "select": [
+          "all"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "all"
+        }
+      },
+      {
+        "name": "board_to_scene_blocks",
+        "train": {
+          "domain": "chessboard",
+          "split": "each_board"
+        },
+        "select": [
+          "single",
+          "all",
+          "pattern",
+          "random"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "blocks",
+          "folds": 5,
+          "train_blocks": 1
+        },
+        "unit_errors": [
+          "E4"
+        ]
+      },
+      {
+        "name": "folds_to_scene_blocks",
+        "train": {
+          "domain": "chessboard",
+          "split": "recording_folds",
+          "folds": 5
+        },
+        "select": [
+          "all"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "blocks",
+          "folds": 5,
+          "train_blocks": 1
+        },
+        "unit_errors": [
+          "E5"
+        ]
+      }
+    ]
+  },
+  "spec_path": "/workspaces/horuspy/scripts/offset_benchmark/specs/transfer.json",
+  "sources": [
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-21-17-52-39_b48488b7/dataset.csv",
+      "sha256": "9578f7d97e99f6d586865910152f7908d92d675ad07b4d7c4a2ff44c9e217df4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-21-17-53-31_c932b9f7/dataset.csv",
+      "sha256": "65fc4388058681033dd68f83246124c3fe0c778e598b731176f37aad9d0385b6"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-21-17-54-15_c82ee266/dataset.csv",
+      "sha256": "9769375f223e10a1e521acf178ca023ffa9bb625a1d238842e226ad5e35c3a35"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-45-37_56659794/dataset.csv",
+      "sha256": "b08a1ca3003438a248d4983f5bb82391b62edc4bb11f6d873d98762f40b9f334"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-47-42_8bf23aa5/dataset.csv",
+      "sha256": "c3af40a3c75f9194b5b7f3884875b37fe115c167f1a477356a3aa63a15d7586a"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-48-29_4c9fbd72/dataset.csv",
+      "sha256": "130ec25297e5312aba66ca8bd6d14c2c2e42b2c059b9410b2aae8e8d99d4d10e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-50-23_4ecba3bd/dataset.csv",
+      "sha256": "b60cd45af04c5a07b7e9b9f619c1ca10dfe16c2b3a1fa107ab1f1b3eece64370"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-51-36_9e2e4742/dataset.csv",
+      "sha256": "7606b70dae5da466703841a3e78d3ec50f282aab4e23addbbf149e85eac5e5d0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-52-15_0cbc2606/dataset.csv",
+      "sha256": "08190e601c8c912bf8d12d42748eef5e5e94df221182f25b7a898894054129de"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-52-50_3aa1e9b9/dataset.csv",
+      "sha256": "88e0730b17e2bcf7490aa16d7377860114e95fe30316de0e94068dc7124289e6"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-53-32_7128dab8/dataset.csv",
+      "sha256": "a2b55f50ad9289931b4d9c20167cd051aee157179f27c466669cb671c11b3045"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-54-15_cc2b0a34/dataset.csv",
+      "sha256": "a55288a6d1a2c372354a3d75b405626921f01435517ce57b9954eb60df265ae3"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-54-54_ef8f3b9c/dataset.csv",
+      "sha256": "4588ca125af18e029291bb8803964510081c99ee9e3ad69c468e2bd4e8231ee4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-55-54_df5599cb/dataset.csv",
+      "sha256": "65523cc7c7b29b4394bfa08ad4ffc6d4a641bafb63382c609939e10510475c7f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-56-37_a29de340/dataset.csv",
+      "sha256": "70a81435853e4cd0f8ca5af3e4728dd22cdaf57ca9da0fe83b8eef538e8f2a89"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-57-13_7e11c20b/dataset.csv",
+      "sha256": "9dd5ab4e3ecd124009c6ef164a8cc1047c43481b30a59599fa9d627773fb988f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-58-09_acb6059f/dataset.csv",
+      "sha256": "65345887cd176f78f3aa147266b9b22f6ec57f9a2e321a7952406b42f2b22046"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-58-43_93666f18/dataset.csv",
+      "sha256": "29f19296d41ac5811bc3ebf1b95b98b4718ddd42633ac3dab63d426f9eafe2ee"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-59-15_aa8619bb/dataset.csv",
+      "sha256": "a809c691bf9e34a923721f5458a0fb76ca8fd099310d90259f296ed1954a1e2d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-09-59-47_39260619/dataset.csv",
+      "sha256": "f6326ac047737fded853a69f3cd00543bb425de02e26c986b4ae31c9314b6bd4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-10-00-35_71823469/dataset.csv",
+      "sha256": "625a8d8e6a0c2a40b21a66d93864db56e31ffac9d8ac9b37a529867edbf6c8e9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-10-01-08_93b55281/dataset.csv",
+      "sha256": "769df13b3670cda925f743ed255c332ecf64b3602fc545c1f75d44ceaab8f507"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Katharina-Winter_2026-10-30-10-01-40_7059246d/dataset.csv",
+      "sha256": "d8631919a264d365cd6e0b12e0d467d1f6c60e5ef16f308275041ed6a5dda35e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-14-37_58bed540/dataset.csv",
+      "sha256": "66622d09000170cbef549c36bb8e2c290e6dab55c00623bdadd1256164a82c35"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-15-47_3349efe6/dataset.csv",
+      "sha256": "a00a39ed578d0b40ed645cb45d978a4f2540b2effd848701c26e7e77787087ad"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-16-48_faa40ed9/dataset.csv",
+      "sha256": "92cd8add5f5feb5afe0ba5f3f4eebe5a0350ef808dcc94aa919c92542235e86d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-13-59_9786fcfd/dataset.csv",
+      "sha256": "ddacbcd1ba656fdc99d4af51c4fb013c8c903502c90923f26b6fde865cf13d03"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-16-49_b10623cc/dataset.csv",
+      "sha256": "4f6f40d5ff56c93f90802384c2d4c7bbf027f3c328a402505a434c713fecad25"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-18-09_b2c36b68/dataset.csv",
+      "sha256": "190e63c8405b8be1f203b006919d3e864174638a61aab36e2e71a9ddb7e0c6f2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-19-10_0b6b0270/dataset.csv",
+      "sha256": "5d11c8dd2b84b8b1efc46fbdfae21955045b15f9cf22afc1696d1bd14af68225"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-19-56_6271ae9a/dataset.csv",
+      "sha256": "fcd5d9aab05046758a2e7b053d9f835e76fcb69729eeebfa1230eabab3a33927"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-20-38_54ebb072/dataset.csv",
+      "sha256": "e67a5df3fbac6d1bbadb8058efffc58193c3a7a0ea67d870eab4026febff1849"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-24-18_3987ebba/dataset.csv",
+      "sha256": "d1975970c8416dd6f20c2aebea24ecfe198ec33101db61e3417f8e4ab0b327e7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-24-53_af8d8d77/dataset.csv",
+      "sha256": "4a27ecee4ad86373015f5a54d2235aefd81e4526be9b52050c7658cdead266da"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-25-27_07b17fe1/dataset.csv",
+      "sha256": "e84b9f16b1e6c131a27c43780c9d41c4b98b52b5dbb48fc2a2b76155444dd6ac"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-28-41_4d3eb9b4/dataset.csv",
+      "sha256": "27e6e528291487614a01d38bd62bbfa8c350ec3f6882797244985bdbe50af031"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-29-39_f90eca72/dataset.csv",
+      "sha256": "7e43a2fb35c675bfcf6be22e0212a48d8212c02c0e36064eaa4a23d0260b8dc2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-30-19_154cd4f2/dataset.csv",
+      "sha256": "464e02fe5b68bf41f57b48bf86afa75d67f782944b165be678b58ec11c1bfcb4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-31-13_91b55b4d/dataset.csv",
+      "sha256": "365316a4f13f8d6d2b38b74b0bf394f5c49a85f054eb06089f12a0ef908df78e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-31-48_cf430949/dataset.csv",
+      "sha256": "32caf15d7262697b4f52f0c51fc2adc978502c12a3ea27b5c518a0e5263adc60"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-32-22_8f2ab611/dataset.csv",
+      "sha256": "a5b1eaf1ee700b8a55bd322eea1708a82da173811428a4eebbd95d9c9ffe85df"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-33-15_d1958dfd/dataset.csv",
+      "sha256": "6ce11b84c00b4aaea36bb4a58f9baaab054864d99f217695300774448587069e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-36-01_340089d0/dataset.csv",
+      "sha256": "7f7fdec1ceb8626058244d760fa2bacdfbb1c51beda5f3c440ba23d3a8ad4286"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-36-41_824b8fa4/dataset.csv",
+      "sha256": "63860342aafb4f8321ae8437bb0fa2a9750c9e11399edf5762b444b6635b6367"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-09-28-15-23-53_de747f91/dataset.csv",
+      "sha256": "14b3029b187c71d5e42cea331028c1612173c07caf19d0dee513f6cf2c89af53"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-09-28-15-42-34_c3eb249a/dataset.csv",
+      "sha256": "24029463d7e32611401f3ffc338bbdc3831c814cfb07f5cd98ad480f14c9319c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-09-28-16-00-42_980a2d59/dataset.csv",
+      "sha256": "82eac683a4edcda23791bc28a239ba4c4a530a840bfe5faa28561a0c9530dd7c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-10-01-16-49-14_5e399c22/dataset.csv",
+      "sha256": "76ab6b71e1996086587f9388607419bc8c25951f4a7a13f231ec0688ec1bb1bc"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-10-01-17-20-26_6ab0b35f/dataset.csv",
+      "sha256": "64bb581e92779d003ba47a57d4c284c7c618909d248d289014d1b4780e03b67e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-10-01-17-41-15_ce2b6a3b/dataset.csv",
+      "sha256": "bcf37386488f30ace718d4f408b09787b778b7df134c83fa1da68ec64cb8b8bb"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_William_2026-10-01-17-51-05_771379d2/dataset.csv",
+      "sha256": "ccf0942efd1d362a3030cf17bcbde07b7430868c3733f84603213e768cd64740"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-09-28-16-21-25_b5d5fb35/dataset.csv",
+      "sha256": "bf7a79590dbdf5a2138380070457b31f88ad1e03d577916cec7edefc7d5a0ea8"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-09-28-16-37-22_63465610/dataset.csv",
+      "sha256": "bda98e0a0f8b1aa24910db461df9fb5fbd229c8f5f39dd1f7b7d8c30f567a443"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-09-28-16-51-52_3e23b43a/dataset.csv",
+      "sha256": "8baed166aedd3960501df0055efb255f859ab91576f425556455d6b63f730672"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-09-28-16-59-46_b312ec24/dataset.csv",
+      "sha256": "480d1c2f9a2b5f4e9262b145697866591e01cc399067a6dd76f351c7faf77064"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-09-28-17-11-10_bcf5bf42/dataset.csv",
+      "sha256": "ae3fdb3190d668d9846b6d87a77cc4139be74a75e0a2a3c585383f88485bb0b5"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-10-01-18-07-32_f6b99bb5/dataset.csv",
+      "sha256": "e76567f105d179c933ec16702e83528e376452422ca0ed6d618672fefa5fdbd8"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-10-01-18-38-38_4c5d71e8/dataset.csv",
+      "sha256": "0392f5d3b67d2f790860dce03ca3bdb70e1269fe7548cc0f6937f2836df0ae95"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-10-01-18-59-01_3be854b0/dataset.csv",
+      "sha256": "0e4060711e01cb8c2a31054dce7fb131c57eebc1864b6d129ee43db16f6f6685"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-reverse_William_2026-10-01-19-22-40_c3c1cdc5/dataset.csv",
+      "sha256": "82146c8439c336f2c79cf46bb52d487b409896549f7dd2a0d0e22ea48acc926f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-06-05_16dac07d/dataset.csv",
+      "sha256": "fe8f66bbdbacb9c6709c047305614f4d203061a997ca5a0829a96e1c46bbceae"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-07-41_a5dac7fc/dataset.csv",
+      "sha256": "264bbf25e7d2870f24b878cf959a864d8e34d5289ce647cefc7ce782e1252ca0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-08-49_ee0fa682/dataset.csv",
+      "sha256": "000315ffccc0e536aaf657786eb69ae990269512200dcf422d121f40368c1795"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-11-52_ade9c500/dataset.csv",
+      "sha256": "413f68431d55d7da994d9bb5513566a4e87e815a881463a43907caf1353ecb97"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-09-28-15-25-19_716bddc7/dataset.csv",
+      "sha256": "224d6bd98a68ad56ab3bc6e74765ad12a5edb01852b96db6314ee4ad95c5c94e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-09-28-15-41-38_277ef8a0/dataset.csv",
+      "sha256": "3bad2da40f15d09d97550fea74ab1702923927df05a2262a5fe0d89736efc77d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-09-28-16-01-49_88c7895d/dataset.csv",
+      "sha256": "8f9c318ab92280dceff6de7098db930decfd4d8fb1ca7b79b554dc431465e03e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-10-01-16-48-12_67c6de28/dataset.csv",
+      "sha256": "ecc9af9307238e5fe19e4219568a4733ebe446229ff6a307aa555fa4c69a1a66"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-10-01-17-21-29_1326cf74/dataset.csv",
+      "sha256": "1e8fea25f6d59bd25c876b1712c61a8f14b70a768ddc78bbb3d6422b443fa40b"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-10-01-17-40-14_bf60a6aa/dataset.csv",
+      "sha256": "df64cdcea687b3525ec08ca4a7e618bd37c8a8f48c1fba24834840e513ce1595"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_William_2026-10-01-17-53-38_ecf3474b/dataset.csv",
+      "sha256": "71a7ec659fba111a228b7417e01d04bb0804bde8fc35116a5076f0374d319e31"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-09-28-16-20-24_773f17bb/dataset.csv",
+      "sha256": "8ad23ae3ccf1aeb3d37fb7fab99597806a8d32ded3b0a4620b667f78e55ee9f0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-09-28-16-38-40_5ae82eec/dataset.csv",
+      "sha256": "6dea7d639bd5340b03940aa4d7498488a1e6b1fd620b205871099750fff9dbcd"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-09-28-16-50-38_face6f80/dataset.csv",
+      "sha256": "4eb2a103850da4414140357e86bb03d4002a539783c37cbd10fe8ba6b3129488"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-09-28-17-00-49_082a3362/dataset.csv",
+      "sha256": "ac6668934652af805a2d8e9085a3df390ebb3dc785eecbf5e5999376df7db3f5"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-09-28-17-09-58_58a6c357/dataset.csv",
+      "sha256": "2f18170d68541ed365c037ac2f3faecc290a1af5ed81be7fa9c1806348d037e2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-10-01-18-04-58_0f79757b/dataset.csv",
+      "sha256": "a6814a894dc04325d6b97c6553042532651b879219d3738a0dbdddfa9dfb1354"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-10-01-18-40-52_337c76e8/dataset.csv",
+      "sha256": "6559267a908e30820ce4ca771c793145360770f6760070150a990e53dc3730a7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-10-01-18-56-34_bf8bff6e/dataset.csv",
+      "sha256": "9377c191774dcacb9825635ea7e1fbc42f6e8f12a661ff8530b1c4a0babae2c0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-reverse_William_2026-10-01-19-25-18_c39ee33c/dataset.csv",
+      "sha256": "df8dd73382d889aee7fd82808c66c4671e2acb3f4ab21a39ce28782fbe27f1f9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-17-18-38_d0220932/dataset.csv",
+      "sha256": "028a71a4b489a12c507fd55e6941583bda21fb49d72d9a58e1ca700da1fd25d5"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-17-23-34_481c4787/dataset.csv",
+      "sha256": "3ddc797947b6b603636bcd7bef669198efb72d8b2035658c8159aeeb30ff9723"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-17-39-01_5b9435a0/dataset.csv",
+      "sha256": "65bd18894ca733362960cc34e7c17de587eabc3d67140d95b89d29df161aa327"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-17-52-29_403d281c/dataset.csv",
+      "sha256": "55454fdfdbbe9158ebc928943dd72b3187908b8e043a262dc470092c8f3b466c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-18-06-15_46275e20/dataset.csv",
+      "sha256": "b0d74b0bb022d9114ac48466afa7b6d978aca1cef224f55f264b7ee7a8d37829"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-18-39-45_03c5a0a6/dataset.csv",
+      "sha256": "ace0385d5d2ef17a72bab89263b804ff32b96809d689e8c5d2efa1655666887f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-18-57-57_2b619e48/dataset.csv",
+      "sha256": "abff128a714fc9047377268fd0895fbcf7a6857c659f129f973a4094959b55d9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-01-19-23-54_cdbe176c/dataset.csv",
+      "sha256": "bc2f4756b3da2730734ada15259ed7247e7ab1e7a4b5ebe2646eb6cf22469ba7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-32-01_a8db107f/dataset.csv",
+      "sha256": "28ad84e8c094d4ef8d450035d1ce589df3149580c2fc303f24461337ed397577"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-33-46_a39ce61c/dataset.csv",
+      "sha256": "0f1fcaad659f69d87fa716d917c6151e4e92b049028964d71879f2a613c89e30"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-53-39_5c221ab1/dataset.csv",
+      "sha256": "37bc78bfc8a313e53c1640cf6ebefc1323c1c7cd61e8b60af9c2dfbb19253dc9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-54-59_8329a2a3/dataset.csv",
+      "sha256": "62999e913bfaed82ed3c8a6d60e1c4374bd196c5a45b1145da545e582cf03147"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-56-28_e927dd90/dataset.csv",
+      "sha256": "0d4188004b31adaad29be5500469f2c8affe074bbaa07f0a150514f425c7f413"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-21-15-59-35_995e5393/dataset.csv",
+      "sha256": "f43b830d63c5ee4d954efbc5b95b6ee5815e7587e1d11b2d4bebc254084e0842"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-10-56_fb6695e1/dataset.csv",
+      "sha256": "9057afb3b949862e54ff4efb02fa83ae4b4568a879cf9763ad6e8ea154a47dd6"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-15-00_e447ed23/dataset.csv",
+      "sha256": "7a02459fd55c511534d896cae3c576e5ec91567d06cb1bcad11351c62ccdd794"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-15-43_b0e76017/dataset.csv",
+      "sha256": "876e178e2ac1d2aa2d4ed2d5dac62e36d018ec49cb9e43d4e3f5673c50f80666"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-19-35_963c3e9a/dataset.csv",
+      "sha256": "54dc0c2e35fc42acef190e09b40a400c5fc2cdf2d8ad67d102f502daf3f0fb8c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-20-17_281332f4/dataset.csv",
+      "sha256": "153f740f09fc1f6094d0d1a42574443abcc6cd1ac4217c2c45933ee9bca68cb9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-indoor_William_2026-10-30-14-21-33_97c1a0c4/dataset.csv",
+      "sha256": "a96b3505eb4c619e2f9ce6a307487c75e28bc8f38abbd88feaec2b52575d8d72"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-11-59-22_cf9c3b85/dataset.csv",
+      "sha256": "3456228abfb0b6ab94de1624a62d1904a85aceafbd46ce4aa6650d15bbcb7f25"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-00-50_9fac3b01/dataset.csv",
+      "sha256": "b106d50e4231d73f146f854d9a0904907b3db80ccd2eda7d2fd1d969c8342169"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-03-19_1dcdbff3/dataset.csv",
+      "sha256": "7f81515c5f8ef257e13bac1eeac581d15f2a7a1a6de11099254ee6be93951f38"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-05-04_e5d861ca/dataset.csv",
+      "sha256": "e7941d8110b0545751a7f85db15103a5e15f8b8b0367498db4b154018eec73f9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-07-11_2ea48e9d/dataset.csv",
+      "sha256": "86b41992b21adbaf5ba883994097955f280cd3cf493a8065d7f4faca378e2946"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-08-58_94166b35/dataset.csv",
+      "sha256": "374ce31de44fa3f82a41ad9d26d8f1022c09c36afc352312428d0edd8bf6e4c4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-10-44_28e865ae/dataset.csv",
+      "sha256": "2130e446b2847d4dfa42d42e1ece24b47a856dfae4f2f5c996183396de190a6e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-05-12-12-21_83df301a/dataset.csv",
+      "sha256": "3cd8160b2de7e0744e077582b54fc959c0214590a740581f015a4ec05268b041"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-12-16_1e2683b8/dataset.csv",
+      "sha256": "7989137914101fde1eb52296368faf6b04a13cdd72e0e9be6c860c76a2c12afe"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-13-31_d3f1b888/dataset.csv",
+      "sha256": "3c0c17a0868c6a167c8a1a0ab4d6d06a4a847291bdc52544da9aff9cd24c5b7a"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-14-29_fa551281/dataset.csv",
+      "sha256": "e212d8af37284e74796f6a23ecbc930c190a84980927d81c987721a1fbe5059e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-16-03_0944374f/dataset.csv",
+      "sha256": "95a3f2b5d54435c65a6aa1fc6ac24db82be37f84bdf7f7fd22a41acae9c05b5b"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-17-09_6acb5870/dataset.csv",
+      "sha256": "946615944a314d1d93f0d945388d4ee2c22ce6b63305da91a9e5c53ccf035932"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-18-15_8b308bfa/dataset.csv",
+      "sha256": "3301b9727d59c647d3b992e303fac8274a30df4feab905289d3938bda2dbc4f7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-20-47_5ca83420/dataset.csv",
+      "sha256": "c0a3a70060cf792866081dd04a4a5950357e1ca235e6606f0e674b639283fdaf"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-21-38_02f43883/dataset.csv",
+      "sha256": "0b2c23cf992f1287ed5f45c7a74b2824324633ccc5a929fba42005143aa05f83"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-23-00_bbd1e1aa/dataset.csv",
+      "sha256": "7b9c76ba39271150a446cd052633de5e4dfc0327c1b74c1238b89f1435fd78ef"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-24-00_27cb1dd2/dataset.csv",
+      "sha256": "29568e271d25bc3b6b727927b4bac7834d0c9c4437958b1583f7afa223f15cea"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-25-18_c5a26831/dataset.csv",
+      "sha256": "57ab5041658cac32f389640f5f0cb5af29e542039f764462c244aca67160fb85"
+    },
+    {
+      "path": "/home/william/data/controlled/results/printed-chessboard-outdoor_William_2026-10-30-10-26-10_b7d99495/dataset.csv",
+      "sha256": "43fa7536c9376dbf6f465a7650f88dff27ce9b8989da68174f71bb7229b0bfe1"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-20-57-37_43fdc7d0/dataset.csv",
+      "sha256": "de20bd4cb2347f2ab4bd5d5718614c25c6cafd3cdfce8ebb4100a3cec8f46428"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-20-59-08_c860bf91/dataset.csv",
+      "sha256": "01d05f28d205bac6a3eee2ff8508cf71d93fd86748c6cea8877360370c3507b2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-21-00-09_707a4661/dataset.csv",
+      "sha256": "a355ab4a1e8e99387e2f712c16126ce45a2bbdecf03f4536b3ee409284bc4d44"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-21-01-29_42bf3395/dataset.csv",
+      "sha256": "982856ddacfd56c2ad549a177d66971b5c95b78166497e320e19feee5a2f7e45"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-21-02-32_4458fb7d/dataset.csv",
+      "sha256": "3a93c8a4d9c35d7d1acda63b769f2817014004bc80c80659e2dbe7c126e13657"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_William_2026-07-15-21-04-13_5ed5fa49/dataset.csv",
+      "sha256": "c1bbe9a367223e295099aa584ef3eaef4dfbd5c476d671826beaa0249d32f281"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_1_distance-1.0-d27ef1b9/dataset.csv",
+      "sha256": "3b51a62edd7c2e9d2a9b700ec7db79f84caa2054779f105b094e4c794a70a0ed"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_1_distance-2.0-f8cf8795/dataset.csv",
+      "sha256": "330c5de49b95c64baea892fd12315696aafb4d20fdaed64a699373e0ea24e074"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_1_distance-4.0-f22be795/dataset.csv",
+      "sha256": "f7d10a1c34a7bfcb0aad0ae4ff2726aab137a85feec9530173d8af75c1e35af8"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_2_distance-1.0-c621fbc1/dataset.csv",
+      "sha256": "9dc74aedb2ddccf0313bc8a7a5fb7f122b6cbaba3093df85c044efe3b2e0e4f2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_2_distance-2.0-727a1c46/dataset.csv",
+      "sha256": "ceb5432c6e9c7bcac547dd63c7527a97ca59391d17bb20c8777490d7dfc9b1a0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_2_distance-4.0-e4485941/dataset.csv",
+      "sha256": "5dbd60f146bea4c2c4fee88c47fb3db6b0ea3a03479c736a0b41b0df73527db7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_3_distance-1.0-345dd37b/dataset.csv",
+      "sha256": "3ef13ed121c8aabb9f54a69a35a94cb7304a16507667fef3b80807207700010e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_3_distance-2.0-5e3c291a/dataset.csv",
+      "sha256": "b2673d059653b65c99849f1beb870f138d74bf72cdcc5ac0a06482852367beaf"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_3_distance-4.0-424149c9/dataset.csv",
+      "sha256": "66732937b69d906cef069e6cb2992dbbe931ad5f86e56e684d7107eb85d9d383"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_4_distance-1.0-10cb972a/dataset.csv",
+      "sha256": "e8e87ef7080b2f9e46cf184e38f29666a14bc644df2aac1652920dfd27d1d317"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_4_distance-2.0-3c7860e0/dataset.csv",
+      "sha256": "ca1372d17af1edfbff30974ec69da4825514828c37d83f2064bd73368e0c26c9"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_4_distance-4.0-a1e5df44/dataset.csv",
+      "sha256": "7c4d20d428231426169067b27b84882cf4579c2389d3a0f78b0cc34ce2a8ad77"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_5_distance-1.0-cb972398/dataset.csv",
+      "sha256": "416031a5f647ea0e612da5bbd528902d413349b5d846a50b8e532fdb21bceaa0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_5_distance-2.0-e1c713c6/dataset.csv",
+      "sha256": "bbcd2ec8ec62e4517a9eb1a71417e980eb469e826fd817310bfc68044a6bb46c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_5_distance-4.0-c5985546/dataset.csv",
+      "sha256": "4cb0f19eb0c1da3b5d1ac7a0498d1b3d2c38df0b0065a12a949b5e7cc87a1d4c"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_6_distance-1.0-539b646e/dataset.csv",
+      "sha256": "47796eef967347c882a56f51c2eea850dc70989672917997ebc417e98a76e706"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_6_distance-2.0-d9a4e4a8/dataset.csv",
+      "sha256": "61c25152f9b1e2b3ade1b6c36f60b32c1a29f98024d412d3e4684263f0907b2b"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_6_distance-4.0-6c0e7ba2/dataset.csv",
+      "sha256": "8d5561e5501239aa671bf31fecceb87cd70268de9c24f1b2db2125163e2cde80"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_7_distance-1.0-d9a68328/dataset.csv",
+      "sha256": "0eab986622e70a7edfb5a2e3efa625962d6434d6c7efcb22a53b1fec903a6b76"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_7_distance-2.0-87e6cb92/dataset.csv",
+      "sha256": "951fc416b2142147c46114b364512aceadb004442a93354d71c27914a66f2cad"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_7_distance-4.0-ffc9ba9f/dataset.csv",
+      "sha256": "02c72fc928aae41456c55c8aec0673b09ca7699455117ec94c39a27072d26f96"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_8_distance-1.0-a319acff/dataset.csv",
+      "sha256": "3d7af0157ce8756d6bd24c4192917684926d4c7fdb9451eedaf51e69b38c9a99"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_8_distance-2.0-ca4bc8d5/dataset.csv",
+      "sha256": "b84edd587ec2dc5ca359ec9c5db2b943cf3b306ff3e5d1ca53966ffca44e02a2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-25_8_distance-4.0-161f315a/dataset.csv",
+      "sha256": "2fd5ba835e361c60c4f6ba37738a580e6264959f63f7a8f44a4d9adee9d4b70b"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_10_distance-1.0-38484824/dataset.csv",
+      "sha256": "805588189a029728eda538797b5569f56d70369064ace1d9d107077493c1d445"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_10_distance-2.0-73b40777/dataset.csv",
+      "sha256": "395e608223f8232c2709d63799183a365fe25f7c6392a9af56afe9095d382b01"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_10_distance-4.0-f8f076d1/dataset.csv",
+      "sha256": "76acbbc9f5cd3762b9e2cb557a02a2266712bb4c51d0d58dff110acac1d85b2d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_11_distance-1.0-922ec7d6/dataset.csv",
+      "sha256": "2a3f0934e2587dea7cd20ec25931a9ada1bebf183eaefe2e60595bcd4919bade"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_11_distance-2.0-39a7e5a7/dataset.csv",
+      "sha256": "c66a58b3b826ce04e008de25b9d22aedb479735f284df6dc48be3e6ab23d33a3"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_11_distance-4.0-7d748c36/dataset.csv",
+      "sha256": "ba36912ce67a9b9d552857997c288fc150c6d1ceb0d955f85287cb904ff91dc6"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_12_distance-1.0-e11387bf/dataset.csv",
+      "sha256": "c82a95c5ad18e82afa7386b905e9d5d01685fb84ca33f0e0588881930daa0779"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_12_distance-2.0-fc3c3c27/dataset.csv",
+      "sha256": "697a911a04a86cd7ec98e31352087b5e9f951c54508bfa3b9f39bce0c0f84833"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_12_distance-4.0-10a3a8e8/dataset.csv",
+      "sha256": "1840974aa506283e3a82fcfc09d95e3eaa373f853de4e17f91adea6f4eb8bd43"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_13_distance-1.0-a7ed76f4/dataset.csv",
+      "sha256": "edd2c0e89377f0f5a0ae92191b46c4c7063f7c02fd7870465d870dade60139e4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_13_distance-2.0-2f74e4cb/dataset.csv",
+      "sha256": "b96df514f0900516d05908881fb5338f560c20aeb0623ccdd5471f9e33d2fb61"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_13_distance-4.0-39ffe59f/dataset.csv",
+      "sha256": "90f78983f11621d2b08f6ed431b96da0c324e67e4da1a4e27a32d0e23ad70c26"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_14_distance-1.0-bb1c24a1/dataset.csv",
+      "sha256": "66cb65545926f0f96615360fb4b673d1df5c5532161272b4b87f304f696c40df"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_14_distance-2.0-ea2f676a/dataset.csv",
+      "sha256": "9288c6df20f888432e21e6cbbb98a1607462d0fdf3c4f28fbdde2b3f3982bb4d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_14_distance-4.0-b039d36b/dataset.csv",
+      "sha256": "ed98c7db4b4f12fb575d9f0ca76fd08b0bec83ab19a251c4ad00a89c41e06aa6"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_15_distance-1.0-eb4baf4e/dataset.csv",
+      "sha256": "b95f43ce559be9eb14e76a17bc651f9c63f10dfad43ad8cea7b55ccf29b14e42"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_15_distance-4.0-1dcf2d69/dataset.csv",
+      "sha256": "8654b62819938ddd0eba1eaaacd323b9e3ac67995ade7a8f3e136ff4e697f09f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_16_distance-1.0-4e93a6db/dataset.csv",
+      "sha256": "beb3a071960cf797da2bc3b6e73a11f01bcbe0686813c028284fddfa81637202"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_16_distance-2.0-e0deb3d6/dataset.csv",
+      "sha256": "db4e350a465d354b8ad2ff1b93fc525bc48eb01fdadd32b6598fefc18efa4748"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_16_distance-4.0-75d94687/dataset.csv",
+      "sha256": "5f7d5e8a1e55abd6d953571db1d0ecaad1b4615e238deee6677e3f36644986d2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_9_distance-1.0-5ad5fce1/dataset.csv",
+      "sha256": "c5bd4d79a687b7d43fe411484188ab626c3184cf0ae86a23013d191c9c2b7807"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_9_distance-2.0-0884d320/dataset.csv",
+      "sha256": "9273f5bcb9a6805109397b8f52e140bbbafd0b8484dfbbf3b1cf305ea275961f"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-26_9_distance-4.0-327462d4/dataset.csv",
+      "sha256": "32bc66739676ffd8c1df35d78cd44f7bd5cc31538a9accae133def6d81178778"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_17_distance-1.0-a49ca806/dataset.csv",
+      "sha256": "8d8ca46fe1a1fb03dbae90242a411870a92b5c0b34fa105ef1684aef70400fb0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_17_distance-2.0-92fc5d81/dataset.csv",
+      "sha256": "9a41cfccbf34c5f8e07141bee552a227dffaae7ea0a3a2ace8bf1057b037abb2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_17_distance-4.0-9d9f4535/dataset.csv",
+      "sha256": "fd3629feba8c2a66695335de3c5250a995a10b5f77cddd4a83e13f96836d23d0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_18_distance-1.0-0be8179e/dataset.csv",
+      "sha256": "01387da04e6c90f784b8e121fa6b919e543482d502e75bc407ffac28d3837af1"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_18_distance-2.0-69d6ee7e/dataset.csv",
+      "sha256": "96d4c2fcf022d0dfd7bac0c93a89a3bca1542afc3788e4f733e42ac56291400a"
+    },
+    {
+      "path": "/home/william/data/controlled/results/static_accuracy_william_2026-08-28_18_distance-4.0-c50fcc1b/dataset.csv",
+      "sha256": "f40bacf182151b276e83dc48471d2acf46840a70a071b0d477c7fb59837d2080"
+    },
+    {
+      "path": "/home/william/data/gaze_accuracy/offset/units/units_chessboard.csv",
+      "sha256": "78b3800d0ec40660b5b0c82c0bf2344561786fce3c3e7f20663f9853b6d08316"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/dataset.csv",
+      "sha256": "882f338b06d727dfeffa5a25716e7111612ca8f7acec30423cb15f1527787273"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/scene_metadata.json",
+      "sha256": "7bd93953a9af717b83be94cbf0653f860cf923c68e2200e5ad9feafc3ec4a69a"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/info.json",
+      "sha256": "5290146f90a42fd42c4c568fb44ded70f48073c982f56be1662126308c5c4443"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/detections.json",
+      "sha256": "5cd12d456180d03f7f2cbb79b4a96540c5dfbfd8952f9b2b2f874f0cbc796fdd"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/dataset.csv",
+      "sha256": "d96c3fbbf0bd83764ee4042cdd64943cdfbabe2da27cfeff47062bec485bf828"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/scene_metadata.json",
+      "sha256": "fa0451684917c4ec4902636fb47597b9f283438c823db2ae39ff0fe2e844f9a6"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/info.json",
+      "sha256": "18d02fd98113ecc61a85ee66aa0b681241c824a445a1aac9f03943ae89ff31e5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/detections.json",
+      "sha256": "1d31d37bcc273167e11d08472c7081688d38c97eb2e7956fad4a8dd916413cf5"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/dataset.csv",
+      "sha256": "65d9243710f348195723b9710e8ec2c0c929ed7e1009e5d97c896822660adf96"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/scene_metadata.json",
+      "sha256": "629f362c03c80008a833a401782fac879b832115ba40d2477b3b0ca5fa8e3d2d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/info.json",
+      "sha256": "6e02ea84cb8cdb4d9401b47f2ffc51fed28ee2ed63e0fc32d8bab3c512af299b"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/detections.json",
+      "sha256": "0572a315795dbdb9851a33f532b5863300a0107fa7910f3c6d5bfa7926694fcc"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/dataset.csv",
+      "sha256": "b61542b45312c031573eaba1063c31656de955d634ce5e244e94e29c2b9351cb"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/scene_metadata.json",
+      "sha256": "0c68e98dfbbed9d167337b0b37607ff05fac5e972b96f60ce5cc3e73db7f7261"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/info.json",
+      "sha256": "ba5bf557b4febf95e0e3355f7b70b4a5c00861c43bb57069e1fd6f133f7339fb"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/detections.json",
+      "sha256": "bfea880be4f89f575718cef86bc8957d43a06b91622cd5b53b19bff564e774e6"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/dataset.csv",
+      "sha256": "c883544390ed3a92d167855d4e3dc93a67ba0dddc461af8b0c04a77ab6d75b99"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/scene_metadata.json",
+      "sha256": "bca3d5a95600848dfdca9498a73cd39789eb6d3422f922fd3d059b6487b343c0"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/info.json",
+      "sha256": "78515b401796625c8fe05723f716fa0251ae1e5775463d5c7402a40c29c3d3da"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/detections.json",
+      "sha256": "bb2c50629346ff680e626b379170ac9c76cc1efa45d205160d1b9f8fcf6be102"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/dataset.csv",
+      "sha256": "c8031e2c58e9470c2f946e2894cb8de10e48c50ac4e3e1a3fe2490f7e7f15d07"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/scene_metadata.json",
+      "sha256": "5d9543f6b7a5f639cc2fe8aa5b87ce5777e7ba54c65cd77e27ee969da5e2eb56"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/info.json",
+      "sha256": "2ab3ceef9e6060dcd9f6f38a93bf2dd69b59f3cfb3a21d19db37635f2095f134"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/detections.json",
+      "sha256": "09cb9c2af238dfd6746eec9304ca5d5152bbbe9668b7995c4b10e5670c14e264"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/dataset.csv",
+      "sha256": "ada58021609128e92fe84c1dc81ad8f9414103cb3777efe93fcae5a63e571f8e"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/scene_metadata.json",
+      "sha256": "49822e5471387ec020f6e77e39660291d20ce2f0f955c4c4660f03dcc39756ca"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/info.json",
+      "sha256": "88fc3cfa6bce47343e3ce5c4a4b594d7f017afbc573b48741d031c88efc4293f"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/detections.json",
+      "sha256": "592bff9e22c1f2d2fdb60ed055e0692dfe34cfb0b36e1f40c2fdef8327085721"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/dataset.csv",
+      "sha256": "ab0de286d5371c389707425843c2bf3721ae4d1a92e6373495d7416bd50a5b89"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/scene_metadata.json",
+      "sha256": "d87c1c147a15b0a168ea05dae75ace57721e92b802a12c2d8ef64579eab1d7e6"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/info.json",
+      "sha256": "f1402ae436eac44d803c9f47d0fef46517bb2576a38c5550df26265f46647cbe"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/detections.json",
+      "sha256": "617754e68486266b098a06840d729cbd0ee6025e9dcb10112791e6b20b561eba"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/dataset.csv",
+      "sha256": "526e9710d07fc85232355207e4ccdde3bb11a570132fa57f787bbb5d814c3b66"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/scene_metadata.json",
+      "sha256": "31b448a462675bbdae7c150e786dbc4fd1c02f7415fe21770ac54e5d69bb4038"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/info.json",
+      "sha256": "0b13c85c31df96265d6a8b1739c757bf400124637b95f2d64127807a23b72d4e"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/detections.json",
+      "sha256": "1e33b5bf36e11d887c249e465be098011ec0942a43a6ca0f2fde0e07e87a2fd2"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-45-25_355ca780/dataset.csv",
+      "sha256": "6c0d31ab7024435abe33a701c3a4e200edc1c9c35e1f8705bf6d4168c1f56ac1"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/scene_metadata.json",
+      "sha256": "3b3bedaba62c2978dc08352874d2c89898392c2a539b5bdf71b5f64b97577b85"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/info.json",
+      "sha256": "45d5c70d63d4d6f722f076178bb4ab37da0412c2fe3dd2b639d431539fa1addf"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/detections.json",
+      "sha256": "a856e03a48ad31f1a9791f67dac755fefdb31d7a125b298ba117eb5d3c49c941"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-47-32_9389c3a7/dataset.csv",
+      "sha256": "8959ca9c1c93159e1e07f70babd4d2bc4dd3c1e8ca88b3805191be280ddd5e96"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/scene_metadata.json",
+      "sha256": "beb8ad0229e7ad38f670b44ad0cb7ad5cf7679703f4b16a1a3872810e5b530ee"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/info.json",
+      "sha256": "431fdc444f27a676015a011bf24ba0125273b0aae51a77faf679805a2620b580"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/detections.json",
+      "sha256": "e36cc348cc4f507786ca7142e6098e998690aa4615976c0044ecbb867dc9353b"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-51-34_37d6d815/dataset.csv",
+      "sha256": "02394cdb35309a10cc2babb11b2b78b4a4da47d4b906512efb425bc5081ae328"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/scene_metadata.json",
+      "sha256": "b6f2dd84b3b9b60e0a30a6c863c9bf0c9fb10023176cdf2260ea6d04cbc33352"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/info.json",
+      "sha256": "ff55e2ed7b55f3c4748f10062d66a07f4a40218ff31b929118670c90e7644fc3"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/detections.json",
+      "sha256": "50f2aef0dfe69b0fb16a15e902fb78fcfec56fd8ae6dabb9b06b8fc3d246c649"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-55-26_e59bdaec/dataset.csv",
+      "sha256": "b5f1875fb0f0ff17762b947827521f2f035d9167ea8298ee2a5f9daec2ab0d67"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/scene_metadata.json",
+      "sha256": "6fc81db4072403e8094727ab1654d5d6931abadaf35d039ed1208e22258505ef"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/info.json",
+      "sha256": "670a9098e2f78d1a70daa033507489b934823e1f4b1007ea1fbd065d39472fb8"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/detections.json",
+      "sha256": "4d7f401a11b3114551fe6ba31db2eac702f1fb3454290f8760e02334aa75339c"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-04-04_04f6eeff/dataset.csv",
+      "sha256": "5e351f21e5806e495ca37de428b9d98523405b12e7e51813765b583d46a39093"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/scene_metadata.json",
+      "sha256": "7487688bb8681750f3397b0d575eed115505ac8ddd08dfd5a85733e116996f95"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/info.json",
+      "sha256": "d734e8a1b0cfd1d1df51e3459643155b409086590e25827f21618ec563e1b1c5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/detections.json",
+      "sha256": "efc2be34ad9f20956e1cd36c6ebd1f320bfe0412cc26a90675f6373ffdb24cac"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-07-13_46833872/dataset.csv",
+      "sha256": "87990c9b20cac0f1897d20b36e578ce46847e5d81ed2663934b88dede952dbae"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/scene_metadata.json",
+      "sha256": "8a0969b6e3a2a78915cba381806531fd7dc288b945f76e1ff314624a2bc3f322"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/info.json",
+      "sha256": "07a16fc2366a0b21989bb743fd979aa93f3dc147e30d4b98644af92eeba5ca3d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/detections.json",
+      "sha256": "99eb910258f0b3d974668cc88aa5aedcf3f6472dcd1b8d9f17d6cdb312baed11"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-13-59_ba3b000c/dataset.csv",
+      "sha256": "8c6b539b3a5dddd4c943240d4f6c21cd0582ee45385f445610008562d109b12c"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/scene_metadata.json",
+      "sha256": "1dd5fed8a0d7a21251670ba49a25ba618535ce5eb0afaa3d70790366641845f8"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/info.json",
+      "sha256": "61df27311d1ac1c3cf9d9607304a390f8f5a461fbd3f22038f84221933085047"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/detections.json",
+      "sha256": "40010fdfd4ddbe44cb8ba000f5304786c2608ddac54dac21c334daf8399ffa03"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-44-04_c7052674/dataset.csv",
+      "sha256": "6370c83b300f5408a1c3f6081f643dd0ed081fe06216693e8ac62ba55b1132d5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/scene_metadata.json",
+      "sha256": "9f1380fc12c5852aedb546db90c56574c23ff84e390ee2e0b5311858c2a0f66a"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/info.json",
+      "sha256": "6e2bd15b65d216ac199d53f898a5d53fc356cf546d7b4448d935a809ffc37951"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/detections.json",
+      "sha256": "0f133bfe09be1d608b5aebb6e1728bfabd171e26c2e90e9fbb83a7ac65fa4a45"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/dataset.csv",
+      "sha256": "6783f81dc8b870e201dac30d9b723a65121879537c5b17037bac976d3ffb8888"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/scene_metadata.json",
+      "sha256": "7fc6658b69164d48df827c331f49137a53df63792e56a4d43a119e65b66cc803"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/info.json",
+      "sha256": "2aa0030206523564e0d1d426dfb5a26d274bad67f1fe37d7ffa44ea2c1a8bb6d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/detections.json",
+      "sha256": "54426728965e319dbcdbb24cb18602383244eb2b25993628e802099082039fc3"
+    },
+    {
+      "path": "/home/william/data/gaze_accuracy/offset/units/units_driving.csv",
+      "sha256": "ede9929f027eec6b44738efb15b2bd26296559d99e0b4fa4814ce7f20dd95319"
+    }
+  ],
+  "code_sha256": {
+    "src/evaluation/offset_data.py": "7ff6e96e812652963b9c044c1597edcaabe86b2b1face9747bab81a7bf6605a6",
+    "src/evaluation/offset_benchmark.py": "ec5a05feb82c48159577342c0c3675d9f7c28b457d2817c7f4faf1e361334273",
+    "src/models/offset.py": "41894b14c4ac273122b2a6cd93e09191123d2b1e1bbd1fce6a96bf9c98899474",
+    "scripts/offset_benchmark/run_benchmark.py": "e440a568596183a02d49bd5974a97eaee52729461916ae66fae385bc51cf5c0d"
+  }
+}

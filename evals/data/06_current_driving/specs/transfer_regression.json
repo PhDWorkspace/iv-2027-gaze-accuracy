@@ -1,0 +1,11 @@
+{"participants": ["william", "katharina", "stefan"], "seed": 42, "repeats": 20, "keep_fraction": 0.6,
+ "models": [{"name": "median"},
+  {"name": "linear", "label": "linear_position", "features": ["gaze"]},
+  {"name": "ridge", "label": "ridge_position", "features": ["gaze"], "alpha": 100},
+  {"name": "linear", "label": "linear_position_pupil", "features": ["gaze", "pupil"]},
+  {"name": "ridge", "label": "ridge_position_pupil", "features": ["gaze", "pupil"], "alpha": 100}],
+ "protocols": [
+  {"name": "chessboard_to_driving", "train": {"domain": "chessboard", "split": "recording_folds", "folds": 5}, "select": ["all"],
+   "test": {"domain": "driving", "split": "blocks", "folds": 5, "train_blocks": 1}, "unit_errors": ["E0", "E5"]},
+  {"name": "driving_to_driving", "train": {"domain": "driving", "split": "blocks", "folds": 5, "train_blocks": 1}, "select": ["all"],
+   "test": {"domain": "driving", "exclude_same": "unit"}, "unit_errors": ["E0", "E5"]}]}

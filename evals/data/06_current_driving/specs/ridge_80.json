@@ -1,0 +1,8 @@
+{"participants": ["william", "katharina", "stefan"], "seed": 42, "repeats": 20, "runtime_features": true,
+ "models": [{"name": "median"},
+            {"name": "ridge", "label": "position", "features": ["gaze"], "alpha": 100},
+            {"name": "ridge", "label": "runtime", "features": ["gaze", "velocity"], "alpha": 100},
+            {"name": "ridge", "label": "runtime_distance", "features": ["gaze", "velocity", "inverse_distance"], "alpha": 100}],
+ "protocols": [
+  {"name": "scene_blocks", "train": {"domain": "driving", "split": "blocks", "folds": 5, "train_blocks": 4}, "select": ["all"],
+   "test": {"domain": "driving", "exclude_same": "unit"}, "unit_errors": ["E0", "E5"]}]}

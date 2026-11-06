@@ -4,11 +4,11 @@ katharina,scene_blocks,position,E5,,0.9948,0.8872,1.7847,0.4780,0.5900,0.4175,5,
 katharina,scene_blocks,raw,E0,,1.4728,1.4772,2.2022,0.0000,0.0000,0.0000,5,P2
 katharina,scene_blocks,runtime,E5,,0.9570,0.8606,1.6623,0.5158,0.6167,0.5399,5,P2
 katharina,scene_blocks,runtime_distance,E5,,0.9971,0.8941,1.7424,0.4757,0.5831,0.4598,5,P2
-stefan,scene_blocks,median,E5,,1.9369,1.4080,4.3583,4.0226,4.5906,3.4371,5,P6
-stefan,scene_blocks,position,E5,,1.7900,1.4586,3.5438,4.1695,4.5401,4.2516,5,P6
-stefan,scene_blocks,raw,E0,,5.9595,5.9987,7.7954,0.0000,0.0000,0.0000,5,P6
-stefan,scene_blocks,runtime,E5,,1.5944,1.3712,3.0245,4.3651,4.6275,4.7709,5,P6
-stefan,scene_blocks,runtime_distance,E5,,1.6063,1.4047,2.9673,4.3532,4.5940,4.8280,5,P6
+stefan,scene_blocks,median,E5,,1.9207,1.4270,4.2872,4.1241,4.5446,3.6233,5,P6
+stefan,scene_blocks,position,E5,,1.9253,1.3952,4.4494,4.1195,4.5764,3.4611,5,P6
+stefan,scene_blocks,raw,E0,,6.0448,5.9715,7.9105,0.0000,0.0000,0.0000,5,P6
+stefan,scene_blocks,runtime,E5,,1.7387,1.3530,3.5825,4.3061,4.6185,4.3280,5,P6
+stefan,scene_blocks,runtime_distance,E5,,1.8586,1.4250,3.9263,4.1862,4.5465,3.9843,5,P6
 william,scene_blocks,median,E5,,0.9421,0.7593,1.6062,2.9091,3.2022,3.0198,5,P1
 william,scene_blocks,position,E5,,1.0720,0.8675,1.7694,2.7792,3.0940,2.8566,5,P1
 william,scene_blocks,raw,E0,,3.8513,3.9615,4.6260,0.0000,0.0000,0.0000,5,P1

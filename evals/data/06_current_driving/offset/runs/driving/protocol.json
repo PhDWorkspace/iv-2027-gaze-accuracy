@@ -1,0 +1,345 @@
+{
+  "spec": {
+    "participants": [
+      "william",
+      "katharina",
+      "stefan"
+    ],
+    "seed": 42,
+    "repeats": 20,
+    "models": [
+      {
+        "name": "median"
+      }
+    ],
+    "protocols": [
+      {
+        "name": "scene_blocks",
+        "train": {
+          "domain": "driving",
+          "split": "blocks",
+          "folds": 5,
+          "train_blocks": 1
+        },
+        "select": [
+          "all",
+          "single",
+          "random",
+          "pattern"
+        ],
+        "test": {
+          "domain": "driving",
+          "exclude_same": "unit"
+        },
+        "unit_errors": [
+          "E0",
+          "E1",
+          "E2",
+          "E3",
+          "E5"
+        ]
+      }
+    ]
+  },
+  "spec_path": "/workspaces/horuspy/scripts/offset_benchmark/specs/driving.json",
+  "sources": [
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/dataset.csv",
+      "sha256": "882f338b06d727dfeffa5a25716e7111612ca8f7acec30423cb15f1527787273"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/scene_metadata.json",
+      "sha256": "7bd93953a9af717b83be94cbf0653f860cf923c68e2200e5ad9feafc3ec4a69a"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/info.json",
+      "sha256": "5290146f90a42fd42c4c568fb44ded70f48073c982f56be1662126308c5c4443"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/detections.json",
+      "sha256": "5cd12d456180d03f7f2cbb79b4a96540c5dfbfd8952f9b2b2f874f0cbc796fdd"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/dataset.csv",
+      "sha256": "d96c3fbbf0bd83764ee4042cdd64943cdfbabe2da27cfeff47062bec485bf828"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/scene_metadata.json",
+      "sha256": "fa0451684917c4ec4902636fb47597b9f283438c823db2ae39ff0fe2e844f9a6"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/info.json",
+      "sha256": "18d02fd98113ecc61a85ee66aa0b681241c824a445a1aac9f03943ae89ff31e5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/detections.json",
+      "sha256": "1d31d37bcc273167e11d08472c7081688d38c97eb2e7956fad4a8dd916413cf5"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/dataset.csv",
+      "sha256": "65d9243710f348195723b9710e8ec2c0c929ed7e1009e5d97c896822660adf96"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/scene_metadata.json",
+      "sha256": "629f362c03c80008a833a401782fac879b832115ba40d2477b3b0ca5fa8e3d2d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/info.json",
+      "sha256": "6e02ea84cb8cdb4d9401b47f2ffc51fed28ee2ed63e0fc32d8bab3c512af299b"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/detections.json",
+      "sha256": "0572a315795dbdb9851a33f532b5863300a0107fa7910f3c6d5bfa7926694fcc"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/dataset.csv",
+      "sha256": "b61542b45312c031573eaba1063c31656de955d634ce5e244e94e29c2b9351cb"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/scene_metadata.json",
+      "sha256": "0c68e98dfbbed9d167337b0b37607ff05fac5e972b96f60ce5cc3e73db7f7261"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/info.json",
+      "sha256": "ba5bf557b4febf95e0e3355f7b70b4a5c00861c43bb57069e1fd6f133f7339fb"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/detections.json",
+      "sha256": "bfea880be4f89f575718cef86bc8957d43a06b91622cd5b53b19bff564e774e6"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/dataset.csv",
+      "sha256": "c883544390ed3a92d167855d4e3dc93a67ba0dddc461af8b0c04a77ab6d75b99"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/scene_metadata.json",
+      "sha256": "bca3d5a95600848dfdca9498a73cd39789eb6d3422f922fd3d059b6487b343c0"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/info.json",
+      "sha256": "78515b401796625c8fe05723f716fa0251ae1e5775463d5c7402a40c29c3d3da"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/detections.json",
+      "sha256": "bb2c50629346ff680e626b379170ac9c76cc1efa45d205160d1b9f8fcf6be102"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/dataset.csv",
+      "sha256": "c8031e2c58e9470c2f946e2894cb8de10e48c50ac4e3e1a3fe2490f7e7f15d07"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/scene_metadata.json",
+      "sha256": "5d9543f6b7a5f639cc2fe8aa5b87ce5777e7ba54c65cd77e27ee969da5e2eb56"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/info.json",
+      "sha256": "2ab3ceef9e6060dcd9f6f38a93bf2dd69b59f3cfb3a21d19db37635f2095f134"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/detections.json",
+      "sha256": "09cb9c2af238dfd6746eec9304ca5d5152bbbe9668b7995c4b10e5670c14e264"
+    },
+    {
+      "path": "/home/william/data/driving/results/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/dataset.csv",
+      "sha256": "ada58021609128e92fe84c1dc81ad8f9414103cb3777efe93fcae5a63e571f8e"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/scene_metadata.json",
+      "sha256": "49822e5471387ec020f6e77e39660291d20ce2f0f955c4c4660f03dcc39756ca"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/info.json",
+      "sha256": "88fc3cfa6bce47343e3ce5c4a4b594d7f017afbc573b48741d031c88efc4293f"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/detections.json",
+      "sha256": "592bff9e22c1f2d2fdb60ed055e0692dfe34cfb0b36e1f40c2fdef8327085721"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/dataset.csv",
+      "sha256": "ab0de286d5371c389707425843c2bf3721ae4d1a92e6373495d7416bd50a5b89"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/scene_metadata.json",
+      "sha256": "d87c1c147a15b0a168ea05dae75ace57721e92b802a12c2d8ef64579eab1d7e6"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/info.json",
+      "sha256": "f1402ae436eac44d803c9f47d0fef46517bb2576a38c5550df26265f46647cbe"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/detections.json",
+      "sha256": "617754e68486266b098a06840d729cbd0ee6025e9dcb10112791e6b20b561eba"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/dataset.csv",
+      "sha256": "526e9710d07fc85232355207e4ccdde3bb11a570132fa57f787bbb5d814c3b66"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/scene_metadata.json",
+      "sha256": "31b448a462675bbdae7c150e786dbc4fd1c02f7415fe21770ac54e5d69bb4038"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/info.json",
+      "sha256": "0b13c85c31df96265d6a8b1739c757bf400124637b95f2d64127807a23b72d4e"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/detections.json",
+      "sha256": "1e33b5bf36e11d887c249e465be098011ec0942a43a6ca0f2fde0e07e87a2fd2"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-45-25_355ca780/dataset.csv",
+      "sha256": "6c0d31ab7024435abe33a701c3a4e200edc1c9c35e1f8705bf6d4168c1f56ac1"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/scene_metadata.json",
+      "sha256": "3b3bedaba62c2978dc08352874d2c89898392c2a539b5bdf71b5f64b97577b85"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/info.json",
+      "sha256": "45d5c70d63d4d6f722f076178bb4ab37da0412c2fe3dd2b639d431539fa1addf"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/detections.json",
+      "sha256": "a856e03a48ad31f1a9791f67dac755fefdb31d7a125b298ba117eb5d3c49c941"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-47-32_9389c3a7/dataset.csv",
+      "sha256": "8959ca9c1c93159e1e07f70babd4d2bc4dd3c1e8ca88b3805191be280ddd5e96"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/scene_metadata.json",
+      "sha256": "beb8ad0229e7ad38f670b44ad0cb7ad5cf7679703f4b16a1a3872810e5b530ee"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/info.json",
+      "sha256": "431fdc444f27a676015a011bf24ba0125273b0aae51a77faf679805a2620b580"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/detections.json",
+      "sha256": "e36cc348cc4f507786ca7142e6098e998690aa4615976c0044ecbb867dc9353b"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-51-34_37d6d815/dataset.csv",
+      "sha256": "02394cdb35309a10cc2babb11b2b78b4a4da47d4b906512efb425bc5081ae328"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/scene_metadata.json",
+      "sha256": "b6f2dd84b3b9b60e0a30a6c863c9bf0c9fb10023176cdf2260ea6d04cbc33352"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/info.json",
+      "sha256": "ff55e2ed7b55f3c4748f10062d66a07f4a40218ff31b929118670c90e7644fc3"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/detections.json",
+      "sha256": "50f2aef0dfe69b0fb16a15e902fb78fcfec56fd8ae6dabb9b06b8fc3d246c649"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-15-55-26_e59bdaec/dataset.csv",
+      "sha256": "b5f1875fb0f0ff17762b947827521f2f035d9167ea8298ee2a5f9daec2ab0d67"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/scene_metadata.json",
+      "sha256": "6fc81db4072403e8094727ab1654d5d6931abadaf35d039ed1208e22258505ef"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/info.json",
+      "sha256": "670a9098e2f78d1a70daa033507489b934823e1f4b1007ea1fbd065d39472fb8"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/detections.json",
+      "sha256": "4d7f401a11b3114551fe6ba31db2eac702f1fb3454290f8760e02334aa75339c"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-04-04_04f6eeff/dataset.csv",
+      "sha256": "5e351f21e5806e495ca37de428b9d98523405b12e7e51813765b583d46a39093"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/scene_metadata.json",
+      "sha256": "7487688bb8681750f3397b0d575eed115505ac8ddd08dfd5a85733e116996f95"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/info.json",
+      "sha256": "d734e8a1b0cfd1d1df51e3459643155b409086590e25827f21618ec563e1b1c5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/detections.json",
+      "sha256": "efc2be34ad9f20956e1cd36c6ebd1f320bfe0412cc26a90675f6373ffdb24cac"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-07-13_46833872/dataset.csv",
+      "sha256": "87990c9b20cac0f1897d20b36e578ce46847e5d81ed2663934b88dede952dbae"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/scene_metadata.json",
+      "sha256": "8a0969b6e3a2a78915cba381806531fd7dc288b945f76e1ff314624a2bc3f322"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/info.json",
+      "sha256": "07a16fc2366a0b21989bb743fd979aa93f3dc147e30d4b98644af92eeba5ca3d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/detections.json",
+      "sha256": "99eb910258f0b3d974668cc88aa5aedcf3f6472dcd1b8d9f17d6cdb312baed11"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-13-59_ba3b000c/dataset.csv",
+      "sha256": "8c6b539b3a5dddd4c943240d4f6c21cd0582ee45385f445610008562d109b12c"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/scene_metadata.json",
+      "sha256": "1dd5fed8a0d7a21251670ba49a25ba618535ce5eb0afaa3d70790366641845f8"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/info.json",
+      "sha256": "61df27311d1ac1c3cf9d9607304a390f8f5a461fbd3f22038f84221933085047"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/detections.json",
+      "sha256": "40010fdfd4ddbe44cb8ba000f5304786c2608ddac54dac21c334daf8399ffa03"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-44-04_c7052674/dataset.csv",
+      "sha256": "6370c83b300f5408a1c3f6081f643dd0ed081fe06216693e8ac62ba55b1132d5"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/scene_metadata.json",
+      "sha256": "9f1380fc12c5852aedb546db90c56574c23ff84e390ee2e0b5311858c2a0f66a"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/info.json",
+      "sha256": "6e2bd15b65d216ac199d53f898a5d53fc356cf546d7b4448d935a809ffc37951"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/detections.json",
+      "sha256": "0f133bfe09be1d608b5aebb6e1728bfabd171e26c2e90e9fbb83a7ac65fa4a45"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/dataset.csv",
+      "sha256": "6783f81dc8b870e201dac30d9b723a65121879537c5b17037bac976d3ffb8888"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/scene_metadata.json",
+      "sha256": "7fc6658b69164d48df827c331f49137a53df63792e56a4d43a119e65b66cc803"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/info.json",
+      "sha256": "2aa0030206523564e0d1d426dfb5a26d274bad67f1fe37d7ffa44ea2c1a8bb6d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/detections.json",
+      "sha256": "54426728965e319dbcdbb24cb18602383244eb2b25993628e802099082039fc3"
+    },
+    {
+      "path": "/home/william/data/gaze_accuracy/offset/units/units_driving.csv",
+      "sha256": "ede9929f027eec6b44738efb15b2bd26296559d99e0b4fa4814ce7f20dd95319"
+    }
+  ],
+  "code_sha256": {
+    "src/evaluation/offset_data.py": "7ff6e96e812652963b9c044c1597edcaabe86b2b1face9747bab81a7bf6605a6",
+    "src/evaluation/offset_benchmark.py": "ec5a05feb82c48159577342c0c3675d9f7c28b457d2817c7f4faf1e361334273",
+    "src/models/offset.py": "41894b14c4ac273122b2a6cd93e09191123d2b1e1bbd1fce6a96bf9c98899474",
+    "scripts/offset_benchmark/run_benchmark.py": "e440a568596183a02d49bd5974a97eaee52729461916ae66fae385bc51cf5c0d"
+  }
+}

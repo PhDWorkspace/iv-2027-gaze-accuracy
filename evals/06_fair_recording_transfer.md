@@ -14,7 +14,7 @@ The current measurements contain **266 eligible fixation scenes in 18 recordings
 
 Stefan's second recording is `f39babb4-62fb-4c7c-9881-a5587627f3fa`, starting at 13:42:09, with 21 eligible fixations. It has both an existing gaze table and verified scene metadata. The previous report used only his first 93-fixation recording and manufactured six segments; **this evaluation uses his two actual recordings**. Recordings without the necessary existing measurements/verified scenes are outside this evaluation. Nothing in the dataset was generated or changed.
 
-**Author-review discrepancy:** the fixed dataset-rules document and earlier transfer outputs describe Stefan's older, one-recording subset. His current two-recording results and expanded 20% baseline below are separate results. The frozen values, manuscript, figures, and original transfer CSVs have not been replaced. William's and Katharina's existing real-day results are reproduced here.
+**Author-review discrepancy:** the fixed dataset-rules document and earlier transfer outputs describe Stefan's older, one-recording subset. His current two-recording results and expanded 20% baseline below are separate results. Historical frozen values and original transfer CSVs are retained. The manuscript, figure and main model table now also use the expanded 266-scene dataset; see [the current Section VI evaluation](06_transfer_to_driving.md). William's and Katharina's existing real-day results are reproduced here.
 
 ## Common protocol and weighting
 
