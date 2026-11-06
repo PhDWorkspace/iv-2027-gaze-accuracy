@@ -292,3 +292,27 @@ RQ4/RQ5 scene-condition tests (ego motion, relative motion, target side, gaze sp
 - **Holm < .05:** P1 relative motion (.030) and target side (.017) for raw error (RQ4b); P6 relative motion (.015)
   and gaze eccentricity (.0017) for the corrected residual (RQ5).
 - These are not used in Section VI.
+
+## Update 2026-11-06: linear models in the paper
+
+The paper now reports **linear** models only. Ridge results remain in §E above and in
+`06_driving_ridge_runtime_features.csv`.
+
+- **Table II driving rows:**
+  - "linear, position" and "linear, pos. + pupil" come from `06_transfer_regression_run`
+    (`driving_to_driving`, `linear_position`, `linear_position_pupil`).
+  - "linear, pos. + velocity" comes from `06_linear_runtime_run/share_20` (same spec as `ridge_20`, with linear models;
+    model `runtime` = gaze position + signed gaze velocity over the preceding 100 ms).
+  - The 80% share is in `06_linear_runtime_run/share_80`.
+- **Same held-out scenes:** the `driving`, `ridge_20` and linear-runtime runs use identical test scenes.
+- **Linear, 20% calibration** (median / P90):
+
+  | Model | P1 | P2 | P6 |
+  |---|---|---|---|
+  | position | 0.87 / 1.77 | 0.89 / 1.78 | 1.46 / 3.54 |
+  | pos. + pupil | 0.87 / 1.81 | 0.89 / 1.78 | 1.49 / 3.45 |
+  | pos. + velocity | 0.85 / 1.76 | 0.86 / 1.66 | 1.37 / 3.02 |
+  | pos. + velocity + 1/distance | 0.90 / 1.93 | 0.89 / 1.74 | 1.40 / 2.97 |
+
+- **P6 P90 vs the median offset (4.36°):** position −0.81° and velocity −1.33°, 5/5 folds each.
+- **Text:** VI-C now reads 3.54° and 3.02° (formerly the ridge values 3.49° and 2.98°).
