@@ -1,0 +1,3 @@
+code,split,calibration_scenes,calibration_recordings,test_scenes,test_recordings,offset_azimuth_deg,offset_elevation_deg,raw_median_deg,corrected_median_deg,raw_p90_deg,corrected_p90_deg
+P1,2026-07-15 -> 2026-10-15,50,9,29,1,-0.4614,-3.9704,3.1157,1.2210,4.0496,2.4198
+P1,2026-10-15 -> 2026-07-15,29,1,50,9,-0.5632,-3.0145,4.0192,1.1228,4.6772,1.8039

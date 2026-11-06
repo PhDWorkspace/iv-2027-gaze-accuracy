@@ -66,3 +66,21 @@ test sets differ, so these numbers are comparable in size but are not paired wit
 - `data/06_day_recording_transfer_splits.csv`: one row per split. Columns: calibration/test scene and recording
   counts, fitted offset (az/el), uncorrected/corrected median and P90, improvement.
 - `data/06_day_recording_transfer_summary.csv`: the table above, plus P90 means.
+
+## Addendum (2026-11-06): P1 genuine cross-day transfer
+
+`scripts/make_p1_cross_day_transfer.py` → `data/06_p1_cross_day_transfer.csv`. Same method as above; a separate
+output, so the fixed results above are unchanged.
+
+| Split | Calibration | Test | Offset az / el | Uncorrected | Corrected |
+|---|---|---|---|---|---|
+| 2026-07-15 → 2026-10-15 | 50 scenes, 9 drives | 29 scenes, 1 drive | −0.46 / −3.97 | 3.12 | **1.22** |
+| 2026-10-15 → 2026-07-15 | 29 scenes, 1 drive | 50 scenes, 9 drives | −0.56 / −3.01 | 4.02 | **1.12** |
+| **Mean (2 splits)** | | | | 3.57 | **1.17** |
+
+- **Both directions improve strongly** (2/2): about 1.9–2.9° less error.
+- **Weaker than within July 15:** 1.17° vs 0.87° (one recording → others) and 0.68° (groups). The two days' vertical
+  offsets differ by about 1° (−3.97° vs −3.01°).
+- **Caveat:** July uses the applied `corrected` scene calibration, October the native module calibration (both module
+  272097). This split therefore contains a day change *and* a device-calibration change, which is why it was
+  excluded from the main transfer analysis.
