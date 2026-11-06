@@ -32,12 +32,21 @@ CoTracker3 point tracking~\cite{karaev2025cotracker3}
 and RAFT optical flow~\cite{teed2020raft}
 propagate target positions between detections and support
 temporal consistency checks. Target proposals and tracking
-are automated; for this benchmark, all accepted references
-were additionally verified manually in a dedicated Neon
-Player interface, with detection or tracking failures labelled
-manually and a subset checked by a second annotator.
-The verified object centre defines
-the reference independently of the measured gaze coordinates.
+are automated, with detection or tracking failures labelled
+manually. The verified object centre defines the reference
+independently of the measured gaze coordinates.
+
+Spoken announcements identify candidate fixation targets.
+Knowing the target provides a target-relative reference for
+identifying intervals with a stable gaze-to-target offset,
+including smooth pursuit. Changes in this offset and eye
+movement speed help distinguish target fixation from looking
+away during driving. All intervals and target assignments
+are manually verified in Pupil Player using gaze overlays
+and infrared eye videos, with a subset of target assignments
+additionally checked by a second annotator. All valid gaze
+samples within the verified intervals are included in the
+evaluation.
 
 To minimise reference uncertainty, we select compact,
 well-defined targets such as traffic lights, licence plates
