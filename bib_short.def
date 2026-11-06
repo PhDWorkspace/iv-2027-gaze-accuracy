@@ -1,3 +1,5 @@
+% GENERATED from literature/bib/bib_short.def by scripts/sync_bib.sh -- do not edit; edit in phd-literature.
+
 % Abbreviated venue names.
 
 %% A
@@ -5,6 +7,7 @@
 \newcommand{\aamas}{Proc. AAMAS}
 \newcommand{\accv}{Proc. ACCV}
 \newcommand{\acl}{Proc. ACL}
+\newcommand{\acmchi}{Proc. ACM CHI}
 \newcommand{\acmhri}{Proc. ACM/IEEE HRI}
 \newcommand{\acmicmi}{Proc. ACM ICMI-MMMP}
 \newcommand{\acmmm}{Proc. ACM Multimedia}
@@ -54,6 +57,7 @@
 \newcommand{\fcn}{Front. Comput. Neurosci.}
 \newcommand{\fg}{Proc. IEEE FG}
 \newcommand{\fhd}{Front. Hum. Dyn.}
+\newcommand{\fnrgo}{Front. Neuroergonomics}
 
 %% G
 \newcommand{\gcpr}{Proc. GCPR}
@@ -100,6 +104,7 @@
 \newcommand{\jacm}{J. ACM}
 \newcommand{\jair}{J. Artif. Intell. Res.}
 \newcommand{\jasa}{J. Am. Stat. Assoc.}
+\newcommand{\jasael}{JASA Express Lett.}
 \newcommand{\je}{J. Electron. (China)}
 \newcommand{\jemr}{J. Eye Mov. Res.}
 \newcommand{\jfr}{J. Field Robot.}
@@ -131,6 +136,7 @@
 \newcommand{\otj}{Open Transp. J.}
 
 %% P
+\newcommand{\pacmcgit}{Proc. ACM Comput. Graph. Interact. Tech.}
 \newcommand{\pacmhci}{Proc. ACM Hum.-Comput. Interact.}
 \newcommand{\pami}{IEEE Trans. Pattern Anal. Mach. Intell.}
 \newcommand{\patrec}{Pattern Recognit.}
@@ -146,6 +152,7 @@
 %% S
 \newcommand{\science}{Science}
 \newcommand{\scidata}{Sci. Data}
+\newcommand{\scirep}{Sci. Rep.}
 \newcommand{\sensors}{Sensors}
 \newcommand{\siggraph}{Proc. ACM SIGGRAPH}
 \newcommand{\sigproc}{Proc. IEEE Int. Symp. Intell. Signal Process.}
