@@ -4,7 +4,8 @@
 
 To measure gaze accuracy during real driving, we associate
 wearable gaze estimates with independently localised physical
-targets and synchronised vehicle measurements.
+targets and synchronised vehicle measurements
+(Fig.~\ref{fig:framework}(a)).
 
 \textbf{Vehicle and synchronisation.}
 Our research vehicle is equipped with cameras, roof-mounted
@@ -20,13 +21,17 @@ and vehicle measurements.
 
 \textbf{Reference generation.}
 During driving, participants verbally announce identifiable
-fixation targets, e.g., ``fixating the red traffic light
-on the right.'' Whisper transcribes the announcements,
+fixation targets, e.g., ``focusing truck on the right''
+(Fig.~\ref{fig:framework}c). Whisper transcribes the announcements,
 and Hassil identifies the fixation event and object category.
-Object detection proposes candidate targets within a generous
-region around the estimated gaze position. Point tracking
-and optical flow support temporal target localisation, while
-ambiguous assignments are flagged for inspection.
+An Ultralytics YOLO26 detector, trained on 3,827 annotated
+images from the eye-tracker's scene-camera perspective,
+proposes candidate targets within a generous region around
+the estimated gaze position.
+CoTracker3 point tracking~\cite{karaev2025cotracker3}
+and RAFT optical flow~\cite{teed2020raft}
+support temporal target localisation, while ambiguous
+assignments are flagged for inspection.
 All accepted references are manually verified in a dedicated
 Neon Player interface, with a subset additionally checked
 by a second annotator. The verified object centre defines
