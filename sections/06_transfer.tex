@@ -5,7 +5,8 @@
 We now investigate whether corrections learned under controlled
 conditions retain their benefits in real driving, and whether
 calibration using driving references is more effective.
-In the main benchmark, all corrections are scored on the same
+The main model comparison uses the original 245-scene,
+17-recording subset, with all corrections scored on the same
 held-out driving scenes of the three driving participants
 (P1, P2, P6). They are fitted either on a participant's
 chessboard recordings or on about 20\% of the driving scenes
@@ -62,15 +63,23 @@ Geometric layouts differ from random selections by at most
 
 \noindent\textbf{Transfer across recordings and days.}
 We further evaluated whether driving-derived median offsets
-transfer to separate recordings and days.
-Table~\ref{tab:recording_transfer} compares all three
-evaluation settings, showing that corrections remain
-effective beyond randomly held-out scenes.
+transfer to separate recordings, using random 20\% scene
+pooling as the benchmark (Table~\ref{tab:recording_transfer}).
+This additional evaluation includes a second P6 recording
+with 21 verified scenes; its 20\% benchmark therefore uses
+114 scenes, compared with 93 in Table~\ref{tab:transfer}.
+All 12 recording-transfer splits improve over uncorrected
+gaze. Actual day transfer also improves in both directions
+for P1 and P2, although P1's comparison includes factory
+recalibration. P6's two recordings were acquired on one day,
+so day transfer cannot be assessed for P6.
 
 \begin{table}[!h]
 \centering
 \caption{Corrected median angular error ($^\circ$)
-on held-out driving scenes, averaged over splits.}
+on held-out driving scenes, averaged over splits.
+All rows use the same recording pool; test splits differ.
+P1 day transfer includes factory recalibration.}
 \label{tab:recording_transfer}
 \footnotesize
 \setlength{\tabcolsep}{5pt}
@@ -78,9 +87,9 @@ on held-out driving scenes, averaged over splits.}
 \hline
 Calibration split & P1 & P2 & P6 \\
 \hline
-Random 20\% scenes & 0.76 & 0.83 & 1.41 \\
-Across recordings  & 0.87 & 0.83 & 1.44 \\
-Across days & 0.68 & 0.91 & 1.40 \\
+Random 20\% scenes & 0.76 & 0.83 & 1.43 \\
+Across recordings  & 0.84 & 0.89 & 1.43 \\
+Across days & 1.17 & 0.91 & --- \\
 \hline
 \end{tabular}
 \end{table}
@@ -96,7 +105,7 @@ to 3.02\dg{}, in every fold, whereas P1's and P2's
 tails do not improve.
 In the evaluated conditions, the main gain thus comes
 from representative in-situ references rather than model
-complexity. Cross-recording and limited cross-day transfer
-further support the practical utility of these offsets;
+complexity. Recording transfer supports reuse for these
+participants, with limited evidence of day transfer;
 generalisation to new wearers and substantially different
 environmental conditions remains to be established.

@@ -30,14 +30,17 @@ On controlled data, we use approximately 20\% of recordings
 for calibration and the remainder for testing across five
 recording-disjoint folds.
 
-For all three drivers, we evaluate driving-derived corrections
-at three levels:
-\emph{(1) Random scenes:} 20\% of scenes for calibration,
-80\% for testing, across five folds;
-\emph{(2) Across recordings:} calibration on one recording,
-testing on other recordings;
-\emph{(3) Across days:} calibration on one day, testing on
-another day.
+For all three drivers, the random-scene benchmark uses
+20\% of scenes for calibration and 80\% for testing across
+five folds. We additionally test recording transfer by
+calibrating on one recording with at least five verified
+fixations and testing on all other recordings, retaining
+shorter recordings as test targets. For P1 and P2, we also
+pool all references from one day and test on the other day,
+in both directions. P6 has two recordings on one day;
+P1 underwent factory recalibration between days.
+Held-out recordings receive equal weight, as do scenes within
+each recording and samples within each scene.
 We compare chessboard- and driving-derived corrections
 on identical held-out driving scenes in the random-scene
 benchmark. We further vary the number of driving references
