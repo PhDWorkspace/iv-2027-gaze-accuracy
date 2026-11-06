@@ -81,7 +81,7 @@ What makes the data distinct: independently verified fixation reference coordina
 
 **Then deliver an empirical result.** The verified benchmark reveals large, predominantly systematic raw error, with considerable differences across participants. This is the reason to ask which variables influence bias and whether correction can be learned. Do **not** use Section IV only to describe CoTracker/optical-flow implementation details.
 
-**Representative snapshot to verify against the latest run:** 245 manually verified scenes, 17 evaluated road recordings, three participants, 73,738 gaze samples; raw median errors **3.96°, 1.48°, and 6.00°**. If numbers change, update manuscript, plots, and `evals/` documentation together. Keep the exact recording roles accurate in Methods without making them the principal Results story.
+**Current acquisition totals (2026-11-06):** 266 manually verified scenes, 18 evaluated road recordings, three participants, and 76,645 gaze samples across four dates. Stefan contributes two recordings on one day. The main model comparison retains the original 245-scene, 17-recording subset (raw median errors **3.96°, 1.48°, and 6.00°**); the recording-transfer evaluation includes his additional 21-scene recording. See `evals/06_fair_recording_transfer.md` and `evals/data/04_current_dataset_totals.json`. Keep the full dataset and evaluated subsets distinct, and keep exact recording roles accurate without making them the principal Results story.
 
 **End-of-act question:** Why are these wearer-dependent offsets so different, and do known viewing factors explain them?
 

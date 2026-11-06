@@ -1,0 +1,18 @@
+{
+  "recordings": 18,
+  "fixations": 266,
+  "gaze_samples": 76645,
+  "days": 4,
+  "recording_hours": 1.6922966666666668,
+  "fixation_duration_median_s": 1.3500973319999998,
+  "target_classes": {
+    "traffic_light": 52,
+    "license_plate": 124,
+    "road_sign": 82,
+    "pedestrian_traffic_light": 7,
+    "mcdonalds_sign": 1
+  },
+  "distance_min_m": 4.7,
+  "distance_max_m": 119.6,
+  "distance_median_m": 27.3
+}
