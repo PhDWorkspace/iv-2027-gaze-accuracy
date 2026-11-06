@@ -30,11 +30,13 @@ proposes candidate targets within a generous region around
 the estimated gaze position.
 CoTracker3 point tracking~\cite{karaev2025cotracker3}
 and RAFT optical flow~\cite{teed2020raft}
-support temporal target localisation, while ambiguous
-assignments are flagged for inspection.
-All accepted references are manually verified in a dedicated
-Neon Player interface, with a subset additionally checked
-by a second annotator. The verified object centre defines
+propagate target positions between detections and support
+temporal consistency checks. Target proposals and tracking
+are automated; for this benchmark, all accepted references
+were additionally verified manually in a dedicated Neon
+Player interface, with detection or tracking failures labelled
+manually and a subset checked by a second annotator.
+The verified object centre defines
 the reference independently of the measured gaze coordinates.
 
 To minimise reference uncertainty, we select compact,
@@ -53,6 +55,9 @@ location.
 Verified target positions are converted into angular directions
 using the calibrated scene-camera intrinsics and compared with
 temporally aligned gaze estimates. Target distances are obtained from LiDAR measurements.
+The vehicle-to-wearable association uses the sensor transformation
+tree with a nominal head position; ordinary head movements
+introduce uncertainty in the associated target distance.
 For dense metric depth, we align Depth Anything predictions
 with projected LiDAR measurements using robust per-frame
 scale-and-shift fitting in inverse-depth space~\cite{marsal2025depth}. Each reference is associated with
