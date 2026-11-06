@@ -113,9 +113,10 @@ between-day offsets varied for some participants. \\
 \subsection{Can We Learn the Patterns?}
 
 Finally, we tested whether spatial and pupil-related dependencies
-help beyond a simple per-wearer median offset. Linear corrections
-were fitted on about 20\% of each wearer's recordings and evaluated
-on the remaining, recording-disjoint data in five folds. Additional
+improve accuracy beyond a per-wearer median offset.
+Regression models were trained on approximately 20\% of each
+wearer's recordings and tested on the remaining recordings,
+repeated across five folds. Additional
 features sometimes helped considerably: combining position and
 distance reduced the controlled median error from 1.41\dg{} to
 0.87\dg{} for one wearer, consistently across folds. For others,
