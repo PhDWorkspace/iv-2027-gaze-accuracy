@@ -1,23 +1,25 @@
+
 \section{Transfer Back to Driving}
 \label{sec:transfer}
 
 We now investigate whether corrections learned under controlled
 conditions retain their benefits in real driving, and whether
 calibration using driving references is more effective.
-All corrections are scored on the same held-out driving scenes
-of the three driving participants (P1, P2, P6). They are fitted
-either on a participant's chessboard recordings or on about
-20\% of the driving scenes (14--19 per fold), and results are
-averaged over five folds.
+In the main benchmark, all corrections are scored on the same
+held-out driving scenes of the three driving participants
+(P1, P2, P6). They are fitted either on a participant's
+chessboard recordings or on about 20\% of the driving scenes
+(14--19 per fold), and results are averaged over five folds.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig6_transfer.pdf}
-\caption{Correction on held-out driving scenes. (a) Median (marker) and P90
-(tick) error without correction and with a median offset from the
-chessboard recordings or from 20\% of the driving scenes. (b) Median error of an
-offset from $k$ random driving scenes (line: mean of five folds; band:
-fold range) versus the chessboard offset (dashed).}
+\caption{Correction on held-out driving scenes. (a) Median (marker)
+and P90 (tick) error without correction and with a median offset
+from chessboard recordings or 20\% of driving scenes.
+(b) Median error using $k$ random driving references (line:
+mean of five folds; band: fold range) compared with the
+chessboard offset (dashed).}
 \label{fig:transfer}
 \end{figure}
 
@@ -32,38 +34,69 @@ scenes, mean of five folds.}
 
 \subsection{Do Controlled Corrections Transfer to Driving?}
 
-A chessboard offset removes most of the systematic driving error, from
-3.96\dg{} to 0.88\dg{} for P1 and from 6.00\dg{} to 1.60\dg{} for P6
-(Fig.~\ref{fig:transfer}a); for P2, whose offset is small, it barely
-helps. Position and pupil terms fitted on the same chessboards do not add
-to this benefit (Table~\ref{tab:transfer}): for P1 and P6 they increase
-driving error in every fold, by up to 0.29\dg{}, and only P2 gains
-slightly (0.09\dg{}). Controlled improvements therefore do not
-necessarily transfer to the road.
+A chessboard offset removes most of the systematic driving error,
+from 3.96\dg{} to 0.88\dg{} for P1 and from 6.00\dg{} to
+1.60\dg{} for P6 (Fig.~\ref{fig:transfer}a); for P2,
+whose offset is small, it barely helps.
+Position and pupil terms fitted on the same chessboards do not
+add to this benefit (Table~\ref{tab:transfer}): for P1 and P6
+they increase driving error in every fold, by up to 0.29\dg{},
+and only P2 gains slightly (0.09\dg{}).
+Controlled improvements therefore do not necessarily transfer
+to the road.
 
 \subsection{Sparse In-Situ Correction}
 
-Our verified driving fixations allow the same median offset to be
-estimated in the operating condition itself. An offset from 20\% of the
-driving scenes reduces the median error to 0.76\dg{}, 0.83\dg{} and
-1.41\dg{}, 44--81\% below uncorrected gaze, and is significantly better
-than the chessboard offset for all three participants (paired
-scene-level tests, Holm $p<.01$). Few references suffice
-(Fig.~\ref{fig:transfer}b): one random scene already beats the
-chessboard offset for P2, and about four scenes match or beat it for
-everyone; more scenes mainly stabilise the estimate. Geometric layouts
-differ from random selections by at most 0.05\dg{}. The challenge is
-therefore not computing an offset but obtaining reliable references in
-the application environment, which our acquisition and verification
-pipeline (Sec.~\ref{sec:method}) makes feasible.
+Our verified driving fixations allow the same median offset
+to be estimated in the operating condition itself.
+An offset from 20\% of the driving scenes reduces the median
+error to 0.76\dg{}, 0.83\dg{} and 1.41\dg{}, 44--81\%
+below uncorrected gaze, outperforming the chessboard offset
+for all three participants.
+Few references suffice (Fig.~\ref{fig:transfer}b):
+one random scene already beats the chessboard offset for P2,
+and about four scenes match or beat it for everyone;
+more scenes mainly stabilise the estimate.
+Geometric layouts differ from random selections by at most
+0.05\dg{}.
+
+\noindent\textbf{Transfer across recordings and days.}
+We additionally evaluated whether driving-derived median
+offsets transfer beyond randomly held-out scenes.
+Table~\ref{tab:recording_transfer} shows that corrections
+remain effective across recordings and recording groups.
+For P2, this also includes transfer between two recording days.
+
+\begin{table}[t]
+\centering
+\caption{Corrected median angular error ($^\circ$)
+on held-out driving scenes, averaged over splits.}
+\label{tab:recording_transfer}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lccc}
+\hline
+Calibration split & P1 & P2 & P6 \\
+\hline
+Random 20\% scenes & 0.76 & 0.83 & 1.41 \\
+Across recordings  & 0.87 & 0.83 & 1.44 \\
+Across groups      & 0.68 & 0.91 & 1.40 \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Does Driving-Based Modelling Help?}
 
-Linear or ridge models fitted on the same driving references do not
-consistently improve the median error (Table~\ref{tab:transfer}). They
-can shape the tail: for P6, position terms lower P90 from 4.36\dg{} to
-3.49\dg{}, and adding gaze velocity to 2.98\dg{}, in every fold, whereas
-P1's and P2's tails do not improve. In the evaluated conditions, the main
-gain thus comes from representative in-situ references rather than model
-complexity. Because scenes are held out within the recorded drives,
-transfer to new drives or days remains to be shown.
+Linear or ridge models fitted on the same driving references
+do not consistently improve the median error
+(Table~\ref{tab:transfer}).
+They can shape the tail: for P6, position terms lower P90
+from 4.36\dg{} to 3.49\dg{}, and adding gaze velocity
+to 2.98\dg{}, in every fold, whereas P1's and P2's
+tails do not improve.
+In the evaluated conditions, the main gain thus comes
+from representative in-situ references rather than model
+complexity. Cross-recording and limited cross-day transfer
+further support the practical utility of these offsets;
+generalisation to new wearers and substantially different
+environmental conditions remains to be established.
