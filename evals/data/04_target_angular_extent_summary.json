@@ -1,0 +1,243 @@
+{
+  "eligible_scenes": 266,
+  "scenes_with_boxes": 266,
+  "aggregation": "median extent over target boxes in frames used by metric-valid gaze samples per scene; equal scene weights",
+  "interpretation": "descriptive angular footprint of annotated boxes; not a validated uncertainty bound or measurement of exact human fixation position",
+  "all": {
+    "width_deg": {
+      "median": 1.0380811415700262,
+      "p90": 2.1667166290680466
+    },
+    "height_deg": {
+      "median": 0.5773333162209263,
+      "p90": 1.322633969795349
+    },
+    "diagonal_deg": {
+      "median": 1.2782482796317325,
+      "p90": 2.5971443507979703
+    }
+  },
+  "sources": [
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/detections.json",
+      "sha256": "5cd12d456180d03f7f2cbb79b4a96540c5dfbfd8952f9b2b2f874f0cbc796fdd"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-12-40-18_803b40a9/dataset.csv",
+      "sha256": "882f338b06d727dfeffa5a25716e7111612ca8f7acec30423cb15f1527787273"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/detections.json",
+      "sha256": "1d31d37bcc273167e11d08472c7081688d38c97eb2e7956fad4a8dd916413cf5"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-08-24_1c870f4e/dataset.csv",
+      "sha256": "d96c3fbbf0bd83764ee4042cdd64943cdfbabe2da27cfeff47062bec485bf828"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/detections.json",
+      "sha256": "0572a315795dbdb9851a33f532b5863300a0107fa7910f3c6d5bfa7926694fcc"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-14-16-44-30_ce29918d/dataset.csv",
+      "sha256": "65d9243710f348195723b9710e8ec2c0c929ed7e1009e5d97c896822660adf96"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/detections.json",
+      "sha256": "bfea880be4f89f575718cef86bc8957d43a06b91622cd5b53b19bff564e774e6"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-04-48_89171fda/dataset.csv",
+      "sha256": "b61542b45312c031573eaba1063c31656de955d634ce5e244e94e29c2b9351cb"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/detections.json",
+      "sha256": "bb2c50629346ff680e626b379170ac9c76cc1efa45d205160d1b9f8fcf6be102"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-13-43_87763edb/dataset.csv",
+      "sha256": "c883544390ed3a92d167855d4e3dc93a67ba0dddc461af8b0c04a77ab6d75b99"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/detections.json",
+      "sha256": "09cb9c2af238dfd6746eec9304ca5d5152bbbe9668b7995c4b10e5670c14e264"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_Katharina-Winter_2026-10-15-10-29-25_9e375629/dataset.csv",
+      "sha256": "c8031e2c58e9470c2f946e2894cb8de10e48c50ac4e3e1a3fe2490f7e7f15d07"
+    },
+    {
+      "path": "/data/driving/recordings/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/detections.json",
+      "sha256": "592bff9e22c1f2d2fdb60ed055e0692dfe34cfb0b36e1f40c2fdef8327085721"
+    },
+    {
+      "path": "/data/driving/results/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/calibration.json",
+      "sha256": "b984b34e3f44cc97c55a702a93d580c1ffa8c9f8e8097a5a84c4518461db080d"
+    },
+    {
+      "path": "/data/driving/results/free-driving_William-Engel_2026-10-15-14-51-10_413b4ada/dataset.csv",
+      "sha256": "ada58021609128e92fe84c1dc81ad8f9414103cb3777efe93fcae5a63e571f8e"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/detections.json",
+      "sha256": "617754e68486266b098a06840d729cbd0ee6025e9dcb10112791e6b20b561eba"
+    },
+    {
+      "path": "/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/calibration.json",
+      "sha256": "e097ac469fae9f59f583c4975d23c6e9aaf67de7552b4475cb1711d86c1eefb0"
+    },
+    {
+      "path": "/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/dataset.csv",
+      "sha256": "ab0de286d5371c389707425843c2bf3721ae4d1a92e6373495d7416bd50a5b89"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/detections.json",
+      "sha256": "1e33b5bf36e11d887c249e465be098011ec0942a43a6ca0f2fde0e07e87a2fd2"
+    },
+    {
+      "path": "/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/calibration.json",
+      "sha256": "e097ac469fae9f59f583c4975d23c6e9aaf67de7552b4475cb1711d86c1eefb0"
+    },
+    {
+      "path": "/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/dataset.csv",
+      "sha256": "526e9710d07fc85232355207e4ccdde3bb11a570132fa57f787bbb5d814c3b66"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-15-45-25_355ca780/detections.json",
+      "sha256": "a856e03a48ad31f1a9791f67dac755fefdb31d7a125b298ba117eb5d3c49c941"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-45-25_355ca780/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-45-25_355ca780/dataset.csv",
+      "sha256": "6c0d31ab7024435abe33a701c3a4e200edc1c9c35e1f8705bf6d4168c1f56ac1"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-15-47-32_9389c3a7/detections.json",
+      "sha256": "e36cc348cc4f507786ca7142e6098e998690aa4615976c0044ecbb867dc9353b"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-47-32_9389c3a7/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-47-32_9389c3a7/dataset.csv",
+      "sha256": "8959ca9c1c93159e1e07f70babd4d2bc4dd3c1e8ca88b3805191be280ddd5e96"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-15-51-34_37d6d815/detections.json",
+      "sha256": "50f2aef0dfe69b0fb16a15e902fb78fcfec56fd8ae6dabb9b06b8fc3d246c649"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-51-34_37d6d815/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-51-34_37d6d815/dataset.csv",
+      "sha256": "02394cdb35309a10cc2babb11b2b78b4a4da47d4b906512efb425bc5081ae328"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-15-55-26_e59bdaec/detections.json",
+      "sha256": "4d7f401a11b3114551fe6ba31db2eac702f1fb3454290f8760e02334aa75339c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-55-26_e59bdaec/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-15-55-26_e59bdaec/dataset.csv",
+      "sha256": "b5f1875fb0f0ff17762b947827521f2f035d9167ea8298ee2a5f9daec2ab0d67"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-16-04-04_04f6eeff/detections.json",
+      "sha256": "efc2be34ad9f20956e1cd36c6ebd1f320bfe0412cc26a90675f6373ffdb24cac"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-04-04_04f6eeff/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-04-04_04f6eeff/dataset.csv",
+      "sha256": "5e351f21e5806e495ca37de428b9d98523405b12e7e51813765b583d46a39093"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-16-07-13_46833872/detections.json",
+      "sha256": "99eb910258f0b3d974668cc88aa5aedcf3f6472dcd1b8d9f17d6cdb312baed11"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-07-13_46833872/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-07-13_46833872/dataset.csv",
+      "sha256": "87990c9b20cac0f1897d20b36e578ce46847e5d81ed2663934b88dede952dbae"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-16-13-59_ba3b000c/detections.json",
+      "sha256": "40010fdfd4ddbe44cb8ba000f5304786c2608ddac54dac21c334daf8399ffa03"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-13-59_ba3b000c/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-13-59_ba3b000c/dataset.csv",
+      "sha256": "8c6b539b3a5dddd4c943240d4f6c21cd0582ee45385f445610008562d109b12c"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-16-44-04_c7052674/detections.json",
+      "sha256": "0f133bfe09be1d608b5aebb6e1728bfabd171e26c2e90e9fbb83a7ac65fa4a45"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-44-04_c7052674/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-44-04_c7052674/dataset.csv",
+      "sha256": "6370c83b300f5408a1c3f6081f643dd0ed081fe06216693e8ac62ba55b1132d5"
+    },
+    {
+      "path": "/data/driving/recordings/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/detections.json",
+      "sha256": "54426728965e319dbcdbb24cb18602383244eb2b25993628e802099082039fc3"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/calibration.json",
+      "sha256": "a613b7dc3bd37a91a8c27ba1ce004afb7ee8e1808bb321176554f1777ba1b88c"
+    },
+    {
+      "path": "/data/driving/results/free_driving_William_2026-07-15-16-50-04_3f9e4e5b/dataset.csv",
+      "sha256": "6783f81dc8b870e201dac30d9b723a65121879537c5b17037bac976d3ffb8888"
+    }
+  ],
+  "code_sha256": {
+    "analysis": "543f79b223a54b51359edfb23e61a3b8a51cdf620c69da684fc8071fcd16939a",
+    "angular_geometry": "d397246713b917b6b26a14b86540b4014da634471e6e1c8b56224d8a701f44f6"
+  },
+  "units_sha256": "ede9929f027eec6b44738efb15b2bd26296559d99e0b4fa4814ce7f20dd95319"
+}

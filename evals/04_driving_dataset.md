@@ -1,5 +1,28 @@
 # Section IV data basis: real-world driving dataset and reference acquisition
 
+## Reference-size and review evidence added 2026-11-06
+
+The owner confirmed **200 target assignments received a second review**; no formal inter-annotator agreement was measured. This count is an owner statement, not a reconstruction of reviewer IDs from metadata. It supports a coverage statement, not an agreement or reliability statistic.
+
+The new `data/04_target_angular_extent.py` uses the current 266 eligible scenes and the effective camera calibration of each recording. Only detection frames referenced by metric-valid gaze samples of that event are used. For each valid target box, it unprojects the edge midpoints and corners with Horuspy's existing camera-direction function and computes spherical angular width, height and the larger diagonal. Frame extents are first reduced to a median per scene; dataset quantiles give every scene one vote. All 266 scenes have eligible target boxes.
+
+| Annotated angular extent | Median over scenes | P90 over scenes |
+|---|---:|---:|
+| Width | 1.04° | 2.17° |
+| Height | 0.58° | 1.32° |
+| Diagonal | 1.28° | 2.60° |
+
+These are **descriptive footprints of annotated boxes**, not independently measured target-localisation error, exact foveation error, or validated upper bounds on reference uncertainty. Box boundaries have annotation/pose uncertainty, including the plate-ratio limitations documented in the dataset. The manuscript deliberately retains that distinction. The measurements add quantitative support to target compactness without claiming that every human fixation precisely coincides with the geometric centre.
+
+Artifacts: `data/04_target_angular_extent.csv` contains one row per current scene; `data/04_target_angular_extent_summary.json` records source and code hashes and summary quantiles. Reproduce with Horuspy `src` on `PYTHONPATH` and `DATA_ROOT` pointing to the read-only dataset:
+
+```bash
+python evals/data/04_target_angular_extent.py
+```
+
+No canonical gaze tables, annotations or detections were modified. Public data/code release arrangements remain unspecified; the revision makes no release promise.
+
+
 > **Current evaluation update (2026-11-06):** all driving model comparisons now include 266 scenes from 18 recordings. P6 contributes 114 scenes and 23,300 samples from two recordings on one day. Updated held-out raw / chessboard / in-situ medians for P6 are 5.97° / 1.51° / 1.43°; his median elevation bias is −6.03° and median target-relative dispersion is 1.59°. The current raw tables are `data/04_scene_raw_errors.csv` and `data/04_driver_raw_summary.csv`. The detailed narrative below is a historical 245-scene snapshot; current correction results are documented in [Section VI evaluation](06_transfer_to_driving.md).
 
 
