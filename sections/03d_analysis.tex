@@ -10,9 +10,7 @@ azimuth/elevation offsets), dispersion ($P_\mathrm{STD}$),
 and precision (RMS-S2S). For pursuit, dispersion is computed
 from gaze--target residuals. We additionally report P90
 (90th percentile of angular error). Results are aggregated
-per scene and recording. Stored wearer offsets were removed,
-so \emph{uncorrected} denotes gaze without person-specific
-correction.
+per scene and recording.
 
 \textbf{Correction methods.}
 We compare constant median offsets with linear regression models
@@ -26,9 +24,9 @@ We evaluate corrections on controlled chessboards and real
 driving scenes. Calibration references are obtained from
 individual chessboards (15 targets), pooled chessboard
 recordings, or verified driving fixations.
-For controlled-to-controlled evaluation, we use approximately 20\% of recordings
-for calibration and the remainder for testing across five
-recording-disjoint folds.
+For controlled-to-controlled evaluation, we use approximately
+20\% of recordings for calibration and the remaining 80\%
+for testing, repeated across five folds.
 For chessboard-to-driving transfer, we instead pool references
 from approximately 80\% of the available chessboard recordings
 (125 for P1, 23 for P2 and 25 for P6), across five calibration

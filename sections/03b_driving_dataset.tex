@@ -21,7 +21,7 @@ and vehicle measurements.
 
 \textbf{Reference generation.}
 During driving, participants verbally announce identifiable
-fixation targets, e.g., ``fixating the licence plate ahead''
+fixation targets, e.g., ``Fixating the truck on the right.''
 (Fig.~\ref{fig:framework}c). Whisper transcribes the announcements,
 and Hassil identifies the fixation event and object category.
 An Ultralytics YOLO26 detector, trained on 3,827 annotated
@@ -47,17 +47,20 @@ review. Inter-annotator agreement was not quantified. All finite,
 metric-valid gaze and target samples within the verified intervals
 are evaluated.
 
-To minimise reference uncertainty, we select compact,
-well-defined targets such as traffic lights, licence plates
-and road signs. Their small angular extent limits the
-discrepancy between an on-target fixation and the annotated
-centre. This choice is supported by evidence of accurate
-saccadic targeting and preferred fixation locations near
-object centres~\cite{kowler1995accuracy,nuthmann2010object}.
-Across the 266 scenes, annotated boxes have a median angular
-diagonal of 1.28\dg{} (P90: 2.60\dg{}), computed from calibrated
-scene-camera rays. This describes target extent, not measured
-centre-fixation error; the exact fixation location remains uncertain.
+
+
+Participants were instructed to fixate the centres of
+the announced targets. We select compact, clearly
+identifiable objects such as traffic lights, licence
+plates and road signs to minimise reference uncertainty.
+Human gaze preferentially targets object
+centres~\cite{kowler1995accuracy,nuthmann2010object}.
+The median centre-to-corner extent is 0.64\dg{}
+(P90: 1.30\dg{}), a geometric limit reached only
+by fixating an extreme corner rather than the
+instructed centre.
+
+
 
 
 \textbf{Reference geometry and context.}
@@ -73,3 +76,19 @@ scale-and-shift fitting in inverse-depth space~\cite{marsal2025depth}. Each refe
 vehicle motion and scene metadata. The resulting benchmark and
 its driving conditions are characterised in
 Section~\ref{sec:realworld}.
+
+
+\textbf{Gaze suitability checks.}
+To complement spatial accuracy, we assess whether gaze
+measurements are suitable for downstream supervision.
+A YOLO26 model trained on 548 annotated images from
+three vehicles segments windshields, side windows and
+mirrors to identify relevant viewing regions.
+Image sharpness (Laplacian variance), optical flow and
+IMU motion help detect motion-induced image degradation.
+Pupil Labs blink events, eye openness and gaze dynamics
+identify periods of potentially unreliable gaze estimation,
+particularly during eyelid occlusion.
+These manually validated indicators provide sample-level
+quality flags for selecting usable gaze sequences.
+
