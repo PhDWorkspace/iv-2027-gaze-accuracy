@@ -197,3 +197,11 @@
 \newcommand{\iui}{Proc. ACM IUI}
 \newcommand{\npjai}{npj Artif. Intell.}
 \newcommand{\wacvw}{Proc. IEEE/CVF WACV Workshops}
+
+% Venues added for the cross-camera geometry inbox, verified 2026-11-07.
+\newcommand{\ame}{Proc. GMM AmE}
+\newcommand{\isprsjprs}{ISPRS J. Photogramm. Remote Sens.}
+
+% Venues added for the gaze-guided driving inbox, verified 2026-11-12.
+\newcommand{\tcsvt}{IEEE Trans. Circuits Syst. Video Technol.}
+\newcommand{\iavvc}{Proc. IEEE IAVVC}
