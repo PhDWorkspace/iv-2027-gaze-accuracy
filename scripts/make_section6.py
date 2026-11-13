@@ -1,6 +1,8 @@
 """Generate Section VI (transfer to driving) figure, table and data exports.
 
-Usage: python scripts/make_section6.py /path/to/data transfer_run [offset_root] [linear_runtime_run]
+Usage: python scripts/make_section6.py [data_root] [transfer_run] [offset_root] [linear_runtime_run] [--models]
+Refresh the four-driver offset figure, transfer table and detailed model table from the audited snapshot.
+--offset-only leaves the detailed model outputs untouched; --models is retained for explicit full regeneration.
 
 Reads only existing evaluation outputs (nothing in the dataset is written):
   <data>/gaze_accuracy/offset/analysis/category_summary.csv  fold-matched driving comparison (raw, chessboard, driving)
@@ -10,9 +12,9 @@ Reads only existing evaluation outputs (nothing in the dataset is written):
   <transfer_regression_dir>                                  horuspy spec transfer_regression.json (chessboard- and
                                                              driving-trained median/linear/ridge on the same scenes)
 Writes figures/fig6_transfer.pdf, figures/tab_transfer_models.tex and evals/data/06_*.csv.
-Participants: P1 william, P2 katharina, P6 stefan (codes as in Sections IV and V).
+Participants: P1 william, P2 katharina, P6 stefan, P8 constantin (codes as in Sections IV and V).
 """
-import sys
+import argparse
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -21,14 +23,22 @@ import pandas as pd
 from matplotlib import font_manager
 
 ROOT = Path(__file__).resolve().parents[1]
-CURRENT = ROOT / "evals/data/06_current_driving/offset"
-DATA = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(sys.argv[1]) / "gaze_accuracy/offset" if len(sys.argv) > 1 else CURRENT
-TRANSFER_REGRESSION = Path(sys.argv[2]) if len(sys.argv) > 2 else CURRENT / "runs/transfer_regression"
-LINEAR_RUNTIME = Path(sys.argv[4]) if len(sys.argv) > 4 else CURRENT / "runs/linear_runtime"
+CURRENT = ROOT / "evals/data/06_four_drivers/offset"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("data_root", nargs="?", type=Path)
+parser.add_argument("transfer_run", nargs="?", type=Path)
+parser.add_argument("offset_root", nargs="?", type=Path)
+parser.add_argument("linear_runtime_run", nargs="?", type=Path)
+parser.add_argument("--models", action="store_true")
+parser.add_argument("--offset-only", action="store_true")
+args = parser.parse_args()
+DATA = args.offset_root or (args.data_root / "gaze_accuracy/offset" if args.data_root else CURRENT)
+TRANSFER_REGRESSION = args.transfer_run or CURRENT / "runs/transfer_regression"
+LINEAR_RUNTIME = args.linear_runtime_run or CURRENT / "runs/linear_runtime"
 FIG, EXPORT = ROOT / "figures", ROOT / "evals/data"
-DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6"}
-COLORS = {"P1": "#2f6aa3", "P2": "#eb6834", "P6": "#1baf7a"}
-MARKERS = {"P1": "o", "P2": "s", "P6": "^"}
+DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6", "constantin": "P8"}
+COLORS = {"P1": "#2f6aa3", "P2": "#eb6834", "P6": "#1baf7a", "P8": "#8655a3"}
+MARKERS = {"P1": "o", "P2": "s", "P6": "^", "P8": "D"}
 INK, MUTED, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 FULL, COLUMN = 7.16, 3.5
 for f in Path("/usr/share/fonts").rglob("NimbusRoman-*.otf"):
@@ -54,7 +64,7 @@ def category_summary():
 
 def reference_folds():
     """Random k-scene offsets: mean over the 20 draws within each fold; geometric layouts per fold."""
-    s = pd.read_csv(DATA / "runs/driving/scores.csv")
+    s = pd.read_csv(next((DATA / "runs/driving").glob("scores.csv*")))
     s["code"] = s.participant.map(DRIVERS)
     rnd = s[s.selection == "random"].groupby(["code", "k", "fold"])[["median_error_deg", "p90_error_deg"]].mean()
     rnd = rnd.reset_index().assign(selection="random")
@@ -95,26 +105,36 @@ def model_runs():
     return tr, deltas, pd.concat(ridge, ignore_index=True), scores
 
 
-def same_test_scenes():
-    """True if chessboard- and driving-trained models were scored on identical held-out scene sets per fold."""
-    sp = pd.read_csv(TRANSFER_REGRESSION / "splits.csv.gz")
-    test = sp[sp.role == "test"].groupby(["participant", "protocol", "fold"]).unit_id.apply(frozenset).unstack("protocol")
-    train_drv = sp[(sp.role == "train") & (sp.protocol == "driving_to_driving")].groupby(
-        ["participant", "fold"]).unit_id.apply(frozenset)
-    overlap = sum(len(a & b) for a, b in zip(train_drv, test["driving_to_driving"].loc[train_drv.index]))
-    return bool((test["chessboard_to_driving"] == test["driving_to_driving"]).all()), overlap
+def same_test_scenes(regression=False):
+    """Check the saved median-offset runs, independently of the detailed regression-model runs."""
+    if regression:
+        sp = pd.read_csv(TRANSFER_REGRESSION / "splits.csv.gz")
+        test = sp[sp.role == "test"].groupby(["participant", "protocol", "fold"]).unit_id.apply(frozenset).unstack("protocol")
+        train = sp[(sp.role == "train") & (sp.protocol == "driving_to_driving")].groupby(["participant", "fold"]).unit_id.apply(frozenset)
+        overlap = sum(len(a & test.loc[key, "driving_to_driving"]) for key, a in train.items())
+        return bool((test["chessboard_to_driving"] == test["driving_to_driving"]).all()), overlap
+    driving = pd.read_csv(next((DATA / "runs/driving").glob("splits.csv*")))
+    chess = pd.read_csv(next((DATA / "runs/transfer").glob("splits.csv*")))
+    chess = chess[chess.protocol == "folds_to_scene_blocks"]
+    test_drv = driving[driving.role == "test"].groupby(["participant", "fold"]).unit_id.apply(frozenset)
+    test_chess = chess[chess.role == "test"].groupby(["participant", "fold"]).unit_id.apply(frozenset)
+    train_drv = driving[driving.role == "train"].groupby(["participant", "fold"]).unit_id.apply(frozenset)
+    assert set(test_drv.index) == set(test_chess.index) == set(train_drv.index)
+    assert set(test_drv.index.get_level_values("participant")) == set(DRIVERS)
+    overlap = sum(len(a & test_drv.loc[key]) for key, a in train_drv.items())
+    return bool((test_drv == test_chess.reindex(test_drv.index)).all()), overlap
 
 
-def figure(cs, ref, tr):
+def figure(cs, ref):
     fig, axes = plt.subplots(1, 2, figsize=(COLUMN, 2.1), layout="constrained", gridspec_kw=dict(width_ratios=[0.85, 1.15]))
     ax = axes[0]
     conditions = [("Raw driving", "none"), ("Chessboard E5 · pooled", "chess-\nboard"),
                   ("Driving · pooled 20%", "driving\n(20%)")]
-    width = 0.26
+    width = 0.21
     for j, (code, color) in enumerate(COLORS.items()):
         d = cs[cs.code == code].set_index("category")
         for i, (cat, _) in enumerate(conditions):
-            x = i + (j - 1) * width
+            x = i + (j - (len(COLORS) - 1) / 2) * width
             med, p90 = d.loc[cat, "median_error_deg"], d.loc[cat, "p90_error_deg"]
             ax.vlines(x, med, p90, color=color, linewidth=0.8, alpha=0.6)
             ax.scatter(x, med, marker=MARKERS[code], s=10, color=color, zorder=3, label=code if i == 0 else None)
@@ -123,7 +143,7 @@ def figure(cs, ref, tr):
     ax.tick_params(axis="x", length=0)
     ax.set_ylim(0, 9)
     ax.set_ylabel("error (°)")
-    ax.legend(loc="upper center", ncol=3, frameon=False, handletextpad=0.1, columnspacing=0.5, fontsize=6)
+    ax.legend(loc="upper center", ncol=2, frameon=False, handletextpad=0.1, columnspacing=0.5, fontsize=6)
     ax.set_title("(a) offset source", loc="left")
 
     ax = axes[1]
@@ -131,9 +151,9 @@ def figure(cs, ref, tr):
     for code, color in COLORS.items():
         r = ref[(ref.code == code) & (ref.selection == "random")]
         g = r.groupby("k").median_error_deg
-        m = g.mean().reindex(ks)
-        ax.fill_between(ks, g.min().reindex(ks), g.max().reindex(ks), color=color, alpha=0.15, linewidth=0)
-        ax.plot(ks, m, color=color, marker=MARKERS[code], markersize=2.2, linewidth=1.0)
+        m = g.mean().sort_index()
+        ax.fill_between(m.index, g.min().reindex(m.index), g.max().reindex(m.index), color=color, alpha=0.15, linewidth=0)
+        ax.plot(m.index, m, color=color, marker=MARKERS[code], markersize=2.2, linewidth=1.0)
         pooled = cs[(cs.code == code) & (cs.category == "Driving · pooled 20%")].median_error_deg.iloc[0]
         chess = cs[(cs.code == code) & (cs.category == "Chessboard E5 · pooled")].median_error_deg.iloc[0]
         ax.scatter(10, pooled, marker=MARKERS[code], s=10, color=color, zorder=3)
@@ -146,6 +166,33 @@ def figure(cs, ref, tr):
     fig.savefig(FIG / "fig6_transfer.pdf")
 
 
+def recording_transfer(cs):
+    """Keep the established >=5-fixation source rule; average saved split scores equally."""
+    scores = pd.read_csv(next((DATA / "runs/driving_recordings").glob("scores.csv*")))
+    selected = scores[(scores.model == "median") & (scores.n_train_units >= 5)].copy()
+    raw = scores[scores.model == "raw"].set_index(["participant", "split_id"])
+    selected["raw_median_deg"] = [raw.loc[(r.participant, r.split_id), "median_error_deg"] for r in selected.itertuples()]
+    selected["code"] = selected.participant.map(DRIVERS)
+    selected.to_csv(EXPORT / "06_recording_day_transfer_splits.csv", index=False, float_format="%.8f")
+    summary = selected.groupby(["code", "protocol"]).agg(
+        splits=("split_id", "size"), calibration_scenes_min=("n_train_units", "min"),
+        calibration_scenes_max=("n_train_units", "max"), raw_median_deg=("raw_median_deg", "mean"),
+        corrected_median_deg=("median_error_deg", "mean"), corrected_p90_deg=("p90_error_deg", "mean"),
+        splits_improved=("median_improvement_deg", lambda v: int((v > 0).sum())))
+    summary.to_csv(EXPORT / "06_recording_day_transfer_summary.csv", float_format="%.8f")
+    pooled = cs[cs.category == "Driving · pooled 20%"].set_index("code")
+    lines = [r"% Generated by scripts/make_section6.py; >=5 verified fixations per calibration source.",
+             r"\begin{tabular}{@{}lcccc@{}}", r"\hline",
+             r"Calibration split & P1 & P2 & P6 & P8 \\", r"\hline"]
+    for label, protocol in [("Random 20\\% scenes", None), ("Across recordings", "one_recording"), ("Across days", "one_day")]:
+        values = [f"{pooled.loc[c, 'median_error_deg']:.2f}" if protocol is None else
+                  f"{summary.loc[(c, protocol), 'corrected_median_deg']:.2f}" if (c, protocol) in summary.index else "---"
+                  for c in DRIVERS.values()]
+        lines.append(label + " & " + " & ".join(values) + r" \\")
+    lines += [r"\hline", r"\end{tabular}"]
+    (FIG / "tab_recording_transfer.tex").write_text("\n".join(lines) + "\n")
+
+
 def table(tr, linear):
     """Compact model table, linear models only (ridge results are kept in the md and data exports)."""
     rows = [("Pooled", "median offset", tr[(tr.model == "median") & (tr.source == "chessboard")]),
@@ -156,16 +203,17 @@ def table(tr, linear):
             ("", "linear, pos.\\,+\\,pupil", tr[(tr.model == "linear_position_pupil") & (tr.source == "driving")]),
             ("", "linear, pos.\\,+\\,velocity", linear[linear.model == "runtime"])]
     lines = [r"% Generated by scripts/make_section6.py (see evals/06_transfer_to_driving.md).",
-             r"\begin{tabular}{@{}l@{\hskip 4pt}l@{\hskip 4pt}cc@{\hskip 5pt}cc@{\hskip 5pt}cc@{}}", r"\toprule",
-             r" & & \multicolumn{2}{c}{P1} & \multicolumn{2}{c}{P2} & \multicolumn{2}{c}{P6} \\",
-             r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(l){7-8}",
-             r"Fitted on & Correction & Med. & P90 & Med. & P90 & Med. & P90 \\", r"\midrule"]
+             r"\begin{tabular}{@{}lcccc@{}}", r"\toprule",
+             "Correction & " + " & ".join(DRIVERS.values()) + r" \\", r"\midrule"]
     for i, (src, name, d) in enumerate(rows):
         d = d.set_index("code")
-        cells = " & ".join(f"{d.loc[c, 'median_error_deg']:.2f} & {d.loc[c, 'p90_error_deg']:.2f}" for c in DRIVERS.values())
-        if i == 3:
-            lines.append(r"\midrule")
-        lines.append(f"{src} & {name} & {cells} \\\\")
+        cells = " & ".join(f"{d.loc[c, 'median_error_deg']:.2f}/{d.loc[c, 'p90_error_deg']:.2f}" for c in DRIVERS.values())
+        if i in (0, 3):
+            if i == 3:
+                lines.append(r"\midrule")
+            label = "Pooled chessboards" if i == 0 else "In-situ (20\\%)"
+            lines.append(r"\multicolumn{5}{@{}l}{\emph{" + label + r"}} \\")
+        lines.append(f"{name} & {cells} \\\\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (FIG / "tab_transfer_models.tex").write_text("\n".join(lines) + "\n")
 
@@ -174,20 +222,25 @@ if __name__ == "__main__":
     EXPORT.mkdir(parents=True, exist_ok=True)
     cs = category_summary()
     ref = reference_folds()
-    tr, deltas, ridge, scores = model_runs()
     same, overlap = same_test_scenes()
     assert same and overlap == 0, (same, overlap)
     cs.to_csv(EXPORT / "06_driving_offset_by_category.csv", index=False, float_format="%.4f")
     ref.to_csv(EXPORT / "06_reference_count_per_fold.csv", index=False, float_format="%.4f")
-    tr.to_csv(EXPORT / "06_model_comparison_summary.csv", index=False, float_format="%.4f")
-    deltas.to_csv(EXPORT / "06_model_vs_median_per_fold.csv", index=False, float_format="%.4f")
-    ridge.to_csv(EXPORT / "06_driving_ridge_runtime_features.csv", index=False, float_format="%.4f")
     tests = pd.read_csv(DATA / "analysis/tests.csv")
     tests[tests.participant.isin(DRIVERS)].assign(code=lambda t: t.participant.map(DRIVERS)).to_csv(
         EXPORT / "06_driving_scene_tests.csv", index=False)
-    figure(cs, ref, tr)
-    linear = pd.read_csv(LINEAR_RUNTIME / "summary.csv")
-    linear["code"] = linear.participant.map(DRIVERS)
-    linear.to_csv(EXPORT / "06_driving_linear_runtime_features.csv", index=False, float_format="%.4f")
-    table(tr, linear)
-    print("same held-out scenes for chessboard- and driving-trained models:", same, "| train/test overlap:", overlap)
+    figure(cs, ref)
+    recording_transfer(cs)
+    if not args.offset_only:
+        same_models, model_overlap = same_test_scenes(regression=True)
+        assert same_models and model_overlap == 0, (same_models, model_overlap)
+        tr, deltas, ridge, scores = model_runs()
+        assert set(tr.code.dropna()) == set(DRIVERS.values())
+        tr.to_csv(EXPORT / "06_model_comparison_summary.csv", index=False, float_format="%.4f")
+        deltas.to_csv(EXPORT / "06_model_vs_median_per_fold.csv", index=False, float_format="%.4f")
+        ridge.to_csv(EXPORT / "06_driving_ridge_runtime_features.csv", index=False, float_format="%.4f")
+        linear = pd.read_csv(LINEAR_RUNTIME / "summary.csv")
+        linear["code"] = linear.participant.map(DRIVERS)
+        linear.to_csv(EXPORT / "06_driving_linear_runtime_features.csv", index=False, float_format="%.4f")
+        table(tr, linear)
+    print("same held-out scenes for chessboard- and driving-derived corrections:", same, "| train/test overlap:", overlap)

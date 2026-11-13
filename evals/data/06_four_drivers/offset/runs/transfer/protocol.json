@@ -1,0 +1,311 @@
+{
+  "spec": {
+    "participants": [
+      "william",
+      "katharina",
+      "stefan",
+      "constantin"
+    ],
+    "seed": 42,
+    "repeats": 20,
+    "keep_fraction": 0.6,
+    "models": [
+      {
+        "name": "median"
+      }
+    ],
+    "protocols": [
+      {
+        "name": "board_to_all_scenes",
+        "train": {
+          "domain": "chessboard",
+          "split": "each_board"
+        },
+        "select": [
+          "single",
+          "all",
+          "pattern",
+          "random"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "all"
+        }
+      },
+      {
+        "name": "folds_to_all_scenes",
+        "train": {
+          "domain": "chessboard",
+          "split": "recording_folds",
+          "folds": 5
+        },
+        "select": [
+          "all"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "all"
+        }
+      },
+      {
+        "name": "board_to_scene_blocks",
+        "train": {
+          "domain": "chessboard",
+          "split": "each_board"
+        },
+        "select": [
+          "single",
+          "all",
+          "pattern",
+          "random"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "blocks",
+          "folds": 5,
+          "train_blocks": 1
+        },
+        "unit_errors": [
+          "E4"
+        ]
+      },
+      {
+        "name": "folds_to_scene_blocks",
+        "train": {
+          "domain": "chessboard",
+          "split": "recording_folds",
+          "folds": 5
+        },
+        "select": [
+          "all"
+        ],
+        "test": {
+          "domain": "driving",
+          "split": "blocks",
+          "folds": 5,
+          "train_blocks": 1
+        },
+        "unit_errors": [
+          "E5"
+        ]
+      }
+    ]
+  },
+  "spec_path": "/scratch/partial/transfer.json",
+  "sources": [
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Constantin-Selzer_2026-11-03-14-28-15_cd8a076c/dataset.csv",
+      "sha256": "d893951d7bb0b602b7cb0aa05028aa83ddd49c39b06b1ccf5bd310e0b8578cb5"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Constantin-Selzer_2026-11-03-14-29-26_f2c3a04a/dataset.csv",
+      "sha256": "982dec91bdf9db1a0fa4be0d2d807f934807d3599019ec596e1469ba3ff5adcc"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Constantin-Selzer_2026-11-03-14-30-15_19b9fc3f/dataset.csv",
+      "sha256": "c41c2ac8a4960f11b275d8c20b6c96efeb833253dff85e766c1c003f09abe36a"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-14-37_58bed540/dataset.csv",
+      "sha256": "66622d09000170cbef549c36bb8e2c290e6dab55c00623bdadd1256164a82c35"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-15-47_3349efe6/dataset.csv",
+      "sha256": "a00a39ed578d0b40ed645cb45d978a4f2540b2effd848701c26e7e77787087ad"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-10-12-16-16-48_faa40ed9/dataset.csv",
+      "sha256": "92cd8add5f5feb5afe0ba5f3f4eebe5a0350ef808dcc94aa919c92542235e86d"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-13-59_9786fcfd/dataset.csv",
+      "sha256": "ddacbcd1ba656fdc99d4af51c4fb013c8c903502c90923f26b6fde865cf13d03"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-16-49_b10623cc/dataset.csv",
+      "sha256": "4f6f40d5ff56c93f90802384c2d4c7bbf027f3c328a402505a434c713fecad25"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-18-09_b2c36b68/dataset.csv",
+      "sha256": "190e63c8405b8be1f203b006919d3e864174638a61aab36e2e71a9ddb7e0c6f2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-19-10_0b6b0270/dataset.csv",
+      "sha256": "5d11c8dd2b84b8b1efc46fbdfae21955045b15f9cf22afc1696d1bd14af68225"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-19-56_6271ae9a/dataset.csv",
+      "sha256": "fcd5d9aab05046758a2e7b053d9f835e76fcb69729eeebfa1230eabab3a33927"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-20-38_54ebb072/dataset.csv",
+      "sha256": "e67a5df3fbac6d1bbadb8058efffc58193c3a7a0ea67d870eab4026febff1849"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-24-18_3987ebba/dataset.csv",
+      "sha256": "d1975970c8416dd6f20c2aebea24ecfe198ec33101db61e3417f8e4ab0b327e7"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-24-53_af8d8d77/dataset.csv",
+      "sha256": "4a27ecee4ad86373015f5a54d2235aefd81e4526be9b52050c7658cdead266da"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-25-27_07b17fe1/dataset.csv",
+      "sha256": "e84b9f16b1e6c131a27c43780c9d41c4b98b52b5dbb48fc2a2b76155444dd6ac"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-28-41_4d3eb9b4/dataset.csv",
+      "sha256": "27e6e528291487614a01d38bd62bbfa8c350ec3f6882797244985bdbe50af031"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-29-39_f90eca72/dataset.csv",
+      "sha256": "7e43a2fb35c675bfcf6be22e0212a48d8212c02c0e36064eaa4a23d0260b8dc2"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-30-19_154cd4f2/dataset.csv",
+      "sha256": "464e02fe5b68bf41f57b48bf86afa75d67f782944b165be678b58ec11c1bfcb4"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-31-13_91b55b4d/dataset.csv",
+      "sha256": "365316a4f13f8d6d2b38b74b0bf394f5c49a85f054eb06089f12a0ef908df78e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-31-48_cf430949/dataset.csv",
+      "sha256": "32caf15d7262697b4f52f0c51fc2adc978502c12a3ea27b5c518a0e5263adc60"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-32-22_8f2ab611/dataset.csv",
+      "sha256": "a5b1eaf1ee700b8a55bd322eea1708a82da173811428a4eebbd95d9c9ffe85df"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-33-15_d1958dfd/dataset.csv",
+      "sha256": "6ce11b84c00b4aaea36bb4a58f9baaab054864d99f217695300774448587069e"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-36-01_340089d0/dataset.csv",
+      "sha256": "7f7fdec1ceb8626058244d760fa2bacdfbb1c51beda5f3c440ba23d3a8ad4286"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-bright-forward_Stefan-Englmeier_2026-11-03-11-36-41_824b8fa4/dataset.csv",
+      "sha256": "63860342aafb4f8321ae8437bb0fa2a9750c9e11399edf5762b444b6635b6367"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-06-05_16dac07d/dataset.csv",
+      "sha256": "fe8f66bbdbacb9c6709c047305614f4d203061a997ca5a0829a96e1c46bbceae"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-07-41_a5dac7fc/dataset.csv",
+      "sha256": "264bbf25e7d2870f24b878cf959a864d8e34d5289ce647cefc7ce782e1252ca0"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-08-49_ee0fa682/dataset.csv",
+      "sha256": "000315ffccc0e536aaf657786eb69ae990269512200dcf422d121f40368c1795"
+    },
+    {
+      "path": "/home/william/data/controlled/results/fixation-dark-forward_Stefan-Englmeier_2026-10-12-16-11-52_ade9c500/dataset.csv",
+      "sha256": "413f68431d55d7da994d9bb5513566a4e87e815a881463a43907caf1353ecb97"
+    },
+    {
+      "path": "/home/william/data/gaze_accuracy/offset/units/units_chessboard.csv",
+      "sha256": "78b3800d0ec40660b5b0c82c0bf2344561786fce3c3e7f20663f9853b6d08316"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Constantin-Selzer_2026-11-11-14-07-24_89c3a686/dataset.csv",
+      "sha256": "c3c8d3411fe48953934a7899e36e664ae98150a3289faed00e3ba6fac5e60f9d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Constantin-Selzer_2026-11-11-14-07-24_89c3a686/scene_metadata.json",
+      "sha256": "82145496fd9aa22d987da8051b1443d60222e0924f4be251a4357141ea672313"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Constantin-Selzer_2026-11-11-14-07-24_89c3a686/info.json",
+      "sha256": "307b2e0c948b44dd62662de635451eea18af2b7d3554a10d79133606c7a7479b"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Constantin-Selzer_2026-11-11-14-07-24_89c3a686/detections.json",
+      "sha256": "430b314833d37a8d7c9703bf878a0224c1dcdce036b47aef5449f010920ba5e3"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/dataset.csv",
+      "sha256": "ab0de286d5371c389707425843c2bf3721ae4d1a92e6373495d7416bd50a5b89"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/scene_metadata.json",
+      "sha256": "d87c1c147a15b0a168ea05dae75ace57721e92b802a12c2d8ef64579eab1d7e6"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/info.json",
+      "sha256": "f1402ae436eac44d803c9f47d0fef46517bb2576a38c5550df26265f46647cbe"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-01-29_9e86995f/detections.json",
+      "sha256": "617754e68486266b098a06840d729cbd0ee6025e9dcb10112791e6b20b561eba"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/dataset.csv",
+      "sha256": "526e9710d07fc85232355207e4ccdde3bb11a570132fa57f787bbb5d814c3b66"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/scene_metadata.json",
+      "sha256": "31b448a462675bbdae7c150e786dbc4fd1c02f7415fe21770ac54e5d69bb4038"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/info.json",
+      "sha256": "0b13c85c31df96265d6a8b1739c757bf400124637b95f2d64127807a23b72d4e"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-04-13-42-09_f39babb4/detections.json",
+      "sha256": "1e33b5bf36e11d887c249e465be098011ec0942a43a6ca0f2fde0e07e87a2fd2"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-11-11-41-30_1237542e/dataset.csv",
+      "sha256": "d100b594cfb37ccd5b40600e2bb891a6ff62c7bea157bddad5b54975f8fd876c"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-41-30_1237542e/scene_metadata.json",
+      "sha256": "ae5327dbe72348a46a97b0880366689d068f043add0e935c959406d448d67af7"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-41-30_1237542e/info.json",
+      "sha256": "f8cb9224cc0b24332ee404b495cef783eece22692e83687aa12062a37d566758"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-41-30_1237542e/detections.json",
+      "sha256": "96a4f2934af94e004264a2beb00ea96376e26888d5793615273e77f7fef45bee"
+    },
+    {
+      "path": "/home/william/data/driving/results/free_driving_Stefan-Englmeier_2026-11-11-11-45-25_739b7ab2/dataset.csv",
+      "sha256": "d5217869910418ea3bb5108c8439e9a1c7edc628974e4f61e36c6fed9c8bf874"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-45-25_739b7ab2/scene_metadata.json",
+      "sha256": "17248106213a60a2c219849c9b8d4f5c358051cfcdd116cfa52746b1818e6b96"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-45-25_739b7ab2/info.json",
+      "sha256": "7f3614e8b090936bcd46ea751f2f47b25e8e65df2e70720c818bd63a3024fe8d"
+    },
+    {
+      "path": "/home/william/data/driving/recordings/free_driving_Stefan-Englmeier_2026-11-11-11-45-25_739b7ab2/detections.json",
+      "sha256": "f04fd2f9cf19e45acb6b93814e417f7724f4567ccf409f2a17d1b2f12bcdcb39"
+    },
+    {
+      "path": "/home/william/data/gaze_accuracy/offset/units/units_driving.csv",
+      "sha256": "59b140b186c8794341beaaa1b1f00b35e6b2ade4cc0740c36c25df13761ccf53"
+    }
+  ],
+  "code_sha256": {
+    "src/evaluation/offset_data.py": "7ff6e96e812652963b9c044c1597edcaabe86b2b1face9747bab81a7bf6605a6",
+    "src/evaluation/offset_benchmark.py": "ec5a05feb82c48159577342c0c3675d9f7c28b457d2817c7f4faf1e361334273",
+    "src/models/offset.py": "41894b14c4ac273122b2a6cd93e09191123d2b1e1bbd1fce6a96bf9c98899474",
+    "scripts/offset_benchmark/run_benchmark.py": "e440a568596183a02d49bd5974a97eaee52729461916ae66fae385bc51cf5c0d"
+  },
+  "merged": {
+    "recomputed_participants": [
+      "constantin",
+      "stefan"
+    ],
+    "recomputed_on": "2026-11-11",
+    "other_participants": "rows kept unchanged from the previous complete run; participants are never pooled and seeds are participant-specific, so their results do not depend on the added data"
+  }
+}

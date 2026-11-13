@@ -1,3 +1,5 @@
+> **Superseded for manuscript values on 2026-11-13.** The current benchmark has 322 scenes from 21 recordings and four drivers. P6 now contributes four recordings over November 4 and 11. With the unchanged five-fixation calibration-source minimum, recording-transfer medians are P1/P2/P6 **0.84 / 0.89 / 1.79 degrees**; actual day-transfer medians are **1.17 / 0.91 / 1.72 degrees**. See [the current evaluation](06_transfer_to_driving.md) and `data/06_recording_day_transfer_*.csv`. The report below is the historical 266-scene analysis and is retained for provenance.
+
 # Fair recording and day transfer from the available driving measurements
 
 Evaluated 2026-11-06. **An offset from one recording improves the other recordings for all three participants. Day transfer also helps for Katharina and William, but William's comparison includes a factory recalibration.** These measurements support reusing the correction as a useful starting point; they do not establish that the offset stays unchanged or guarantees a particular accuracy on a future day.

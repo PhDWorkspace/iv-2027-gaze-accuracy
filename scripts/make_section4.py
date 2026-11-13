@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6"}
+DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6", "constantin": "P8"}
 COLUMNS = ["gaze_x_px", "gaze_y_px", "frame_index", "event_id", "metric_valid", "angular_error_deg",
            "feature_gaze_azimuth_deg", "feature_gaze_elevation_deg", "target_azimuth_deg", "target_elevation_deg",
            "target_x_px", "target_y_px", "target_distance_m"]

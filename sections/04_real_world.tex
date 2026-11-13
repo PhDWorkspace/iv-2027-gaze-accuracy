@@ -8,18 +8,18 @@ and the uncorrected errors it reveals.
 
 \subsection{Dataset Composition and Coverage}
 
-The benchmark comprises 266 manually verified fixation
-scenes from 18 public-road recordings (1.69\,h), collected
-across four days with three participants. Each scene
+The benchmark comprises 322 manually verified fixation
+scenes from 21 public-road recordings (2.00\,h), collected
+across five days with four participants. Each scene
 contains a verified physical target observed for a
-median duration of 1.35\,s. P1, P2 and P6 contribute
-79, 73 and 114 scenes from 10, 6 and 2 recordings, respectively.
+median duration of 1.37\,s. P1, P2, P6 and P8 contribute
+79, 73, 145 and 25 scenes from 10, 6, 4 and 1 recordings, respectively.
 
 Unlike conventional driving-attention datasets, each
 scene pairs measured gaze with a verified physical target
-and detailed driving context. Targets include 124 licence plates, 83 signs and
-59 traffic lights, spanning LiDAR-measured distances
-from 4.7 to 119.6\,m (median 27.3\,m). The recordings cover stationary and
+and detailed driving context. Targets include 154 licence plates, 97 signs and
+71 traffic lights, spanning target distances
+from 4.7 to 119.6\,m (median 26.9\,m). The recordings cover stationary and
 moving targets, approaching, passing, following and
 oncoming traffic, and driving conditions ranging from
 standstill to highway speeds around 100\,km/h.
@@ -43,17 +43,17 @@ environment and visibility conditions.
 The verified references reveal substantial differences
 in gaze accuracy between participants. Without
 person-specific correction, median angular error is
-3.96$^\circ$, 1.48$^\circ$ and 5.97$^\circ$ for
-P1, P2 and P6, respectively, on the held-out scenes
+3.96$^\circ$, 1.48$^\circ$, 6.35$^\circ$ and 2.08$^\circ$ for
+P1, P2, P6 and P8, respectively, on the held-out scenes
 of the evaluation protocol used in Sec.~\ref{sec:transfer}.
 
 These differences are predominantly systematic rather
 than the result of gaze scatter alone. For each participant, the norm of the median scene offset
 divided by the median scene error exceeds 90\%. Vertical
 bias is particularly pronounced, reaching
-$-3.77^\circ$ for P1 and $-6.03^\circ$ for P6.
+$-3.77^\circ$ for P1 and $-6.15^\circ$ for P6.
 In contrast, median target-relative dispersion is
-0.48$^\circ$, 0.80$^\circ$ and 1.59$^\circ$,
+0.48$^\circ$, 0.80$^\circ$, 1.56$^\circ$ and 0.63$^\circ$,
 respectively.
 
 Concentrated gaze measurements can therefore remain displaced

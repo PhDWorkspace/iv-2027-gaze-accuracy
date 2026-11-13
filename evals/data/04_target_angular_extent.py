@@ -12,7 +12,7 @@ from dataset.angular_error import angular_errors_from_directions, pixel_directio
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = Path(os.environ.get('DATA_ROOT', '/data'))
-units = pd.read_csv(ROOT / 'evals/data/06_current_driving/offset/units/units_driving.csv')
+units = pd.read_csv(ROOT / 'evals/data/06_four_drivers/offset/units/units_driving.csv')
 units = units.loc[units.valid]
 rows, sources = [], []
 for name, group in units.groupby('recording_name'):
@@ -62,6 +62,6 @@ summary = {'eligible_scenes': len(frame), 'scenes_with_boxes': len(valid), 'aggr
            'interpretation': 'descriptive angular footprint of annotated boxes; not a validated uncertainty bound or measurement of exact human fixation position',
            'all': {c: {'median': float(valid[c].median()), 'p90': float(valid[c].quantile(.9))} for c in ['width_deg', 'height_deg', 'diagonal_deg']},
            'sources': sources, 'code_sha256': {'analysis': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'angular_geometry': hashlib.sha256(Path(pixel_directions.__code__.co_filename).read_bytes()).hexdigest()},
-           'units_sha256': hashlib.sha256((ROOT / 'evals/data/06_current_driving/offset/units/units_driving.csv').read_bytes()).hexdigest()}
+           'units_sha256': hashlib.sha256((ROOT / 'evals/data/06_four_drivers/offset/units/units_driving.csv').read_bytes()).hexdigest()}
 (ROOT / 'evals/data/04_target_angular_extent_summary.json').write_text(json.dumps(summary, indent=2) + '\n')
 print(json.dumps({k: v for k, v in summary.items() if k != 'sources'}, indent=2))

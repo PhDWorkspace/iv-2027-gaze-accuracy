@@ -1,0 +1,7 @@
+code,protocol,splits,calibration_scenes_min,calibration_scenes_max,raw_median_deg,corrected_median_deg,corrected_p90_deg,splits_improved
+P1,one_day,2,29,50,3.56748773,1.17191818,2.11184186,2
+P1,one_recording,7,5,29,3.96099608,0.84095095,1.82028132,7
+P2,one_day,2,6,67,1.48536778,0.91404574,1.80430633,2
+P2,one_recording,3,14,28,1.52247176,0.88564383,1.64212926,3
+P6,one_day,2,31,114,6.33270565,1.71945654,4.04961825,2
+P6,one_recording,4,5,93,6.34930838,1.79038166,4.02952621,4

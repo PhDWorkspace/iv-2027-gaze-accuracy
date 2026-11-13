@@ -1,3 +1,5 @@
+> **Current manuscript update (2026-11-13):** 322 scenes, 90,239 valid gaze samples, 21 recordings (2.00 h), five dates and four drivers. P1/P2/P6/P8 contribute 79/73/145/25 scenes. The refreshed per-scene inventories and raw summaries are `data/04_*.csv`; full composition is in [the generated report](04_dataset_composition.md). All 322 scenes have eligible annotated target boxes: median/P90 angular diagonal **1.30 / 2.63 degrees**, giving the manuscript's centre-to-corner summary **0.65 / 1.31 degrees** under the existing calculation. These remain descriptive annotated footprints, not measured human fixation uncertainty. The owner-confirmed count of 200 second-reviewed assignments is unchanged. Sections below describe earlier evidence and are retained for provenance.
+
 # Section IV data basis: real-world driving dataset and reference acquisition
 
 ## Reference-size and review evidence added 2026-11-06
