@@ -5,13 +5,10 @@
 We now investigate whether corrections learned under controlled
 conditions retain their benefits in real driving, and whether
 in-situ calibration is more effective.
-The comparison uses all 322 scenes from 21 recordings,
-with all corrections scored on the same
-held-out driving scenes of the four driving participants
-(P1, P2, P6, P8). Corrections are fitted either on a participant's
+All corrections are scored on the same held-out driving
+scenes of the four drivers. Corrections are fitted either on a participant's
 pooled chessboard references or on about 20\% of the driving
-scenes (5--29 per fold). Results are averaged over five
-driving test folds and the available chessboard calibration estimates.
+scenes (5--29 per fold).
 
 \begin{figure}[t]
 \centering
@@ -47,7 +44,7 @@ whose offset is small, it barely helps.
 Position and pupil terms fitted on the same chessboards do not
 consistently add to the offset benefit (Table~\ref{tab:transfer}).
 They increase median error for P1, P6 and P8; P2 gains slightly
-from position terms (0.09\dg{}).
+from position terms (1.40\dg{} to 1.30\dg{}).
 Controlled improvements therefore do not necessarily transfer
 to the road.
 
@@ -58,11 +55,14 @@ to be estimated in the operating condition itself.
 An offset from 20\% of the driving scenes reduces the median
 error to 0.76\dg{}, 0.83\dg{}, 1.61\dg{} and 0.82\dg{}
 for P1, P2, P6 and P8, respectively, 44--81\%
-below uncorrected gaze, outperforming the pooled chessboard offset
+below uncorrected gaze and below the pooled chessboard offset
 for all four participants. Paired mean scene-error reductions
-are 0.07\dg{} [0.02, 0.11], 0.58\dg{} [0.47, 0.68],
-0.23\dg{} [0.16, 0.30] and 0.56\dg{} [0.36, 0.74], respectively (95\% bootstrap
-intervals). These compare fold-averaged scene errors rather than
+relative to the chessboard offset are 0.07\dg{} [0.02, 0.15],
+0.58\dg{} [0.44, 0.62] and 0.23\dg{} [0.16, 0.34] for P1, P2
+and P6 (95\% recording-cluster bootstrap intervals), and
+0.56\dg{} in P8's single recording. The gain is thus consistent
+but small for P1 and substantial for P2 and P8. These values
+compare fold-averaged scene errors rather than
 the recording-weighted medians in Fig.~\ref{fig:transfer}a.
 Few references suffice (Fig.~\ref{fig:transfer}b):
 one random scene already beats the pooled chessboard offset for
@@ -71,43 +71,58 @@ more scenes mainly stabilise the estimate.
 Random selection is competitive with geometric layouts.
 
 \noindent\textbf{Transfer across recordings and days.}
-An offset fitted on one recording improves held-out accuracy
-in all 14 eligible splits (Table~\ref{tab:recording_transfer}).
-Day transfer improves in both directions for P1, P2 and P6.
-P6's four recordings span two actual days, yielding 1.72\dg{}
-cross-day error versus 1.61\dg{} with random scene pooling.
-P1's day comparison includes factory recalibration.
+The random-scene split calibrates and tests within the same
+recordings. We therefore fit offsets on one recording or day and
+test on the others (Table~\ref{tab:recording_transfer}).
+Accuracy improves in all 14 recording splits and in both day
+directions for P1, P2 and P6. Five references from another
+recording already come close to using all of its references and
+outperform a single 15-point chessboard for all three
+participants. Across days, this holds for P2 and P6; P1, whose
+tracker was factory-recalibrated in between, matches the
+chessboard. Pooled chessboards reach a similar level for
+P1 and P6 (Table~\ref{tab:transfer}), but require repeated
+laboratory sessions rather than a handful of road fixations.
 
 \begin{table}[t]
 \centering
-\caption{Corrected median angular error ($^\circ$)
-on held-out driving scenes, averaged over splits.
-Recording pools match within participants; test splits differ.
-P1 day transfer includes factory recalibration; ---: unavailable.}
+\caption{Median angular error (\dg{}) when calibration and test
+scenes come from different recordings or days, averaged over
+source cases. Driving references are drawn from one source
+recording or day; all rows share the same test scenes.
+P1 day transfer includes factory recalibration.}
 \label{tab:recording_transfer}
 \footnotesize
-\setlength{\tabcolsep}{5pt}
-\input{figures/tab_recording_transfer}
+\setlength{\tabcolsep}{4pt}
+\input{figures/tab_sparse_transfer}
 \end{table}
+
+\noindent\textbf{What remains after correction?}
+The scene context allows us to ask whether the residual error
+reflects the reference or the driving situation. Traffic lights
+are nearly point-like, with about half the angular extent of
+licence plates and signs (0.32--0.47\dg{} versus
+0.66--1.12\dg{}), yet their corrected error is similar
+(0.79--1.24\dg{} versus 0.70--1.46\dg{}); extent and error
+correlate only weakly (Spearman $\rho$ from $-0.12$ to $+0.23$
+per driver). Residual error therefore does not shrink with
+target size, consistent with centre fixation. Nor does it
+increase with target distance (4.7--119.6\,m; $\rho$ from
+$-0.15$ to $+0.09$) or with vehicle speed in the 268 scenes with
+GNSS speed below 50\,km/h ($\rho$ from $-0.09$ to $+0.12$).
 
 \subsection{Does Driving-Based Modelling Help?}
 
 Linear position and pupil terms fitted on driving references
 do not consistently improve the median error
-(Table~\ref{tab:transfer}).
-For P6, position and gaze velocity lower median error from
-1.61\dg{} to 1.53\dg{} and P90 from 3.95\dg{} to
-3.16\dg{}, improving both measures in all five folds.
-P8 also benefits: median error falls from 0.82\dg{} to
-0.78\dg{} and P90 from 1.87\dg{} to 1.66\dg{}, with both
-improving in four of five folds. P1's and P2's mean median
-and P90 errors do not improve. The in-situ offset still leaves
+(Table~\ref{tab:transfer}); differences of 0.03--0.1\dg{}
+between linear variants are comparable rather than a ranking.
+Adding gaze velocity helps P6 and P8, most clearly in the tail:
+P6's P90 falls from 3.95\dg{} to 3.16\dg{}, improving in all
+five folds. P1 and P2 do not benefit. The in-situ offset still leaves
 P6's P90 above the chessboard result
 (3.95\dg{} versus 3.77\dg{}): lower median error does not
 imply a uniformly better error distribution.
 In the evaluated conditions, the main gain thus comes
 from representative in-situ references rather than model
-complexity. Recording transfer supports reuse for P1, P2 and P6,
-including transfer between their measured days;
-generalisation to new wearers and substantially different
-environmental conditions remains to be established.
+complexity.

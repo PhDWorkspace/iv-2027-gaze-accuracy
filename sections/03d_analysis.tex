@@ -20,7 +20,8 @@ Reference coordinates are used for training and evaluation,
 not as prediction inputs.
 Linear models add standardised feature terms to the median-offset
 base, fitted on at most 60 evenly spaced samples per calibration
-fixation; the fitted regression intercept is omitted at prediction.
+fixation; the median offset serves as the constant term in place
+of a fitted intercept.
 
 \textbf{Evaluation protocol.}
 We evaluate corrections on controlled chessboards and real
@@ -33,7 +34,8 @@ for testing, repeated across five folds.
 For chessboard-to-driving transfer, we pool all complete boards
 from the training recordings of each recording-based calibration
 fold, using up to five folds. Scores are averaged over the available
-calibration estimates. We call this \emph{pooled chessboard calibration}, and
+calibration estimates. Chessboards were recorded on other days than
+the drives. We call this \emph{pooled chessboard calibration}, and
 calibration from verified driving fixations \emph{in-situ calibration}.
 
 For all four drivers, the random-scene benchmark uses
@@ -44,19 +46,22 @@ fixations and testing on all other recordings, retaining
 shorter recordings as test targets. For P1, P2 and P6, we also
 pool all references from one day and test on the other day,
 in both directions. P1 underwent factory recalibration between days.
+To test sparse reuse, we repeat both transfers with only four or
+five randomly drawn references (20 draws per source) and score
+offsets from single 15-point chessboards on the same test scenes.
 Held-out recordings receive equal weight, as do scenes within
 each recording and samples within each scene.
 Velocity models and their matched median baselines use samples
 with valid runtime features.
-We compare pooled chessboard and in-situ calibration
-on identical held-out driving scenes in the random-scene
-benchmark. We further vary the number of driving references
-($k\in\{1,2,3,4,5,8\}$, where available), selected randomly or geometrically
-(e.g., to span a rectangular region).
+We further vary the number of driving references
+($k\in\{1,2,3,4,5,8\}$, where available), selected randomly
+(20 draws per fold) or geometrically.
 
 \textbf{Statistics.}
 Controlled comparisons use paired Wilcoxon, Kruskal--Wallis,
 and Spearman tests with Holm correction. Driving comparisons average each scene's error over its test folds
 before paired tests, with Holm correction per participant and
-research question. We report 95\% scene-bootstrap confidence
-intervals and fold ranges; these describe the observed benchmark.
+research question. Participants are analysed separately. Because
+scenes are clustered within recordings, 95\% bootstrap intervals
+resample whole recordings; with fold ranges, they describe the
+observed benchmark.

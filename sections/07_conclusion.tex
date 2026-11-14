@@ -3,8 +3,8 @@
 
 We developed an integrated workflow that makes gaze accuracy
 measurable against verified physical targets during public-road
-driving. The resulting benchmark connects target references with
-synchronised depth, vehicle motion and scene context. It reveals
+driving, with synchronised depth, vehicle motion and scene
+context. The resulting benchmark reveals
 substantial wearer-dependent errors that are predominantly
 systematic, motivating correction rather than treating tracker
 output as an accurate spatial label.
@@ -14,29 +14,25 @@ geometry shifts signed bias, with different consequences for
 each wearer's accuracy. Some dependencies can be learned;
 their controlled benefits do not consistently transfer to driving.
 Sparse in-situ references instead provide effective median-offset
-correction for all four driving participants. Velocity terms
-further improve P6's and P8's median and P90, while the simple
-offset remains strongest for P1 and P2 among the reported linear
-variants. Offsets also improve accuracy across recordings
-and actual days for P1, P2 and P6.
+correction for all four driving participants, with little
+consistent benefit from added model terms. Four to five references also remain effective on
+other recordings and days for P1, P2 and P6.
 
 
-These driving findings concern four participants and explicitly declared
-fixations in daytime driving. They establish neither spontaneous
-attention behaviour nor population-wide accuracy. Object centres
-remain approximations to the exact fixation location, and
-day-transfer evidence is limited. Nevertheless, repeated
-verified references provide a basis for monitoring gaze accuracy
-during operation and updating wearer-specific corrections
-as new references become available.
+These driving findings concern four trained test drivers and
+explicitly declared fixations in daytime driving. They establish
+neither spontaneous attention behaviour nor population-wide
+accuracy, and day-transfer evidence is limited. Object centres
+approximate the fixation location; labels are reproducible
+within 0.04--0.06\dg{}, and residual error does not scale with
+target size.
 
-Together, our framework addresses both spatial accuracy
-and data suitability. Verified physical targets enable
-measuring and correcting gaze error, while complementary
-quality checks (Section~\ref{sec:method_driving})
-identify relevant viewing regions and flag potentially
-unreliable measurements. This establishes a foundation for acquiring,
-monitoring and improving quality-controlled gaze supervision
-during real driving, with future applications in BEV,
-graph-based reasoning and world models.
+Verified physical targets thus make gaze error measurable and
+correctable where supervision is collected, complemented by
+flags for gaze outside the relevant viewing regions or in
+degraded frames. We plan to make the benchmark publicly
+available. Repeated verified references provide a basis for
+monitoring gaze accuracy and updating wearer-specific corrections
+during real driving, with future
+applications in BEV, graph-based reasoning and world models.
 

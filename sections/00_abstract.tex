@@ -3,7 +3,7 @@ but its spatial reliability remains largely unverified under real
 driving conditions. Even small angular errors can associate gaze
 with the wrong road object. We present a framework for systematically
 measuring, characterising and improving wearable gaze accuracy
-during natural driving. Speech-assisted fixation declarations,
+during public-road driving. Speech-assisted fixation declarations,
 automated target localisation and tracking, manual verification,
 and synchronised vehicle sensing enable a benchmark of 322
 verified fixation scenes from 21 public-road recordings of four
@@ -15,12 +15,13 @@ conduct 247 controlled recordings with 11 participants, examining
 viewing geometry, illumination, pursuit and temporal stability.
 Although individual error dependencies can be learned, their
 additional benefits do not consistently transfer to driving.
-We therefore systematically compare pooled chessboard and in-situ
-calibration on identical held-out road scenes, including sparse
-calibration settings. Using verified in-situ references from only
-20\% of the driving scenes reduces median errors to
-0.76--1.61\dg{}, outperforming pooled chessboard calibration
-for all four drivers.
+We therefore compare chessboard and in-situ calibration on
+identical held-out road scenes. An in-situ offset from 20\% of the
+driving scenes reduces median errors to 0.76--1.61\dg{}, and five
+references from a different recording still outperform a
+15-point chessboard calibration. Independent relabelling reproduces
+target centres within 0.04\dg{}, and residual error shows no consistent
+dependence on target size, distance or speed.
 Together, our benchmark, controlled investigation and calibration
-evaluation establish an empirical foundation for assessing and
+evaluation provide an empirical basis for assessing and
 improving gaze supervision where it is actually collected.

@@ -8,9 +8,8 @@ targets and synchronised vehicle measurements
 (Fig.~\ref{fig:framework}(a)).
 
 \textbf{Vehicle and synchronisation.}
-Our research vehicle is equipped with cameras, roof-mounted
-LiDAR sensors and a GNSS/INS system. We use the front-left
-camera, two 128-beam LiDARs and GNSS/INS measurements
+Our research vehicle provides a front-left camera, two
+roof-mounted 128-beam LiDARs and a GNSS/INS system
 for scene geometry and vehicle motion. Vehicle sensors share
 a GNSS-disciplined clock via the Precision Time Protocol.
 The Neon companion clock is aligned using the round-trip-based
@@ -22,9 +21,9 @@ and vehicle measurements.
 \textbf{Reference generation.}
 During driving, participants verbally announce identifiable
 fixation targets, e.g., ``Fixating the truck on the right.''
-(Fig.~\ref{fig:framework}c). Whisper transcribes the announcements,
-and Hassil identifies the fixation event and object category.
-An Ultralytics YOLO26 detector, trained on 3,827 annotated
+(Fig.~\ref{fig:framework}c). Whisper~\cite{radford2023whisper} transcribes the announcements,
+and Hassil~\cite{hassil} identifies the fixation event and object category.
+An Ultralytics YOLO26 detector~\cite{ultralytics_yolo}, trained on 3,827 annotated
 images from the eye-tracker's scene-camera perspective,
 proposes candidate targets within a generous region around
 the estimated gaze position.
@@ -42,53 +41,51 @@ including smooth pursuit. Changes in this offset and eye
 movement speed help distinguish target fixation from looking
 away during driving. All intervals and target assignments
 are manually verified in Pupil Player using gaze overlays
-and infrared eye videos; 200 target assignments received a second
-review. Inter-annotator agreement was not quantified. All finite,
+and infrared eye videos. No announced fixation was discarded
+because of its gaze error; in early recordings, a few targets
+were too distant or overexposed to be resolved in the scene
+camera, and such targets were avoided thereafter. All finite,
 metric-valid gaze and target samples within the verified intervals
 are evaluated.
 
-
-
-Participants were instructed to fixate the centres of
-the announced targets. We select compact, clearly
-identifiable objects such as traffic lights, licence
-plates and road signs to minimise reference uncertainty.
-Human gaze preferentially targets object
+\textbf{Reference validity.}
+Participants were instructed to fixate the centres of compact,
+clearly identifiable targets such as traffic lights, licence
+plates and road signs; human gaze preferentially targets object
 centres~\cite{kowler1995accuracy,nuthmann2010object}.
-The median centre-to-corner extent is 0.65\dg{}
-(P90: 1.31\dg{}), a geometric limit reached only
-by fixating an extreme corner rather than the
-instructed centre.
-
-
+An independent annotator relabelled 204 frames without seeing
+the existing labels; target centres differed by a median of
+0.55\,px (0.035\dg{}; P95: 1.73\,px). Moreover, a point
+tracker given only the first and last manual box of a scene
+reproduced the hidden intermediate boxes of 294 scenes within
+a median of 0.06\dg{} (P95: 0.22\dg{}), without directional bias.
+The median centre-to-corner target extent is 0.65\dg{}
+(P90: 1.31\dg{}), a geometric limit reached only by fixating
+an extreme corner. Section~\ref{sec:transfer} tests whether
+residual error depends on this extent.
 
 
 \textbf{Reference geometry and context.}
 Verified target positions are converted into angular directions
 using the calibrated scene-camera intrinsics and compared with
 temporally aligned gaze estimates. Target distances are obtained from LiDAR measurements.
-The vehicle-to-wearable association uses the sensor transformation
-tree with a nominal head position; ordinary head movements
-introduce uncertainty in the associated target distance.
-For dense metric depth, we align Depth Anything predictions
-with projected LiDAR measurements using robust per-frame
+They assume a nominal head position in the vehicle frame.
+For dense metric depth, we align Depth Anything~V2
+predictions~\cite{yang2024depthAnythingV2} with projected LiDAR measurements using robust per-frame
 scale-and-shift fitting in inverse-depth space~\cite{marsal2025depth}. Each reference is associated with
-vehicle motion and scene metadata. The resulting benchmark and
-its driving conditions are characterised in
-Section~\ref{sec:realworld}.
+vehicle motion and scene metadata.
 
 
-\textbf{Gaze suitability checks.}
-To complement spatial accuracy, we assess whether gaze
-measurements are suitable for downstream supervision.
-A YOLO26 model trained on 548 annotated images from
-three vehicles segments windshields, side windows and
-mirrors to identify relevant viewing regions.
-Image sharpness (Laplacian variance), optical flow and
-IMU motion help detect motion-induced image degradation.
-Pupil Labs blink events, eye openness and gaze dynamics
-identify periods of potentially unreliable gaze estimation,
-particularly during eyelid occlusion.
-These manually validated indicators provide sample-level
-quality flags for selecting usable gaze sequences.
+\textbf{Gaze suitability flags.}
+Beyond spatial accuracy, we flag gaze that is unsuitable for
+exterior-scene supervision. A YOLO26 model trained on 548
+annotated images from three vehicles segments windscreen, side
+windows and mirrors (mask precision 97.1\%, recall 95.8\% on
+its validation split). Image sharpness (Laplacian variance)
+flags degraded frames, and Pupil Labs blink and eye-openness
+signals mark eyelid occlusion. On 23 driving recordings
+(120\,min), manual review confirmed all 79 flagged region or
+sharpness intervals of at least 2\,s and found no further ones.
+These flags are dataset annotations; they are not validated
+against angular error.
 

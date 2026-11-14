@@ -3,8 +3,7 @@
 \label{sec:realworld}
 
 The acquisition workflow makes gaze accuracy measurable against
-physical road targets. We first characterise the resulting benchmark
-and the uncorrected errors it reveals.
+physical road targets.
 
 \subsection{Dataset Composition and Coverage}
 
@@ -14,16 +13,17 @@ across five days with four participants. Each scene
 contains a verified physical target observed for a
 median duration of 1.37\,s. P1, P2, P6 and P8 contribute
 79, 73, 145 and 25 scenes from 10, 6, 4 and 1 recordings, respectively.
+Data collection on public roads requires specially trained test
+drivers, which limits the number of participants.
+\todo{add informed-consent / ethics-approval statement}
 
-Unlike conventional driving-attention datasets, each
-scene pairs measured gaze with a verified physical target
-and detailed driving context. Targets include 154 licence plates, 97 signs and
+Targets include 154 licence plates, 97 signs and
 71 traffic lights, spanning target distances
 from 4.7 to 119.6\,m (median 26.9\,m). The recordings cover stationary and
 moving targets, approaching, passing, following and
 oncoming traffic, and driving conditions ranging from
 standstill to highway speeds around 100\,km/h.
-Each scene is further enriched with synchronized vehicle
+Each scene is further enriched with synchronised vehicle
 measurements and descriptive annotations of the
 surrounding traffic situation, relative motion, road
 environment and visibility conditions.
@@ -56,7 +56,5 @@ In contrast, median target-relative dispersion is
 0.48$^\circ$, 0.80$^\circ$, 1.56$^\circ$ and 0.63$^\circ$,
 respectively.
 
-Concentrated gaze measurements can therefore remain displaced
-from the intended target. These wearer-dependent offsets motivate
-the controlled investigation in Section~V, before Section~VI tests
-which corrections help during driving.
+These wearer-dependent offsets motivate
+the controlled investigation in Section~V.
