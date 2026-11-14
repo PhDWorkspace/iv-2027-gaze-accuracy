@@ -40,13 +40,15 @@ DRIVERS = {"william": "P1", "katharina": "P2", "stefan": "P6", "constantin": "P8
 COLORS = {"P1": "#2f6aa3", "P2": "#eb6834", "P6": "#1baf7a", "P8": "#8655a3"}
 MARKERS = {"P1": "o", "P2": "s", "P6": "^", "P8": "D"}
 INK, MUTED, GRID = "#0b0b0b", "#52514e", "#e4e3df"
-FULL, COLUMN = 7.16, 3.5
-for f in Path("/usr/share/fonts").rglob("NimbusRoman-*.otf"):
+FULL, COLUMN = 7.16, 84 / 25.4
+for f in Path("/usr/share/fonts").rglob("NimbusSans-*.otf"):
     font_manager.fontManager.addfont(str(f))
 plt.rcParams.update({
-    "font.family": "serif", "font.serif": ["Nimbus Roman", "Times New Roman", "DejaVu Serif"],
-    "mathtext.fontset": "stix", "font.size": 7, "axes.titlesize": 7, "axes.labelsize": 7,
-    "xtick.labelsize": 6.5, "ytick.labelsize": 6.5, "legend.fontsize": 6.5, "axes.spines.top": False,
+    # Same style as Fig. 3 (/home/william/data/illustration/distance_baseline/plot.py, --format springer --column):
+    # Nimbus Sans 8 pt, 7.5 pt ticks, bold "a   Title" panels, drawn at 84 mm and scaled to \columnwidth.
+    "font.family": "sans-serif", "font.sans-serif": ["Nimbus Sans", "Arial", "DejaVu Sans"],
+    "mathtext.fontset": "stixsans", "axes.titleweight": "bold", "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8,
+    "xtick.labelsize": 7.5, "ytick.labelsize": 7.5, "legend.fontsize": 7.5, "axes.spines.top": False,
     "axes.spines.right": False, "axes.edgecolor": MUTED, "axes.linewidth": 0.6, "xtick.color": MUTED,
     "ytick.color": MUTED, "axes.grid": True, "axes.grid.axis": "y", "grid.color": GRID, "grid.linewidth": 0.5,
     "lines.linewidth": 1.2, "pdf.fonttype": 42,
@@ -126,7 +128,7 @@ def same_test_scenes(regression=False):
 
 
 def figure(cs, ref):
-    fig, axes = plt.subplots(1, 2, figsize=(COLUMN, 2.1), layout="constrained", gridspec_kw=dict(width_ratios=[0.85, 1.15]))
+    fig, axes = plt.subplots(1, 2, figsize=(COLUMN, 2.2), layout="constrained", gridspec_kw=dict(width_ratios=[0.85, 1.15]))
     ax = axes[0]
     conditions = [("Raw driving", "none"), ("Chessboard E5 · pooled", "chess-\nboard"),
                   ("Driving · pooled 20%", "driving\n(20%)")]
@@ -143,8 +145,8 @@ def figure(cs, ref):
     ax.tick_params(axis="x", length=0)
     ax.set_ylim(0, 9)
     ax.set_ylabel("error (°)")
-    ax.legend(loc="upper center", ncol=2, frameon=False, handletextpad=0.1, columnspacing=0.5, fontsize=6)
-    ax.set_title("(a) offset source", loc="left")
+    ax.legend(loc="upper right", ncol=2, frameon=False, handletextpad=0.1, columnspacing=0.5, fontsize=7.5)
+    ax.set_title("a   Offset source", loc="left")
 
     ax = axes[1]
     ks = [1, 2, 3, 4, 5, 8]
@@ -162,7 +164,7 @@ def figure(cs, ref):
     ax.set_xlabel("driving reference scenes $k$")
     ax.set_ylabel("median error (°)")
     ax.set_ylim(0.5, None)
-    ax.set_title("(b) in-situ references", loc="left")
+    ax.set_title("b   In-situ references", loc="left")
     fig.savefig(FIG / "fig6_transfer.pdf")
 
 
