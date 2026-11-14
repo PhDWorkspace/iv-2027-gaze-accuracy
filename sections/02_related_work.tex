@@ -19,9 +19,8 @@ These datasets have enabled important advances, but measured gaze
 is generally used as a supervision label without independently
 establishing its angular accuracy during driving. Previous audits
 identified video misalignment, homography outliers and unsuitable
-gaze intervals~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext}.
-However, these primarily concern data processing and projection,
-not the underlying wearable gaze accuracy. DR(eye)VE included
+gaze intervals~\cite{kotseruba2024dataLimitations,kotseruba2024taskContext},
+which concern data processing rather than wearable gaze accuracy. DR(eye)VE included
 calibration-pattern measurements~\cite{palazzi2019dreyeve},
 while Look Both Ways used the tracker output as a reference
 ~\cite{kasahara2022lookBothWays}. Our work complements these
@@ -48,9 +47,7 @@ data~\cite{baumann2026neonAccuracy}, but no position effect was found
 across 13 screen positions~\cite{alecka2026neon}. Distance effects have
 been measured between 1 and 3\,m for three
 participants~\cite{macinnes2018wearable}. Body motion and slippage increase
-error~\cite{hooge2023robust,onkhar2024evaluating,pettenella2026slippage},
-and glasses shift by about 0.6\dg{} on average during natural
-tasks~\cite{niehorster2026slippage}. Neon drifts little over
+error~\cite{hooge2023robust,onkhar2024evaluating,pettenella2026slippage}. Neon drifts little over
 minutes~\cite{foucher2026neon,nolte2026bestPractices}, and
 pupil--vergence coupling differs between
 wearers~\cite{maquiling2026vergencePupil}. These differences may stem from differing distances, offset
@@ -89,7 +86,9 @@ and the study did not establish angular accuracy on held-out
 real-driving scenes.
 
 We build on this idea with explicit fixation announcements and
-manual verification, enabling independent angular-error
-evaluation, a comparison of chessboard and in-situ calibration,
-and analysis of how few driving references are needed.
+manual verification. A single-driver pilot reported as an extended
+abstract~\cite{engel2026laboratoryToRoad} suggested that on-road
+gaze error is measurable and largely systematic. We test whether
+this holds across wearers, whether factor effects can be learned,
+and whether chessboard or in-situ references correct it better.
 
