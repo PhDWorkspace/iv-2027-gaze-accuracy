@@ -17,6 +17,7 @@
 \newcommand{\aos}{Ann. Stat.}
 \newcommand{\applsci}{Appl. Sci.}
 \newcommand{\automotiveui}{Proc. ACM AutomotiveUI}
+\newcommand{\avc}{Proc. Alvey Vision Conf.}
 \newcommand{\avss}{Proc. IEEE AVSS}
 
 %% B
@@ -24,6 +25,7 @@
 \newcommand{\brm}{Behav. Res. Methods}
 
 %% C
+\newcommand{\cacm}{Commun. ACM}
 \newcommand{\cg}{Comput. Graph.}
 \newcommand{\cga}{IEEE Comput. Graph. Appl.}
 \newcommand{\clear}{Proc. CLEAR Workshop}
