@@ -15,9 +15,10 @@ stability.
 
 \subsection{Different Wearers, Different Errors}
 
-We first compare all 11 wearers under the same nominal condition:
-static fixation on a bright target at 1\,m. Median angular error
-ranges from 1.03\dg{} to 5.37\dg{} (Fig.~\ref{fig:controlled}a).
+We compare all 11 wearers using repeated recordings of
+sequential fixations on the 15 inner corners of a bright
+5$\times$3 chessboard at 1\,m. Median angular error ranges
+from 1.03\dg{} to 5.37\dg{} (Fig.~\ref{fig:controlled}a).
 This is not simply a difference in gaze scatter. Within-fixation
 dispersion spans 0.24--0.59\dg{}, whereas vertical offsets range
 from $-5.11$\dg{} to $+1.87$\dg{}. For the six least accurate
@@ -91,18 +92,16 @@ between-day offsets varied for some participants. \\
 \end{table}
 
 
-\subsection{Can We Learn the Patterns?}
+\subsection{Can We Learn Error Corrections?}
 
-
-Finally, we tested whether spatial and pupil-related dependencies
-improve accuracy beyond a per-wearer median offset on held-out
-recordings (Section~\ref{sec:method_analysis}).
-Additional features sometimes helped considerably: combining
-position and distance reduced the controlled median error
-from 1.41\dg{} to 0.87\dg{} for P2, consistently across folds.
-P6 gained from position and pupil terms (2.00\dg{} to 1.74\dg{}),
-P7 gained only 0.08\dg{}, and no model improved on the median
-for P1. Thus, conditions can
-shift bias without a universal effect on accuracy, and fitting
-those shifts does not guarantee a useful correction. We next test
-whether the controlled benefits survive driving.
+We compare linear regression with a per-wearer median offset
+on held-out controlled recordings for four wearers
+(Section~\ref{sec:method_analysis}). Gains vary: position
+and distance reduce P2's median error from 1.41\dg{} to
+0.87\dg{}, while position and pupil terms reduce P6's from
+2.00\dg{} to 1.74\dg{} (both in all five folds). P7 gains at
+most 0.08\dg{}, and no model improves P1 on average.
+Across all tested wearer--model combinations, the largest
+average deterioration is just 0.09\dg{}. Thus, learned error
+patterns can help specific wearers but offer no universal gain.
+We next test whether these benefits transfer to driving.

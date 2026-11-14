@@ -56,23 +56,26 @@ transfer to the road.
 \label{sec:insitu}
 
 Our verified driving fixations allow the same median offset
-to be estimated in the operating condition itself.
-An offset from 20\% of the driving scenes reduces the median
-error to 0.76\dg{}, 0.83\dg{}, 1.61\dg{} and 0.82\dg{}
+to be estimated directly during driving.
+Using 20\% of scenes for calibration reduces median errors
+to 0.76\dg{}, 0.83\dg{}, 1.61\dg{} and 0.82\dg{}
 for P1, P2, P6 and P8, respectively, 44--81\%
-below uncorrected gaze and below the pooled chessboard offset
-for all four participants. Paired mean scene-error reductions
-relative to the chessboard offset are 0.07\dg{} [0.02, 0.15],
-0.58\dg{} [0.44, 0.62] and 0.23\dg{} [0.16, 0.34] for P1, P2
-and P6 (95\% recording-cluster bootstrap intervals), and
-0.56\dg{} in P8's single recording. The gain is thus consistent
-but small for P1 and substantial for P2 and P8 (fold-averaged scene
-errors, unlike the recording-weighted medians in Fig.~\ref{fig:transfer}a).
-Few references suffice (Fig.~\ref{fig:transfer}b):
-one random scene already beats the pooled chessboard offset for
-P2 and P8, and five scenes beat it for all four participants;
-more scenes mainly stabilise the estimate.
-Random selection is competitive with geometric layouts.
+below uncorrected gaze and below pooled chessboard
+calibration for all four drivers.
+On the same held-out driving scenes, in-situ calibration
+improves mean scene error over chessboard calibration by
+0.07\dg{} [0.02, 0.15] for P1, 0.58\dg{} [0.44, 0.62]
+for P2 and 0.23\dg{} [0.16, 0.34] for P6
+(95\% recording-cluster bootstrap intervals).
+For P8, the improvement is 0.56\dg{} (one recording).
+These are paired mean scene-error reductions, not differences
+between the recording-weighted medians in Fig.~\ref{fig:transfer}a.
+
+Importantly, this advantage requires few references
+(Fig.~\ref{fig:transfer}b): one random scene already beats
+the pooled chessboard offset for P2 and P8, and five scenes
+beat it for all four participants; more scenes mainly
+stabilise the estimate. Random selection is competitive with geometric layouts.
 
 \noindent\textbf{Transfer across recordings and days.}
 The random-scene split calibrates and tests within the same
@@ -102,33 +105,35 @@ Bold: lowest error per column.}
 \input{figures/tab_sparse_transfer}
 \end{table}
 
-\noindent\textbf{What remains after correction?}
-Does the residual error reflect the reference or the driving
-situation? Traffic lights
-are nearly point-like, with about half the angular extent of
+\noindent\textbf{What explains residual error?}
+Drivers were asked to fixate object centres. Looking
+elsewhere on larger objects could increase measured error.
+Yet traffic lights have about half the angular extent of
 licence plates and signs (0.32--0.47\dg{} versus
-0.66--1.12\dg{}), yet their corrected error is similar
-(0.79--1.24\dg{} versus 0.70--1.46\dg{}); extent and error
-correlate only weakly (Spearman $\rho$ from $-0.12$ to $+0.23$
-per driver). Residual error therefore does not shrink with
-target size, consistent with centre fixation. Nor does it increase with target distance (4.7--119.6\,m;
-$\rho$ from $-0.15$ to $+0.09$) or vehicle speed
-(0--100\,km/h; $\rho$ from $-0.09$ to $+0.12$).
+0.66--1.12\dg{}), but similar corrected errors
+(0.79--1.24\dg{} versus 0.70--1.46\dg{}).
+Extent and error correlate weakly (Spearman $\rho$
+from $-0.12$ to $+0.23$ per driver), consistent with,
+but not proving, centre fixation. Residual error also
+shows little association with target distance
+(4.7--119.6\,m; $\rho$ from $-0.15$ to $+0.09$)
+or vehicle speed (0--100\,km/h;
+$\rho$ from $-0.09$ to $+0.12$).
 
 \subsection{Does Driving-Based Modelling Help?}
 
 Linear position and pupil terms fitted on driving references
-do not consistently improve the median error
-(Table~\ref{tab:transfer}); differences of 0.03--0.1\dg{}
-between linear variants are comparable rather than a ranking.
-Adding gaze velocity helps P6 and P8, most clearly in the tail:
-P6's P90 falls from 3.95\dg{} to 3.16\dg{}, improving in all
-five folds. P1 and P2 do not benefit. A distance term lowers no
-driver's median error, consistent with residual error not
-increasing with distance (Sec.~\ref{sec:insitu}). The in-situ offset still leaves
-P6's P90 above the chessboard result
-(3.95\dg{} versus 3.77\dg{}): lower median error does not
-imply a uniformly better error distribution.
-In the evaluated conditions, the main gain thus comes
-from representative in-situ references rather than model
-complexity.
+do not consistently outperform a simple median offset
+(Table~\ref{tab:transfer}). No linear model consistently
+outperforms the others across drivers.
+Adding gaze velocity helps P6 and P8, particularly for
+large errors (P90): P6's P90 drops from 3.95\dg{} to
+3.16\dg{}, improving in all five folds. P1 and P2 do not
+benefit. Adding distance does not reduce median error for
+any driver, consistent with the weak relationship between
+distance and residual error (Sec.~\ref{sec:insitu}).
+For P6, the in-situ offset improves median accuracy over
+chessboard calibration, but not P90 (3.95\dg{} versus
+3.77\dg{}). Overall, additional model features offer
+limited, wearer-specific benefits. The main gain comes
+from calibration with representative driving references.
