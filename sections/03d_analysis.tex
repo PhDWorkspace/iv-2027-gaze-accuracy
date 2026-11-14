@@ -50,8 +50,8 @@ five randomly drawn references (20 draws per source) and score
 offsets from single 15-point chessboards on the same test scenes.
 Held-out recordings receive equal weight, as do scenes within
 each recording and samples within each scene.
-Velocity models and their matched median baselines use samples
-with valid runtime features.
+All samples have valid velocity features, so velocity models
+share the median baseline.
 We further vary the number of driving references
 ($k\in\{1,2,3,4,5,8\}$, where available), selected randomly
 (20 draws per fold) or geometrically.
