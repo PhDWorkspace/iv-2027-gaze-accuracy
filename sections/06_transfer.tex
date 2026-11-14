@@ -46,10 +46,13 @@ Position and pupil terms fitted on the same chessboards do not
 consistently add to the offset benefit (Table~\ref{tab:transfer}).
 They increase median error for P1, P6 and P8; P2 gains slightly
 from position terms (1.40\dg{} to 1.30\dg{}).
-Controlled improvements therefore do not necessarily transfer
-to the road.
+We omit chessboard-trained distance terms, since the boards span
+only 1--4\,m whereas road targets lie at 5--120\,m.
+Controlled position and pupil terms therefore do not necessarily
+transfer to the road.
 
 \subsection{Sparse In-Situ Calibration}
+\label{sec:insitu}
 
 Our verified driving fixations allow the same median offset
 to be estimated in the operating condition itself.
@@ -62,9 +65,8 @@ relative to the chessboard offset are 0.07\dg{} [0.02, 0.15],
 0.58\dg{} [0.44, 0.62] and 0.23\dg{} [0.16, 0.34] for P1, P2
 and P6 (95\% recording-cluster bootstrap intervals), and
 0.56\dg{} in P8's single recording. The gain is thus consistent
-but small for P1 and substantial for P2 and P8. These values
-compare fold-averaged scene errors rather than
-the recording-weighted medians in Fig.~\ref{fig:transfer}a.
+but small for P1 and substantial for P2 and P8 (fold-averaged scene
+errors, unlike the recording-weighted medians in Fig.~\ref{fig:transfer}a).
 Few references suffice (Fig.~\ref{fig:transfer}b):
 one random scene already beats the pooled chessboard offset for
 P2 and P8, and five scenes beat it for all four participants;
@@ -100,8 +102,8 @@ Bold: lowest error per column.}
 \end{table}
 
 \noindent\textbf{What remains after correction?}
-The scene context allows us to ask whether the residual error
-reflects the reference or the driving situation. Traffic lights
+Does the residual error reflect the reference or the driving
+situation? Traffic lights
 are nearly point-like, with about half the angular extent of
 licence plates and signs (0.32--0.47\dg{} versus
 0.66--1.12\dg{}), yet their corrected error is similar
@@ -120,7 +122,9 @@ do not consistently improve the median error
 between linear variants are comparable rather than a ranking.
 Adding gaze velocity helps P6 and P8, most clearly in the tail:
 P6's P90 falls from 3.95\dg{} to 3.16\dg{}, improving in all
-five folds. P1 and P2 do not benefit. The in-situ offset still leaves
+five folds. P1 and P2 do not benefit. A distance term lowers no
+driver's median error, consistent with residual error not
+increasing with distance (Sec.~\ref{sec:insitu}). The in-situ offset still leaves
 P6's P90 above the chessboard result
 (3.95\dg{} versus 3.77\dg{}): lower median error does not
 imply a uniformly better error distribution.
